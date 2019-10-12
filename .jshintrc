@@ -1,0 +1,6 @@
+{
+    "esversion": 9,
+    "laxcomma": true,
+    "laxbreak": true,
+    "-W138": true
+}

@@ -1,5 +1,4 @@
-# bbx2.0
+# 币币云
 
-yarn
-
+npm install
 npm start
