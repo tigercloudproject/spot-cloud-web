@@ -1,0 +1,225 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.exchange-record-list {
+  width: 100%;
+  height: 100%;
+  background: #141b2e; }
+  .exchange-record-list > .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 42px;
+    width: 100%;
+    background: #10172a;
+    padding: 0px 15px; }
+    .exchange-record-list > .title .tab-list {
+      display: flex;
+      font-size: 14px; }
+      .exchange-record-list > .title .tab-list li {
+        margin-right: 50px;
+        position: relative;
+        cursor: pointer; }
+        .exchange-record-list > .title .tab-list li.active {
+          color: #2b93f6; }
+          .exchange-record-list > .title .tab-list li.active::after {
+            content: "";
+            width: 20px;
+            height: 2px;
+            background: #2b93f6;
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            margin-left: -10px; }
+        .exchange-record-list > .title .tab-list li:hover {
+          color: #5f8ed4; }
+    .exchange-record-list > .title .right {
+      display: flex;
+      font-size: 12px;
+      color: #7583a8;
+      align-items: center; }
+      .exchange-record-list > .title .right .radio-box {
+        padding: 0px 8px;
+        position: relative; }
+        .exchange-record-list > .title .right .radio-box input {
+          visibility: hidden;
+          cursor: pointer; }
+        .exchange-record-list > .title .right .radio-box input + label {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background: url(../../../images/icon-chose_nor.svg) left center no-repeat;
+          background-size: 16px 16px;
+          position: absolute;
+          top: 0px;
+          left: 3px;
+          cursor: pointer; }
+        .exchange-record-list > .title .right .radio-box input:checked + label {
+          background: url(../../../images/icon-chose_sel.svg) left center no-repeat;
+          background-size: 16px 16px;
+          position: absolute;
+          top: 0px;
+          left: 3px; }
+      .exchange-record-list > .title .right .cancel-all {
+        height: 24px;
+        padding-right: 30px;
+        border-right: 1px solid #7583a8;
+        margin-left: 50px; }
+        .exchange-record-list > .title .right .cancel-all a {
+          display: inline-block;
+          width: 70px;
+          height: 24px;
+          color: #7583a8;
+          border: 1px solid #7583a8;
+          text-align: center;
+          line-height: 24px;
+          border-radius: 2px; }
+          .exchange-record-list > .title .right .cancel-all a:hover {
+            color: #2b93f6;
+            border: 1px solid #2b93f6; }
+      .exchange-record-list > .title .right .the-more {
+        color: #7583a8;
+        font-size: 12px;
+        margin-left: 30px; }
+        .exchange-record-list > .title .right .the-more i {
+          font-size: 12px; }
+        .exchange-record-list > .title .right .the-more:hover {
+          color: #2b93f6; }
+  .exchange-record-list .list-box {
+    width: 100%; }
+  .exchange-record-list .list-head {
+    height: 46px;
+    width: 100%;
+    background: #141b2e;
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+    font-size: 12px;
+    color: #7583a8; }
+    .exchange-record-list .list-head li {
+      padding-left: 10px;
+      flex: 1; }
+      .exchange-record-list .list-head li.date {
+        width: 150px;
+        flex: none;
+        flex-basis: 150px; }
+      .exchange-record-list .list-head li.operation {
+        text-align: right;
+        width: 70px;
+        flex: none;
+        flex-basis: 70px; }
+      .exchange-record-list .list-head li.way {
+        width: 120px;
+        flex: none;
+        flex-basis: 120px; }
+      .exchange-record-list .list-head li.coin-pair {
+        width: 120px;
+        flex: none;
+        flex-basis: 120px; }
+  .exchange-record-list .list-body {
+    max-height: 200px;
+    overflow-y: auto; }
+    .exchange-record-list .list-body ul li {
+      height: 30px;
+      width: 100%;
+      background: #141b2e;
+      display: flex;
+      align-items: center;
+      padding: 0px 15px;
+      font-size: 12px; }
+      .exchange-record-list .list-body ul li:nth-child(2n-1) {
+        background: #10172a; }
+      .exchange-record-list .list-body ul li span {
+        padding-left: 10px;
+        flex: 1; }
+        .exchange-record-list .list-body ul li span.date {
+          width: 150px;
+          flex: none;
+          flex-basis: 150px; }
+        .exchange-record-list .list-body ul li span.way {
+          width: 120px;
+          flex: none;
+          flex-basis: 120px; }
+        .exchange-record-list .list-body ul li span.coin-pair {
+          width: 120px;
+          flex: none;
+          flex-basis: 120px; }
+        .exchange-record-list .list-body ul li span.green {
+          color: #319e5c; }
+        .exchange-record-list .list-body ul li span.red {
+          color: #b83a3a; }
+        .exchange-record-list .list-body ul li span.operation {
+          text-align: right;
+          width: 70px;
+          flex: none;
+          flex-basis: 70px; }
+          .exchange-record-list .list-body ul li span.operation a {
+            color: #2b8fef;
+            padding: 2px 15px;
+            border: 1px solid #2b93f6;
+            border-radius: 2px;
+            cursor: pointer; }
+            .exchange-record-list .list-body ul li span.operation a:hover {
+              color: #2b93f6;
+              border: 1px solid #2b93f6; }
+    .exchange-record-list .list-body .no-data-loading {
+      width: 100%;
+      padding: 20px;
+      text-align: center; }
+      .exchange-record-list .list-body .no-data-loading img {
+        width: 60px; }
+      .exchange-record-list .list-body .no-data-loading p {
+        font-size: 12px;
+        padding: 10px; }
+
+@media screen and (max-width: 700px) {
+  .exchange-record-list .title {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    height: auto; }
+    .exchange-record-list .title .tab-list {
+      height: 30px; }
+    .exchange-record-list .title .right {
+      margin-top: 10px; }
+      .exchange-record-list .title .right .cancel-all {
+        margin-left: 10px;
+        padding-right: 10px;
+        border: none; }
+      .exchange-record-list .title .right .the-more {
+        justify-items: end; }
+  .exchange-record-list .list-box {
+    width: 100%;
+    overflow: auto; }
+    .exchange-record-list .list-box .list-head, .exchange-record-list .list-box .list-body {
+      width: 1000px; } }

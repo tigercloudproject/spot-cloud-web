@@ -1,0 +1,102 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.header-user-info-box {
+  position: relative; }
+  .header-user-info-box .header-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0; }
+  .header-user-info-box .header-avatar {
+    width: 32px;
+    height: 32px;
+    cursor: pointer; }
+  .header-user-info-box .header-user-info {
+    min-width: 200px;
+    position: absolute;
+    text-align: center;
+    background: #283149;
+    font-size: 12px;
+    left: -77px;
+    top: 42px;
+    border: 1px solid #313a56;
+    border-radius: 6px; }
+    .header-user-info-box .header-user-info::after {
+      content: "";
+      width: 44px;
+      height: 62px;
+      position: absolute;
+      left: 50%;
+      margin-left: -22px;
+      top: -62px; }
+    .header-user-info-box .header-user-info .account-info {
+      border-bottom: 1px solid #374262;
+      padding: 15px 0px;
+      font-size: 14px;
+      width: 86%;
+      margin: 0 auto; }
+      .header-user-info-box .header-user-info .account-info .account {
+        color: #f2f3f4;
+        padding-bottom: 4px; }
+      .header-user-info-box .header-user-info .account-info .uid {
+        color: #BDD1EF;
+        font-size: 12px; }
+    .header-user-info-box .header-user-info .account-menu {
+      width: 100%;
+      padding: 10px 0px; }
+      .header-user-info-box .header-user-info .account-menu a {
+        display: block;
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+        color: #BDD1EF !important;
+        font-size: 12px; }
+        .header-user-info-box .header-user-info .account-menu a:hover {
+          background: #1E253B;
+          color: #BDD1EF !important; }
+        .header-user-info-box .header-user-info .account-menu a .hot-marker {
+          position: relative; }
+          .header-user-info-box .header-user-info .account-menu a .hot-marker::after {
+            position: absolute;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            content: "HOT";
+            top: -1px;
+            right: -34px;
+            color: #e37f17;
+            background: rgba(227, 127, 23, 0.2);
+            padding: 0px 2px;
+            margin-left: 2px; }

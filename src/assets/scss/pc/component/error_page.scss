@@ -1,0 +1,33 @@
+.error-page {
+  text-align: center; 
+  padding: 170px 0px 200px;
+  flex: 1;
+}
+
+.info {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #999; }
+
+.info a {
+  color: #597ab9; }
+
+.img {
+  position: relative;
+  margin: 0 auto;
+  width: 480px;
+  height: 200px; }
+
+.img img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -80px;
+  width: 344px;
+  height: 150px; }
+
+.img canvas {
+  width: 480px;
+  height: 200px; }

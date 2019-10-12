@@ -1,0 +1,86 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.assets-container {
+  width: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  min-height: 100%;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  background: #f2f4f6; }
+  .assets-container ::-webkit-scrollbar {
+    width: 5px;
+    height: 10px; }
+  .assets-container ::-webkit-scrollbar-track-piece {
+    background-color: #ECEEF3;
+    -webkit-border-radius: 6px; }
+  .assets-container ::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: #CED1D6;
+    -webkit-border-radius: 6px; }
+  .assets-container ::-webkit-scrollbar-thumb:horizontal {
+    width: 2px;
+    background: #CED1D6;
+    -webkit-border-radius: 6px; }
+  .assets-container .assets-body {
+    width: 1200px;
+    margin: 0 auto;
+    min-height: 485px;
+    box-sizing: border-box;
+    padding-bottom: 40px; }
+    .assets-container .assets-body .title {
+      height: 50px;
+      background: #ffffff;
+      color: #101629;
+      display: flex;
+      align-items: center;
+      padding: 0px 20px;
+      box-shadow: 0px 2px 5px #f2f4f6;
+      font-size: 16px;
+      font-weight: bold; }
+
+@media screen and (max-width: 700px) {
+  .assets-container {
+    width: 100%; }
+    .assets-container .assets-body {
+      padding: 0px;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      z-index: 110000;
+      width: 100%;
+      overflow-y: auto;
+      background: #f2f4f6; } }

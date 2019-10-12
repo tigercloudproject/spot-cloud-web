@@ -1,0 +1,230 @@
+@import '../../base.scss';
+.exchange-depth {
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    background: $exchangeBodyBack;
+    .title {
+        width: 100%;
+        padding: 0px 10px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        background: $exchangeBodyTitBack;
+        ul {
+            flex: 1;
+            display: flex;
+            li {
+                width: 20px;
+                height: 20px;
+                // border: 1px solid #464f6c;
+                margin-right: 14px;
+                cursor: pointer;
+                // &:hover, &.active {
+                //     border: 1px solid #215e9d;
+                // }
+                span {
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                    &.all {
+                        background: url("../../../images/icon-all_nor.svg") left top no-repeat;
+                        background-size: 100% 100%;
+                        &:hover, &.active {
+                            background: url("../../../images/icon-all_sel.svg") left top no-repeat;
+                            background-size: 100% 100%;
+                        }
+                    }
+                    &.buy {
+                        background: url("../../../images/icon-sell_nor.svg") left top no-repeat;
+                        background-size: 100% 100%;
+                        &:hover, &.active {
+                            background: url("../../../images/icon-sell_sel.svg") left top no-repeat;
+                            background-size: 100% 100%;
+                        }
+                    }
+                    &.sell {
+                        background: url("../../../images/icon-buy_nor.svg") left top no-repeat;
+                        background-size: 100% 100%;
+                        &:hover, &.active {
+                            background: url("../../../images/icon-buy_sel.svg") left top no-repeat;
+                            background-size: 100% 100%;
+                        }
+                    }
+                }
+            }
+        }
+        .decimal-select {
+            position: relative;
+            label {
+                color: $exchangeTextColorBlue;
+            }
+            &::after {
+                content: "";
+                width: 10px;
+                height: 10px;
+                // background: url(../../../images/icon-down3.png) no-repeat center;
+                //通过定位将图标放在合适的位置
+                background-size: 100% 100%;
+                position: absolute;
+                right: 0px;
+                top: 5px;
+                //给自定义的图标实现点击下来功能
+                pointer-events: none;
+            }
+            select {
+                background: transparent;
+                border: 1px solid transparent;
+                outline: none;
+                color: #c2cad4;
+                appearance:none;
+                padding-right: 10px;
+                cursor: pointer;
+                option{
+                    background: #fff;
+                    color: #000;
+                }
+            }
+        }
+    }
+    .list-head {
+        height: 24px;
+        color: $exchangeTextColorBlue;
+        display: flex;
+        align-items: center;
+        span {
+            flex: 1;
+            &:first-child {
+                padding-left: 10px;
+            }
+            &:nth-child(2) {
+                text-align: right;
+            }
+            &:last-child {
+                padding-right: 10px;
+                text-align: right;
+            }
+        }
+    }
+    .list-body {
+        .box-top {
+            position: relative;
+            overflow: hidden;
+            >ul {
+                position: absolute;
+                left: 0px;
+                bottom: 0px;
+                // background: orange;
+                width: 100%;
+            }
+        }
+        .box-bottom {
+            position: relative;
+            overflow: hidden;
+            >ul {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+            }
+        }
+        ul {
+            li {
+                position: relative;
+                height: 24px;
+                line-height: 24px;
+                cursor: pointer;
+                &:hover {
+                    background: $exchangeHoverBack;
+                }
+                &.red-back {
+                    animation: changeColor_red .5s linear 0s 1;
+                }
+                &.green-back {
+                animation: changeColor_green .5s linear 0s 1;
+                }
+                .list-item {
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    z-index: 2;
+                    span {
+                        flex: 1;
+                        &:first-child {
+                            padding-left: 10px;
+                        }
+                        &:nth-child(2) {
+                            text-align: right;
+                        }
+                        &:last-child {
+                            padding-right: 10px;
+                            text-align: right;
+                        }
+                    }
+                    .red {
+                        color: rgba(184, 58, 58, 1);
+                    }
+                    .green {
+                        color: rgba(49, 158, 92, 1);
+                    }
+                }
+                >p {
+                    height: 20px;
+                    position: absolute;
+                    right: 0px;
+                    top: 2px;
+                    &.red {
+                        background: rgba(184, 58, 58, .1);
+                    }
+                    &.green {
+                        background: rgba(49, 158, 92, .1);
+                    }
+                }
+            }
+        }
+    }
+    .current-price-box {
+        width: 236px;
+        height: 32px;
+        line-height: 32px;
+        background: #242a42;
+        text-align: center;
+        margin: 5px auto;
+        .price {
+            font-size: 16px;
+            &.red {
+                color: $bbxRed;
+            }
+            &.green {
+                color: $bbxGreen;
+            }
+        }
+        .cny {
+            font-size: 14px;
+            color: $exchangeTextColorBlue;
+        }
+    }
+}
+
+@keyframes changeColor_red {
+  0% {
+    background: rgba(184, 58, 58, 0);
+  }
+  50% {
+    background: rgba(184, 58, 58, .3);
+  }
+  100% {
+    background: rgba(184, 58, 58, 0);
+  }
+}
+@keyframes changeColor_green {
+  0% {
+    background: rgba(49, 158, 92, 0);
+  }
+  50% {
+    background: rgba(49, 158, 92, .3);
+  }
+  100% {
+    background: rgba(49, 158, 92, 0);
+  }
+}

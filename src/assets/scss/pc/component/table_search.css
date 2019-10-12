@@ -1,0 +1,54 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.table-search {
+  width: 165px;
+  height: 32px;
+  border-radius: 15px;
+  line-height: 30px;
+  background: #253045 url(../../../images/icon-search.png) 10px center no-repeat;
+  padding-left: 35px;
+  border: 1px solid #334667;
+  box-sizing: border-box; }
+  .table-search.focus {
+    border: 1px solid #b5d5fe; }
+  .table-search input {
+    width: 105px;
+    height: 30px;
+    margin: 0px;
+    border: none;
+    border-left: 1px solid #324464;
+    background: #253045;
+    outline: none;
+    padding-left: 10px;
+    color: #fff; }

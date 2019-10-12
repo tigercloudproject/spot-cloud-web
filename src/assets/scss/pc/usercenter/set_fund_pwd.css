@@ -1,0 +1,148 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.set-fund-pwd-box {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+  .set-fund-pwd-box .set-fund-pwd-mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 10010; }
+  .set-fund-pwd-box .set-fund-pwd-block {
+    width: 442px;
+    height: 482px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -221px;
+    margin-top: -241px;
+    background: #ecf2f7;
+    z-index: 10011;
+    padding: 50px 40px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 2px; }
+    .set-fund-pwd-box .set-fund-pwd-block .close-btn {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      right: -16px;
+      top: -16px;
+      background: url("../../../images/icon-close-TC.png") center center no-repeat;
+      background-size: 100% 100%;
+      cursor: pointer; }
+    .set-fund-pwd-box .set-fund-pwd-block .set-fund-pwd-title {
+      color: #1f2636;
+      font-size: 20px;
+      margin-bottom: 0px; }
+    .set-fund-pwd-box .set-fund-pwd-block .tip-limit-tit {
+      color: #1f2636;
+      font-size: 20px;
+      border-bottom: 1px solid #d8e3ef; }
+    .set-fund-pwd-box .set-fund-pwd-block .set-fund-pwd-sub-title {
+      color: #1f2636;
+      font-size: 12px;
+      padding-top: 10px;
+      padding-bottom: 25px;
+      margin-bottom: 0px; }
+    .set-fund-pwd-box .set-fund-pwd-block .set-pwd-form {
+      width: 100%; }
+      .set-fund-pwd-box .set-fund-pwd-block .set-pwd-form label {
+        display: block;
+        text-align: left;
+        font-size: 14px;
+        padding: 12px 0px; }
+      .set-fund-pwd-box .set-fund-pwd-block .set-pwd-form .set-pwd-control {
+        height: 60px; }
+    .set-fund-pwd-box .set-fund-pwd-block .set-fund-pwd-error {
+      width: 100%;
+      height: 20px;
+      color: #b83a3a;
+      text-align: left;
+      margin-bottom: 0px;
+      margin-top: 20px; }
+    .set-fund-pwd-box .set-fund-pwd-block .set-fund-pwd-btn {
+      width: 100%;
+      height: 60px;
+      text-decoration: none;
+      color: #fff;
+      border: none;
+      background: #2b93f6;
+      text-align: center;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 2px;
+      outline: none; }
+      .set-fund-pwd-box .set-fund-pwd-block .set-fund-pwd-btn:hover {
+        background: rgba(43, 147, 246, 0.9); }
+      .set-fund-pwd-box .set-fund-pwd-block .set-fund-pwd-btn:disabled {
+        background: rgba(151, 176, 214, 0.7); }
+    .set-fund-pwd-box .set-fund-pwd-block .effective-time {
+      text-align: center;
+      padding-top: 20px; }
+      .set-fund-pwd-box .set-fund-pwd-block .effective-time a {
+        cursor: default; }
+    .set-fund-pwd-box .set-fund-pwd-block .reset-fund-password {
+      color: #1f2636;
+      text-align: center;
+      padding-top: 20px; }
+    .set-fund-pwd-box .set-fund-pwd-block .tip-limit-con {
+      font-size: 14px;
+      padding: 40px 0px; }
+    .set-fund-pwd-box .set-fund-pwd-block .confirm-btn-box {
+      padding-top: 20px; }
+      .set-fund-pwd-box .set-fund-pwd-block .confirm-btn-box button {
+        width: 166px;
+        height: 50px;
+        cursor: pointer;
+        font-size: 18px;
+        border-radius: 2px;
+        outline: none;
+        border: none;
+        color: #fff; }
+      .set-fund-pwd-box .set-fund-pwd-block .confirm-btn-box .confirm {
+        background: #2b93f6;
+        margin-left: 15px; }
+        .set-fund-pwd-box .set-fund-pwd-block .confirm-btn-box .confirm:hover {
+          background: rgba(43, 147, 246, 0.9); }
+      .set-fund-pwd-box .set-fund-pwd-block .confirm-btn-box .cancel {
+        background: rgba(151, 176, 214, 0.7);
+        margin-right: 15px; }
+        .set-fund-pwd-box .set-fund-pwd-block .confirm-btn-box .cancel:hover {
+          background: rgba(133, 147, 169, 0.8); }

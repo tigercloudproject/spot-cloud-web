@@ -1,0 +1,117 @@
+//主要定义页面中的颜色和固定高度
+$bbxNavBackground: #151B2F;
+$bbxBackground1: #12162D ; //首页背景颜色
+$bbxBackground2: #171E3A; //公告背景颜色
+$bbFooterBackground: #101629;
+$bbxGray: #97B0D6;
+$bbxGray2: #A7BFD8;
+$bbxLink1: #69769D;
+
+$bbxWhite: #ffffff;
+$bbxWhite2: #eef4ff;
+$bbxFooterColor: #8090aa;
+$bbxGreen: rgb(49, 158, 92);
+$bbxRed: rgb(184, 58, 58);
+$bbxOrange: #D9A959;
+$bbxBorderHeighLight: #5F8ED4;
+$bodyBack: #111831;
+$bbxBlue1: rgba(151,176,214,0.7);
+$bbxBlue2: #5F8ED4;
+$bbxBlue3: #5F8ED4;
+$bbxLineColor: #313A56;
+$bbxInputColorForBlack: #b5d5fe;
+$bbxInputFocusForLight: #2b93f6;
+
+$acountSelectTextColor: #5F8ED4;
+$acountTextColor1: #ffffff;
+$acountTextColor2: #CDD5DF;
+
+$h5NavColor: #eef4ff;
+$h5LoginLabelColor: #8da4c8;
+
+$exchangeBackground: #0d1225;
+$exchangeBodyBack: #141b2e;
+$exchangeBodyTitBack: #10172a;
+$exchangeTextColorWhite: #C2D6F5;
+$exchangeTextColorBlue: #7583a8;
+$exchangeTextColorBlue2: #2b93f6;
+$exchangeTextColorHover: #5f8ed4;
+$exchangeHoverBack: #212845;
+
+//导航菜单中下拉框颜色
+$menuDropDownBack: #283149;
+$menuDropDownHoverBack: #1E253B;
+$menuDropDownColorBlue: #BDD1EF;
+$menuDropDownColorWhite: #f2f3f4;
+$menuDropDownHot: #e37f17;
+$menuDropDownBorder: #384057;
+
+//新版资产颜色
+$assetsTitleColor: #101629;
+$assetsBack: #f2f4f6;
+$assetsConBack: #ffffff;
+$assetsWarning: #ff8e19;
+$assetsTheadBack: #fbfcff;
+$assetsTheadColor: #717171;
+$assetsTrHoverBack: #f7f9ff;
+$assetsTbodyColor: #272b39;
+$assetsTableBorder: #eceef3;
+$assetsLableColor: #999999;
+$assetsInputColor: #101629;
+$assetsButtonBlue: #2b93f6;
+$assetsLinkColor: #2b93f6;
+// $assetsLinkColor: #63a9f8;
+$assetsInputBorder: #eceef3;
+$assetsInputPlaceholder: #C2C2C2;
+$assetsBtnColor: #ffffff;
+
+.center-container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 700px) {
+    .center-container {
+        width: 100%;
+    }
+}
+
+.h5-box-fixed {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background: #171a25;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 110000;
+}
+
+.scale1px {
+    position: relative;
+    border: none;
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 1px solid #fff;
+        box-sizing: border-box;
+        width: 200%;
+        height: 200%;
+        transform: scale(0.5);
+        transform-origin: left top;
+    }
+}
+// .scale-1px:after{
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     border: 1px solid #fff;
+//     box-sizing: border-box;
+//     width: 200%;
+//     height: 200%;
+//     transform: scale(0.5);
+//     transform-origin: left top;
+// }

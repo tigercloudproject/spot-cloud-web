@@ -1,0 +1,28 @@
+@import '../../base.scss';
+.exchange-kline {
+    position: relative;
+    // margin-right: 10px;
+    height: 480px;
+    flex: 1;
+    background-color: $exchangeBodyBack;
+    border-radius: 2px;
+    #tv_chart_container {
+      height: 100%;
+    }
+    .lxcj, .aicoin{
+      position: absolute;
+      right: 40px;
+      top: 10px;
+      color: $exchangeTextColorBlue;
+      font-size: 12px;
+      border-bottom: 1px dotted $exchangeTextColorBlue;
+    }
+    .aicoin {
+      right: 50px;
+    }
+    @media screen and (max-width:750px) {
+      .lxcj, .aicoin{
+        display: none;
+      }
+    }
+}

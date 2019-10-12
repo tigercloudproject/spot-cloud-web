@@ -1,0 +1,136 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.usercenter-h5 {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000;
+  background: #171a25; }
+  .usercenter-h5 .usercenter-h5-top {
+    height: 80px;
+    width: 94%;
+    margin: 0 auto;
+    display: flex;
+    border-radius: 2px;
+    background: #1d72c9;
+    align-items: center;
+    padding: 0px 20px;
+    margin-top: 15px; }
+    .usercenter-h5 .usercenter-h5-top > img {
+      width: 55px;
+      height: 55px; }
+    .usercenter-h5 .usercenter-h5-top > div {
+      color: #fff;
+      padding-left: 10px;
+      flex: 1;
+      width: 78%; }
+      .usercenter-h5 .usercenter-h5-top > div h3 {
+        font-weight: 400;
+        font-size: 1.3rem;
+        color: #fff;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-bottom: 0px;
+        font-weight: normal; }
+      .usercenter-h5 .usercenter-h5-top > div p {
+        font-size: 0.8rem; }
+  .usercenter-h5 dl dd {
+    width: 100%;
+    margin: 0px; }
+    .usercenter-h5 dl dd > a {
+      display: block;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      border-bottom: 1px solid #313a56;
+      color: #cdd5df; }
+      .usercenter-h5 dl dd > a i {
+        float: right; }
+  .usercenter-h5 > .link-list {
+    width: 94%;
+    margin: 0 auto;
+    padding-bottom: 20px; }
+    .usercenter-h5 > .link-list h3 {
+      color: #8da4c8;
+      height: 40px;
+      line-height: 40px;
+      font-size: 1rem;
+      margin-bottom: 0px; }
+    .usercenter-h5 > .link-list .block {
+      width: 100%;
+      background: #1f2636;
+      border-radius: 4px;
+      padding: 0px 4px;
+      box-sizing: border-box; }
+      .usercenter-h5 > .link-list .block a {
+        display: block;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #313a56;
+        color: #cdd5df;
+        padding: 0px 8px;
+        font-size: 1rem;
+        border: none;
+        position: relative; }
+        .usercenter-h5 > .link-list .block a::after {
+          content: ' ';
+          width: 200%;
+          height: 1px;
+          border-bottom: 1px solid #313a56;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          transform: scale(0.5, 0.5);
+          transform-origin: left top; }
+        .usercenter-h5 > .link-list .block a i {
+          float: right; }
+        .usercenter-h5 > .link-list .block a:last-child {
+          border-bottom: none; }
+          .usercenter-h5 > .link-list .block a:last-child::after {
+            border-bottom: none; }
+    .usercenter-h5 > .link-list > .exit {
+      display: block;
+      width: 80%;
+      color: #fff;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      margin: 20px auto;
+      background: #1d72c9; }

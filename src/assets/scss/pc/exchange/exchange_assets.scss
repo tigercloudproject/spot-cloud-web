@@ -1,0 +1,53 @@
+@import '../../base.scss';
+.exchange-assets {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 12px 8px;
+    >h3 {
+        font-size: 12px;
+        padding-bottom: 5px;
+    }
+    .eye-open, .eye-close {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 8px;
+        top: 12px;
+        cursor: pointer;
+    }
+    .eye-open {
+        background: url("../../../images/eye-open.svg") left top no-repeat;
+        background-size: 100% 100%;
+    }
+    .eye-close {
+        background: url("../../../images/eye-close.svg") left top no-repeat;
+        background-size: 100% 100%;
+    }
+    .no-login {
+        font-size: 12px;
+        .money {
+            color: $exchangeTextColorBlue;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        .to-login, .to-register {
+            color: $exchangeTextColorBlue2;
+            padding: 0px 4px;
+            &:hover {
+                color: $exchangeTextColorHover;
+            }
+        }
+    }
+    .login {
+        font-size: 16px;
+        .price {
+            font-size: 14px;
+            color: $exchangeTextColorBlue;
+        }
+        .is-close {
+            
+        }
+    }
+}

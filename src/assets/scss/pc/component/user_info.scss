@@ -1,0 +1,100 @@
+@import '../../base.scss';
+
+.header-user-info-box {
+    position: relative;
+    .header-mask {
+        position: fixed;
+        left:0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
+    .header-avatar {
+        width: 32px;
+        height: 32px;
+        // margin-left: 4px;
+        cursor: pointer;
+    }
+    .header-user-info {
+        min-width: 200px;
+        position: absolute;
+        // padding: 0px 10px;
+        text-align: center;
+        background: $menuDropDownBack;
+        font-size: 12px;
+        left: -77px;
+        top: 42px;
+        border: 1px solid #313a56;
+        border-radius: 6px;
+        // &::before {
+        //     content: "";
+        //     width: 0;
+        //     height: 0;
+        //     border-width: 0 10px 10px;
+        //     border-style: solid;
+        //     border-color: transparent transparent #313a56;
+        //     position: absolute;
+        //     margin-left: -12px;
+        //     top: -10px;
+        // }
+
+        &::after {
+            content: "";
+            width: 44px;
+            height: 62px;
+            position: absolute;
+            left: 50%;
+            margin-left: -22px;
+            top: -62px;
+        }
+        .account-info {
+            border-bottom: 1px solid #374262;
+            padding: 15px 0px;
+            font-size: 14px;
+            width: 86%;
+            margin: 0 auto;
+            // width: 
+            .account {
+                color: $menuDropDownColorWhite;
+                padding-bottom: 4px;
+            }
+            .uid {
+                color: $menuDropDownColorBlue;
+                font-size: 12px;
+            }
+        }
+        .account-menu {
+            width: 100%;
+            padding: 10px 0px;
+            a {
+                display: block;
+                width: 100%;
+                height: 35px;
+                line-height: 35px;
+                color: $menuDropDownColorBlue!important;
+                font-size: 12px;
+                &:hover {
+                    background: $menuDropDownHoverBack;
+                    color: $menuDropDownColorBlue!important;
+                }
+                .hot-marker {
+                    position: relative;
+                    &::after {
+                        position: absolute;
+                        height: 16px;
+                        display: flex;
+                        align-items: center;
+                        content: "HOT";
+                        top: -1px;
+                        right: -34px;
+                        color: #e37f17;
+                        background: rgba(227,127,23,0.2);
+                        padding: 0px 2px;
+                        margin-left: 2px;
+                    }
+                }
+            }
+        }
+        
+    }
+}

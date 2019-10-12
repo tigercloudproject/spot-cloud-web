@@ -1,0 +1,71 @@
+@import '../../base.scss';
+.header-assets-menu {
+    position: relative;
+    &:hover {
+        >ul {
+            display: block;
+        }
+    }
+    >div {
+        display: inline-block;
+        color: #97B0D6;
+        cursor: pointer;
+        padding-right: 15px;
+        &:hover {
+            color: rgb(95, 142, 212);
+            .iconDown {
+                background: url("../../../images/icon-down-sel.svg") left top no-repeat;
+                transform: rotate(180deg);
+                transition: all .3s linear;
+            }
+        }
+    }
+    .iconDown {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      position:absolute;
+      right: 0px;
+      top: 24px;
+      background: url("../../../images/icon-down.svg") left top no-repeat;
+      transform: rotate(0);
+      transition: all .3s linear;
+    }
+    >ul {
+        // display: none;
+        background: $menuDropDownBack;
+        width: 120px;
+        padding: 10px 0px;
+        position: absolute;
+        left: 50%;
+        margin-left: -60px;
+        top: 50px;
+        text-align: center;
+        border-radius: 6px;
+        border: 1px solid #313a56;
+        li {
+            width: 100%;
+            height: 40px;
+            line-height: center;
+            color:#BDD1EF;
+            cursor: pointer;
+            &:hover {
+                background: $menuDropDownHoverBack;
+                // color: $menuDropDownColorBlue;
+                color:#BDD1EF;
+            }
+            >a {
+                font-size: 12px!important;
+                display: block;
+                padding: 0px!important;
+                width: 100%;
+                height: 40px;
+                line-height: 40px;
+                color: #BDD1EF!important;
+                &:hover {
+                   color:#BDD1EF!important;
+                }
+            }
+        }
+    }
+}

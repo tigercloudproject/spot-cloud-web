@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <!-- 首页 -->
+        <loc>https://www.bbx.com/zh-cn/</loc>
+        <changefreq>always</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://www.bbx.com/exchange</loc>
+        <changefreq>always</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <!-- <url>
+        <loc>https://www.bbx.com/c2c_trade</loc>
+        <changefreq>always</changefreq>
+        <priority>0.9</priority>
+    </url> -->
+    <!-- <url>
+        <loc>https://www.bbx.com/usercenter/</loc>
+        <changefreq>always</changefreq>
+        <priority>0.9</priority>
+    </url> -->
+    <!-- <url>
+        <loc>https://www.bbx.com/assets/deposit</loc>
+        <changefreq>always</changefreq>
+        <priority>0.9</priority>
+    </url> -->
+    <!-- <url>
+        <loc>https://www.bbx.com/assets/withdraw</loc>
+        <changefreq>always</changefreq>
+        <priority>0.9</priority>
+    </url> -->
+    <!-- <url>
+        <loc>https://www.bbx.com/assets/exchange_account</loc>
+        <changefreq>always</changefreq>
+        <priority>0.9</priority>
+    </url> -->
+
+    <!-- <url>
+        <loc>https://www.bbx.com/usercenter/rebate</loc>
+        <changefreq>always</changefreq>
+        <priority>0.9</priority>
+    </url> -->
+</urlset>

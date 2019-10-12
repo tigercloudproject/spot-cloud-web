@@ -1,0 +1,123 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.tel-intpu-box {
+  width: 100%;
+  position: relative;
+  display: flex; }
+  .tel-intpu-box .tel-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0);
+    opacity: 0;
+    z-index: 0; }
+  .tel-intpu-box .tel-select {
+    width: 140px;
+    flex-basis: 140px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #97b0d6;
+    color: #38405b;
+    vertical-align: top;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center; }
+    .tel-intpu-box .tel-select.focus {
+      border: 1px solid #2b93f6; }
+    .tel-intpu-box .tel-select input {
+      width: 100%;
+      height: 46px;
+      border: none;
+      outline: none;
+      padding: 0px 20px;
+      box-sizing: border-box; }
+    .tel-intpu-box .tel-select .iconfont {
+      position: absolute;
+      right: 10px;
+      color: #2b93f6; }
+  .tel-intpu-box input.tel-input {
+    flex: 1;
+    width: 310px;
+    height: 50px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border: 1px solid #bacae4;
+    border-left: 0px;
+    vertical-align: top;
+    outline: none;
+    position: relative; }
+    .tel-intpu-box input.tel-input:focus {
+      border: 1px solid #2b93f6;
+      border-left: 0px; }
+  .tel-intpu-box .tel-list-box {
+    width: 100%;
+    padding: 0px;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid #bacae4;
+    position: absolute;
+    z-index: 1000;
+    top: 50px;
+    left: 0px;
+    display: none;
+    padding: 1px; }
+  .tel-intpu-box .tel-list {
+    width: 100%;
+    padding: 0px 14px;
+    height: 210px;
+    overflow-y: auto; }
+    .tel-intpu-box .tel-list li {
+      height: 50px;
+      line-height: 50px;
+      border-bottom: 1px solid #c8d5e9;
+      cursor: pointer; }
+      .tel-intpu-box .tel-list li:last-child() {
+        border-bottom: none; }
+      .tel-intpu-box .tel-list li span {
+        float: right;
+        color: #3a435c; }
+
+@media screen and (max-width: 700px) {
+  .tel-intpu-box .tel-select {
+    width: 100px;
+    flex-basis: 100px;
+    height: 44px !important; }
+    .tel-intpu-box .tel-select input {
+      height: 44px !important; }
+  .tel-intpu-box input.tel-input {
+    height: 44px !important; } }

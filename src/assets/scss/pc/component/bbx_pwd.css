@@ -1,0 +1,10 @@
+.bbx-pwd {
+  position: relative; }
+  .bbx-pwd input::selection {
+    background: #1890ff;
+    color: #1890ff; }
+  .bbx-pwd .pwd-hide {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: none; }

@@ -1,0 +1,87 @@
+@import '../../base.scss';
+.bbx-table {
+    width: 100%;
+    background: $assetsConBack;
+    color: $assetsTbodyColor;
+    table {
+        width: 100%;
+        font-size: 12px;
+    }
+    thead {
+        background: $assetsTheadBack;
+        color: $assetsTheadColor;
+    }
+    tr {
+        border-bottom: 1px solid $assetsTableBorder;
+        height: 50px;
+    }
+    tbody {
+        height: 500px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        tr {
+            &:hover {
+                background: $assetsTrHoverBack;
+            }
+        }
+    }
+    th,td,thead,tbody { display: block; }
+    tr {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        th,td {
+            flex: 1;
+            padding: 0px 10px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            &:last-child {
+                text-align: right;
+            }
+            a {
+                margin-left: 10px;
+                color: $assetsLinkColor;
+                cursor: pointer;
+                &:hover {
+                    color: darken($assetsLinkColor, 10%);
+                }
+                &.disabled {
+                    
+                    cursor: not-allowed;
+                    color: #bbb;
+                    &:hover {
+                       color: #bbb;
+                    }
+                }
+                
+            }
+        }
+    }
+
+}
+
+// td,th { float: left; }
+// td:nth-child(1),
+// th:nth-child(1) {
+//   width: 20%;
+// }
+// td:nth-child(2),
+// th:nth-child(2) {
+//   width: 20%;
+//   float: left;
+// }
+// td:nth-child(3),
+// th:nth-child(3) {
+//   width: 59%;
+//   float: left;
+// }
+// /* some colors */
+// thead {
+//   background-color: #333333;
+//   color: #fdfdfd;
+// }
+// table tbody tr:nth-child(even) {
+//   background-color: #dddddd;
+// }

@@ -1,0 +1,17 @@
+.bbx-pwd {
+    position: relative;
+    input::selection {
+        background:#1890ff;
+        color:#1890ff;
+    }
+    .pwd-hide {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background: none;
+        // color: rgba(0,0,0,0);
+    }
+    .pwd-show {
+
+    }
+}

@@ -1,0 +1,128 @@
+@import '../../base.scss';
+.tel-intpu-box {
+    width: 100%;
+    position: relative;
+    //z-index: 10011;
+    display: flex;
+    .tel-mask {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0);
+        opacity: 0;
+        z-index: 0;
+    }
+    .tel-select {
+        width: 140px;
+        flex-basis: 140px;
+        height: 50px;
+        //line-height: 50px;
+        text-align: center;
+        border: 1px solid #97b0d6;
+        color: #38405b;
+        vertical-align: top;
+        outline: none;
+        cursor: pointer;
+        position: relative;
+        //vertical-align: middle;
+        display: flex;
+        align-items: center;
+        &.focus {
+            border: 1px solid $bbxInputFocusForLight;
+        }
+        input {
+            width: 100%;
+            height: 46px;
+            border: none;
+            outline: none;
+            padding: 0px 20px;
+            box-sizing: border-box;
+        }
+        .iconfont {
+            position: absolute;
+            right: 10px;
+            color: #2b93f6;
+        }
+        // .ant-select-selection__rendered {
+        //     line-height: 50px;
+        // }
+        // .ant-select-selection--single {
+        //     height: 48px;
+        //     box-sizing: border-box;
+        // }
+        // .ant-select-selection {
+        //     border: none;
+        //     box-shadow: none;
+        // }
+    }
+    input.tel-input {
+        flex: 1;
+        width: 310px;
+        height: 50px;
+        //line-height: 50px;
+        padding-left: 20px;
+        box-sizing: border-box;
+        border: 1px solid #bacae4;
+        border-left: 0px;
+        vertical-align: top;
+        outline: none;
+        position: relative;
+        &:focus {
+            border: 1px solid $bbxInputFocusForLight;
+            border-left: 0px;
+        }
+    }
+    .tel-list-box {
+        width: 100%;
+       //padding: 0px 14px;
+       padding: 0px;
+       box-sizing: border-box;
+       background: #fff;
+       border: 1px solid #bacae4;
+       
+       position: absolute;
+       z-index: 1000;
+       top: 50px;
+       left: 0px;
+       display: none;
+       padding: 1px;
+    }
+    .tel-list {
+       width: 100%;
+       padding: 0px 14px;
+       height: 210px;
+       overflow-y: auto;
+       li {
+           height: 50px;
+           line-height: 50px;
+           border-bottom: 1px solid #c8d5e9;
+           cursor: pointer;
+           &:last-child() {
+              border-bottom: none;
+           }
+           span {
+               float: right;
+               color: #3a435c;
+           }
+       }
+    }
+}
+
+@media screen and (max-width: 700px) { 
+    .tel-intpu-box {
+        .tel-select {
+            width: 100px;
+            flex-basis: 100px;
+            height: 44px!important;
+            input {
+                height: 44px!important;
+            }
+        }
+        input.tel-input { 
+            height: 44px!important;
+        }
+    }
+    
+}

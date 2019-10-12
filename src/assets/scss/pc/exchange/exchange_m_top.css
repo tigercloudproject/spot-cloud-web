@@ -1,0 +1,20 @@
+.exchange-m-top {
+  position: relative;
+  background: #141b2e;
+  margin-top: 6px; }
+  .exchange-m-top .select-top {
+    height: 50px;
+    color: #cdd5df;
+    display: flex;
+    align-items: center;
+    padding-left: 20px; }
+    .exchange-m-top .select-top > span {
+      font-size: 22px; }
+    .exchange-m-top .select-top > i {
+      font-size: 22px;
+      margin-left: 10px; }
+  .exchange-m-top .list-box {
+    position: absolute;
+    left: 0px;
+    top: 50px;
+    z-index: 9; }

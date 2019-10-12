@@ -1,0 +1,64 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.exchange-ticker {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center; }
+  .exchange-ticker .coin-pair {
+    font-size: 18px; }
+  .exchange-ticker .last-price {
+    padding-right: 50px;
+    font-size: 16px; }
+    .exchange-ticker .last-price.green {
+      color: #319e5c; }
+    .exchange-ticker .last-price.red {
+      color: #b83a3a; }
+    .exchange-ticker .last-price span {
+      color: #7583a8;
+      font-size: 14px; }
+  .exchange-ticker > ul {
+    flex: 1;
+    display: flex;
+    font-size: 12px;
+    padding: 0px 20px;
+    justify-content: space-between; }
+    .exchange-ticker > ul li p span:first-child {
+      color: #7583a8; }
+    .exchange-ticker > ul li p span.green {
+      color: #319e5c; }
+    .exchange-ticker > ul li p span.red {
+      color: #b83a3a; }
+  .exchange-ticker .coin-pair {
+    padding: 0px 20px; }

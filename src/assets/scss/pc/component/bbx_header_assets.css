@@ -1,0 +1,88 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.header-assets-menu {
+  position: relative; }
+  .header-assets-menu:hover > ul {
+    display: block; }
+  .header-assets-menu > div {
+    display: inline-block;
+    color: #97B0D6;
+    cursor: pointer;
+    padding-right: 15px; }
+    .header-assets-menu > div:hover {
+      color: #5f8ed4; }
+      .header-assets-menu > div:hover .iconDown {
+        background: url("../../../images/icon-down-sel.svg") left top no-repeat;
+        transform: rotate(180deg);
+        transition: all .3s linear; }
+  .header-assets-menu .iconDown {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    right: 0px;
+    top: 24px;
+    background: url("../../../images/icon-down.svg") left top no-repeat;
+    transform: rotate(0);
+    transition: all .3s linear; }
+  .header-assets-menu > ul {
+    background: #283149;
+    width: 120px;
+    padding: 10px 0px;
+    position: absolute;
+    left: 50%;
+    margin-left: -60px;
+    top: 50px;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #313a56; }
+    .header-assets-menu > ul li {
+      width: 100%;
+      height: 40px;
+      line-height: center;
+      color: #BDD1EF;
+      cursor: pointer; }
+      .header-assets-menu > ul li:hover {
+        background: #1E253B;
+        color: #BDD1EF; }
+      .header-assets-menu > ul li > a {
+        font-size: 12px !important;
+        display: block;
+        padding: 0px !important;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        color: #BDD1EF !important; }
+        .header-assets-menu > ul li > a:hover {
+          color: #BDD1EF !important; }

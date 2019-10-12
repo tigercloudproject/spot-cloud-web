@@ -1,0 +1,251 @@
+@import '../../base.scss';
+.exchange-record-list {
+    width: 100%;
+    height: 100%;
+    background: $exchangeBodyBack;
+    >.title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 42px;
+        width: 100%;
+        background: $exchangeBodyTitBack;
+        padding: 0px 15px;
+        .tab-list {
+            display: flex;
+            font-size: 14px;
+            li {
+                margin-right: 50px;
+                position: relative;
+                cursor: pointer;
+                &.active {
+                    color: $exchangeTextColorBlue2;
+                    &::after {
+                        content: "";
+                        width: 20px;
+                        height: 2px;
+                        background: $exchangeTextColorBlue2;
+                        position: absolute;
+                        bottom: -2px;
+                        left: 50%;
+                        margin-left: -10px;
+                    }
+                }
+                &:hover {
+                    color: $exchangeTextColorHover;
+                }
+            }
+        }
+        .right {
+            display: flex;
+            font-size: 12px;
+            color: $exchangeTextColorBlue;
+            align-items: center;
+            .radio-box {
+                padding: 0px 8px;
+                position: relative;
+                input {
+                    visibility: hidden;
+                    cursor: pointer;
+                }
+                input+label {
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    background: url(../../../images/icon-chose_nor.svg) left center no-repeat;
+                    background-size: 16px 16px;
+                    position: absolute;
+                    top: 0px;
+                    left: 3px;
+                    cursor: pointer;
+                }
+                input:checked+label{
+                    background: url(../../../images/icon-chose_sel.svg) left center no-repeat;
+                    background-size: 16px 16px;
+                    position: absolute;
+                    top: 0px;
+                    left: 3px;
+                    // &+label {
+                    //     color: #2b93f6;
+                    // }
+                }
+            }
+            .cancel-all {
+                height: 24px;
+                padding-right: 30px;
+                border-right: 1px solid $exchangeTextColorBlue;
+                margin-left: 50px;
+                a {
+                    display: inline-block;
+                    width: 70px;
+                    height: 24px;
+                    color: $exchangeTextColorBlue;
+                    border: 1px solid $exchangeTextColorBlue;
+                    text-align: center;
+                    line-height: 24px;
+                    border-radius: 2px;
+                    &:hover {
+                        color: $exchangeTextColorBlue2;
+                        border: 1px solid $exchangeTextColorBlue2;
+                    }
+                }
+            }
+            .the-more {
+                color: $exchangeTextColorBlue;
+                font-size: 12px;
+                margin-left: 30px;
+                i {
+                    font-size: 12px;
+                }
+                &:hover {
+                    color: $exchangeTextColorBlue2;
+                }
+            }
+        }
+    }
+    .list-box {
+        width: 100%;
+    }
+    .list-head {
+        height: 46px;
+        width: 100%;
+        background: $exchangeBodyBack;
+        display: flex;
+        align-items: center;
+        padding: 0px 15px;
+        font-size: 12px;
+        color: $exchangeTextColorBlue;
+        li {
+            padding-left: 10px;
+            flex:1;
+            &.date {
+                width: 150px;
+                flex: none;
+                flex-basis: 150px;
+            }
+            &.operation {
+                text-align: right;
+                width: 70px;
+                flex: none;
+                flex-basis: 70px;
+            }
+            &.way {
+                width: 120px;
+                flex: none;
+                flex-basis: 120px;
+            }
+            &.coin-pair {
+                width: 120px;
+                flex: none;
+                flex-basis: 120px;
+            }
+        }
+    }
+    .list-body {
+        max-height: 200px;
+        overflow-y: auto;
+        ul {
+            
+            li {
+                height: 30px;
+                width: 100%;
+                background: $exchangeBodyBack;
+                display: flex;
+                align-items: center;
+                padding: 0px 15px;
+                font-size: 12px;
+                &:nth-child(2n-1) {
+                    background: $exchangeBodyTitBack;
+                }
+                span {
+                    padding-left: 10px;
+                    flex:1;
+                    &.date {
+                        width: 150px;
+                        flex: none;
+                        flex-basis: 150px;
+                    }
+                    &.way {
+                        width: 120px;
+                        flex: none;
+                        flex-basis: 120px;
+                    }
+                    &.coin-pair {
+                        width: 120px;
+                        flex: none;
+                        flex-basis: 120px;
+                    }
+                    &.green {
+                        color: $bbxGreen;
+                    }
+                    &.red {
+                        color: $bbxRed;
+                    }
+                    &.operation {
+                        text-align: right;
+                        width: 70px;
+                        flex: none;
+                        flex-basis: 70px;
+                        a {
+                            color: #2b8fef;
+                            padding: 2px 15px;
+                            border: 1px solid $exchangeTextColorBlue2;
+                            border-radius: 2px;
+                            cursor: pointer;
+                            &:hover {
+                                color: $exchangeTextColorBlue2;
+                                border: 1px solid $exchangeTextColorBlue2;
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+        .no-data-loading {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            img {
+                width: 60px;
+            }
+            p {
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {  
+.exchange-record-list {
+    .title{
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+        height: auto;
+        .tab-list {
+            height: 30px;
+        }
+        .right {
+            margin-top: 10px;
+            .cancel-all {
+                margin-left: 10px;
+                padding-right: 10px;
+                border: none;
+            }
+            .the-more {
+                justify-items: end;
+            }
+        }
+    }
+    .list-box {
+        // display: none;
+        width: 100%;
+        overflow: auto;
+        .list-head,.list-body {
+            width: 1000px;
+        }
+    }
+}
+}

@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>zh-cn</key>
+	<dict>
+		<key>GLOBAL_TIPS</key>
+		<string>提示</string>
+		<key>LOGIN_LI</key>
+		<string>登录</string>
+		<key>LOGIN_C_A</key>
+		<string>创建账户</string>
+		<key>LOGIN_I_P</key>
+		<string>添加账户</string>
+		<key>LOGIN_A_P</key>
+		<string>账户密码</string>
+		<key>LOGIN_C_N_A</key>
+		<string>创建新账户</string>
+		<key>LOGIN_I_E_A</key>
+		<string>导入其他账户</string>
+		<key>RESET_PASS</key>
+		<string>密码是由8-20位字母和数字组成</string>
+		<key>RESET_PASS_RE</key>
+		<string>两次输入的密码不相同</string>
+		<key>CREATE_HEAD_TIPS</key>
+		<string>开始交易前，我们会为你创建一个以太坊钱包作为你的交易账户。</string>
+		<key>CTEATE_A_P</key>
+		<string>账户名称</string>
+		<key>CREATE_P_P</key>
+		<string>账户密码</string>
+		<key>CREATE_R_P</key>
+		<string>再次输入密码</string>
+		<key>CREATE_SAVE_TIPS</key>
+		<string>请妥善保管该密码，BBX不会存储该密码，也无法提供找回或者重置密码功能。</string>
+		<key>CREATE_T_C</key>
+		<string>没有账户 ? 去创建</string>
+		<key>CREATE_T_L</key>
+		<string>已有账户 ? 去登录</string>
+		<key>CREATE_READ_STATEMENT</key>
+		<string>我已阅读并同意《服务协议》</string>
+		<key>CREATE_SUCCESS_TITLE</key>
+		<string>账户创建成功</string>
+		<key>CREATE_SUCCESS_CONTENT</key>
+		<string>1.以下是你的交易账户登录所需的keystore文件，请立即备份以下文件。如果丢失，您的账户将会无法恢复。2.该交易账户不是钱包账户，请不要往以下地址转入任何资产，造成资产损失，BBX不负责找回。</string>
+		<key>CREATE_SUCCESS_PROMPT</key>
+		<string>请备份你的keystore文件</string>
+		<key>CREATE_SUCCESS_COPY</key>
+		<string>拷贝成功</string>
+		<key>CREATE_SUCCESS_B_U</key>
+		<string>备份</string>
+		<key>IMPORT__T_I</key>
+		<string>导入账户</string>
+		<key>IMPORT_P</key>
+		<string>粘贴</string>
+		<key>IMPORT_T_I_F</key>
+		<string>导入账户失败</string>
+		<key>IMPORT_HEAD_TIPS</key>
+		<string>复制并粘贴ETH钱包keystore内容到下方的文本框</string>
+		<key>CREATE_A_P_C</key>
+		<string>账户密码确认</string>
+		<key>CREATE_APC_CONTENT</key>
+		<string>BBX无法提供找回或重置密码功能，请你确认已妥善保管好该密码？</string>
+		<key>CREATE_PWD_NOT_CORRET</key>
+		<string>两次输入的密码不相同，请重新输入</string>
+		<key>IMPORT_COPY</key>
+		<string>拷贝</string>
+		<key>GLOBAL_CAN</key>
+		<string>取消</string>
+		<key>GLOBAL_COMFIRM</key>
+		<string>确认</string>
+		<key>GLOBAL_OK</key>
+		<string>确认</string>
+		<key>BT_MK</key>
+		<string>市场</string>
+		<key>BT_TD</key>
+		<string>交易</string>
+		<key>BT_ME</key>
+		<string>我</string>
+		<key>BT_MK_SP</key>
+		<string>币币</string>
+		<key>BT_MK_QU</key>
+		<string>行情</string>
+		<key>BT_TD_B</key>
+		<string>买入</string>
+		<key>BT_TD_S</key>
+		<string>卖出</string>
+		<key>BT_TD_OD</key>
+		<string>交易记录</string>
+		<key>BT_MAIN_P</key>
+		<string>价格</string>
+		<key>BT_MAIN_V</key>
+		<string>数量</string>
+		<key>BT_TD_ATM</key>
+		<string>最大交易:</string>
+		<key>BT_TD_DST</key>
+		<string>充值</string>
+		<key>BT_TD_BALA</key>
+		<string>余额</string>
+		<key>BT_TD_AMO</key>
+		<string>数量</string>
+		<key>BT_ME_NL</key>
+		<string>净清算值</string>
+		<key>BT_ME_AVA</key>
+		<string>可用</string>
+		<key>BT_ME_BLO</key>
+		<string>冻结</string>
+		<key>BT_ME_HC</key>
+		<string>持币</string>
+		<key>BT_ME_MINE</key>
+		<string>我的</string>
+		<key>BT_ME_EDIT</key>
+		<string>编辑</string>
+		<key>BT_ME_DONE</key>
+		<string>完成</string>
+		<key>BT_ME_A</key>
+		<string>账户</string>
+		<key>BT_ME_B_U_K</key>
+		<string>备份Keystore文件</string>
+		<key>BT_ME_BD</key>
+		<string>激活</string>
+		<key>BT_ST_S</key>
+		<string>设置</string>
+		<key>BT_ST_LA</key>
+		<string>语言</string>
+		<key>BT_ST_HC</key>
+		<string>帮助中心</string>
+		<key>BT_ST_FB</key>
+		<string>反馈</string>
+		<key>BT_ST_C_U</key>
+		<string>联系我们</string>
+		<key>BT_ST_A</key>
+		<string>关于</string>
+		<key>BT_ST_LG</key>
+		<string>退出</string>
+		<key>BT_ME_WDW</key>
+		<string>提现</string>
+		<key>BT_ME_RE</key>
+		<string>提现记录</string>
+		<key>BT_DP_TP</key>
+		<string>你的区块链资产受智能合约保护，任何人将无法触碰到你的资产。\n
+充值到一账户一般需要5-10分钟。\n
+不要转入任何非BBX资产，否则将造成资产丢失。</string>
+		<key>BT_DP_C_QR</key>
+		<string>查看二维码</string>
+		<key>BT_DP_VB</key>
+		<string>查看区块链浏览器</string>
+		<key>BT_WD_WAT</key>
+		<string>可提现资产</string>
+		<key>BT_WD_W_A</key>
+		<string>提现地址</string>
+		<key>BT_WD_A</key>
+		<string>全部</string>
+		<key>BT_WD_MF</key>
+		<string>手续费</string>
+		<key>BT_WD_TP</key>
+		<string>网络上的任何节点（每个包含账本拷贝的链接设备被称作节点）都可以参与称作挖矿的方式来保护网络。由于挖矿需要计算能力和电力，所以矿工们的服务需要得到一定的报酬，这也是矿工费的由来。</string>
+		<key>BT_WD_TP_2</key>
+		<string>请确保你的ETH账户又足够的金额支付矿工费。以免影响你的提现。</string>
+		<key>BT_WD_TP_3</key>
+		<string>温馨提示：某些钱包可能没有到账提醒和交易记录，建议通过查询区块链浏览器进行确认。</string>
+		<key>BT_ST_P_B_E</key>
+		<string>请绑定邮箱</string>
+		<key>BT_EM_ENTER</key>
+		<string>输入邮箱地址</string>
+		<key>BT_EM_CODE</key>
+		<string>输入验证码</string>
+		<key>BT_EM_TP</key>
+		<string>点击获取验证码后，请去邮箱查看，有时可能需要几分钟，或者翻看一下垃圾邮件</string>
+		<key>LOGIN_SA</key>
+		<string>服务协议</string>
+		<key>CREATE_RS</key>
+		<string>风险披露声明</string>
+		<key>MORE</key>
+		<string>更多</string>
+		<key>BT_MAIN_SAVE</key>
+		<string>保存</string>
+		<key>BT_ST_GC</key>
+		<string>验证码</string>
+		<key>TD_OD_OR</key>
+		<string>委托记录</string>
+		<key>MK_SP_OP</key>
+		<string>开盘</string>
+		<key>MK_SP_CL</key>
+		<string>收盘</string>
+		<key>MK_SP_HI</key>
+		<string>最高</string>
+		<key>MK_SP_LO</key>
+		<string>最低</string>
+		<key>MK_SP_TO</key>
+		<string>成交额</string>
+		<key>MK_SP_BI</key>
+		<string>买盘</string>
+		<key>MK_SP_AS</key>
+		<string>卖盘</string>
+		<key>MK_SP_TH</key>
+		<string>最新成交</string>
+		<key>MK_SP_DL</key>
+		<string>深度</string>
+		<key>BT_GLO_TIME</key>
+		<string>时间</string>
+		<key>BT_GLO_DT</key>
+		<string>日期</string>
+		<key>MK_SP_OD</key>
+		<string>分时</string>
+		<key>MK_SP_CD</key>
+		<string>天</string>
+		<key>MK_SP_WK</key>
+		<string>周</string>
+		<key>MK_SP_MI</key>
+		<string>分</string>
+		<key>MK_QU_CL</key>
+		<string>流通量</string>
+		<key>MK_QU_MC</key>
+		<string>总市值</string>
+		<key>TD_OR_OR</key>
+		<string>委托单</string>
+		<key>TD_OR_RE</key>
+		<string>成交记录</string>
+		<key>ME_DEPO_RE</key>
+		<string>充值记录</string>
+		<key>BT_EMAIL</key>
+		<string>邮箱</string>
+		<key>BT_ST_FI</key>
+		<string>功能介绍</string>
+		<key>BT_NO_ACTIVE</key>
+		<string>未激活</string>
+		<key>TD_OP_OR</key>
+		<string>当前委托</string>
+		<key>ME_TR_DE</key>
+		<string>账户明细</string>
+		<key>ME_WITH_RE</key>
+		<string>提现记录</string>
+		<key>ME_WI_SUB</key>
+		<string>已提交</string>
+		<key>ME_WI_PA</key>
+		<string>审核通过</string>
+		<key>ME_WI_REJ</key>
+		<string>审核拒绝</string>
+		<key>ME_WI_SI</key>
+		<string>转账签名</string>
+		<key>ME_WI_PAN</key>
+		<string>正在转账</string>
+		<key>ME_WI_SU</key>
+		<string>成功</string>
+		<key>ME_WI_FA</key>
+		<string>失败</string>
+		<key>BT_LO_FP</key>
+		<string>忘记密码 ?</string>
+		<key>BT_EMAIL_FORMAT</key>
+		<string>您的邮箱格式不正确。</string>
+		<key>BT_LI_BBX</key>
+		<string>登录 BBX</string>
+		<key>BT_REGIATER</key>
+		<string>注册</string>
+		<key>BT_RE_PA</key>
+		<string>找回密码</string>
+		<key>BT_RE_PA_SU</key>
+		<string>修改密码成功</string>
+		<key>BT_HAVE_THREE</key>
+		<string>已登录过三个账号，无法继续登录新的账号</string>
+		<key>TD_LI_OR</key>
+		<string>限价单</string>
+		<key>TD_MA_OR</key>
+		<string>市价单</string>
+		<key>TD_MA_PR</key>
+		<string>市价</string>
+		<key>TD_AVBL</key>
+		<string>可用</string>
+		<key>TD_MA_TR</key>
+		<string>最新成交</string>
+		<key>TD_DECIM</key>
+		<string>位小数</string>
+		<key>TD_DEFAUL</key>
+		<string>默认</string>
+		<key>BT_MAR_NA</key>
+		<string>名称</string>
+		<key>BT_MAR_CP</key>
+		<string>当前价格 </string>
+		<key>BT_MAR_CH</key>
+		<string>涨幅 </string>
+		<key>ME_HIDE</key>
+		<string>隐藏</string>
+		<key>ME_SH_ALL</key>
+		<string>显示全部</string>
+		<key>BT_LOAD_FAIL</key>
+		<string>数据加载失败，请稍后再试...</string>
+		<key>ME_OR_HI</key>
+		<string>历史委托</string>
+		<key>ME_OR_CAN</key>
+		<string>订单被取消</string>
+		<key>ME_OR_TO</key>
+		<string>订单超时</string>
+		<key>ME_OR_IN</key>
+		<string>余额不足</string>
+		<key>ME_OR_CO</key>
+		<string>订单完成</string>
+		<key>MAR_DE_DL</key>
+		<string>深度</string>
+		<key>MAR_DE_OB</key>
+		<string>委托订单</string>
+		<key>ME_OR_FE</key>
+		<string>手续费</string>
+		<key>MAR_DE_SO</key>
+		<string>来源</string>
+		<key>ME_DE_CF</key>
+		<string>暂无地址可以拷贝</string>
+		<key>ME_DE_SC</key>
+		<string>选择充值币种</string>
+		<key>ME_DE_NA</key>
+		<string>暂无充值地址</string>
+		<key>ME_DE_NCA</key>
+		<string>1.需要12个网络确认才能到账，请勿向上述地址充值任何非ETH资产，否则不可找回。
+2.目前不支持使用智能合约方式的转账充值，否则转账将不会上账，请注意。</string>
+		<key>ME_DE_ITA</key>
+		<string>充值到账需要一定的时间和网络节点确认，请耐心等待一下，如果长时间未到账，请通过设置中的反馈提交信息。</string>
+		<key>ME_DE_FSR</key>
+		<string>2.请直接提币到个人钱包地址,切记不要提币到其他交易所地址、ICO的众筹地址、智能合约地址，否则将导致资产不可找回</string>
+		<key>ME_WI_MWA</key>
+		<string>1.最小提币数量：</string>
+		<key>ME_WI_SC</key>
+		<string>选择提现币种</string>
+		<key>ME_WI_ADD</key>
+		<string>提现地址</string>
+		<key>ME_WI_WA</key>
+		<string>请输入提现地址</string>
+		<key>ME_WI_AM</key>
+		<string>提现数额</string>
+		<key>ME_WI_WIA</key>
+		<string>请输入提现数额</string>
+		<key>ME_WI_AV</key>
+		<string>可提限额</string>
+		<key>ME_WI_RA</key>
+		<string>到账数量</string>
+		<key>ME_WI_EC</key>
+		<string>邮箱验证码</string>
+		<key>ME_WI_WOSU</key>
+		<string>提现订单提交成功，正在等待后台审核</string>
+		<key>ME_WI_YBI</key>
+		<string>抱歉，您的余额不足提现金额</string>
+		<key>MAR_DE_RT</key>
+		<string>实时</string>
+		<key>ME_ST_FI</key>
+		<string>功能介绍</string>
+		<key>ME_DE_DY</key>
+		<string>是否保存图片到相册 ？</string>
+		<key>ME_DE_STP</key>
+		<string>保存图片</string>
+		<key>ME_ACC_DELE</key>
+		<string>您确定删除该账户吗？</string>
+		<key>ME_DE_CND</key>
+		<string>当前账户正在登录状态，无法删除 !</string>
+		<key>ME_DE_AYS</key>
+		<string>您确定要切换账号么？</string>
+		<key>TD_SUB_SU</key>
+		<string>订单号：%@ 提交成功</string>
+		<key>TD_PETA</key>
+		<string>价格和数量不能为0</string>
+		<key>TD_AOOT</key>
+		<string>余额不足</string>
+		<key>ME_DE_LP</key>
+		<string>长按保存二维码</string>
+		<key>ME_ACC_CC</key>
+		<string>确认取消</string>
+		<key>ME_OD_CC</key>
+		<string>您确认取消这条订单么？</string>
+		<key>ME_OR_UD</key>
+		<string>部分成交</string>
+		<key>ME_DE_LM</key>
+		<string>加载更多</string>
+		<key>ME_DE_LD</key>
+		<string>已全部加载完毕</string>
+		<key>ME_DE_LG</key>
+		<string>正在加载...</string>
+		<key>ME_ACC_DE</key>
+		<string>删除</string>
+		<key>ME_GD_AS</key>
+		<string>资产</string>
+		<key>ME_WI_PE</key>
+		<string>请输入合法的提现地址</string>
+		<key>TD_TOTAL</key>
+		<string>交易额</string>
+		<key>TD_IMT_MIN</key>
+		<string>对不起，该币值对的最小购买数量为</string>
+		<key>TD_JB_SA</key>
+		<string>对不起，您的手机已越狱，为保障您的资产安全，无法为您提供服务</string>
+		<key>ME_WI_LT</key>
+		<string>小于最小提币数额</string>
+		<key>ME_SE_NS</key>
+		<string>暂时未开放</string>
+		<key>BT_MAIN_NONET</key>
+		<string>UFO劫走了您的网络，太坏了</string>
+		<key>BT_MAIN_RE</key>
+		<string>点击刷新</string>
+		<key>MAR_LOAD</key>
+		<string>数据加载中...</string>
+		<key>BT_ME_WD_QUES</key>
+		<string>【提现遇到问题反馈】</string>
+		<key>BT_ME_DE_QUES</key>
+		<string>【充值遇到问题反馈】</string>
+		<key>BT_ME_DE_NO</key>
+		<string>我已充值发起通知</string>
+		<key>BT_ME_CHECK</key>
+		<string> 查看区块链浏览器</string>
+		<key>BT_ME_DE_NAA</key>
+		<string>后发起通知</string>
+		<key>BT_ME_DE_XD</key>
+		<string>XDAG充值流程步骤：
+1.向您的上述专属充值地址转账XDAG
+2.点击「我已充值发起通知」按钮
+3.等待管理员确认到币上账
+4.最小充币数额 1 XDAG，否则不予上帐</string>
+		<key>BT_ME_WD_IN</key>
+		<string>查看</string>
+		<key>BT_TD_OPE</key>
+		<string>订单价格超过当前价格__，是否继续下单？</string>
+		<key>BT_TD_OPI</key>
+		<string>订单价格低于当前价格__，是否继续下单？</string>
+		<key>BT_MA_DE_O</key>
+		<string>开</string>
+		<key>BT_MA_DE_C</key>
+		<string>收</string>
+		<key>BT_MA_DE_H</key>
+		<string>高</string>
+		<key>BT_MA_DE_L</key>
+		<string>低</string>
+		<key>BT_MA_DE_CH</key>
+		<string>幅</string>
+		<key>BT_MA_DE_VOL</key>
+		<string>量</string>
+		<key>BT_MA_DE_CJL</key>
+		<string>成交量</string>
+		<key>BT_TD_OD_AM</key>
+		<string>金额</string>
+		<key>BT_TD_LNTIP</key>
+		<string>下次不再提醒</string>
+		<key>BT_ME_SE_CO</key>
+		<string>下单二次确认</string>
+		<key>BT_ME_REW</key>
+		<string>奖励</string>
+		<key>BT_ME_DRO</key>
+		<string>空投</string>
+		<key>BT_ME_DED</key>
+		<string>扣减</string>
+		<key>BT_ME_DE_WWB</key>
+		<string>WWB充值流程步骤：
+1.向您的上述专属充值地址转账WWB
+2.点击「我已充值发起通知」按钮
+3.等待管理员确认到币上账</string>
+		<key>BT_ME_WD_TIP</key>
+		<string>请直接提币到个人钱包地址 
+确认提币地址不是交易所地址、ICO的众筹地址、智能合约地址，否则可能导致币不到账的风险，风险自担。</string>
+		<key>BT_ME_WD_WC</key>
+		<string>提现确认</string>
+	</dict>
+	<key>en</key>
+	<dict>
+		<key>GLOBAL_TIPS</key>
+		<string>Tips</string>
+		<key>LOGIN_LI</key>
+		<string>Log In</string>
+		<key>LOGIN_C_A</key>
+		<string>Create Account</string>
+		<key>LOGIN_I_P</key>
+		<string>Add Account</string>
+		<key>LOGIN_A_P</key>
+		<string>Account Password</string>
+		<key>LOGIN_C_N_A</key>
+		<string>Create New Account</string>
+		<key>LOGIN_I_E_A</key>
+		<string>Import Existing Account</string>
+		<key>RESET_PASS</key>
+		<string>The password is 8-20 characters, not a pure number</string>
+		<key>RESET_PASS_RE</key>
+		<string>The two passwords do not match</string>
+		<key>CREATE_HEAD_TIPS</key>
+		<string>You can choose to create an account by creating an ETH wallet or importing an exiting ETH wallet.</string>
+		<key>CTEATE_A_P</key>
+		<string>Accounts alias</string>
+		<key>CREATE_P_P</key>
+		<string>Password</string>
+		<key>CREATE_R_P</key>
+		<string>Repeat Password</string>
+		<key>CREATE_SAVE_TIPS</key>
+		<string>Save you password carefully! BBX will not store the password, and thus cannot help you recover or reset the password.</string>
+		<key>CREATE_T_C</key>
+		<string>No Account ? To Create</string>
+		<key>CREATE_READ_STATEMENT</key>
+		<string>I have read and confirmed《Service agreement》</string>
+		<key>CREATE_SUCCESS_TITLE</key>
+		<string>Account created successfully</string>
+		<key>CREATE_SUCCESS_CONTENT</key>
+		<string>1.The following are the keystore files required to login your trading account. Please back up the following files immediately. If lost, your account will not be restored.\n2.This transaction account is not a wallet account, please do not transfer any assets to the following address, if the transfer caused the loss of assets, BBX will not be responsible for recovery.</string>
+		<key>CREATE_SUCCESS_PROMPT</key>
+		<string>Please backup you keystore file</string>
+		<key>CREATE_SUCCESS_COPY</key>
+		<string>Copy Success</string>
+		<key>ME_DE_CF</key>
+		<string>Nothing To Copy</string>
+		<key>CREATE_SUCCESS_B_U</key>
+		<string>Backed up</string>
+		<key>IMPORT_P</key>
+		<string>Paste</string>
+		<key>IMPORT_T_I_F</key>
+		<string>Import Account Fail</string>
+		<key>IMPORT_HEAD_TIPS</key>
+		<string>Copy and paste the keystore content of the ETH wallet to the input box</string>
+		<key>CREATE_A_P_C</key>
+		<string>Account Password Confirmation</string>
+		<key>CREATE_APC_CONTENT</key>
+		<string>BBX cannot help you retrieve or reset the password, so please confirm that it has been saved well?</string>
+		<key>CREATE_PWD_NOT_CORRET</key>
+		<string>Password is different, please re-enter</string>
+		<key>IMPORT_COPY</key>
+		<string>Copy</string>
+		<key>GLOBAL_CAN</key>
+		<string>Cancel</string>
+		<key>GLOBAL_COMFIRM</key>
+		<string>Confirm</string>
+		<key>BT_MK</key>
+		<string>Markets</string>
+		<key>BT_TD</key>
+		<string>Trade</string>
+		<key>BT_ME</key>
+		<string>Me</string>
+		<key>BT_MK_SP</key>
+		<string>Spot</string>
+		<key>BT_MK_QU</key>
+		<string>Quotes</string>
+		<key>BT_TD_B</key>
+		<string>Buy</string>
+		<key>BT_TD_S</key>
+		<string>Sell</string>
+		<key>BT_TD_OD</key>
+		<string>Trade Records</string>
+		<key>BT_MAIN_P</key>
+		<string>Price</string>
+		<key>BT_MAIN_V</key>
+		<string>Volume</string>
+		<key>BT_TD_ATM</key>
+		<string>At most:</string>
+		<key>BT_TD_DST</key>
+		<string>Deposit</string>
+		<key>BT_TD_BALA</key>
+		<string>Balance</string>
+		<key>BT_TD_AMO</key>
+		<string>Amount</string>
+		<key>BT_ME_NL</key>
+		<string>Net Liquidation</string>
+		<key>BT_ME_AVA</key>
+		<string>Available</string>
+		<key>BT_ME_BLO</key>
+		<string>Blocked</string>
+		<key>BT_ME_HC</key>
+		<string>Hold Coins</string>
+		<key>BT_ME_MINE</key>
+		<string>Mine</string>
+		<key>BT_ME_EDIT</key>
+		<string>Edit</string>
+		<key>BT_ME_DONE</key>
+		<string>Done</string>
+		<key>BT_ME_A</key>
+		<string>Account</string>
+		<key>BT_ME_B_U_K</key>
+		<string>Backup Keystore</string>
+		<key>BT_ME_BD</key>
+		<string>Activate</string>
+		<key>BT_ST_S</key>
+		<string>Setting</string>
+		<key>BT_ST_LA</key>
+		<string>Language</string>
+		<key>BT_ST_HC</key>
+		<string>Help Center</string>
+		<key>BT_ST_FB</key>
+		<string>Feedback</string>
+		<key>BT_ST_C_U</key>
+		<string>Contact us</string>
+		<key>BT_ST_A</key>
+		<string>About</string>
+		<key>BT_ST_LG</key>
+		<string>Logout</string>
+		<key>BT_ME_WDW</key>
+		<string>Withdrawal</string>
+		<key>BT_ME_RE</key>
+		<string>Records</string>
+		<key>BT_DP_TP</key>
+		<string>Your blockchain assets are being protected by smart contracts, and no one can access your assets.\n
+BBX deposit to account is estimated to need 5-10 mins.\n
+Do not transfer non-BBX assets, otherwise the assets will be lost forever.</string>
+		<key>BT_DP_C_QR</key>
+		<string>Check the QR code</string>
+		<key>BT_DP_VB</key>
+		<string>View Browser</string>
+		<key>BT_WD_WAT</key>
+		<string>Withdrawal assets</string>
+		<key>BT_WD_W_A</key>
+		<string>Withdrawal address</string>
+		<key>BT_WD_A</key>
+		<string>ALL</string>
+		<key>BT_WD_MF</key>
+		<string>Miner fee</string>
+		<key>BT_WD_TP</key>
+		<string>Any node (the connection equipment contains the copy of account book) on the network can participate in protecting the network through the so-called ‘mining’. Since mining calls for computing ability and electricity fees, miners should be rewarded for their services. This is also why the miner fee is charged.</string>
+		<key>BT_WD_TP_2</key>
+		<string>Please make sure your ETH account has enough money to pay the miner fee.So as not to affect your withdrawal.</string>
+		<key>BT_ST_P_B_E</key>
+		<string>Please Bind Email</string>
+		<key>BT_EM_ENTER</key>
+		<string>Enter you email address</string>
+		<key>BT_EM_CODE</key>
+		<string>Input verification code</string>
+		<key>BT_EM_TP</key>
+		<string>Click Get code, then go to the email to check it, it may take a few minutes, or look at spam directory.</string>
+		<key>LOGIN_SA</key>
+		<string>Service agreement</string>
+		<key>CREATE_RS</key>
+		<string>Risk Statement</string>
+		<key>MORE</key>
+		<string>More</string>
+		<key>BT_MAIN_SAVE</key>
+		<string>Save</string>
+		<key>BT_ST_GC</key>
+		<string>Get Code</string>
+		<key>TD_OD_OR</key>
+		<string>Entrust</string>
+		<key>MK_SP_OP</key>
+		<string>Open</string>
+		<key>MK_SP_CL</key>
+		<string>Close</string>
+		<key>MK_SP_HI</key>
+		<string>High</string>
+		<key>MK_SP_LO</key>
+		<string>Low</string>
+		<key>MK_SP_TO</key>
+		<string>Total</string>
+		<key>MK_SP_BI</key>
+		<string>Bid</string>
+		<key>MK_SP_AS</key>
+		<string>Ask</string>
+		<key>MK_SP_TH</key>
+		<string>Trade History</string>
+		<key>MK_SP_DL</key>
+		<string>DepthLine</string>
+		<key>BT_GLO_TIME</key>
+		<string>Time</string>
+		<key>BT_GLO_DT</key>
+		<string>Date</string>
+		<key>MK_SP_OD</key>
+		<string>Time</string>
+		<key>MK_SP_CD</key>
+		<string>day</string>
+		<key>MK_SP_MI</key>
+		<string>min</string>
+		<key>MK_SP_WK</key>
+		<string>week</string>
+		<key>MK_QU_CL</key>
+		<string>Circulation</string>
+		<key>MK_QU_MC</key>
+		<string>Market Cap</string>
+		<key>TD_OR_OR</key>
+		<string>Orders</string>
+		<key>TD_OR_RE</key>
+		<string>Records</string>
+		<key>IMPORT__T_I</key>
+		<string>Import Account</string>
+		<key>ME_DEPO_RE</key>
+		<string>Records</string>
+		<key>BT_EMAIL</key>
+		<string>Email</string>
+		<key>BT_NO_ACTIVE</key>
+		<string>Not Active</string>
+		<key>BT_LOAD_FAIL</key>
+		<string>Data loading failed, please try again later</string>
+		<key>GLOBAL_OK</key>
+		<string>OK</string>
+		<key>BT_ST_FI</key>
+		<string>Function Introduce</string>
+		<key>TD_OP_OR</key>
+		<string>Open Orders</string>
+		<key>ME_TR_DE</key>
+		<string>Details</string>
+		<key>ME_WITH_RE</key>
+		<string>Withdraw Record</string>
+		<key>ME_WI_SUB</key>
+		<string>SUBMITTED</string>
+		<key>ME_WI_REJ</key>
+		<string>REJECTED</string>
+		<key>ME_WI_PA</key>
+		<string>PASSED</string>
+		<key>ME_WI_SI</key>
+		<string>SIGNED</string>
+		<key>ME_WI_PAN</key>
+		<string>PENDING</string>
+		<key>ME_WI_SU</key>
+		<string>SUCCESS</string>
+		<key>ME_WI_FA</key>
+		<string>FAILED</string>
+		<key>BT_LO_FP</key>
+		<string>Forget password ?</string>
+		<key>BT_EMAIL_FORMAT</key>
+		<string>Your mailbox is incorrectly formatting</string>
+		<key>BT_LI_BBX</key>
+		<string>Login BBX</string>
+		<key>BT_REGIATER</key>
+		<string>Register</string>
+		<key>BT_RE_PA</key>
+		<string>Retrieve Password</string>
+		<key>BT_RE_PA_SU</key>
+		<string>Revise the password successfully</string>
+		<key>BT_HAVE_THREE</key>
+		<string>You have already logged in three accounts and cannot continue to login to the new account.</string>
+		<key>TD_LI_OR</key>
+		<string>Limit Order</string>
+		<key>TD_MA_OR</key>
+		<string>Market Order</string>
+		<key>TD_MA_PR</key>
+		<string>Market Price</string>
+		<key>TD_AVBL</key>
+		<string>Avbl</string>
+		<key>TD_MA_TR</key>
+		<string>Market Traders</string>
+		<key>TD_DECIM</key>
+		<string>Unit</string>
+		<key>TD_DEFAUL</key>
+		<string>Default</string>
+		<key>BT_MAR_NA</key>
+		<string>Name</string>
+		<key>BT_MAR_CP</key>
+		<string>Current </string>
+		<key>BT_MAR_CH</key>
+		<string>Chg </string>
+		<key>ME_HIDE</key>
+		<string>Hide</string>
+		<key>ME_SH_ALL</key>
+		<string>Show All</string>
+		<key>CREATE_T_L</key>
+		<string>have account ? to login</string>
+		<key>ME_OR_FE</key>
+		<string>Fee</string>
+		<key>ME_OR_HI</key>
+		<string>Order History</string>
+		<key>ME_OR_CAN</key>
+		<string>Canceled</string>
+		<key>ME_OR_TO</key>
+		<string>Time out</string>
+		<key>ME_OR_IN</key>
+		<string>Insufficient</string>
+		<key>ME_OR_UD</key>
+		<string>Part Filled</string>
+		<key>ME_OR_CO</key>
+		<string>Complete</string>
+		<key>MAR_DE_OB</key>
+		<string>Order Book</string>
+		<key>MAR_DE_DL</key>
+		<string>DepthLine</string>
+		<key>MAR_DE_SO</key>
+		<string>Source</string>
+		<key>ME_DE_SC</key>
+		<string>Select currency
+Select currency</string>
+		<key>ME_DE_NA</key>
+		<string>No address</string>
+		<key>ME_DE_LP</key>
+		<string>Long press to save QR Code</string>
+		<key>ME_DE_NCA</key>
+		<string>1.12 network confirmations are required to deposit, send only ETH to this address. Sending any other currency to this address may result in the loss of your deposit.
+2.At present, transfer recharge using smart contract method is not supported, otherwise transfer will not be credited.</string>
+		<key>ME_DE_ITA</key>
+		<string>It takes a certain amount of time and network confirmations to deposit, please wait patiently. If you haven&apos;t deposited successfully for a long time, please submit the information through the feedback in the setting.</string>
+		<key>ME_DE_FSR</key>
+		<string>2.Please withdrawal to your personal wallet address directly.Remember not to withdrawal to other exchanges address, ICO&apos;s address, smart contract address, otherwise it may result the loss of assets.</string>
+		<key>ME_WI_MWA</key>
+		<string>1.Minimum withdrawal amount：</string>
+		<key>ME_WI_SC</key>
+		<string>Select currency</string>
+		<key>ME_WI_ADD</key>
+		<string>Address</string>
+		<key>ME_WI_WA</key>
+		<string>withdrawal address</string>
+		<key>ME_WI_AM</key>
+		<string>Amount</string>
+		<key>ME_WI_WIA</key>
+		<string>withdrawal amount</string>
+		<key>ME_WI_AV</key>
+		<string>Available</string>
+		<key>ME_WI_RA</key>
+		<string>Receive amount</string>
+		<key>ME_WI_EC</key>
+		<string>Email code</string>
+		<key>ME_WI_WOSU</key>
+		<string>The order is submitted successfully, waiting for the background audit.</string>
+		<key>ME_WI_YBI</key>
+		<string>I&apos;m sorry, your balance is less than the present amount.</string>
+		<key>MAR_DE_RT</key>
+		<string>Real-time</string>
+		<key>ME_ST_FI</key>
+		<string>Function  Introduce</string>
+		<key>ME_DE_DY</key>
+		<string>Do you save pictures to albums ?</string>
+		<key>ME_ACC_DELE</key>
+		<string>Are you sure to delete this account?</string>
+		<key>ME_DE_STP</key>
+		<string>Save the picture</string>
+		<key>ME_DE_CND</key>
+		<string>The current account is logged in and can not be deleted</string>
+		<key>ME_DE_AYS</key>
+		<string>Are you sure you want to switch your account ?</string>
+		<key>TD_SUB_SU</key>
+		<string>Order NO.%@ submitted successfully</string>
+		<key>TD_PETA</key>
+		<string>The price and quantity cannot be zero</string>
+		<key>TD_AOOT</key>
+		<string>Insufficient Balance</string>
+		<key>ME_ACC_CC</key>
+		<string>Cancellation Corfirming</string>
+		<key>ME_OD_CC</key>
+		<string>Are you sure to cancel order ？</string>
+		<key>ME_DE_LM</key>
+		<string>Load more</string>
+		<key>ME_DE_LD</key>
+		<string>All load has been completed</string>
+		<key>ME_DE_LG</key>
+		<string>Loading...</string>
+		<key>ME_ACC_DE</key>
+		<string>Delete</string>
+		<key>ME_GD_AS</key>
+		<string>Assets</string>
+		<key>ME_WI_PE</key>
+		<string>Please enter the legal address</string>
+		<key>TD_TOTAL</key>
+		<string>Total</string>
+		<key>TD_IMT_MIN</key>
+		<string>I&apos;m sorry, the minimum amount of purchase for the value of the currency is</string>
+		<key>TD_JB_SA</key>
+		<string>Sorry, your phone has been jailbroken, for protect your assets we cannot provide you with services.</string>
+		<key>ME_WI_LT</key>
+		<string>Less than the minimum amount of money</string>
+		<key>ME_SE_NS</key>
+		<string>not yet open</string>
+		<key>BT_MAIN_NONET</key>
+		<string>The network was taken away by UFO, so sad</string>
+		<key>BT_MAIN_RE</key>
+		<string>Refresh</string>
+		<key>MAR_LOAD</key>
+		<string>Loading...</string>
+		<key>BT_ME_WD_QUES</key>
+		<string>【WithDrawal problems please feedback】</string>
+		<key>BT_ME_DE_QUES</key>
+		<string>【Deposit problems please feedback】</string>
+		<key>BT_ME_DE_NO</key>
+		<string>I have deposited, Notify manager</string>
+		<key>BT_ME_CHECK</key>
+		<string>View browser</string>
+		<key>BT_ME_DE_NAA</key>
+		<string>Notify again after </string>
+		<key>BT_ME_DE_XD</key>
+		<string>XDAG Deposit Steps:
+1.Transfer XDAG to the address above
+2.Click the button 「I have deposited, Notify manager」
+3.Wait for the administrator to confirm
+4.Minimum deposit amount 1 XDAG, otherwise it will not be credited.</string>
+		<key>BT_ME_WD_IN</key>
+		<string>Check</string>
+		<key>BT_TD_OPE</key>
+		<string>Order price exceeds current price __, continue to place orders?</string>
+		<key>BT_TD_OPI</key>
+		<string>Order price is lower than the current price __, whether to continue to order?</string>
+		<key>BT_MA_DE_O</key>
+		<string>O</string>
+		<key>BT_MA_DE_C</key>
+		<string>C</string>
+		<key>BT_MA_DE_H</key>
+		<string>H</string>
+		<key>BT_MA_DE_L</key>
+		<string>L</string>
+		<key>BT_MA_DE_CH</key>
+		<string>Cha</string>
+		<key>BT_MA_DE_VOL</key>
+		<string>Vol</string>
+		<key>BT_MA_DE_CJL</key>
+		<string>Vol</string>
+		<key>BT_TD_OD_AM</key>
+		<string>Amount</string>
+		<key>BT_TD_LNTIP</key>
+		<string>No more reminders next time.</string>
+		<key>BT_ME_SE_CO</key>
+		<string>Confirm Orders</string>
+		<key>BT_ME_REW</key>
+		<string>Reward</string>
+		<key>BT_ME_DRO</key>
+		<string>Drop</string>
+		<key>BT_ME_DED</key>
+		<string>Deduction</string>
+		<key>BT_ME_DE_WWB</key>
+		<string>WWB Deposit Steps:
+1.Transfer WWB to the address above
+2.Click the button 「I have deposited, Notify manager」
+3.Wait for the administrator to confirm</string>
+		<key>BT_ME_WD_TIP</key>
+		<string>Please withdrawal to your personal wallet address directly. 
+Confirm that the withdrawal address is not the address of the exchange, ICO&apos;s, or smart contract, otherwise it may result the loss of assets, at your own risk.</string>
+		<key>BT_ME_WD_WC</key>
+		<string>Withdrawal Confirm</string>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,99 @@
+@import '../../base.scss';
+
+.pc-product {
+    @extend .center-container;
+    background: #171A25;
+    padding-top: 50px;
+    .pc-product-list {
+        width: 100%;
+        opacity: 0;
+        .left {
+            float: left;
+            //width: 495px;
+            width: 506px;
+            text-align: left;
+            padding-left: 50px;
+        }
+        .right {
+            float: right;
+            width: 570px;
+            text-align: right;
+            padding-right: 50px;
+        }
+        .con {
+           // padding-top: 20px;
+        }
+        h3 {
+            color: $bbxGray;
+            font-size: 34px;
+            padding-top: 70px;
+            line-height: 1.5;
+        }
+        p {
+            padding-top: 5px;
+            color: $bbxBlue1;
+            font-size: 20px;
+            line-height: 1.8;
+        }
+    }
+    .fadeInUp {
+        opacity: 1;
+        -webkit-animation-name: fadeInUp;
+        animation-name: fadeInUp;
+        // visibility: visible;
+        //animation-delay: 0.1s;
+        animation-duration: .6s;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 200px, 0);
+        transform: translate3d(0, 200px, 0);
+    }
+    1% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 200px, 0);
+        transform: translate3d(0, 200px, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@media screen and (max-width: 700px) { 
+    .pc-product {
+        padding-top: 10px;
+        .pc-product-list {
+            .left,.right {
+                float: none;
+                width: 100%;
+                text-align: center;
+                padding: 0px;
+                img {
+                    width: 80%;
+                    margin-top: 30px;
+                }
+            }
+            .con {
+                width: 100%!important;
+            }
+            h3 {
+                padding-top: 10px!important;
+                font-size: 1.4rem!important;
+                width: 90%;
+                margin: 0 auto;
+            }
+            p {
+                font-size: 1rem!important;
+                width: 90%;
+                margin: 0 auto;
+                text-align: left;
+            }
+        }
+    }
+}
+

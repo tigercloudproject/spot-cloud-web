@@ -1,0 +1,58 @@
+.bbx-confirm-alert-box {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+  .bbx-confirm-alert-box .bbx-confirm-alert-mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 10010; }
+  .bbx-confirm-alert-box .bbx-confirm-alert-block {
+    width: 442px;
+    height: 300px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -221px;
+    margin-top: -150px;
+    background: #ecf2f7;
+    z-index: 10011;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 2px; }
+    .bbx-confirm-alert-box .bbx-confirm-alert-block .tip-limit-tit {
+      color: #1f2636;
+      font-size: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #d8e3ef; }
+    .bbx-confirm-alert-box .bbx-confirm-alert-block .tip-limit-con {
+      font-size: 14px;
+      padding: 55px 0px;
+      color: #1f2636; }
+    .bbx-confirm-alert-box .bbx-confirm-alert-block .confirm-btn-box button {
+      width: 166px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 2px;
+      outline: none;
+      border: none;
+      color: #fff; }
+    .bbx-confirm-alert-box .bbx-confirm-alert-block .confirm-btn-box .confirm {
+      background: #2b93f6;
+      margin-left: 15px; }
+      .bbx-confirm-alert-box .bbx-confirm-alert-block .confirm-btn-box .confirm:hover {
+        background: rgba(43, 147, 246, 0.9); }
+    .bbx-confirm-alert-box .bbx-confirm-alert-block .confirm-btn-box .cancel {
+      border: 1px solid #2b93f6;
+      margin-right: 15px;
+      color: #2b93f6;
+      background: #ecf2f7; }
+      .bbx-confirm-alert-box .bbx-confirm-alert-block .confirm-btn-box .cancel:hover {
+        background: rgba(255, 255, 255, 0.3);
+        color: rgba(43, 147, 246, 0.9);
+        border: 1px solid rgba(43, 147, 246, 0.9); }

@@ -1,0 +1,258 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.pay-bix-box {
+  width: 100%;
+  height: 100%;
+  background: #141b2e; }
+  .pay-bix-box .pay-bix-tab {
+    width: 100%;
+    margin-bottom: 0px;
+    height: 42px;
+    background: #10172a; }
+    .pay-bix-box .pay-bix-tab li {
+      display: inline-block;
+      height: 34px;
+      line-height: 34px;
+      color: #E0EFFE;
+      font-size: 14px;
+      margin: 0px 15px;
+      cursor: pointer; }
+      .pay-bix-box .pay-bix-tab li.active {
+        color: #2b91f3;
+        position: relative; }
+        .pay-bix-box .pay-bix-tab li.active::after {
+          content: "";
+          height: 2px;
+          width: 20px;
+          background: #2b91f3;
+          position: absolute;
+          bottom: 2px;
+          left: 50%;
+          margin-left: -10px; }
+  .pay-bix-box .switch-way {
+    width: 100%;
+    display: flex;
+    padding: 0px 16px;
+    justify-content: space-between;
+    padding-top: 16px; }
+    .pay-bix-box .switch-way span {
+      flex: 1;
+      background-color: #313a56;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 2px;
+      text-align: center;
+      color: #E0EFFE; }
+      .pay-bix-box .switch-way span.active {
+        background-color: #1d72c9; }
+      .pay-bix-box .switch-way span:first-child {
+        margin-right: 20px; }
+      .pay-bix-box .switch-way span:last-child {
+        margin-left: 20px; }
+  .pay-bix-box .h-20 {
+    width: 100%;
+    height: 20px; }
+  .pay-bix-box .pay-bix-form {
+    width: 100%;
+    font-size: 12px; }
+    .pay-bix-box .pay-bix-form .form-row {
+      width: 100%;
+      display: flex;
+      padding: 2px 15px;
+      box-sizing: border-box; }
+      .pay-bix-box .pay-bix-form .form-row .form-control5 {
+        flex: 1; }
+        .pay-bix-box .pay-bix-form .form-row .form-control5:first-child {
+          padding-right: 20px; }
+        .pay-bix-box .pay-bix-form .form-row .form-control5:last-child {
+          padding-left: 20px; }
+        .pay-bix-box .pay-bix-form .form-row .form-control5 label {
+          display: block;
+          width: 100%;
+          color: rgba(151, 176, 214, 0.7);
+          padding-bottom: 5px; }
+        .pay-bix-box .pay-bix-form .form-row .form-control5 .input-box {
+          display: flex;
+          height: 40px;
+          background: #1c263f;
+          border: 1px solid #3c5786;
+          align-items: center; }
+          .pay-bix-box .pay-bix-form .form-row .form-control5 .input-box input[type=text] {
+            flex: 1;
+            color: #E0EFFE;
+            height: 40px;
+            padding: 0px 10px;
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 14px; }
+            .pay-bix-box .pay-bix-form .form-row .form-control5 .input-box input[type=text]:disabled {
+              cursor: not-allowed; }
+          .pay-bix-box .pay-bix-form .form-row .form-control5 .input-box span {
+            padding: 0px 12px;
+            color: rgba(151, 176, 214, 0.7); }
+        .pay-bix-box .pay-bix-form .form-row .form-control5 p {
+          width: 100%;
+          color: rgba(151, 176, 214, 0.7);
+          margin-bottom: 0px;
+          display: flex;
+          align-items: center; }
+          .pay-bix-box .pay-bix-form .form-row .form-control5 p.price-rate {
+            max-width: 289px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap; }
+          .pay-bix-box .pay-bix-form .form-row .form-control5 p span.num-limit {
+            display: inline-block;
+            max-width: 240px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0px 2px; }
+        .pay-bix-box .pay-bix-form .form-row .form-control5 .avbi {
+          color: #E0EFFE;
+          border-bottom: 2px solid #293147;
+          padding-bottom: 2px;
+          padding-top: 7px;
+          margin-bottom: 6px;
+          position: relative; }
+          .pay-bix-box .pay-bix-form .form-row .form-control5 .avbi .deposit {
+            background: #213c5c;
+            border: 1px solid #255d97;
+            color: #E0EFFE;
+            padding: 1px 5px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            cursor: pointer; }
+  .pay-bix-box .range-box {
+    padding-top: 10px;
+    padding-bottom: 6px; }
+    .pay-bix-box .range-box .ant-slider-rail {
+      background: #313A56; }
+    .pay-bix-box .range-box .ant-slider-dot {
+      background: #313A56;
+      border: none; }
+    .pay-bix-box .range-box .ant-slider-dot-active {
+      background: #5F8ED4;
+      border: none; }
+    .pay-bix-box .range-box .ant-slider-track {
+      background: #5F8ED4; }
+    .pay-bix-box .range-box .ant-slider-handle {
+      border: none;
+      background: #5F8ED4;
+      width: 12px;
+      height: 12px;
+      margin-top: -4px; }
+    .pay-bix-box .range-box .ant-slider-mark .ant-slider-mark-text {
+      font-size: 12px; }
+    .pay-bix-box .range-box .range {
+      display: flex; }
+      .pay-bix-box .range-box .range li {
+        flex: 1;
+        height: 6px;
+        background: #313a56;
+        position: relative; }
+        .pay-bix-box .range-box .range li::before {
+          content: "";
+          width: 12px;
+          height: 12px;
+          border-radius: 100%;
+          background: #313a56;
+          position: absolute;
+          left: 0px;
+          top: -3px; }
+        .pay-bix-box .range-box .range li:last-child::after {
+          content: "";
+          width: 12px;
+          height: 12px;
+          border-radius: 100%;
+          background: #313a56;
+          position: absolute;
+          right: 0px;
+          top: -3px; }
+    .pay-bix-box .range-box .percent {
+      width: 100%;
+      display: flex;
+      font-size: 12px; }
+      .pay-bix-box .range-box .percent li {
+        flex: 1;
+        color: #8ba2c6;
+        padding-top: 15px;
+        position: relative;
+        margin-left: -3px; }
+        .pay-bix-box .range-box .percent li:last-child::before {
+          content: "100%";
+          position: absolute;
+          right: -10px; }
+  .pay-bix-box .total-box {
+    width: 100%; }
+    .pay-bix-box .total-box .total {
+      color: #E0EFFE !important;
+      padding-bottom: 5px;
+      margin-bottom: 0px;
+      width: 100%; }
+    .pay-bix-box .total-box .btn-style {
+      width: 100%;
+      border: 1px solid #2a92f3;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      color: #b3bbc6;
+      box-sizing: border-box;
+      font-size: 14px; }
+      .pay-bix-box .total-box .btn-style a {
+        color: #2a8deb; }
+    .pay-bix-box .total-box .buy-btn, .pay-bix-box .total-box .sell-btn {
+      display: inline-block;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      font-size: 16px; }
+      .pay-bix-box .total-box .buy-btn:disabled, .pay-bix-box .total-box .sell-btn:disabled {
+        background: #888; }
+    .pay-bix-box .total-box .buy-btn {
+      background: #319e5c; }
+    .pay-bix-box .total-box .sell-btn {
+      background: #b83a3a; }
+
+@media screen and (max-width: 700px) {
+  .pay-bix-box {
+    padding-bottom: 20px;
+    height: auto; } }

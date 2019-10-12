@@ -1,0 +1,401 @@
+
+@import '../../base.scss';
+.pc-header-box {
+    width: 100%;
+    .pc-header {
+        width: 100%;
+        min-width: 1230px;
+        height: 60px;
+        //padding: 0px 32px;
+        box-sizing: border-box;
+        background: $bbxNavBackground;
+        color: $bbxGray;
+        position: relative;
+        z-index: 10010;
+        border-bottom: 1px solid rgba(49,58,86,0.5);
+        padding-left: 10px;
+        padding-right: 10px;
+        .logo {
+            text-align: center;
+            float: left;
+            padding-right: 30px;
+            img {
+                margin-top: 10px;
+                width: 80px;
+            }
+        }
+        .exchange,.rebate,.contract,.c2c,.contract_bouns {
+            float: left;
+            height: 60px;
+            line-height: 60px;
+            padding-right: 30px;
+            font-size: 14px;
+            color: $bbxGray;
+            text-decoration: none;
+            cursor: pointer;
+            &:hover,&:active {
+                color: #5f8ed4
+            }
+
+
+        }
+        .contract {
+            position: relative;
+            cursor: pointer;
+            margin-right: 15px;
+            .contract-beta {
+                position: absolute;
+                display: inline-block;
+                width: 35px;
+                height: 12px;
+                // background: url("../../../images/hot.svg") left top no-repeat;
+                background-size: 100% 100%;
+                right: 10px;
+                top: 7px;
+            }
+            >a {
+                font-weight: 400;
+                color: #97b0d6;
+            }
+            .iconDown {
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                position:absolute;
+                right: 15px;
+                top: 24px;
+                background: url("../../../images/icon-down.svg") left top no-repeat;
+                transform: rotate(0);
+                transition: all .3s linear;
+            }
+            >ul {
+                position: absolute;
+                left: 0px;
+                box-shadow: 0 1px 6px 0 rgba(0,0,0,.15);
+                background: #283149;
+                left: 50%;
+                margin-left: -62px;
+                top: 52px;
+                border-top: none;
+                border-radius: 4px;
+                padding: 8px 0px;
+                a {
+                    display: block;
+                    width: 100px;
+                    height: 40px;
+                    line-height: 40px;
+                    cursor: pointer;
+                    color: #BDD1EF;
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: 400;
+                    &:hover,&.active {
+                        background: #1E253B;
+                    }
+                }
+            }
+            &:hover {
+                .iconDown {
+                    background: url("../../../images/icon-down-sel.svg") left top no-repeat;
+                    transform: rotate(180deg);
+                    transition: all .3s linear;
+                }
+                >a {
+                    color: #5f8ed4;
+                }
+            }
+        }
+        .rebate {
+            position: relative;
+            .rebate-icon {
+                position: absolute;
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                // background: url("../../../images/icon-hot.svg") left top no-repeat;
+                background-size: 100% 100%;
+                right: 0px;
+                top: 11px;
+
+            }
+        }
+        .contract_bouns {
+            position: relative;
+            .hot {
+                position: absolute;
+                display: inline-block;
+                width: 35px;
+                height: 12px;
+                // background: url("../../../images/hot.svg") left top no-repeat;
+                background-size: 100% 100%;
+                right: 15px;
+                top: 7px;
+            }
+        }
+        .pc-nav {
+            float: right;
+            display: flex;
+            align-items: center;
+            .jump-list {
+                display:inline-block;
+                height: 60px;
+                line-height: 60px;
+                vertical-align: middle;
+
+                a,.app-download {
+                    padding: 0px 15px;
+                    font-size: 14px;
+                    color: $bbxGray;
+                    text-decoration: none;
+                    &:hover,&:active {
+                        color: #5f8ed4
+                    }
+                }
+                .contract-help {
+                    position: relative;
+                    .hot {
+                        position: absolute;
+                        display: inline-block;
+                        width: 35px;
+                        height: 12px;
+                        // background: url("../../../images/hot.svg") left top no-repeat;
+                        background-size: 100% 100%;
+                        right: -8px;
+                        top: -14px;
+                    }
+                }
+                .app-download {
+                    position: relative;
+                    display:inline-block;
+                    .app-name {
+                        cursor: pointer;
+                        &:hover {
+                            &+.app-qr-box {
+                                display: block;
+                            }
+                        }
+                    }
+                    .app-qr-box {
+                        display: none;
+                        position: absolute;
+                        background: #fff;
+                        // border: 1px solid #293251;
+                        width: 120px;
+                        padding: 15px;
+                        box-sizing:border-box;
+                        padding-bottom: 0px;
+                        left: 50%;
+                        top: 50%;
+                        margin-left: -60px;
+                        top: 60px;
+                        box-shadow: 0px 2px 5px #f2f4f6;
+                        .qr-code {
+                            width: 90px;
+                            height: 90px;
+                            // background: pink;
+                            margin: 0 auto;
+                        }
+                        >p {
+                            width: 100%;
+                            font-size: 12px;
+                            color: #333333;
+                            text-align: center;
+                            height: 30px;
+                            line-height: 30px;
+                            margin: 0px;
+                        }
+                    }
+                }
+            }
+
+            .app-download {
+                padding: 0px 15px;
+                font-size: 14px;
+                color: $bbxGray;
+                text-decoration: none;
+                &:hover,&:active {
+                    color: #5f8ed4
+                }
+            }
+
+            .app-download {
+                position: relative;
+                display:inline-block;
+
+                .app-name {
+                    cursor: pointer;
+                    height: 60px;
+                    line-height: 60px;
+                    &:hover {
+                        &+.app-qr-box {
+                            display: block;
+                        }
+                    }
+                }
+                .app-qr-box {
+                    display: none;
+                    position: absolute;
+                    background: #fff;
+                    // border: 1px solid #293251;
+                    width: 120px;
+                    padding: 15px;
+                    box-sizing:border-box;
+                    padding-bottom: 0px;
+                    left: 50%;
+                    margin-left: -60px;
+                    top: 52px;
+                    box-shadow: 0px 2px 5px #f2f4f6;
+                    .qr-code {
+                        width: 90px;
+                        height: 90px;
+                        // background: pink;
+                        margin: 0 auto;
+                    }
+                    >p {
+                        width: 100%;
+                        font-size: 12px;
+                        color: #333333;
+                        text-align: center;
+                        height: 30px;
+                        line-height: 30px;
+                        margin: 0px;
+                    }
+                }
+            }
+
+            .no-login {
+                display: inline-block;
+            }
+
+            .sign-in ,.log-in{
+                display:inline-block;
+                border: 1px solid #255ea3;
+                background: #1d3863;
+                min-width: 70px;
+                box-sizing: border-box;
+                padding: 0px 10px;
+                height: 28px;
+                line-height: 28px;
+                color: #fff;
+                margin: 0px 10px;
+                border-radius: 2px;
+                cursor: pointer;
+                outline: none;
+                text-align: center;
+                text-decoration: none;
+                font-size: 12px;
+                &.active {
+                    background: #2b93f6;
+                    color: #fff;
+                }
+            }
+            .sign-in  {
+                margin-left: 18px;
+            }
+
+            .avatar-box {
+                display: inline-block;
+                width: 32px;
+                height: 32px;
+                // padding: 0px 10px;
+            }
+            .header-assets {
+                display: inline-block;
+                padding: 0px 15px;
+            }
+
+            .language, .line-switch  {
+                display:inline-block;
+                padding-left: 24px;
+                font-size: 12px;
+            }
+            .line-switch {
+                padding-left: 15px;
+            }
+
+        }
+    }
+    .pc-header-h5 {
+        width: 100%;
+        height: 50px;
+        padding: 0px 20px;
+        box-sizing: border-box;
+        background: $bbxNavBackground;
+        color: $bbxGray;
+        position: relative;
+        z-index: 10010;
+        //border-bottom: 1px solid #313A56;
+        border: none;
+
+        &::after {
+            content: ' ';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            border-bottom: 1px solid #313A56;
+            width: 200%;
+            height:1px;
+            transform:scale(0.5,0.5);
+            transform-origin: left top;
+        }
+        .menu {
+            display: flex;
+            width: 100%;
+            height: 50px;
+            align-items: center;
+            justify-content: space-between;
+            .icon-menu,.icon-close {
+                width: 26px;
+                height: 26px;
+            }
+            .logo {
+                height: 30px;
+            }
+            .avatar {
+                width: 30px;
+                height: 30px;
+            }
+        }
+        .nav-h5 {
+            width: 100%;
+            background: $bodyBack;
+            padding: 0px 20px;
+            position: absolute;
+            left: 0px;
+            top: 50px;
+            li {
+                //border-bottom: 1px solid $bbxNavBackground;
+
+                height: 50px;
+                line-height: 50px;
+                a {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    line-height: 50px;
+                    color: $h5NavColor;
+                }
+
+                border: none;
+                position: relative;
+                &::after {
+                    content: ' ';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 200%;
+                    height: 1px;
+                    border-bottom: 1px solid $bbxNavBackground;
+                    transform: scale(0.5,0.5);
+                    transform-origin: left top;
+                }
+
+                &:last-child{
+                    &::after {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+    }
+}

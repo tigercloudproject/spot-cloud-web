@@ -1,0 +1,147 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.coin-basics-box {
+  width: 100%;
+  min-height: 500px;
+  background: #141b2e;
+  box-sizing: border-box;
+  margin-bottom: 40px; }
+  .coin-basics-box .coin-basics-title {
+    height: 42px;
+    line-height: 42px;
+    background: #10172a;
+    color: #C2D6F5;
+    font-size: 14px;
+    position: relative;
+    padding-left: 30px;
+    padding-right: 15px;
+    cursor: pointer; }
+    .coin-basics-box .coin-basics-title a {
+      color: #7583a8;
+      float: right;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-size: 12px; }
+      .coin-basics-box .coin-basics-title a i {
+        font-size: 12px; }
+      .coin-basics-box .coin-basics-title a:hover {
+        color: #2b93f6; }
+    .coin-basics-box .coin-basics-title .right-icon {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      font-size: 12px;
+      margin-right: 5px;
+      transform-origin: 50% 50%;
+      transform: "rotate(90deg)";
+      transition: all .15s;
+      position: absolute;
+      left: 15px;
+      top: 14px;
+      background: url("../../../images/right.svg") left top no-repeat;
+      background-size: 100% 100%; }
+  .coin-basics-box .coin-basics-con {
+    display: flex;
+    font-size: 12px;
+    height: auto;
+    transition: height 0.5s;
+    overflow: hidden;
+    padding: 0px 15px; }
+    .coin-basics-box .coin-basics-con .left {
+      flex: 1;
+      padding-right: 40px;
+      padding-top: 20px;
+      padding-bottom: 40px; }
+      .coin-basics-box .coin-basics-con .left .icon-box {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center; }
+        .coin-basics-box .coin-basics-con .left .icon-box .coin-icon {
+          height: 48px; }
+        .coin-basics-box .coin-basics-con .left .icon-box .coin-name {
+          color: #5f8ed4;
+          font-size: 28px;
+          padding-left: 10px;
+          padding-right: 10px; }
+        .coin-basics-box .coin-basics-con .left .icon-box .coin-full-name {
+          color: rgba(151, 176, 214, 0.7);
+          font-size: 18px; }
+      .coin-basics-box .coin-basics-con .left h3 {
+        color: rgba(151, 176, 214, 0.7);
+        border-bottom: 1px solid #2f3752;
+        padding-bottom: 10px; }
+      .coin-basics-box .coin-basics-con .left p {
+        color: #C2D6F5;
+        padding-top: 10px;
+        line-height: 2.4; }
+    .coin-basics-box .coin-basics-con .right {
+      flex: 1;
+      padding-left: 40px;
+      padding-top: 20px;
+      padding-bottom: 40px; }
+      .coin-basics-box .coin-basics-con .right table {
+        width: 100%;
+        color: #C2D6F5; }
+        .coin-basics-box .coin-basics-con .right table td {
+          border-bottom: 1px solid #2d3650;
+          height: 50px;
+          line-height: 50px; }
+          .coin-basics-box .coin-basics-con .right table td:first-child {
+            color: rgba(151, 176, 214, 0.7); }
+          .coin-basics-box .coin-basics-con .right table td a {
+            color: #2b93f6; }
+            .coin-basics-box .coin-basics-con .right table td a:hover {
+              text-decoration: underline;
+              cursor: pointer; }
+
+@media screen and (max-width: 700px) {
+  .coin-basics-box .coin-basics-title {
+    height: auto; }
+    .coin-basics-box .coin-basics-title a {
+      display: flex;
+      font-size: 12px;
+      float: right; }
+      .coin-basics-box .coin-basics-title a .link {
+        width: 170px; }
+  .coin-basics-box .coin-basics-con {
+    flex-direction: column; }
+    .coin-basics-box .coin-basics-con .left {
+      padding-right: 0px;
+      padding-bottom: 10px; }
+    .coin-basics-box .coin-basics-con .right {
+      padding-left: 0px; }
+      .coin-basics-box .coin-basics-con .right table th, .coin-basics-box .coin-basics-con .right table td {
+        word-break: keep-all;
+        white-space: nowrap; } }

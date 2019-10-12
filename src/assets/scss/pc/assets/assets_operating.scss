@@ -1,0 +1,65 @@
+@import '../../base.scss';
+.record-operating-box {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    background: $assetsConBack;
+    padding: 0px 20px;
+    .form-block {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        label {
+            padding-right: 12px;
+            font-size: 12px;
+        }
+        .form-control {
+            width: 145px;
+            height: 30px;
+            .bbx-dropdown {
+                .bbx-dropdown-con {
+                    border-radius: 4px;
+                }
+            }
+        }
+        &.time {
+            flex: 1.6;
+        }
+        .time-select {
+            .ant-input {
+                border: 1px solid #eceef3!important;
+            }
+        }
+    }
+    
+    .inquire-btn {
+        button {
+            width: 120px;
+            height: 30px;
+            background: $assetsButtonBlue;
+            border: none;
+            color: $assetsBtnColor;
+            border-radius: 4px;
+            &:hover {
+                background: lighten($assetsButtonBlue, 10%);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) { 
+    .record-operating-box {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding-bottom: 10px;
+        .form-block {
+            &.time {
+                display: none;
+            }
+        }
+        >div {
+            margin-top:10px;
+        }
+    }
+}

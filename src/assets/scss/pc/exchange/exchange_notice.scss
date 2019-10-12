@@ -1,0 +1,54 @@
+@import '../../base.scss';
+.exchange-notice {
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    background: $exchangeBodyBack;
+    >h3 {
+        height: 42px;
+        line-height: 42px;
+        font-size: 14px;
+        padding: 0px 10px;
+        background: $exchangeBodyTitBack;
+        position: relative;
+        color: $exchangeTextColorWhite;
+        // color: #A7BFD8;
+        >a {
+            font-size: 12px;
+            position: absolute;
+            right: 10px;
+            top: 0px;
+            color: $exchangeTextColorBlue;
+            cursor: pointer;
+            &:hover {
+                color: $exchangeTextColorHover;
+            }
+            i {
+                font-size: 12px;
+            }
+        }
+    }
+
+    ul {
+        padding: 0px 10px;
+        padding-top: 10px;
+        li {
+            min-height: 62px;
+            border-bottom: 1px solid #1e243a;
+            a {
+                display: block;
+                cursor: pointer;
+                padding-top: 10px;
+                color: $exchangeTextColorWhite;
+                &:hover {
+                    color: $exchangeTextColorBlue2;
+                }
+            }
+            p {
+                color: $exchangeTextColorBlue;
+                padding-top: 10px;
+                padding-bottom: 5px;
+            }
+        }
+    }
+}

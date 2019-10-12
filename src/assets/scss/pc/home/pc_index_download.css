@@ -1,0 +1,159 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.pc-index-download-box {
+  width: 100%;
+  height: 450px;
+  background: #12172b; }
+  .pc-index-download-box h3, .pc-index-download-box p {
+    margin: 0px; }
+  .pc-index-download-box .pc-index-download {
+    width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    background: url("../../../images/home/bg-04_2.png") left top no-repeat;
+    padding-left: 684px;
+    box-sizing: border-box; }
+    .pc-index-download-box .pc-index-download .pc-index-download-tit {
+      color: #edf3ff;
+      font-size: 26px;
+      font-weight: 400 !important;
+      padding-top: 90px; }
+    .pc-index-download-box .pc-index-download .pc-index-download-con {
+      color: #a7bfd8;
+      font-size: 16px;
+      padding-bottom: 40px;
+      padding-top: 15px; }
+      .pc-index-download-box .pc-index-download .pc-index-download-con > p {
+        line-height: 1.8; }
+    .pc-index-download-box .pc-index-download .download-btn-list {
+      display: flex; }
+      .pc-index-download-box .pc-index-download .download-btn-list li {
+        display: inline-block;
+        width: 160px;
+        margin-right: 30px;
+        position: relative; }
+        .pc-index-download-box .pc-index-download .download-btn-list li a.btn {
+          display: inline-block;
+          width: 100%;
+          height: 36px;
+          line-height: 36px;
+          color: #616d93;
+          border: 1px solid #67739b;
+          border-radius: 20px;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer; }
+          .pc-index-download-box .pc-index-download .download-btn-list li a.btn i {
+            display: inline-block;
+            width: 20px;
+            height: 20px; }
+          .pc-index-download-box .pc-index-download .download-btn-list li a.btn span {
+            display: inline-block;
+            padding-left: 2px; }
+          .pc-index-download-box .pc-index-download .download-btn-list li a.btn:hover {
+            color: #edf3ff;
+            border: 1px solid #edf3ff; }
+          .pc-index-download-box .pc-index-download .download-btn-list li a.btn.ios i {
+            background: url("../../../images/home/icon-ios_nor.svg") left top no-repeat;
+            background-size: 100% 100%; }
+          .pc-index-download-box .pc-index-download .download-btn-list li a.btn.ios:hover i {
+            background: url("../../../images/home/icon-ios_sel.svg") left top no-repeat;
+            background-size: 100% 100%; }
+          .pc-index-download-box .pc-index-download .download-btn-list li a.btn.android i {
+            background: url("../../../images/home/icon-android_nor.svg") left top no-repeat;
+            background-size: 100% 100%; }
+          .pc-index-download-box .pc-index-download .download-btn-list li a.btn.android:hover i {
+            background: url("../../../images/home/icon-android_sel.svg") left top no-repeat;
+            background-size: 100% 100%; }
+          .pc-index-download-box .pc-index-download .download-btn-list li a.btn.googleplay i {
+            background: url("../../../images/home/icon-GooglePlay_nor.svg") left top no-repeat;
+            background-size: 100% 100%; }
+          .pc-index-download-box .pc-index-download .download-btn-list li a.btn.googleplay:hover i {
+            background: url("../../../images/home/icon-GooglePlay_sel.svg") left top no-repeat;
+            background-size: 100% 100%; }
+        .pc-index-download-box .pc-index-download .download-btn-list li:hover .qrcode-container {
+          display: block; }
+        .pc-index-download-box .pc-index-download .download-btn-list li .qrcode-container {
+          width: 114px;
+          position: absolute;
+          left: 50%;
+          margin-left: -54px;
+          top: 40px;
+          display: none;
+          z-index: 20000;
+          padding-top: 10px; }
+          .pc-index-download-box .pc-index-download .download-btn-list li .qrcode-container .qrcode-box {
+            width: 100%;
+            min-height: 128px;
+            background: #edf3ff;
+            padding-top: 8px;
+            border-radius: 4px; }
+            .pc-index-download-box .pc-index-download .download-btn-list li .qrcode-container .qrcode-box .qrcode {
+              width: 100px;
+              height: 100px;
+              margin: 0 auto; }
+            .pc-index-download-box .pc-index-download .download-btn-list li .qrcode-container .qrcode-box > p {
+              font-size: 12px;
+              color: #454b5b;
+              padding: 0px 6px;
+              text-align: center;
+              padding-top: 6px; }
+              .pc-index-download-box .pc-index-download .download-btn-list li .qrcode-container .qrcode-box > p > a {
+                color: #61a9fe;
+                cursor: pointer; }
+
+@keyframes fadeInUp200 {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 240px, 0);
+    transform: translate3d(0, 240px, 0); }
+  1% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 140px, 0);
+    transform: translate3d(0, 140px, 0); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+.fadeInUp200 {
+  -webkit-animation-name: fadeInUp200;
+  animation-name: fadeInUp200;
+  animation-duration: .6s; }
+
+@media screen and (max-width: 700px) {
+  .pc-index-download-box {
+    display: none; } }

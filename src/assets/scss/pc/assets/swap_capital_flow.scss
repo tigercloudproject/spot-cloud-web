@@ -1,0 +1,44 @@
+@import '../../base.scss';
+
+.capital-flow-box {
+    .capital-flow-body {
+        background: $assetsConBack;
+        .title {
+            height: 50px;
+            // line-height: 50px;
+            background: $assetsConBack;
+            color: $assetsTitleColor;
+            display: flex;
+            align-items: center;
+            padding: 0px 20px;
+            box-shadow: 0px 2px 5px $assetsBack;
+            // margin-bottom: 3px;
+        }
+        .flow-operating {
+            margin-top: 5px;
+        }
+        .flow-list-box {
+            background: $assetsConBack;
+            padding: 0px 20px;
+            .paging-box {
+                //float: right;
+                padding-top: 20px;
+                .paging-right {
+                    float: right;
+                }
+            }
+        }
+        
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .capital-flow-box {
+        .capital-flow-body { 
+            .flow-list-box {
+                width: 100%;
+                overflow-x: auto;
+            }
+        }
+    }
+}

@@ -1,0 +1,202 @@
+@import '../../base.scss';
+$spacing: 6px;
+.exchange-container {
+    width: 100%;
+    min-width: 1200px;
+    background: $exchangeBackground;
+    padding: $spacing;
+    box-sizing: border-box;
+    color: $exchangeTextColorWhite;
+    h3 {
+        color: $exchangeTextColorWhite;
+    }
+    *{
+        box-sizing: border-box;
+        margin: 0px;
+    }
+    a {
+        cursor: pointer;
+    }
+    .exchange-pc {
+        display: block;
+    }
+    .exchange-m {
+        display: none;
+    }
+    .exchange-top-s {
+        width: 100%;
+        display: none;
+        .exchange-assets-box {
+            flex-basis: 256px;
+            width: 256px;
+            height: 70px;
+            background: $exchangeBodyBack;
+        }
+        .exchange-ticker-box {
+            flex:1;
+            height: 70px;
+            background: $exchangeBodyBack;
+            margin-left: $spacing;
+        }
+}
+    .exchange-top {
+        width: 100%;
+        display: flex;
+        .exchange-top-left {
+            min-width: 256px;
+            flex-basis: 256px;
+            .exchange-assets-box {
+                display: block;
+                width: 100%;
+                height: 70px;
+                background: $exchangeBodyBack;
+            }
+            .exchange-market-box {
+                width: 100%;
+                height: 480px;
+                margin-top: $spacing;
+                // background: orange;
+            }
+
+        }
+        .exchange-top-middle {
+            margin: 0px $spacing;
+            flex: 1;
+            .exchange-ticker-box {
+                display: block;
+                width: 100%;
+                height: 70px;
+                background: $exchangeBodyBack;
+            }
+            .exchange-kline-box {
+                width: 100%;
+                height: 480px;
+                margin-top: $spacing;
+                // background: green;
+            }
+            .exchange-submit-box {
+                width: 100%;
+                height: 400px;
+                margin-top: $spacing;
+                // background: thistle;
+            }
+        }
+        .exchange-top-right {
+            min-width: 522px;
+            flex-basis: 522px;
+            display: flex;
+            .exchange-depth-box {
+                width: 256px;
+                height: 970px;
+                // background: goldenrod;
+            }
+            .exchange-transaction-box {
+                width: 256px;
+                height: 970px;
+                // background: palevioletred;
+                margin-left: $spacing;
+            }
+        }
+    }
+    .exchange-bottom {
+        padding-left: 266px;
+        width: 100%;
+        box-sizing: border-box;
+        .record-list-box {
+            width: 100%;
+            background: $exchangeBodyBack;
+            margin-top: $spacing;
+            min-height: 210px;
+            // background: yellowgreen;
+        }
+    }
+}
+
+@media screen and (max-width: 1600px) {
+.exchange-container {
+
+
+    .exchange-top-s {
+        display: flex;
+    }
+    .exchange-top {
+        .exchange-top-left {
+            .exchange-assets-box  {
+                display: none;
+            }
+        }
+        .exchange-top-middle {
+            .exchange-ticker-box {
+                display: none;
+            }
+        }
+        .exchange-top-right {
+            min-width: 256px;
+            flex-basis: 256px;
+            flex-direction: column-reverse;
+            // margin-top: 10px;
+            .exchange-depth-box {
+                width: 100%;
+                height: 400px;
+                // background: goldenrod;
+                margin-top: $spacing;
+            }
+            .exchange-transaction-box {
+                width: 100%;
+                height: 480px;
+                // background: palevioletred;
+                margin-left: 0px;
+            }
+        }
+    }
+    .exchange-bottom {
+        padding-left: 0px;
+    }
+}
+}
+
+@media screen and (max-width: 700px) {
+    .exchange-container {
+        width: 100%;
+        min-width: 100%;
+        padding: 6px;
+        .exchange-pc {
+            display: none;
+        }
+        .exchange-m {
+            display: block;
+            .exchange-assets-m {
+                background: #141b2e;
+            }
+            .exchange-ticker-box {
+                margin-top: 6px;
+            }
+            .exchange-submit-m {
+                margin-top: 6px;
+            }
+            .exchange-record-m {
+                margin-top: 6px;
+            }
+            .exchange-kline-m {
+                width: 100%;
+                // height: 360px;
+                margin-top: 6px;
+                .tiger {
+                  display: none;
+                }
+            }
+            .exchange-depth-m {
+                width: 100%;
+                margin-top: 6px;
+            }
+            .exchange-transaction-m {
+                width: 100%;
+                margin-top: 6px;
+            }
+            .exchange-introduce-m {
+                width: 100%;
+                margin-top: 6px;
+            }
+        }
+    }
+}

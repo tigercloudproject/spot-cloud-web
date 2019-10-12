@@ -1,0 +1,129 @@
+
+@import '../../base.scss';
+.usercenter-h5 {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 110000;
+    background: #171a25;
+    .usercenter-h5-top {
+        height: 80px;
+        width: 94%;
+        margin: 0 auto;
+        display: flex;
+        border-radius: 2px;
+        background: #1d72c9;
+        align-items: center;
+        padding: 0px 20px;
+        margin-top: 15px;
+        >img {
+            width: 55px;
+            height: 55px;
+        }
+        >div{
+            color: #fff;
+            padding-left: 10px;
+            flex:1;
+            width: 78%;
+            h3{
+                font-weight: 400;
+                font-size: 1.3rem;
+                color: #fff;
+                width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                margin-bottom: 0px;
+                font-weight: normal;
+            }
+            p {
+                font-size: 0.8rem;
+            }
+        }
+    }
+    dl {
+        
+        dt {
+            
+        }
+        dd {
+            width: 100%;
+            margin: 0px;
+            >a {
+                display: block;
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                border-bottom: 1px solid #313a56;
+                color: #cdd5df;
+                i {
+                    float: right;
+                }
+            }
+        }
+    }
+    >.link-list {
+        width: 94%;
+        margin: 0 auto;
+        padding-bottom: 20px;
+        h3 {
+            color: $h5LoginLabelColor;
+            height: 40px;
+            line-height: 40px;
+            font-size: 1rem;
+            margin-bottom: 0px;
+        }
+        .block {
+            width: 100%;
+            background: #1f2636;
+            border-radius: 4px;
+            padding: 0px 4px;
+            box-sizing: border-box;
+            a {
+                display: block;
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                border-bottom: 1px solid #313a56;
+                color: #cdd5df;
+                padding: 0px 8px;
+                font-size: 1rem;
+                border:none;
+                position: relative;
+                &::after {
+                    content: ' ';
+                    width: 200%;
+                    height: 1px;
+                    border-bottom: 1px solid #313a56;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    transform: scale(0.5,0.5);
+                    transform-origin: left top;
+                }
+                i {
+                    float: right;
+                }
+                &:last-child{
+                    border-bottom: none;
+                    &::after {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+        >.exit {
+            display: block;
+            width: 80%;
+            color: #fff;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin: 20px auto;
+            background: #1d72c9;
+        }
+    }
+}

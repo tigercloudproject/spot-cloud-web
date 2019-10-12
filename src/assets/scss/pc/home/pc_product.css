@@ -1,0 +1,102 @@
+.center-container, .pc-product {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container, .pc-product {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.pc-product {
+  background: #171A25;
+  padding-top: 50px; }
+  .pc-product .pc-product-list {
+    width: 100%;
+    opacity: 0; }
+    .pc-product .pc-product-list .left {
+      float: left;
+      width: 506px;
+      text-align: left;
+      padding-left: 50px; }
+    .pc-product .pc-product-list .right {
+      float: right;
+      width: 570px;
+      text-align: right;
+      padding-right: 50px; }
+    .pc-product .pc-product-list h3 {
+      color: #97B0D6;
+      font-size: 34px;
+      padding-top: 70px;
+      line-height: 1.5; }
+    .pc-product .pc-product-list p {
+      padding-top: 5px;
+      color: rgba(151, 176, 214, 0.7);
+      font-size: 20px;
+      line-height: 1.8; }
+  .pc-product .fadeInUp {
+    opacity: 1;
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    animation-duration: .6s; }
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 200px, 0);
+    transform: translate3d(0, 200px, 0); }
+  1% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 200px, 0);
+    transform: translate3d(0, 200px, 0); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+@media screen and (max-width: 700px) {
+  .pc-product {
+    padding-top: 10px; }
+    .pc-product .pc-product-list .left, .pc-product .pc-product-list .right {
+      float: none;
+      width: 100%;
+      text-align: center;
+      padding: 0px; }
+      .pc-product .pc-product-list .left img, .pc-product .pc-product-list .right img {
+        width: 80%;
+        margin-top: 30px; }
+    .pc-product .pc-product-list .con {
+      width: 100% !important; }
+    .pc-product .pc-product-list h3 {
+      padding-top: 10px !important;
+      font-size: 1.4rem !important;
+      width: 90%;
+      margin: 0 auto; }
+    .pc-product .pc-product-list p {
+      font-size: 1rem !important;
+      width: 90%;
+      margin: 0 auto;
+      text-align: left; } }

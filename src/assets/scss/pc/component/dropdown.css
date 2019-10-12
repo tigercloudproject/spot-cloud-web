@@ -1,0 +1,88 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.bbx-dropdown {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+  .bbx-dropdown .bbx-dropdown-mask {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px; }
+  .bbx-dropdown .bbx-dropdown-con {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border: 1px solid #eceef3;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    cursor: pointer; }
+    .bbx-dropdown .bbx-dropdown-con i {
+      color: #d4d8e0;
+      transition: transform .3s ease-out; }
+    .bbx-dropdown .bbx-dropdown-con.open i {
+      transform: rotate(-180deg); }
+  .bbx-dropdown > ul {
+    position: absolute;
+    z-index: 100;
+    top: 100%;
+    width: 100%;
+    border: 1px solid #eceef3;
+    background: #ffffff;
+    overflow: hidden;
+    height: 0px;
+    max-height: 0px;
+    transition: max-height .3s ease-in; }
+    .bbx-dropdown > ul.open {
+      max-height: 180px;
+      height: auto;
+      transition: max-height 0.3s ease-in;
+      overflow-y: auto; }
+    .bbx-dropdown > ul.close {
+      height: 0px;
+      max-height: 0px;
+      transition: max-height 0.3s ease-out;
+      border: none; }
+    .bbx-dropdown > ul li {
+      padding: 5px 10px;
+      border-bottom: 1px solid #eceef3;
+      cursor: pointer; }
+      .bbx-dropdown > ul li:last-child {
+        border-bottom: none; }

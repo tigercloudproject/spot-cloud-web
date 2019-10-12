@@ -1,0 +1,627 @@
+@import '../../base.scss';
+$fromWidth: 556px;
+.recharge-box {
+    width: 100%;
+    margin-top: 10px;
+    .title {
+        margin-bottom: 30px;
+        .warning {
+            color: $assetsWarning;
+            padding:2px 15px;
+            background: rgba($assetsWarning, 0.1);
+            margin-left: 20px;
+            font-size: 12px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            i {
+                margin-right: 5px;
+                font-size: 14px;
+            }
+        }
+    }
+    .recharge-form {
+        background: $assetsConBack;
+        padding-bottom: 30px;
+    }
+    .recharge-coin, .recharge-address {
+        width: $fromWidth;
+        display: flex;
+        align-items: center;
+        padding-bottom: 20px;
+        margin: 0 auto;
+        .left  {
+            width: 106px;
+            flex-basis: 106px;
+            color: $assetsLableColor;
+            font-size: 12px;
+            &.address-label {
+               align-self: flex-start;
+               padding-top: 8px;
+            }
+        }
+        .right {
+            flex: 1;
+            height: 36px;
+            .bbx-dropdown {
+                .bbx-dropdown-con {
+                    color: $assetsInputColor;
+                }
+            }
+            .address-con {
+                //height: 30px;
+                // padding: 10px;
+                //line-height: 50px;
+                vertical-align: middle;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-radius: 4px;
+                border: 1px solid $assetsInputBorder;
+                position: relative;
+                height: 36px;
+
+                input {
+                    display: inline-block;
+                    // width: 318px;
+                    flex: 1;
+                    height: 36px;
+                    // line-height: 36px;
+                    border: none;
+                    // background: #2c3b56;
+                    color: $assetsInputColor;
+                    outline: none;
+                    padding: 0px 10px;
+                    box-sizing: border-box;
+                    background: none;
+                    
+                }
+                .input-text { 
+                    padding: 0px 10px;
+                    flex: 1;
+                    color: $assetsInputColor;
+                }
+                height: 36px;
+                // .address-copy {
+                //     display: inline-block;
+                //     width: 80px;
+                //     text-align: center;
+                //     background: $assetsButtonBlue;
+                //     color: #fff;
+                //     height: 36px;
+                //     line-height: 36px;
+                //     float: right;
+                //     border-left: 1px solid #90aace;
+                // }
+                .block-address {
+                    display: inline-block;
+                    position: absolute;
+                    left: 510px;
+                    top: 15px;
+                    word-break: keep-all;
+                    white-space: nowrap;
+                    font-size: 12px;
+                }
+                .memo-hint {
+                    font-style: normal;
+                    display: inline-block;
+                    // position: absolute;
+                    // left: 510px;
+                    // top: 15px;
+                    word-break: keep-all;
+                    white-space: nowrap;
+                    // color: $bbxRed;
+                    color: #ff5d5d;
+                    background: rgba(255,93,93,0.1);
+                    margin-left: 20px;
+                    padding: 0px 5px;
+                }
+                .address-copy, .qrcode-thumbnail {
+                    width: 16px;
+                    height: 16px;
+                    margin: 0px 10px;
+                    cursor: pointer;
+                }
+                .address-copy {
+                    background: url("../../../images/assets/icon-c_nor.svg") left top no-repeat;
+                    background-size: 100% 100%;
+                    position: relative;
+                    >span {
+                        display: none;
+                        position: absolute;
+                        padding: 5px 10px;
+                        border: 1px solid $assetsInputBorder;
+                        background: #fff!important;
+                        color: $assetsInputColor;
+                        white-space: nowrap;
+                        bottom: -40px;
+                        left: -45px;
+                        z-index: 1;
+                        box-shadow: 2px 2px 5px #f4f4f7;
+                    }
+                    &:hover {
+                        background: url("../../../images/assets/icon-c_sel.svg") left top no-repeat;
+                        background-size: 100% 100%;
+                        >span {
+                            display: block;
+                        }
+                    }
+                }
+                .qrcode-thumbnail {
+                    background: url("../../../images/assets/icon-QR_nor.svg") left top no-repeat;
+                    background-size: 100% 100%;
+                    position: relative;
+                    > span {
+                        position: absolute;
+                        width: 130px;
+                        height: 130px;
+                        border: 1px solid $assetsInputBorder;
+                        background: #fff!important;
+                        align-items: center;
+                        justify-content: center;
+                        right: -140px;
+                        top: -10px;
+                        display: none;
+                        box-shadow: 2px 2px 5px #f4f4f7;
+                    }
+                    &:hover {
+                        background: url("../../../images/assets/icon-QR_sel.svg") left top no-repeat;
+                        background-size: 100% 100%;
+                        >span {
+                            display: flex;
+                        }
+                    }
+                }
+            }
+            .code {
+                padding-top: 20px;
+                display: flex;
+                width: 730px;
+                .left {
+                    flex-basis: 130px;
+                    .code-border {
+                        background: #283046;
+                        border: 1px solid #354769;
+                        padding: 10px;
+                        padding-bottom: 5px;
+                        .code-box {
+                            width: 130px;
+                            height: 130px;
+                            background: #ffffff;
+                            border: 1px solid #334463;
+                            border-radius: 4px;
+                            padding: 10px;
+                            img {
+                                width: 100%;
+                            }
+                            
+                        }
+                        p {
+                            text-align: center;
+                            font-size:12px;
+                            padding-top: 5px;
+                        }
+                    }
+                    
+                }
+                .right {
+                    flex: 1;
+                    color: #c8d0da;
+                    font-size: 12px;
+                    padding-left: 20px;
+                    .desc {
+                        //padding-bottom: 15px;
+                        //background: pink;
+                        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        max-width: 640px;
+                        line-height: 2.4;
+                        white-space: pre-wrap!important;
+                        word-wrap: break-word!important;
+                        *white-space:normal!important;
+                        font-size: 12px;
+                    }
+                    
+                }
+            }
+            
+        }
+    }
+    .recharge-chain-name {
+        width: $fromWidth;
+        margin: 0 auto;
+        display: flex;
+        padding-bottom: 20px;
+        align-items: center;
+        p {
+            // margin-bottom: 10px;
+            width: 106px;
+            flex-basis: 106px;
+            color: $assetsLableColor;
+            font-size: 12px;
+            margin-bottom: 0;
+        }
+        div {
+            // margin-bottom: 20px;
+            display: flex;
+            button {
+                outline: none;
+                border: none;
+                background-color: transparent;
+                border: 1px solid #eceef3;
+                margin-right: 20px;
+                width: 100px;
+                line-height: 30px;
+                border-radius: 5px;
+                position: relative;
+                span {
+                    display: none;
+                }
+            }
+            .sel-chain-name {
+                border: 1px solid #2b93f6;
+                overflow: hidden;
+                span {
+                    width: 0;
+                    height: 0;
+                    border-bottom: 20px solid #2b93f6;
+                    border-left: 20px solid transparent;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    display: block;
+                }
+                span:after {
+                    content: '';
+                    background: url('../../../images/assets/icon-duihao.svg') center no-repeat;
+                    background-size: 100% 100%;
+                    display: inline-block;
+                    position: absolute;
+                    z-index: 99;
+                    top: 9px;
+                    left: -10px;
+                    width: 10px;
+                    height: 10px;
+                }
+            }
+        }
+    }
+    .block-browser {
+        width: $fromWidth;
+        margin: 0 auto;
+        text-align: right;
+        margin-top: -10px;
+        a {
+            font-size: 12px;
+            color: $assetsLinkColor;
+        }
+    }
+    .xdag-btn-box {
+        padding-top: 20px;
+        width: $fromWidth;
+        margin: 0 auto;
+        button {
+            background: #2b93f6;
+            color: #ffffff;
+            // padding: 5px 0px;
+            height: 36px;
+            width: 100%;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            font-size: 16px;
+            
+            &:disabled {
+                background: $bbxBlue1;
+                cursor: not-allowed;
+            }
+        }
+    }
+    .recharge-address-code {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 10px;
+    }
+    .recharge-desc {
+        width: 1000px;
+        background: $assetsTheadBack;
+        margin: 0 auto;
+        padding: 20px 30px;
+        box-sizing: border-box;
+        margin-top: 40px;
+        h3 {
+            font-size: 14px;
+            color: $assetsTitleColor;
+        }
+        pre {
+            color: $assetsLableColor;
+            white-space: pre-wrap!important;
+            word-wrap: break-word!important;
+            font-size: 12px;
+            line-height: 2;
+        }
+    }
+    .recharge-records {
+        display: block;
+        width: 100%;
+        background: $assetsConBack;
+        margin-top: 10px;
+        .records-tit {
+            width: 100%;
+            color: $assetsInputPlaceholder;
+            font-size: 16px;
+            height: 50px;
+            line-height: 50px;
+            padding: 0px 20px;
+            color: $assetsTitleColor;
+            box-shadow: 0px 2px 5px $assetsBack;
+            a {
+                color: $assetsInputPlaceholder;
+                float: right;
+                font-size: 12px;
+                *{
+                    vertical-align: middle;
+                }
+                img {
+                    width: 20px;
+                }
+            }
+        }
+        .recharge-table {
+            padding: 10px 20px;
+        }
+
+        .recharge-list {
+            width: 100%;
+            color: #cad2dc;
+            font-size: 12px;
+            th {
+                color: $bbxBlue1;
+                border-top: 1px solid #303954;
+                font-size: 14px;
+            }
+            td {
+                color: #c4ccd6;
+            }
+            td,th {
+                height: 60px;
+                //line-height: 60px;
+                border-bottom: 1px solid #303954;
+                vertical-align: middle;
+                min-width: 90px;
+                padding: 0px 10px;
+                * {
+                    vertical-align: middle;
+                }
+                &.status {
+                    text-align: center;
+                    .orange {
+                        color: #c39a55;
+                    }
+                }
+                .tx-hash {
+                    display: inline-block;
+                    max-width: 300px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                &:last-child {
+                    text-align: right;
+                }
+            }
+        }
+    }
+    .paging-box {
+        //float: right;
+        padding: 20px;
+        .paging-right {
+            float: right;
+        }
+    }
+    .care {
+        height: 34px;
+        line-height: 34px;
+        background: #313339;
+        border: 1px solid #413e3c;
+        color: #cb9f56;
+        padding: 0px 15px;
+        font-size: 12px;
+        margin-top: 40px;
+    }
+    .no-data {
+        text-align: center;
+        color: #cbd3dd;
+        padding: 20px;
+    }
+    .copy-success {
+        width: 150px;
+        height: 90px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $assetsInputBorder;
+        background: #fff!important;
+        color: $assetsInputColor;
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        z-index: 1000;
+        margin-left: -60px;
+        animation: success .5s;
+        box-shadow: 2px 2px 5px #f4f4f7;
+        img {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 5px;
+            // margin-right: 5px;
+        }
+    }
+}
+
+@keyframes success {
+    0% {
+        opacity: 0;
+       top: 42%;
+    }
+    100% {
+        opacity: 1;
+       top: 40%;
+    }
+}
+
+
+@media screen and (max-width: 700px) {  
+    .recharge-box {
+        width: 94%;
+        margin: 0 auto;
+        .title {
+            height: auto!important;
+            display: block;
+            margin-bottom: 30px;
+            padding: 10px 20px!important;
+            .warning {
+                margin-left: 0px;
+                display: block;
+                i {
+                    margin-right: 5px;
+                }
+            }
+        }
+        .recharge-coin, .recharge-address {
+            width: 90%;
+            padding-bottom: 10px;
+            flex-direction: column;
+            .left  {
+                width: 100%;
+                flex-basis: auto;
+                padding-bottom: 5px;
+            }
+            .right {
+                width: 100%;
+                flex: 1;
+                //overflow: hidden;
+                .address-con{
+                    min-width: 100%;
+                    display: flex;
+                    padding: 5px;
+                    input {
+                        min-width: auto;
+                        padding: 0px 10px;
+                        flex: 1;
+                    }
+                    .block-address {
+                        display: none;
+                    }
+                }
+                .bbx-select {
+                    width: 100%!important;
+                    height: 40px!important;
+                    .bbx-select-con {
+                        .con {
+                            line-height: 40px!important;
+                        }
+                        .icon {
+                            line-height: 40px!important;
+                        }
+                    }
+                }
+                .code {
+                    width: 100%;
+                    flex-direction: column;
+                    padding-top: 10px;
+                    .left{
+                        width: 152px;
+                    }
+                    .right{
+                        padding: 10px 0px 10px 0px;
+                    }
+                }
+                .xdag-btn-box {
+                    padding-top: 10px;
+                    button {
+                        height: 40px;
+                        width: 100%;     
+                    }
+                }
+            }
+        }
+        .recharge-chain-name {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            padding-bottom: 10px;
+            align-items: center;
+            p {
+                // margin-bottom: 10px;
+                width: 20%;
+                flex-basis: 20%;
+                color: $assetsLableColor;
+                font-size: 12px;
+                margin-bottom: 0;
+            }
+            div {
+                // margin-bottom: 20px;
+                display: flex;
+                button {
+                    outline: none;
+                    border: none;
+                    background-color: transparent;
+                    border: 1px solid #eceef3;
+                    margin-right: 20px;
+                    width: 100px;
+                    line-height: 30px;
+                    border-radius: 5px;
+                    position: relative;
+                    span {
+                        display: none;
+                    }
+                }
+                .sel-chain-name {
+                    border: 1px solid #2b93f6;
+                    overflow: hidden;
+                    span {
+                        width: 0;
+                        height: 0;
+                        border-bottom: 20px solid #2b93f6;
+                        border-left: 20px solid transparent;
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        display: block;
+                    }
+                    span:after {
+                        content: '';
+                        background: url('../../../images/assets/icon-duihao.svg') center no-repeat;
+                        background-size: 100% 100%;
+                        display: inline-block;
+                        position: absolute;
+                        z-index: 99;
+                        top: 9px;
+                        left: -10px;
+                        width: 10px;
+                        height: 10px;
+                    }
+                }
+            }
+        }
+        .block-browser {
+            width: 90%;
+            margin: 0px;
+        }
+        .xdag-btn-box {
+            width: 90%;
+        }
+        .recharge-records {
+            // display: none;
+            width: 100%;
+            overflow-x: auto;
+        }
+        .recharge-desc {
+            width: 100%;
+        }
+    }
+}

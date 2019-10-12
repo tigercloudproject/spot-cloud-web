@@ -1,0 +1,199 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.exchange-depth {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  background: #141b2e; }
+  .exchange-depth .title {
+    width: 100%;
+    padding: 0px 10px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    background: #10172a; }
+    .exchange-depth .title ul {
+      flex: 1;
+      display: flex; }
+      .exchange-depth .title ul li {
+        width: 20px;
+        height: 20px;
+        margin-right: 14px;
+        cursor: pointer; }
+        .exchange-depth .title ul li span {
+          display: inline-block;
+          width: 100%;
+          height: 100%; }
+          .exchange-depth .title ul li span.all {
+            background: url("../../../images/icon-all_nor.svg") left top no-repeat;
+            background-size: 100% 100%; }
+            .exchange-depth .title ul li span.all:hover, .exchange-depth .title ul li span.all.active {
+              background: url("../../../images/icon-all_sel.svg") left top no-repeat;
+              background-size: 100% 100%; }
+          .exchange-depth .title ul li span.buy {
+            background: url("../../../images/icon-sell_nor.svg") left top no-repeat;
+            background-size: 100% 100%; }
+            .exchange-depth .title ul li span.buy:hover, .exchange-depth .title ul li span.buy.active {
+              background: url("../../../images/icon-sell_sel.svg") left top no-repeat;
+              background-size: 100% 100%; }
+          .exchange-depth .title ul li span.sell {
+            background: url("../../../images/icon-buy_nor.svg") left top no-repeat;
+            background-size: 100% 100%; }
+            .exchange-depth .title ul li span.sell:hover, .exchange-depth .title ul li span.sell.active {
+              background: url("../../../images/icon-buy_sel.svg") left top no-repeat;
+              background-size: 100% 100%; }
+    .exchange-depth .title .decimal-select {
+      position: relative; }
+      .exchange-depth .title .decimal-select label {
+        color: #7583a8; }
+      .exchange-depth .title .decimal-select::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background-size: 100% 100%;
+        position: absolute;
+        right: 0px;
+        top: 5px;
+        pointer-events: none; }
+      .exchange-depth .title .decimal-select select {
+        background: transparent;
+        border: 1px solid transparent;
+        outline: none;
+        color: #c2cad4;
+        appearance: none;
+        padding-right: 10px;
+        cursor: pointer; }
+        .exchange-depth .title .decimal-select select option {
+          background: #fff;
+          color: #000; }
+  .exchange-depth .list-head {
+    height: 24px;
+    color: #7583a8;
+    display: flex;
+    align-items: center; }
+    .exchange-depth .list-head span {
+      flex: 1; }
+      .exchange-depth .list-head span:first-child {
+        padding-left: 10px; }
+      .exchange-depth .list-head span:nth-child(2) {
+        text-align: right; }
+      .exchange-depth .list-head span:last-child {
+        padding-right: 10px;
+        text-align: right; }
+  .exchange-depth .list-body .box-top {
+    position: relative;
+    overflow: hidden; }
+    .exchange-depth .list-body .box-top > ul {
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+      width: 100%; }
+  .exchange-depth .list-body .box-bottom {
+    position: relative;
+    overflow: hidden; }
+    .exchange-depth .list-body .box-bottom > ul {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100%; }
+  .exchange-depth .list-body ul li {
+    position: relative;
+    height: 24px;
+    line-height: 24px;
+    cursor: pointer; }
+    .exchange-depth .list-body ul li:hover {
+      background: #212845; }
+    .exchange-depth .list-body ul li.red-back {
+      animation: changeColor_red .5s linear 0s 1; }
+    .exchange-depth .list-body ul li.green-back {
+      animation: changeColor_green .5s linear 0s 1; }
+    .exchange-depth .list-body ul li .list-item {
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 2; }
+      .exchange-depth .list-body ul li .list-item span {
+        flex: 1; }
+        .exchange-depth .list-body ul li .list-item span:first-child {
+          padding-left: 10px; }
+        .exchange-depth .list-body ul li .list-item span:nth-child(2) {
+          text-align: right; }
+        .exchange-depth .list-body ul li .list-item span:last-child {
+          padding-right: 10px;
+          text-align: right; }
+      .exchange-depth .list-body ul li .list-item .red {
+        color: #b83a3a; }
+      .exchange-depth .list-body ul li .list-item .green {
+        color: #319e5c; }
+    .exchange-depth .list-body ul li > p {
+      height: 20px;
+      position: absolute;
+      right: 0px;
+      top: 2px; }
+      .exchange-depth .list-body ul li > p.red {
+        background: rgba(184, 58, 58, 0.1); }
+      .exchange-depth .list-body ul li > p.green {
+        background: rgba(49, 158, 92, 0.1); }
+  .exchange-depth .current-price-box {
+    width: 236px;
+    height: 32px;
+    line-height: 32px;
+    background: #242a42;
+    text-align: center;
+    margin: 5px auto; }
+    .exchange-depth .current-price-box .price {
+      font-size: 16px; }
+      .exchange-depth .current-price-box .price.red {
+        color: #b83a3a; }
+      .exchange-depth .current-price-box .price.green {
+        color: #319e5c; }
+    .exchange-depth .current-price-box .cny {
+      font-size: 14px;
+      color: #7583a8; }
+
+@keyframes changeColor_red {
+  0% {
+    background: rgba(184, 58, 58, 0); }
+  50% {
+    background: rgba(184, 58, 58, 0.3); }
+  100% {
+    background: rgba(184, 58, 58, 0); } }
+
+@keyframes changeColor_green {
+  0% {
+    background: rgba(49, 158, 92, 0); }
+  50% {
+    background: rgba(49, 158, 92, 0.3); }
+  100% {
+    background: rgba(49, 158, 92, 0); } }

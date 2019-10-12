@@ -1,0 +1,71 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.exchange-assets {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 12px 8px; }
+  .exchange-assets > h3 {
+    font-size: 12px;
+    padding-bottom: 5px; }
+  .exchange-assets .eye-open, .exchange-assets .eye-close {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    cursor: pointer; }
+  .exchange-assets .eye-open {
+    background: url("../../../images/eye-open.svg") left top no-repeat;
+    background-size: 100% 100%; }
+  .exchange-assets .eye-close {
+    background: url("../../../images/eye-close.svg") left top no-repeat;
+    background-size: 100% 100%; }
+  .exchange-assets .no-login {
+    font-size: 12px; }
+    .exchange-assets .no-login .money {
+      color: #7583a8;
+      font-size: 18px;
+      margin-right: 10px; }
+    .exchange-assets .no-login .to-login, .exchange-assets .no-login .to-register {
+      color: #2b93f6;
+      padding: 0px 4px; }
+      .exchange-assets .no-login .to-login:hover, .exchange-assets .no-login .to-register:hover {
+        color: #5f8ed4; }
+  .exchange-assets .login {
+    font-size: 16px; }
+    .exchange-assets .login .price {
+      font-size: 14px;
+      color: #7583a8; }

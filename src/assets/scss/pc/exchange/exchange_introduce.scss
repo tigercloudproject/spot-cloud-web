@@ -1,0 +1,154 @@
+@import '../../base.scss';
+.coin-basics-box {
+    width: 100%;
+    min-height: 500px;
+    background: $exchangeBodyBack;
+    // margin-top: 10px;
+    // padding: 0px 15px;
+    //padding-bottom: 40px;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+    .coin-basics-title {
+        height: 42px;
+        line-height: 42px;
+        background:$exchangeBodyTitBack;
+        color: $exchangeTextColorWhite;
+        font-size: 14px;
+        position: relative;
+        padding-left: 30px;
+        padding-right: 15px;
+        cursor: pointer;
+        a {
+            color: $exchangeTextColorBlue;
+            float: right;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            i {
+                font-size: 12px;
+            }
+            &:hover {
+                color: $exchangeTextColorBlue2;
+            }
+        }
+        .right-icon{
+            display:inline-block;
+            width: 12px;
+            height: 12px;
+            font-size: 12px;
+            margin-right: 5px;
+            transform-origin:50% 50%;
+            transform: "rotate(90deg)";
+            transition: all .15s;
+            position: absolute;
+            left: 15px;
+            // left: 15px;
+            top: 14px;
+            background: url("../../../images/right.svg") left top no-repeat;
+            background-size: 100% 100%;
+        }
+    }
+    .coin-basics-con {
+        display: flex;
+        font-size: 12px;
+        //padding-top: 20px;
+        height: auto;
+        transition: height 0.5s;
+        overflow: hidden;
+        padding: 0px 15px;
+        .left {
+            flex: 1;
+            padding-right: 40px;
+            padding-top: 20px;
+            padding-bottom: 40px;
+            .icon-box {
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                .coin-icon {
+                    height: 48px;
+                }
+                .coin-name {
+                    color: #5f8ed4;
+                    font-size: 28px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+                .coin-full-name {
+                    color: $bbxBlue1;
+                    font-size: 18px;
+                }
+            }
+            h3 {
+                color: $bbxBlue1;
+                border-bottom: 1px solid #2f3752;
+                padding-bottom: 10px;
+            }
+            p {
+                color: $exchangeTextColorWhite;
+                padding-top: 10px;
+                line-height: 2.4;
+            }
+        }
+        .right {
+            flex: 1;
+            padding-left: 40px;
+            padding-top: 20px;
+            padding-bottom: 40px;
+            table {
+                width: 100%;
+                color: $exchangeTextColorWhite;
+                td {
+                    border-bottom: 1px solid #2d3650;
+                    height: 50px;
+                    line-height: 50px;
+                    &:first-child {
+                        //color: #8ea6ca;
+                        color: $bbxBlue1;
+                    }
+                    a {
+                        color: #2b93f6;
+                        &:hover {
+                            text-decoration: underline;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {  
+    .coin-basics-box {
+        .coin-basics-title { 
+            height: auto;
+            a {
+                display: flex;
+                font-size: 12px;
+                float: right;
+                .link {
+                    width: 170px;
+                }
+            }
+        }
+        .coin-basics-con {
+            flex-direction: column;
+            .left {
+                padding-right: 0px;
+                padding-bottom: 10px;
+            }
+            .right {
+                padding-left: 0px;
+                table {
+                    th,td {
+                        word-break: keep-all;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+        
+    }
+}

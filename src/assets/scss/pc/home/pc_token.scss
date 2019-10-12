@@ -1,0 +1,45 @@
+@import '../../base.scss';
+.pc-token {
+    width : 100%;
+    background: $bbxBackground1;
+    padding-top: 20px;
+    
+    .pc-token-center {
+        background: $bbxBackground1;
+        @extend .center-container;
+        padding-bottom: 100px;
+    }
+    .pc-token-tit {
+        font-size: 20px;
+        text-align: center;
+        color: $bbxGray;
+        padding: 10px 0px;
+    }
+    .pc-token-desc {
+        font-size: 12px;
+        text-align: center;
+        color: $bbxBlue1;
+        width: 780px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    .pc-token-list {
+        width: 100%;
+        li {
+            text-align: center;
+            float: left;
+            width: 33%;
+            padding-top: 100px;
+            img {
+                width: 120px;
+                height: 120px;
+            }
+            p {
+                font-size: 16px;
+                color: $bbxGray;
+                padding: 10px 0px;
+            }
+        }
+        
+    }
+}

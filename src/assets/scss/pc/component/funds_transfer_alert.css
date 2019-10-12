@@ -1,0 +1,160 @@
+.funds-transfer-alert {
+  width: 100%;
+  position: relative; }
+  .funds-transfer-alert .funds-transfer-mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.5); }
+  .funds-transfer-alert .close-btn {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: -16px;
+    top: -16px;
+    background: url("../../../images/icon-close-TC.png") center center no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer; }
+  .funds-transfer-alert .funds-transfer-box {
+    position: fixed;
+    width: 600px;
+    height: 350px;
+    left: 50%;
+    top: 50%;
+    margin-left: -300px;
+    margin-top: -175px;
+    background: #ecf2f7;
+    border-radius: 2px; }
+    .funds-transfer-alert .funds-transfer-box .funds-transfer-tit {
+      height: 60px;
+      text-align: center;
+      color: #1f2636;
+      font-size: 20px;
+      border-bottom: 1px solid #d5e0ee;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .funds-transfer-alert .funds-transfer-box .funds-transfer-tit .coin-select {
+        color: #1f2636; }
+        .funds-transfer-alert .funds-transfer-box .funds-transfer-tit .coin-select .bbx-select-list {
+          color: #5b6585;
+          border-radius: 2px;
+          padding: 0px;
+          font-size: 14px; }
+          .funds-transfer-alert .funds-transfer-box .funds-transfer-tit .coin-select .bbx-select-list li {
+            border-bottom: none;
+            height: 30px;
+            line-height: 30px; }
+            .funds-transfer-alert .funds-transfer-box .funds-transfer-tit .coin-select .bbx-select-list li:hover {
+              background: #f5f7fb; }
+    .funds-transfer-alert .funds-transfer-box .funds-transfer-con {
+      width: 100%;
+      padding: 0px 100px;
+      box-sizing: border-box; }
+      .funds-transfer-alert .funds-transfer-box .funds-transfer-con .transfer {
+        width: 100%;
+        height: 95px;
+        position: relative;
+        display: flex;
+        align-items: center; }
+        .funds-transfer-alert .funds-transfer-box .funds-transfer-con .transfer .transfer-item {
+          position: absolute;
+          color: #1f2636;
+          transition: all .5s;
+          font-size: 20px; }
+          .funds-transfer-alert .funds-transfer-box .funds-transfer-con .transfer .transfer-item select {
+            background: none;
+            border: none;
+            margin: 0px;
+            padding: 0px;
+            text-align: left;
+            align-items: start;
+            outline: none; }
+        .funds-transfer-alert .funds-transfer-box .funds-transfer-con .transfer .exchange-icon {
+          display: block;
+          width: 35px;
+          height: 35px;
+          margin: 0 auto;
+          cursor: pointer;
+          background: url("../../../images/icon-exchange_nor.png") center center no-repeat; }
+          .funds-transfer-alert .funds-transfer-box .funds-transfer-con .transfer .exchange-icon:hover {
+            background: url("../../../images/icon-exchange_sel.png") center center no-repeat; }
+      .funds-transfer-alert .funds-transfer-box .funds-transfer-con .amount-box {
+        display: flex;
+        color: #000; }
+        .funds-transfer-alert .funds-transfer-box .funds-transfer-con .amount-box label {
+          flex-basis: 62px;
+          width: 62px;
+          padding-top: 14px; }
+        .funds-transfer-alert .funds-transfer-box .funds-transfer-con .amount-box .form-control {
+          flex: 1; }
+          .funds-transfer-alert .funds-transfer-box .funds-transfer-con .amount-box .form-control input {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #d0d7e1;
+            background: #ffffff;
+            outline: none;
+            padding: 0px 10px; }
+          .funds-transfer-alert .funds-transfer-box .funds-transfer-con .amount-box .form-control .amount-info {
+            padding-top: 10px; }
+            .funds-transfer-alert .funds-transfer-box .funds-transfer-con .amount-box .form-control .amount-info span {
+              color: #4d5d8e; }
+            .funds-transfer-alert .funds-transfer-box .funds-transfer-con .amount-box .form-control .amount-info a {
+              float: right;
+              cursor: pointer; }
+      .funds-transfer-alert .funds-transfer-box .funds-transfer-con .btn-box {
+        display: flex;
+        padding-top: 30px; }
+        .funds-transfer-alert .funds-transfer-box .funds-transfer-con .btn-box button {
+          flex: 1;
+          height: 50px;
+          text-align: center;
+          border: none;
+          border-radius: 2px;
+          cursor: pointer;
+          outline: none;
+          font-size: 18px; }
+          .funds-transfer-alert .funds-transfer-box .funds-transfer-con .btn-box button:nth-of-type(1) {
+            margin-right: 10px;
+            border: 1px solid #5dacf6;
+            color: #5dacf6;
+            background: #ecf2f7; }
+            .funds-transfer-alert .funds-transfer-box .funds-transfer-con .btn-box button:nth-of-type(1):hover {
+              background: #fff; }
+          .funds-transfer-alert .funds-transfer-box .funds-transfer-con .btn-box button:nth-of-type(2) {
+            margin-left: 10px;
+            background: #2b93f6;
+            color: #fff; }
+            .funds-transfer-alert .funds-transfer-box .funds-transfer-con .btn-box button:nth-of-type(2):hover {
+              background: rgba(43, 147, 246, 0.8); }
+
+@media screen and (max-width: 600px) {
+  .funds-transfer-alert .funds-transfer-box {
+    position: fixed;
+    width: 300px;
+    height: 280px;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -140px;
+    background: #ecf2f7;
+    border-radius: 2px; }
+    .funds-transfer-alert .funds-transfer-box .funds-transfer-tit {
+      height: 40px;
+      font-size: 1.2rem; }
+    .funds-transfer-alert .funds-transfer-box .funds-transfer-con {
+      padding: 0px 20px; }
+      .funds-transfer-alert .funds-transfer-box .funds-transfer-con .transfer {
+        height: 64px; }
+        .funds-transfer-alert .funds-transfer-box .funds-transfer-con .transfer .transfer-item {
+          font-size: 1rem; }
+      .funds-transfer-alert .funds-transfer-box .funds-transfer-con .amount-box label {
+        padding-top: 9px; }
+      .funds-transfer-alert .funds-transfer-box .funds-transfer-con .amount-box .form-control input {
+        height: 40px; }
+      .funds-transfer-alert .funds-transfer-box .funds-transfer-con .btn-box button {
+        height: 40px;
+        font-size: 1rem; } }

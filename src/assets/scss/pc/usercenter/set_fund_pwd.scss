@@ -1,0 +1,144 @@
+@import '../../base.scss';
+.set-fund-pwd-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .set-fund-pwd-mask {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        background: rgba(0,0,0,0.3);
+        z-index: 10010;
+    }
+    .set-fund-pwd-block {
+        width: 442px;
+        height: 482px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin-left: -221px;
+        margin-top: -241px;
+        background: #ecf2f7;
+        z-index: 10011;
+        padding: 50px 40px;
+        box-sizing: border-box;
+        text-align: center;
+        border-radius: 2px;
+        .close-btn {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            right: -16px;
+            top: -16px;
+            background: url("../../../images/icon-close-TC.png") center center no-repeat;
+            background-size: 100% 100%;
+            cursor: pointer;
+        }
+        .set-fund-pwd-title {
+            color: #1f2636;
+            font-size: 20px;
+            margin-bottom: 0px;
+        }
+        .tip-limit-tit {
+            color: #1f2636;
+            font-size: 20px;
+            border-bottom: 1px solid #d8e3ef;
+        }
+        .set-fund-pwd-sub-title {
+            color: #1f2636;
+            font-size: 12px;
+            padding-top: 10px;
+            padding-bottom: 25px;
+            margin-bottom: 0px;
+        }
+        .set-pwd-form {
+            width: 100%;
+            label {
+                display: block;
+                text-align: left;
+                font-size: 14px;
+                padding: 12px 0px;
+            }
+            .set-pwd-control {
+                height: 60px;
+            }
+        }
+        .set-fund-pwd-error {
+            //background: red;
+            width: 100%;
+            height: 20px;
+            // padding-top: 20px;
+            color: rgb(184, 58, 58);
+            text-align: left;
+            margin-bottom: 0px;
+            margin-top: 20px;
+        }
+        .set-fund-pwd-btn {
+            width: 100%;
+            height: 60px;
+            text-decoration: none;
+            color: #fff;
+            border: none;
+            background: #2b93f6;
+            text-align: center;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 2px;
+            outline: none;
+            &:hover {
+                background: rgba(43,147,246,0.9);
+            }
+            &:disabled {
+                background: $bbxBlue1;
+            }
+        }
+        .effective-time {
+            text-align: center;
+            padding-top: 20px;
+            a {
+                cursor: default;
+            }
+        }
+        .reset-fund-password {
+            color: #1f2636;
+            text-align: center;
+            padding-top: 20px;
+        }
+        .tip-limit-con {
+            font-size: 14px;
+            padding: 40px 0px;
+        }
+        .confirm-btn-box {
+            padding-top: 20px;
+            button {
+                width:166px;
+                height: 50px;
+                // margin: 0px 15px;
+                cursor: pointer;
+                font-size: 18px;
+                border-radius: 2px;
+                outline: none;
+                border: none;
+                color: #fff;
+            }
+            .confirm{
+                background: #2b93f6;
+                margin-left: 15px;
+                &:hover {
+                    background: rgba(43,147,246,0.9);
+                }
+            }
+            .cancel {
+                background: $bbxBlue1;
+                margin-right: 15px;
+                &:hover {
+                    background: rgba(133,147,169,0.8);
+                }
+            }
+        }
+
+    }
+}

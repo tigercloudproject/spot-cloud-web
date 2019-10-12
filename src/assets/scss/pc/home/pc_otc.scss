@@ -1,0 +1,114 @@
+@import '../../base.scss';
+
+.pc-otc-box {
+    width: 100%;
+    height: 70px;
+    background: $bbxBackground1;
+    // margin-top: 15px;
+    h3, p {
+        margin: 0px;
+    }
+    ::-webkit-input-placeholder {
+    font-size: 14px;
+    color: #868c98; }
+
+    :-moz-placeholder {
+    /* Firefox 18- */
+    font-size: 14px;
+    color: #868c98; }
+
+    ::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 14px;
+    color: #868c98; }
+
+    :-ms-input-placeholder {
+    font-size: 14px;
+    color: #868c98; }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .pc-otc-title {
+        color: #edf3ff;
+        font-size: 20px;
+        font-weight: 400;
+    }
+    .pc-otc-price {
+        font-size: 14px;
+        color: #99afc7;
+        margin-left: 35px;
+        min-width: 90px;
+    }
+    .pc-otc-input {
+        height: 35px;
+        line-height: 35px;
+        background: #ffffff;
+        width: 228px;
+        margin-left: 40px;
+        padding-left: 15px;
+        border: none;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+        outline: none;
+    }
+    .coin {
+        display: inline-block;
+        height: 35px;
+        line-height: 35px;
+        background: #ffffff;
+        color: #767c8c;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        padding-right: 15px;
+        margin-right: 40px;
+    }
+    .pc-otc-buy-btn {
+        display: inline-block;
+        min-width: 120px;
+        padding: 0px 10px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        background: #2b93f6;
+        color: #fff;
+        border-radius: 2px;
+        cursor: pointer;
+        &:hover {
+            background: #2F9DF7;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {  
+    .pc-otc-box {
+        display: block;
+        height: auto;
+        padding: 10px;
+        box-sizing: border-box;
+        .pc-otc-title {
+            font-size: 1.2rem;
+        }
+        .pc-otc-price { 
+            margin-left: 0px;
+            font-size: 1rem;
+            padding-bottom: 10px;
+            padding-top: 5px;
+        }
+        .pc-otc-buy-box {
+            display: flex;
+            
+            .coin {
+                margin-right: 10px;
+            }
+            .pc-otc-input { 
+                margin-left: 0px;
+                width: auto;
+                flex:1;
+            }
+            .pc-otc-buy-btn { 
+                // margin-right: 10px;
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+.bbx-tip-box {
+    display: inline-block;
+    position: relative;
+    margin-left: 10px;
+    cursor: pointer;
+    .bbx-tip-desc {
+        display: none;
+        padding: 5px 10px;
+        position: absolute;
+        right: 0px;
+        top: 20px;
+        white-space:nowrap;
+        background: #405b83;
+        color: #fff;
+        border: 1px solid #618fd2;
+    }
+    &:hover {
+        .bbx-tip-desc {
+            display: block;
+        }
+       
+    }
+    
+    
+}

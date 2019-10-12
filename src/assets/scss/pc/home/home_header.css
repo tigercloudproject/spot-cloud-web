@@ -1,0 +1,338 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.pc-header-box {
+  width: 100%; }
+  .pc-header-box .pc-header {
+    width: 100%;
+    min-width: 1230px;
+    height: 60px;
+    box-sizing: border-box;
+    background: #151B2F;
+    color: #97B0D6;
+    position: relative;
+    z-index: 10010;
+    border-bottom: 1px solid rgba(49, 58, 86, 0.5);
+    padding-left: 10px;
+    padding-right: 10px; }
+    .pc-header-box .pc-header .logo {
+      text-align: center;
+      float: left;
+      padding-right: 30px; }
+      .pc-header-box .pc-header .logo img {
+        margin-top: 10px;
+        width: 80px; }
+    .pc-header-box .pc-header .exchange, .pc-header-box .pc-header .rebate, .pc-header-box .pc-header .contract, .pc-header-box .pc-header .c2c, .pc-header-box .pc-header .contract_bouns {
+      float: left;
+      height: 60px;
+      line-height: 60px;
+      padding-right: 30px;
+      font-size: 14px;
+      color: #97B0D6;
+      text-decoration: none;
+      cursor: pointer; }
+      .pc-header-box .pc-header .exchange:hover, .pc-header-box .pc-header .exchange:active, .pc-header-box .pc-header .rebate:hover, .pc-header-box .pc-header .rebate:active, .pc-header-box .pc-header .contract:hover, .pc-header-box .pc-header .contract:active, .pc-header-box .pc-header .c2c:hover, .pc-header-box .pc-header .c2c:active, .pc-header-box .pc-header .contract_bouns:hover, .pc-header-box .pc-header .contract_bouns:active {
+        color: #5f8ed4; }
+    .pc-header-box .pc-header .contract {
+      position: relative;
+      cursor: pointer;
+      margin-right: 15px; }
+      .pc-header-box .pc-header .contract .contract-beta {
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 12px;
+        background-size: 100% 100%;
+        right: 10px;
+        top: 7px; }
+      .pc-header-box .pc-header .contract > a {
+        font-weight: 400;
+        color: #97b0d6; }
+      .pc-header-box .pc-header .contract .iconDown {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        right: 15px;
+        top: 24px;
+        background: url("../../../images/icon-down.svg") left top no-repeat;
+        transform: rotate(0);
+        transition: all .3s linear; }
+      .pc-header-box .pc-header .contract > ul {
+        position: absolute;
+        left: 0px;
+        box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+        background: #283149;
+        left: 50%;
+        margin-left: -62px;
+        top: 52px;
+        border-top: none;
+        border-radius: 4px;
+        padding: 8px 0px; }
+        .pc-header-box .pc-header .contract > ul a {
+          display: block;
+          width: 100px;
+          height: 40px;
+          line-height: 40px;
+          cursor: pointer;
+          color: #BDD1EF;
+          text-align: center;
+          font-size: 14px;
+          font-weight: 400; }
+          .pc-header-box .pc-header .contract > ul a:hover, .pc-header-box .pc-header .contract > ul a.active {
+            background: #1E253B; }
+      .pc-header-box .pc-header .contract:hover .iconDown {
+        background: url("../../../images/icon-down-sel.svg") left top no-repeat;
+        transform: rotate(180deg);
+        transition: all .3s linear; }
+      .pc-header-box .pc-header .contract:hover > a {
+        color: #5f8ed4; }
+    .pc-header-box .pc-header .rebate {
+      position: relative; }
+      .pc-header-box .pc-header .rebate .rebate-icon {
+        position: absolute;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-size: 100% 100%;
+        right: 0px;
+        top: 11px; }
+    .pc-header-box .pc-header .contract_bouns {
+      position: relative; }
+      .pc-header-box .pc-header .contract_bouns .hot {
+        position: absolute;
+        display: inline-block;
+        width: 35px;
+        height: 12px;
+        background-size: 100% 100%;
+        right: 15px;
+        top: 7px; }
+    .pc-header-box .pc-header .pc-nav {
+      float: right;
+      display: flex;
+      align-items: center; }
+      .pc-header-box .pc-header .pc-nav .jump-list {
+        display: inline-block;
+        height: 60px;
+        line-height: 60px;
+        vertical-align: middle; }
+        .pc-header-box .pc-header .pc-nav .jump-list a, .pc-header-box .pc-header .pc-nav .jump-list .app-download {
+          padding: 0px 15px;
+          font-size: 14px;
+          color: #97B0D6;
+          text-decoration: none; }
+          .pc-header-box .pc-header .pc-nav .jump-list a:hover, .pc-header-box .pc-header .pc-nav .jump-list a:active, .pc-header-box .pc-header .pc-nav .jump-list .app-download:hover, .pc-header-box .pc-header .pc-nav .jump-list .app-download:active {
+            color: #5f8ed4; }
+        .pc-header-box .pc-header .pc-nav .jump-list .contract-help {
+          position: relative; }
+          .pc-header-box .pc-header .pc-nav .jump-list .contract-help .hot {
+            position: absolute;
+            display: inline-block;
+            width: 35px;
+            height: 12px;
+            background-size: 100% 100%;
+            right: -8px;
+            top: -14px; }
+        .pc-header-box .pc-header .pc-nav .jump-list .app-download {
+          position: relative;
+          display: inline-block; }
+          .pc-header-box .pc-header .pc-nav .jump-list .app-download .app-name {
+            cursor: pointer; }
+            .pc-header-box .pc-header .pc-nav .jump-list .app-download .app-name:hover + .app-qr-box {
+              display: block; }
+          .pc-header-box .pc-header .pc-nav .jump-list .app-download .app-qr-box {
+            display: none;
+            position: absolute;
+            background: #fff;
+            width: 120px;
+            padding: 15px;
+            box-sizing: border-box;
+            padding-bottom: 0px;
+            left: 50%;
+            top: 50%;
+            margin-left: -60px;
+            top: 60px;
+            box-shadow: 0px 2px 5px #f2f4f6; }
+            .pc-header-box .pc-header .pc-nav .jump-list .app-download .app-qr-box .qr-code {
+              width: 90px;
+              height: 90px;
+              margin: 0 auto; }
+            .pc-header-box .pc-header .pc-nav .jump-list .app-download .app-qr-box > p {
+              width: 100%;
+              font-size: 12px;
+              color: #333333;
+              text-align: center;
+              height: 30px;
+              line-height: 30px;
+              margin: 0px; }
+      .pc-header-box .pc-header .pc-nav .app-download {
+        padding: 0px 15px;
+        font-size: 14px;
+        color: #97B0D6;
+        text-decoration: none; }
+        .pc-header-box .pc-header .pc-nav .app-download:hover, .pc-header-box .pc-header .pc-nav .app-download:active {
+          color: #5f8ed4; }
+      .pc-header-box .pc-header .pc-nav .app-download {
+        position: relative;
+        display: inline-block; }
+        .pc-header-box .pc-header .pc-nav .app-download .app-name {
+          cursor: pointer;
+          height: 60px;
+          line-height: 60px; }
+          .pc-header-box .pc-header .pc-nav .app-download .app-name:hover + .app-qr-box {
+            display: block; }
+        .pc-header-box .pc-header .pc-nav .app-download .app-qr-box {
+          display: none;
+          position: absolute;
+          background: #fff;
+          width: 120px;
+          padding: 15px;
+          box-sizing: border-box;
+          padding-bottom: 0px;
+          left: 50%;
+          margin-left: -60px;
+          top: 52px;
+          box-shadow: 0px 2px 5px #f2f4f6; }
+          .pc-header-box .pc-header .pc-nav .app-download .app-qr-box .qr-code {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto; }
+          .pc-header-box .pc-header .pc-nav .app-download .app-qr-box > p {
+            width: 100%;
+            font-size: 12px;
+            color: #333333;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            margin: 0px; }
+      .pc-header-box .pc-header .pc-nav .no-login {
+        display: inline-block; }
+      .pc-header-box .pc-header .pc-nav .sign-in, .pc-header-box .pc-header .pc-nav .log-in {
+        display: inline-block;
+        border: 1px solid #255ea3;
+        background: #1d3863;
+        min-width: 70px;
+        box-sizing: border-box;
+        padding: 0px 10px;
+        height: 28px;
+        line-height: 28px;
+        color: #fff;
+        margin: 0px 10px;
+        border-radius: 2px;
+        cursor: pointer;
+        outline: none;
+        text-align: center;
+        text-decoration: none;
+        font-size: 12px; }
+        .pc-header-box .pc-header .pc-nav .sign-in.active, .pc-header-box .pc-header .pc-nav .log-in.active {
+          background: #2b93f6;
+          color: #fff; }
+      .pc-header-box .pc-header .pc-nav .sign-in {
+        margin-left: 18px; }
+      .pc-header-box .pc-header .pc-nav .avatar-box {
+        display: inline-block;
+        width: 32px;
+        height: 32px; }
+      .pc-header-box .pc-header .pc-nav .header-assets {
+        display: inline-block;
+        padding: 0px 15px; }
+      .pc-header-box .pc-header .pc-nav .language, .pc-header-box .pc-header .pc-nav .line-switch {
+        display: inline-block;
+        padding-left: 24px;
+        font-size: 12px; }
+      .pc-header-box .pc-header .pc-nav .line-switch {
+        padding-left: 15px; }
+  .pc-header-box .pc-header-h5 {
+    width: 100%;
+    height: 50px;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    background: #151B2F;
+    color: #97B0D6;
+    position: relative;
+    z-index: 10010;
+    border: none; }
+    .pc-header-box .pc-header-h5::after {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      border-bottom: 1px solid #313A56;
+      width: 200%;
+      height: 1px;
+      transform: scale(0.5, 0.5);
+      transform-origin: left top; }
+    .pc-header-box .pc-header-h5 .menu {
+      display: flex;
+      width: 100%;
+      height: 50px;
+      align-items: center;
+      justify-content: space-between; }
+      .pc-header-box .pc-header-h5 .menu .icon-menu, .pc-header-box .pc-header-h5 .menu .icon-close {
+        width: 26px;
+        height: 26px; }
+      .pc-header-box .pc-header-h5 .menu .logo {
+        height: 30px; }
+      .pc-header-box .pc-header-h5 .menu .avatar {
+        width: 30px;
+        height: 30px; }
+    .pc-header-box .pc-header-h5 .nav-h5 {
+      width: 100%;
+      background: #111831;
+      padding: 0px 20px;
+      position: absolute;
+      left: 0px;
+      top: 50px; }
+      .pc-header-box .pc-header-h5 .nav-h5 li {
+        height: 50px;
+        line-height: 50px;
+        border: none;
+        position: relative; }
+        .pc-header-box .pc-header-h5 .nav-h5 li a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          line-height: 50px;
+          color: #eef4ff; }
+        .pc-header-box .pc-header-h5 .nav-h5 li::after {
+          content: ' ';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 200%;
+          height: 1px;
+          border-bottom: 1px solid #151B2F;
+          transform: scale(0.5, 0.5);
+          transform-origin: left top; }
+        .pc-header-box .pc-header-h5 .nav-h5 li:last-child::after {
+          border-bottom: none; }
