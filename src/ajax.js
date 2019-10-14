@@ -1,8 +1,27 @@
 import { getCookie } from "./utils/cookie.js";
-let c_host = getCookie("host");
-let host1 = "https://devapi.bbx.com/";
-// let host1 = c_host ? 'https://' + c_host + '/' : 'https://api.bbxapp.vip/';
 
+let c_host = getCookie("host");
+let host1 = ''
+  , contracts_kline = ''
+  , bbx_websocket = ''
+  , upload_img = '';
+
+// 配置
+switch ( document.domain ) {
+  case 'test.bbx.com':
+      // development
+      host1 = "https://devapi.bbx.com/";
+      contracts_kline = 'wss://devapi.bbx.com/v1/ifspot/realTime'; //我的更改  测试环境和本地
+      bbx_websocket = "wss://devapi.bbx.com/v1/ifspot/realTime";    //我的更改 测试环境和本地
+      // upload_img = "https://devfile.bbx.com/upload?type=image"
+      break;
+  default:
+      // production
+      host1 = c_host ? 'https://' + c_host + '/' : 'https://api.bbxapp.vip/';
+      contracts_kline = 'wss://' + (c_host?c_host:'api.bbxapp.vip') + '/v1/ifcontract/realTime'; //合约k线数据websocket
+      bbx_websocket = "wss://"+ (c_host ? c_host : 'api.bbxapp.vip') + "/v1/ifspot/realTime";
+      // upload_img = "https://upload.bbx.com/upload?type=image";
+};
 
 export const globalAjax = {
     g_config: host1 + "v1/ifglobal/global",
@@ -26,11 +45,7 @@ export const userAjax = {
 export const indexAjax = {
     tickers: host1 + "v1/ifquotes/tickers",
     spot_tickers: host1 + "v1/ifmarket/v2/spotTickers",
-    // contracts_kline: 'wss://' + (c_host?c_host:'api.bbxapp.vip') + '/v1/ifcontract/realTime', //线上
-    // contracts_kline: 'wss://devapi.bbx.com/v1/ifspot/realTime', //测试
-    // quote: host1 + "v1/ifcontract/quote", //获取合约k线数据
-    // bbx_websocket: "wss://"+ (c_host?c_host:'api.bbxapp.vip') + "/v1/ifspot/realTime", // 线上
-    bbx_websocket: "wss://devapi.bbx.com/v1/ifspot/realTime",    //测试
+    bbx_websocket
 }
 
 export const exchangeAjax = {
@@ -69,8 +84,7 @@ export const accountAjax = {
     // google_pwd: host1 + "v1/ifaccount/GAKey", //设置谷歌验证码相关接口
     // areas: host1 + "v1/ifglobal/areas", //获取地区列表
     // kyc: host1 + "v1/ifaccount/KYCAuth",
-    // upload_img: "https://upload.bbx.com/upload?type=image",     //KFC认证
-    // upload_img: "https://devfile.bbx.com/upload?type=image",  //KFC认证
+    // upload_img
     // set_nickname: host1 + "v1/ifaccount/user/accountName",
     // api_keys: host1 + "v1/ifaccount/apiKeys",
     // api_key: host1 + "v1/ifaccount/apiKey"

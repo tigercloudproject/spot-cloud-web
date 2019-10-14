@@ -1,5 +1,3 @@
-"use strict";
-
 const path = require("path");
 const fs = require("fs");
 const url = require("url");
@@ -8,6 +6,11 @@ const url = require("url");
 // https://github.com/facebookincubator/create-react-app/issues/637
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+
+const Production_Public_Path = 'https://bbx-static.oss-accelerate.aliyuncs.com';
+const Development_Public_Path = '/';
+
+const Default_Public_Path = process.env.RUNES_PUBLIC_PATH = process.env.RUNES_ENV === 'development' ? Development_Public_Path : Production_Public_Path;
 
 const envPublicUrl = process.env.PUBLIC_URL;
 
@@ -28,12 +31,11 @@ const getPublicUrl = appPackageJson =>
 
 // 正式环境
 function getServedPath(appPackageJson) {
-  const publicUrl = getPublicUrl(appPackageJson);
-  const servedUrl =
-    // envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : 'https://bbx-static.oss-accelerate.aliyuncs.com/');
-	envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : "/");
+    let publicUrl = getPublicUrl(appPackageJson);
+    let servedUrl = envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : Default_Public_Path );
 
-  return ensureSlash(servedUrl, true);
+    return ensureSlash(servedUrl, true);
+
 }
 // function getServedPath(appPackageJson) {
 //   const publicUrl = getPublicUrl(appPackageJson);
@@ -45,10 +47,9 @@ function getServedPath(appPackageJson) {
 
 //为了service-worker.js配置index.html测试环境
 function getServedPath1(appPackageJson) {
-  const publicUrl = getPublicUrl(appPackageJson);
-  const servedUrl =
-    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : "/");
-  return ensureSlash(servedUrl, true);
+    const publicUrl = getPublicUrl(appPackageJson);
+    const servedUrl =envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : "/");
+    return ensureSlash(servedUrl, true);
 }
 
 // config after eject: we're in ./config/

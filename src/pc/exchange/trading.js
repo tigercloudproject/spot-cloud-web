@@ -4,6 +4,7 @@ import { getQueryString } from "../../utils/getQueryString.js";
 import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { getSpotDashTwo} from "../../redux/exchange.redux.js";
+import CFG from "../../hostConfig";
 import intl from "react-intl-universal";
 @withRouter
 @connect(
@@ -201,12 +202,9 @@ class Trading extends Component {
       container_id: "tv_chart_container",
       // BEWARE: no trailing slash is expected in feed URL
       datafeed: dataFeeds,
-      //library_path: (window.location.hostname === 'localhost' ? '' : 'https://bbx-static.oss-accelerate.aliyuncs.com') + '/js/charting_library/',
-      library_path: (window.location.hostname === 'localhost' ? '' : 'https://bbx-static.oss-accelerate.aliyuncs.com') + '/js/charting_library/',
-      //library_path: "https://swap.bbx.com/js/charting_library/",
+      library_path: CFG.publicPath + '/js/charting_library/',
       locale: langObj[lang] || "en", // this.changeLocale() || 'zh',
-      //custom_css_url: 'base.css',
-      custom_css_url: 'https://bbx-static.oss-accelerate.aliyuncs.com/js/charting_library/static/base.css',
+      custom_css_url: CFG.publicPath + '/js/charting_library/static/base.css',
       debug: false,
       // Regression Trend-related functionality is not implemented yet, so it's hidden for a while
       drawings_access: {

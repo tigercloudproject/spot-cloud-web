@@ -1,5 +1,5 @@
 {
-  "name": "k-project",
+  "name": "bbx-sopt-web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -69,8 +69,9 @@
     "test": "node scripts/test.js --env=jsdom",
     "start-js": "node scripts/start.js",
     "start": "npm-run-all -p watch-css start-js",
-    "build-js": "node scripts/build.js",
+    "dev-build": "export RUNES_ENV='development' && npm-run-all build-css build-js",
     "build": "npm-run-all build-css build-js",
+    "build-js": "node scripts/build.js",
     "analyz": "NODE_ENV=production npm_config_report=true npm run deploy:prod"
   },
   "jest": {

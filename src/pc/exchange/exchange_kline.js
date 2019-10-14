@@ -3,7 +3,8 @@ import DataFeeds from "../../assets/js/datafeed3.js";
 import {connect} from "react-redux";
 import intl from "react-intl-universal";
 import { getKlineDate, getStocks } from "../../redux/trade.redux";
-import { indexAjax } from "../../ajax.js";
+import { indexAjax } from "../../ajax";
+import CFG from "../../hostConfig";
 import webSocketFn from "../../assets/js/webSocket.js";
 import "../../assets/scss/pc/exchange/exchange_kline.css";
 import { getQueryString } from "../../utils/getQueryString.js";
@@ -295,11 +296,9 @@ class ExchangeKline extends Component {
       datafeed: dataFeeds,
       // (!~window.location.hostname.indexOf('bbx') ? '' : 'https://bbx-static.oss-accelerate.aliyuncs.com') +
       //   "http://local.bbx.com/testjs/charting_library/charting_library.min.js",
-      library_path: "https://bbx-static.oss-accelerate.aliyuncs.com/js/charting_library/charting_library.min.js",
+      library_path: CFG.publicPath + "/js/charting_library/charting_library.min.js",
       locale: langObj[lang] || "en", // this.changeLocale() || 'zh',
-      // custom_css_url:
-      //   "https://bbx-static.oss-accelerate.aliyuncs.com/testjs/charting_library/static/base.css",
-      custom_css_url: "https://bbx-static.oss-accelerate.aliyuncs.com/js/charting_library/static/dash.css",
+      custom_css_url: CFG.publicPath + "/js/charting_library/static/dash.css",
       debug: false,
       toolbar_bg: "red",
       // Regression Trend-related functionality is not implemented yet, so it's hidden for a while

@@ -88,8 +88,11 @@ choosePort(HOST, DEFAULT_PORT)
       if (isInteractive) {
         clearConsole();
       }
-      console.log(chalk.cyan('Starting the development server...\n'));
-      openBrowser(urls.localUrlForBrowser);
+      console.log(chalk.cyan(`Starting the server...
+NODE_ENV: ${ process.env.NODE_ENV }
+RUNES_ENV: ${ process.env.RUNES_ENV }
+process.env.RUNES_PUBLIC_PATH: ${ process.env.RUNES_PUBLIC_PATH }
+`));      openBrowser(urls.localUrlForBrowser);
     });
 
     ['SIGINT', 'SIGTERM'].forEach(function(sig) {
