@@ -181,10 +181,6 @@ class PCHeader extends React.Component {
         })
       }
     }
-
-    login() {
-      alert('登陆')
-    }
     render() {
         let langSearch, langIndex;
         if (this.props.default && this.props.default.value) {
@@ -218,11 +214,8 @@ class PCHeader extends React.Component {
         }else {
           HeaderButton = (
             <div className="no-login">
-              {/*<NavLink to={{pathname:"/register",search:`${search}`}} activeClassName="active" className="sign-in">{intl.get("SIGNUP")}</NavLink>
+              <NavLink to={{pathname:"/register",search:`${search}`}} activeClassName="active" className="sign-in">{intl.get("SIGNUP")}</NavLink>
               <NavLink to={{pathname:"/login",search:`${search}`}} activeClassName="active" className="log-in">{intl.get("LOGIN")}</NavLink>
-              */}
-              <span activeClassName="active" className="sign-in">{intl.get("SIGNUP")}</span>
-              <span activeClassName="active" className="log-in" onClick={this.login}>{intl.get("LOGIN")}</span>
             </div>)
         }
 

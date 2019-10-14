@@ -107,11 +107,11 @@ const PCBody = Loadable({
 // });
 
 //import Login from "./pc/register/login";
-// const Login = Loadable({
-//   loader: () => import('./pc/register/login'),
-//   loading: Loading,
-//   delay: 0
-// });
+const Login = Loadable({
+  loader: () => import('./pc/register/login'),
+  loading: Loading,
+  delay: 0
+});
 
 //import Retrieval from "./pc/register/retrieval";
 // const Retrieval = Loadable({
@@ -298,7 +298,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={PCBody} />
           {/*<Route path="/register" component={Register} />*/}
-          {/*<Route path="/login" component={Login} />*/}
+          <Route path="/login" component={Login} />
           {/*<Route path="/retrieval" component={Retrieval} />*/}
           <Route path="/assets" component={Assets} />
           {/* <Route path="/contract_asset" component={ContractAssets} /> */}

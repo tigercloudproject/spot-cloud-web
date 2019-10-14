@@ -1,4 +1,4 @@
-'use strict';
+
 
 const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
@@ -9,7 +9,7 @@ const paths = require('./paths');
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
 
-var disableHostCheck = false;   // 解决 Invalid Host header
+var disableHostCheck = true;   // 解决 Invalid Host header
 
 switch ( process.env.RUNES_ENV ) {
     case 'development':
