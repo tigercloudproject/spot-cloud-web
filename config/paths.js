@@ -7,7 +7,7 @@ const url = require("url");
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
-const Production_Public_Path = 'https://bbx-static.oss-accelerate.aliyuncs.com';
+const Production_Public_Path = 'http://www.bbx.com';
 const Development_Public_Path = '/';
 
 const Default_Public_Path = process.env.RUNES_PUBLIC_PATH = process.env.RUNES_ENV === 'development' ? Development_Public_Path : Production_Public_Path;

@@ -15,3 +15,7 @@
 - F 更改`./src`前端文件的模式控制方式
 - C 调整 `.gitignore`
 - C 调整 node build 的规则
+### c
+- R 去掉 `./public/index.html` CNZZ 代码
+- C 调整 node build 配置
+- U 优化

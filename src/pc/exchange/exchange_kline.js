@@ -294,8 +294,6 @@ class ExchangeKline extends Component {
       container_id: "tv_chart_container",
       // BEWARE: no trailing slash is expected in feed URL
       datafeed: dataFeeds,
-      // (!~window.location.hostname.indexOf('bbx') ? '' : 'https://bbx-static.oss-accelerate.aliyuncs.com') +
-      //   "http://local.bbx.com/testjs/charting_library/charting_library.min.js",
       library_path: CFG.publicPath + "/js/charting_library/charting_library.min.js",
       locale: langObj[lang] || "en", // this.changeLocale() || 'zh',
       custom_css_url: CFG.publicPath + "/js/charting_library/static/dash.css",

@@ -1,27 +1,44 @@
 # 币币云 - spot-cloud-web
 
-## 部署
+## 部署本地开发环境
 
-- 生产环境部署
-    ```bash
-    # bash
-    npm run build
-    ```
-- 测试、开发环境部署
-    ```bash
-    # bash
-    npm run dev-build
-    ```
-    访问<http://test.bbx.com:3000>
-- 本地启服
-    ```bash
-    # bash
-    npm start
-    ```
-    
-## 发布至生产环境（上线）
+### 1.安装依赖
 
+- [Install Node.js 10.x](http://nodejs.org)：前端脚手架依赖
 
+### 2.部署包
+
+```bash
+# bash
+npm install
+npm install webpack -g
+```
+
+### 3.选择build模式
+
+#### 本地开发模式
+
+```bash
+# bash
+npm start
+```
+打开<http://localhost:3000>
+
+#### build开发测试版
+
+```bash
+# bash
+npm run dev-build
+```
+打包 `./build` 文件夹
+
+#### build生产版
+
+```bash
+# bash
+npm run build
+```
+打包 `./build` 文件夹
 
 ## 更改Public的步骤及逻辑
 

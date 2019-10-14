@@ -16,7 +16,7 @@ if(host.indexOf("vip")>0) {
         // production
         bbxHost = "https://www.bbx.com";
         swapHost = "https://swap.bbx.com";
-        publicPath = 'https://bbx-static.oss-accelerate.aliyuncs.com';
+        publicPath = 'http://www.bbx.com';
 }
 }
 
