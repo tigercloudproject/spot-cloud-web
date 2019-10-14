@@ -2,4 +2,5 @@
 
 ## 0.1.0.1014
 ### a
-- 调整 `.gitignore`
+- C 调整 `.gitignore`
+- A 添加Changelog
