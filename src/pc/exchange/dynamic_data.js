@@ -42,7 +42,7 @@ class DynamicData extends Component {
 
   componentWillMount() {
     this.mounted = true;
-    let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+    let coinPair = getQueryString(this.props.location.search, "coinPair");
     let coinArr = coinPair.split("/");
     this.setState({
       firstCoin: coinArr[0],
@@ -72,7 +72,7 @@ class DynamicData extends Component {
       if(this.mounted) {
         this.setState({
           currentPrice: nextProps.spot_details.tickers.lastPrice
-        });
+        }); 
       }
     }
 
@@ -81,7 +81,7 @@ class DynamicData extends Component {
       let coinPair = nextProps.exchange_current_coinpair ? nextProps.exchange_current_coinpair:getQueryString(this.props.location.search, "coinPair");
       //判断是否切换了币值对
       //if (nextProps.spot_details && this.props.spot_details && nextProps.spot_details.stock_code != this.props.spot_details.stock_code) {
-      if (nextProps.exchange_current_coinpair != this.props.exchange_current_coinpair) {
+      if (nextProps.exchange_current_coinpair != this.props.exchange_current_coinpair) { 
         //let coinPair = nextProps.spot_details.stock_code;
         let coinPair = nextProps.exchange_current_coinpair;
         let firstCoin = coinPair.split("/")[0];
@@ -98,10 +98,10 @@ class DynamicData extends Component {
       if(!nextProps.exchange_current_coinpair){
         this.getCurrentPriceUnit(coinPair, nextProps.clist.stocks);
       }
-
+      
     }
 
-
+    
     //当前价转换为美元或者人民币
     if (nextProps.clist && nextProps.clist.coin_prices && nextProps.clist.usd_rates && nextProps.spot_tickers && nextProps.spot_tickers.tickers) {
       if(nextProps.spot_details && nextProps.spot_details.ticker) {
@@ -117,7 +117,7 @@ class DynamicData extends Component {
 
         if(amountUSD===0) {
           amountUSD = webExchangeSingle(this.state.lastCoin, "USD", nextProps.spot_details.ticker.last_price, nextProps.clist.coin_prices, nextProps.clist.usd_rates, nextProps.spot_tickers.tickers);
-
+          
         }
 
         if(isNaN(amountUSD)) {
@@ -125,10 +125,10 @@ class DynamicData extends Component {
         }
 
         amountCNY = Number(amountUSD).mul(Number(cnyRate));
-
+       
         //let amountCNY = webExchangeSingle(this.state.lastCoin, "CNY", nextProps.spot_details.ticker.last_price, nextProps.clist.coin_prices, nextProps.clist.usd_rates, nextProps.spot_tickers.tickers);
         //let amountUSD = webExchangeSingle(this.state.lastCoin, "USD", nextProps.spot_details.ticker.last_price, nextProps.clist.coin_prices, nextProps.clist.usd_rates, nextProps.spot_tickers.tickers);
-
+        
         if (this.mounted) {
           this.setState({
             rateCNY: amountCNY,
@@ -148,7 +148,7 @@ class DynamicData extends Component {
 
     // console.log("buys#####",buys);
     // console.log("sells###",sells);
-
+   
 
   }
 
@@ -230,7 +230,7 @@ mergeDepthData(list,decimal_place,way){
   //数组去重
   //let uniqList = _.uniqBy(list,"decimal_price");
 
-
+  
   let unionArr = this.unionVolum(list);
 
 
@@ -318,7 +318,7 @@ render() {
     }
 
     if(buys.length>14 && this.state.showType==1) {
-
+      
       buys = buys.slice(0,14);
     }
 
@@ -406,9 +406,9 @@ render() {
         arr.push({index:i});
       }
       decimalOption = arr.map((item,index) => {
-
+       
             return (<option key={index} value={item.index}>{item.index}{intl.get("exchange_dec")}</option>)
-
+                
       })
     }
 

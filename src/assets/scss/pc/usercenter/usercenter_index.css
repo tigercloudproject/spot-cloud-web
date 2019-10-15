@@ -43,6 +43,7 @@
   .usercenter-container .assets-body {
     width: 100%;
     min-height: 485px;
+    padding-left: 280px;
     box-sizing: border-box;
     background: #171A25;
     padding-bottom: 40px; }

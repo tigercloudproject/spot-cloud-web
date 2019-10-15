@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "../../assets/scss/pc/component/dropdown.css";
 
-class DropDown extends Component { 
+class DropDown extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -44,8 +44,6 @@ class DropDown extends Component {
             })
         }
         this.props.select(item);
-        console.log(1)
-        console.log(item)
     }
 
     render() {

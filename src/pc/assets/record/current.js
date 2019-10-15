@@ -128,9 +128,9 @@ class Current extends Component {  //币币交易当前委托
             },
             {
                 title: intl.get("assets_order_thead_pairs"),
-                dataIndex: "stock_code"
+                dataIndex: "stock_code"                
             },
-
+            
             {
                 title: intl.get("assets_order_thead_type"),
                 render: (item) => {

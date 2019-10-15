@@ -43,6 +43,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
 
+
 if (process.env.HOST) {
   console.log(
     chalk.cyan(
@@ -92,7 +93,8 @@ choosePort(HOST, DEFAULT_PORT)
 NODE_ENV: ${ process.env.NODE_ENV }
 RUNES_ENV: ${ process.env.RUNES_ENV }
 process.env.RUNES_PUBLIC_PATH: ${ process.env.RUNES_PUBLIC_PATH }
-`));      openBrowser(urls.localUrlForBrowser);
+`));
+      openBrowser(urls.localUrlForBrowser);
     });
 
     ['SIGINT', 'SIGTERM'].forEach(function(sig) {

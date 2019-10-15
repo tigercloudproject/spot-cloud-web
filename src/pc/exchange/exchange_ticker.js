@@ -26,7 +26,7 @@ class ExchangeTicker extends Component {
 
   componentWillMount() {
     this.mounted = true;
-
+    
     // if (this.props.current_coin_pair) {
     //     this.props.getBbxTickerInfo(this.props.current_coin_pair);
     // }
@@ -59,7 +59,7 @@ class ExchangeTicker extends Component {
             currentCoinPriceRate: currentCoinPriceRate
           });
         }
-
+        
       }
   }
 
@@ -68,7 +68,7 @@ class ExchangeTicker extends Component {
         if(!item) {
           return null;
         }
-        let spot_tickers = this.props.bbx_ticker && this.props.bbx_ticker.ticker?this.props.bbx_ticker.ticker:[];
+        let spot_tickers = this.props.bbx_ticker && this.props.bbx_ticker.ticker?this.props.bbx_ticker.ticker:[];       
         let coin_prices = (this.props.clist && this.props.clist.coin_prices) ? this.props.clist.coin_prices : [];
         let usd_rates = (this.props.clist && this.props.clist.usd_rates) ? this.props.clist.usd_rates : [];
         let result = "-", coin="";
@@ -83,7 +83,7 @@ class ExchangeTicker extends Component {
                 result = webExchangeSingle(coin, "USD", item.last_price, coin_prices, usd_rates, spot_tickers);
               }
             }
-
+            
         if(this.props.default && (this.props.default.index === 1 || this.props.default.index === 2 )) { //中文和繁体
           let cny = this.getRates("CNY", usd_rates);
             result = Number(cny).mul(Number(result));

@@ -676,7 +676,8 @@ class Register extends Component {
                             <label htmlFor="hide"></label>
                         </span>
                         {intl.get("register_agreement")}
-                        <Link to={{pathname:"/terms",search:`${search}`}}>{intl.get("register_agreement_txt1")}</Link> <Link to={{pathname:"/risk", search:`${search}`}}>{intl.get("register_agreement_txt2")}</Link>
+                        {/* <Link to={{pathname:"/terms",search:`${search}`}}>{intl.get("register_agreement_txt1")}</Link> 
+                        <Link to={{pathname:"/risk", search:`${search}`}}>{intl.get("register_agreement_txt2")}</Link> */}
                     </p>
                     {!this.state.inSubmission?<button className="submit" onClick={this.registerSubmit} disabled={valid}>{intl.get("register_btn")}</button>:
                     <button className="ms-submission submit" disabled="disabled">{intl.get("in_the_register_btn")}<span>...</span></button>}
@@ -806,7 +807,8 @@ class Register extends Component {
                                     <label htmlFor="hide"></label>
                                 </span>
                                 {intl.get("register_agreement")}
-                                <Link to={{ pathname: "/terms", search: `${search}` }}>{intl.get("register_agreement_txt1")}</Link> <Link to={{ pathname: "/risk", search: `${search}` }}>{intl.get("register_agreement_txt2")}</Link>
+                                {/* <Link to={{ pathname: "/terms", search: `${search}` }}>{intl.get("register_agreement_txt1")}</Link> 
+                                <Link to={{ pathname: "/risk", search: `${search}` }}>{intl.get("register_agreement_txt2")}</Link> */}
                             </p>
                             {!this.state.inSubmission ? <button className="submit" onClick={this.registerSubmit} disabled={valid}>{intl.get("register_btn")}</button> :
                                 <button className="ms-submission submit" disabled="disabled">{intl.get("in_the_register_btn")}<span>...</span></button>}

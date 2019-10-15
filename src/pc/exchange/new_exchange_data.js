@@ -30,7 +30,7 @@ class NewExchangeData extends Component {
 
     componentWillMount() {
         this.mounted = true;
-        let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+        let coinPair = getQueryString(this.props.location.search, "coinPair");
         let coinArr = coinPair.split("/");
         this.setState({
             firstCoin: coinArr[0],
@@ -47,11 +47,11 @@ class NewExchangeData extends Component {
 
         //保存global配置里的stocks
         if (nextProps.clist && nextProps.clist.stocks && nextProps.clist.stocks.length > 0) {
-            let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+            let coinPair = getQueryString(this.props.location.search, "coinPair");
             this.getCurrentUnit(coinPair, nextProps.clist.stocks);
         }
 
-
+       
         //判断是否切换了币值对
         if (nextProps.spot_details && this.props.spot_details && nextProps.spot_details.stock_code != this.props.spot_details.stock_code && nextProps.clist.spot_coins) {
             let coinArr = String(nextProps.spot_details.stock_code).split("/");
@@ -61,7 +61,7 @@ class NewExchangeData extends Component {
             })
 
         }
-
+        
 
         if(nextProps.spot_details && nextProps.spot_details.trades) {
             if(this.mounted) {
@@ -148,7 +148,7 @@ class NewExchangeData extends Component {
                     <td className="time-td"><span className="time">{this.timestampToTime(item.created_at)}</span></td>
                 </tr>;
             })
-        }
+        } 
         return (
             <div className="new-exchange-data">
                 <h3 className="new-exchange-title">{intl.get("exchange_head_market_trades")}</h3>

@@ -64,16 +64,16 @@ class UserInfo extends Component {
         e.nativeEvent.stopImmediatePropagation();
         this.props.exitPost();
         this.hideList(e);
-        let search = "";
-        if (this.props.default && this.props.default.value) {
-            search = `?lang=${this.props.default.value}`;
-        }
-        if (this.state.qd!=="null") {
-            search = search ? search + `&qd=${this.state.qd}` : `?qd=${this.state.qd}`;
-        }
-
-        this.props.history.push(`/${search}`);
-
+        // let search = "";
+        // if (this.props.default && this.props.default.value) {
+        //     search = `?lang=${this.props.default.value}`;
+        // }
+        // if (this.state.qd!=="null") {
+        //     search = search ? search + `&qd=${this.state.qd}` : `?qd=${this.state.qd}`;
+        // }
+ 
+        // this.props.history.push(`/${search}`);
+       
     }
     gotoUsercenter(type) {
         let search = "";
@@ -83,7 +83,7 @@ class UserInfo extends Component {
         if(this.state.qd) {
             search = search?search+`&qd=${this.state.qd}`:`?qd=${this.state.qd}`;
         }
-
+        
         this.props.history.push(`/usercenter/account_information/${type}${search}`);
     }
 
@@ -120,25 +120,22 @@ class UserInfo extends Component {
                     </div>
                     <div className="account-menu">
                         {/* 账户安全 */}
-                        {/*<Link to={{ pathname: "/usercenter/account_security/list", search: langSearch }}>{intl.get("usercenter_menu2")}</Link>*/}
+                        {/* <Link to={{ pathname: "/usercenter/account_security/list", search: langSearch }}>{intl.get("usercenter_menu2")}</Link> */}
                         {/* 身份认证 */}
-                        {/* <Link to={{ pathname: "/usercenter/kyc", search: langSearch }}>{intl.get("kyc-title")}</Link>*/}
+                        {/* <Link to={{ pathname: "/usercenter/kyc", search: langSearch }}>{intl.get("kyc-title")}</Link> */}
                         {/* 邀请返佣 */}
-                        {/*<Link to={{ pathname: "/usercenter/rebate", search: langSearch }}>
-
+                        {/* <Link to={{ pathname: "/usercenter/rebate", search: langSearch }}>
                             <span className="hot-marker">{intl.get("rebate-menu-text")}</span>
-                        </Link>*/}
+                        </Link> */}
                         {/* 手续费等级 */}
-                        {/*<Link to={{ pathname: "/usercenter/fee_level", search: langSearch }}>{intl.get("fee-schedule-tier")}</Link>*/}
+                        {/* <Link to={{ pathname: "/usercenter/fee_level", search: langSearch }}>{intl.get("fee-schedule-tier")}</Link> */}
                         {/* API管理 */}
-                        {/*<Link to={{ pathname: "/usercenter/bbx_api", search: langSearch }}>{intl.get("api-key-menu-text")}</Link>*/}
+                        {/* <Link to={{ pathname: "/usercenter/bbx_api", search: langSearch }}>{intl.get("api-key-menu-text")}</Link> */}
                         <a className="exit" onClick={(e) => this.toExit(e)}>
                             {intl.get("header_exit")}
                         </a>
                     </div>
-
                 </div>
-
             </div>
         )
     }

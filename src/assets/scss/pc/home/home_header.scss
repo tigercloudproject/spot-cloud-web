@@ -37,7 +37,7 @@
                 color: #5f8ed4
             }
 
-
+            
         }
         .contract {
             position: relative;
@@ -48,7 +48,7 @@
                 display: inline-block;
                 width: 35px;
                 height: 12px;
-                // background: url("../../../images/hot.svg") left top no-repeat;
+                background: url("../../../images/hot.svg") left top no-repeat;
                 background-size: 100% 100%;
                 right: 10px;
                 top: 7px;
@@ -112,11 +112,11 @@
                 display: inline-block;
                 width: 16px;
                 height: 16px;
-                // background: url("../../../images/icon-hot.svg") left top no-repeat;
+                background: url("../../../images/icon-hot.svg") left top no-repeat;
                 background-size: 100% 100%;
                 right: 0px;
                 top: 11px;
-
+                
             }
         }
         .contract_bouns {
@@ -126,7 +126,7 @@
                 display: inline-block;
                 width: 35px;
                 height: 12px;
-                // background: url("../../../images/hot.svg") left top no-repeat;
+                background: url("../../../images/hot.svg") left top no-repeat;
                 background-size: 100% 100%;
                 right: 15px;
                 top: 7px;
@@ -158,7 +158,7 @@
                         display: inline-block;
                         width: 35px;
                         height: 12px;
-                        // background: url("../../../images/hot.svg") left top no-repeat;
+                        background: url("../../../images/hot.svg") left top no-repeat;
                         background-size: 100% 100%;
                         right: -8px;
                         top: -14px;
@@ -221,7 +221,7 @@
             .app-download {
                 position: relative;
                 display:inline-block;
-
+                
                 .app-name {
                     cursor: pointer;
                     height: 60px;
@@ -266,7 +266,7 @@
             .no-login {
                 display: inline-block;
             }
-
+            
             .sign-in ,.log-in{
                 display:inline-block;
                 border: 1px solid #255ea3;
@@ -303,16 +303,16 @@
                 display: inline-block;
                 padding: 0px 15px;
             }
-
+            
             .language, .line-switch  {
                 display:inline-block;
-                padding-left: 24px;
-                font-size: 12px;
+                padding-left: 24px;   
+                font-size: 12px;         
             }
             .line-switch {
                 padding-left: 15px;
             }
-
+            
         }
     }
     .pc-header-h5 {
@@ -365,7 +365,7 @@
             top: 50px;
             li {
                 //border-bottom: 1px solid $bbxNavBackground;
-
+                
                 height: 50px;
                 line-height: 50px;
                 a {
@@ -399,3 +399,5 @@
         }
     }
 }
+
+

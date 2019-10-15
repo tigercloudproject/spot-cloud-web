@@ -1,44 +1,23 @@
-# 币币云 - spot-cloud-web
+# 币币交易 - bbx-spot-web
 
-## 部署本地开发环境
+## 部署
 
-### 1.安装依赖
-
-- [Install Node.js 10.x](http://nodejs.org)：前端脚手架依赖
-
-### 2.部署包
-
-```bash
-# bash
-npm install
-npm install webpack -g
-```
-
-### 3.选择build模式
-
-#### 本地开发模式
-
-```bash
-# bash
-npm start
-```
-打开<http://localhost:3000>
-
-#### build开发测试版
-
-```bash
-# bash
-npm run dev-build
-```
-打包 `./build` 文件夹
-
-#### build生产版
-
-```bash
-# bash
-npm run build
-```
-打包 `./build` 文件夹
+- 生产环境部署
+    ```bash
+    # bash
+    npm run build
+    ```
+- 测试、开发环境部署
+    ```bash
+    # bash
+    npm run dev-build
+    ```
+    访问<http://test.bbx.com:3000>
+- 本地启服
+    ```bash
+    # bash
+    npm start
+    ```
 
 ## 更改Public的步骤及逻辑
 
@@ -50,3 +29,14 @@ npm run build
     - `./config/paths.js`
         - 依靠 `process.env.RUNES_ENV` 的值为 development 就是测试、开发环境，其他则为生产
         - `Production_Public_Path` 的值
+
+
+## 登录、退出相关逻辑
+- 退出:     pc/component/user_info  此文件内 可自行添加相关内容， 例：kyc身份认证、api管理等等。。。。
+- 登录：
+  
+- 交易页：     市场--        exchange/index.js 下 className="exchange-market-box" 容器
+              交易深度--     exchange/index.js 下 className="exchange-depth-box" 容器
+              实时成交--     exchange/index.js 下 className="exchange-transaction-box" 容器
+              公告--        exchange/index.js 下  className="exchange-notice-box" 容器
+              币种介绍--    exchange/index.js 下 className="introduce-box" 容器

@@ -57,7 +57,12 @@ $spacing: 6px;
                 margin-top: $spacing;
                 // background: orange;
             }
-
+            .exchange-notice-box {
+                width: 100%;
+                height: 400px;
+                margin-top: $spacing;
+                // background: blueviolet;
+            }
         }
         .exchange-top-middle {
             margin: 0px $spacing;
@@ -109,12 +114,18 @@ $spacing: 6px;
             min-height: 210px;
             // background: yellowgreen;
         }
+        .introduce-box {
+            width: 100%;
+            margin-top: $spacing;
+            min-height: 500px;
+            // background: yellow;
+        }
     }
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1600px) {  
 .exchange-container {
-
+    
 
     .exchange-top-s {
         display: flex;
@@ -155,7 +166,7 @@ $spacing: 6px;
 }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 700px) {  
     .exchange-container {
         width: 100%;
         min-width: 100%;
@@ -181,9 +192,6 @@ $spacing: 6px;
                 width: 100%;
                 // height: 360px;
                 margin-top: 6px;
-                .tiger {
-                  display: none;
-                }
             }
             .exchange-depth-m {
                 width: 100%;

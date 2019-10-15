@@ -3,7 +3,7 @@ import "../../assets/scss/pc/home/home_header.css";
 import { getspotTickersData } from "../../redux/index.redux.js";
 import SwitchLanguage from "./header/switch_language.js";
 import LineSwitching from "./header/line_switching.js";
-// import HeaderAssets from "./header/assets.js";
+import HeaderAssets from "./header/assets.js";
 import intl from "react-intl-universal";
 import { NavLink, Link, withRouter } from "react-router-dom";
 import UserInfo from "./header/user_info";
@@ -181,6 +181,7 @@ class PCHeader extends React.Component {
         })
       }
     }
+
     render() {
         let langSearch, langIndex;
         if (this.props.default && this.props.default.value) {
@@ -249,13 +250,25 @@ class PCHeader extends React.Component {
                 <Link to={`/${search}`} className="logo">
                   <img src={logo} alt="logo" />
                 </Link>
-
+                <div className="pc-nav-left">
+                  {
+                    this.state.firstCoinPair ?
+                          <NavLink className="exchange" activeStyle={{ color: "#5f8ed4" }} to={{ pathname: "/exchange", search: `${exchangeSearch}` }}>
+                            {intl.get("EXCHANGE")}
+                          </NavLink>
+                          : <a className="exchange">{intl.get("EXCHANGE")}</a>
+                  }
+                </div>
 
                 <nav className="pc-nav clearfix">
-                  {/*<div className="jump-list">
+                  {/* <div className="jump-list">
                     {token ? <div className="header-assets"><HeaderAssets></HeaderAssets></div> : null}
-                  </div>*/}
+                  </div> */}
+
                   {HeaderButton}
+                  {/* <div className="line-switch">
+                    <LineSwitching></LineSwitching>
+                  </div> */}
                   <div className="language">
                     <SwitchLanguage />
                   </div>
@@ -278,21 +291,37 @@ class PCHeader extends React.Component {
 
                   </div>
                   {this.state.h5MenuShow?<ul className="nav-h5" onClick={this.closeH5Menu}>
-                    <li><NavLink to={{ pathname: "/", search: `${search}`}} activeStyle={{ color: "#5f8ed4" }}>{intl.get("HOME")}</NavLink></li>
+                    {/* <li><NavLink to={{ pathname: "/", search: `${search}`}} activeStyle={{ color: "#5f8ed4" }}>{intl.get("HOME")}</NavLink></li> */}
                     <li><NavLink to={{ pathname: "/exchange", search: `${exchangeSearch}` }} activeStyle={{ color: "#5f8ed4" }}>{intl.get("EXCHANGE")}</NavLink></li>
-
-
-                    <li>
+                    {/* <li><a href={config.swapHost}>{intl.get("realTrading")}</a></li> */}
+                    {/* <li><a href={`${config.swapHost}/game/trade`}>{intl.get("simulationTrading")}</a></li> */}
+                    {/* <li><NavLink activeStyle={{ color: "#5f8ed4" }} to={{ pathname: "/c2c_trade", search: `${search}` }}>{intl.get("c2c")}</NavLink></li> */}
+                    {/* <li><a className="contract_bouns" href={`${config.swapHost}/competition`}>{intl.get("swapCompetition")}</a></li> */}
+                    {/*<li><NavLink activeStyle={{ color: "#5f8ed4" }} to={{pathname: "/super_partner", search: `${search}`}}>{intl.get("super-partners")}</NavLink></li>*/}
+                    {/* <li><a href={`${config.swapHost}/m/bonus`}>{intl.get("contractBonus")}</a></li> */}
+                    {/* <li>
+                      {token ? <NavLink activeStyle={{ color: "#5f8ed4" }} to={{ pathname: "/usercenter/rebate", search: `${search}` }}>
+                        {intl.get("rebate-menu-text")}
+                      </NavLink> : <a href={`https://support.bbx.com/hc/${lang_code.toLowerCase()}/articles/360004879913`} target="_blank">
+                          {intl.get("rebate-menu-text")}
+                        </a>}
+                    </li> */}
+                    {/* <li>
+                      <a href={`https://support.bbx.com/hc/${langCode}/sections/360001701593`} target="_blank">
+                        {intl.get("contract_help")}
+                      </a>
+                    </li> */}
+                    {/* <li>
                       <a target="_blank" href={`https://support.bbx.com/hc/${langCode}/categories/360000051514`}>
                         {intl.get("ANNOUNCEMENT")}
                       </a>
-                    </li>
+                    </li> */}
 
-                    {token ?<li>
+                    {/* {token ?<li>
                        <NavLink activeStyle={{ color: "#5f8ed4" }} to={{ pathname: "/assets", search: `${search}` }}>
                         {intl.get("ASSETS")}
                       </NavLink>
-                    </li>: null}
+                    </li>: null} */}
 
                     {langLI}
 

@@ -18,7 +18,7 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-   <!-- <link rel="stylesheet" href="/js/swiper.min.css"> -->
+	 <!-- <link rel="stylesheet" href="/js/swiper.min.css"> -->
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -54,6 +54,15 @@
             margin-left: -50px;
             margin-top: -50px;
         }
+
+        /* 隐藏站长统计 */
+        #cnzz_stat_icon_1276646148 {
+          display: none!important;
+        }
+        body > a {
+          display: none;
+        }
+        /* 隐藏站长统计结束##### */
     </style>
   </head>
   <body>
@@ -78,8 +87,30 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script src="%PUBLIC_URL%/js/intercom.js"></script>
+    <!-- <script src="%PUBLIC_URL%/intercom.js"></script> -->
     <script charset="UTF-8" type="text/javascript" src="https://cstaticdun.126.net/load.min.js"></script>
+    <!-- <script>
+       (function (m, ei, q, i, a, j, s) {
+          m[i] = m[i] || function () {
+            (m[i].a = m[i].a || []).push(arguments)
+          };
+          j = ei.createElement(q),
+            s = ei.getElementsByTagName(q)[0];
+          j.async = true;
+          j.charset = 'UTF-8';
+          j.src = 'https://static.meiqia.com/dist/meiqia.js?_=t';
+          s.parentNode.insertBefore(j, s);
+        })(window, document, 'script', '_MEIQIA');
+        _MEIQIA('entId', 133085);
+
+        // 在这里开启手动模式（必须紧跟美洽的嵌入代码）
+        _MEIQIA('manualInit');
+    </script> -->
+    <script type="text/javascript" src="https://s23.cnzz.com/z_stat.php?id=1276646148&web_id=1276646148"></script>
+    <script type="text/javascript">
+      var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+      document.write(unescape("%3Cspan id='cnzz_stat_icon_1276646148'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1276646148' type='text/javascript'%3E%3C/script%3E"));
+    </script>
   </body>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113179273-1"></script>
   <script>
@@ -107,7 +138,163 @@
     // if (window.devicePixelRatio == 3) {
     //   viewport.setAttribute('content', 'width=device-width,initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no');
     // }
+
   </script>
   <script src="%PUBLIC_URL%/js/jquery-3.2.1.min.js"></script>
   <script src="%PUBLIC_URL%/js/charting_library/charting_library.min.js"></script>
+  <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1278065735&web_id=1278065735"></script>
+  <script type="text/javascript">
+      window.onload = function () {
+          const CFG = {
+                id: 'spot', // 设置当前项目ID，对应targets内的分支
+                // 需测试的目标
+                targets: {
+                  // { url: '', method: 'POST', times: [] }
+                  // 参照线路
+                  best: { url: 'https://bbx-static.oss-accelerate.aliyuncs.com/ping' },   // 最快参考
+                  worst: { url: 'https://www.google.co.jp' },    // 最慢参考
+                  // 合约交易
+                  // swap_s1: { url: 'https://api.bbx.com/v1/ifcontract/alive' },  // API s1
+                  // swap_s2: { url: 'https://api.bbxapp.vip/v1/ifcontract/alive' }  // API s2
+                  // 币币交易
+                  spot_s1: { url: 'https://api.bbx.com/v1/ifglobal/alive' },  // API s1
+                  spot_s2: { url: 'https://api.bbxapp.vip/v1/ifglobal/alive' }  // API s2
+                },
+                // 获取IP信息
+                return_ip: {
+                  url: 'https://ip.phantasm.top/',   // json返回
+                  method: 'GET',
+                  // 自定义对接数据结构
+                  data: {
+                    ip: 'ip',
+                    country: 'country',
+                    province: 'province',
+                    city: 'city',
+                    county: 'county',
+                    isp: 'isp',
+                    area: 'area'
+                  }
+                },
+                timeout: 10000,  // ms，请求超时
+                cache_expire_time: 600,  // s，缓存时效，时间内不会再次触发
+                delay_time: 5   // s，延时请求，触发 window.onload() 后多久再触发
+            };
+
+          // 必须获取到数值 // 延时触发
+          if (typeof CFG.delay_time === 'number') {
+            window.setTimeout(function () {
+              const localStorage = window.localStorage
+              /**
+               *  获取现在的时间戳（整数秒）
+               *  @param  {boolean} [bool=false]    true则返回毫秒
+               *  @return {number}
+               */
+              const now = function (bool = false) {
+                let t = new Date().getTime()
+                return bool ? t : ~~(t / 1000)
+              }
+              // 放置在 LS 内期限时间点的 key 名，当时间到达或超过该值则触发请求
+              const reqTargetExpireTimeKey = '__REQ_TARGET_EXPIRE_TIME__'
+              // 请求触发间隔（避免短时间内频繁触发）
+              const cacheExpireTime = CFG.cache_expire_time || 600
+                // 其实时间
+              const startTime = now()
+                // 当前请求地址已完成次数
+                // TODO 目前并未对偶数数组进行求平均值计算
+              const reqComplete = function (name, val, arr) {
+                if (arr.length >= numRequests) {
+                  window._czc.push(
+                    [ '_trackEvent',
+                      name + ',' + ipInfo.isp,
+                      name + ',' + ipInfo.area,
+                      name + ',' + ipInfo.country + ',' + ipInfo.province + ',' + ipInfo.city + ',' + ipInfo.county,
+                      arr.sort()[ ~~(numRequests / 2) ],   // 排序后取中间值提交
+                      val.url ]
+                  )
+                }
+              }
+              // 每个接口请求次数
+              const numRequests = 3
+              const getIPInfo = function (cb) {
+                $.ajax({
+                  type: CFG.return_ip.method,
+                  url: CFG.return_ip.url,
+                  success(e) {
+                    var d = CFG.return_ip.data // temp
+                    // 更新
+                    ipInfo = {
+                      ip: e[ d.ip ],
+                      country: e[ d.country ],
+                      province: e[ d.province ],
+                      city: e[ d.city ],
+                      county: e[ d.county ],
+                      isp: e[ d.isp ],
+                      area: e[ d.area ]
+                    }
+                    // console.log(ipInfo)
+
+                    cb()
+                  }
+                })
+              }
+              // 请求目标
+              const ReqTarget = function () {
+                // 目标必须存在
+                if (!CFG.targets) return false
+
+                Object.keys(CFG.targets).forEach( function (key, val) {
+                  (function (key, val) {
+                    // 每个请求执行次数
+                    let cacheTimes = Array(3).fill('')  // 缓存
+
+                    // 创建
+                    if (!val.times) {
+                      val.times = []
+                    }
+
+                    // 同步执行请求次数
+                    cacheTimes.forEach(function (v, i) {
+                      v = now(true) // 毫秒
+                      // console.log(i, v)
+                      $.ajax({
+                       url: val.url,
+                       timeout: CFG.timeout,
+                       success(e) {
+                       },
+                       complete(XMLHttpRequest, status) {
+                         if (status === 'timeout') {
+                           val.times.push(-1) // 无法连接
+                           // console.log(key, val, '次数', i, '收到时间:', -1, val.times)
+                           // 调整当测速超时后，不把超时数据-1和正常数据合并在一起，会更改名称为 `x ` 开头，从而进行区分
+                           reqComplete( 'x ' + key, val, val.times)
+                         } else {
+                           let t = now(true)
+                           val.times.push(t - v)  // 更新
+                           // console.log(key, val, '次数:', i, '收到时间:', t, val.times)
+                           reqComplete(key, val, val.times)
+                         }
+                       }
+                     })
+                    })
+                  })(key, CFG.targets[key])
+                })
+
+                // 同步操作（不考虑是否成功），当前时间 + 缓存时效，写入 LS
+                localStorage.setItem(reqTargetExpireTimeKey, startTime + cacheExpireTime)
+              }
+
+              // IP信息
+              let ipInfo = {}
+
+              if (!CFG || !CFG.targets || !CFG.return_ip) return false
+
+              // 查看 LS 内的期限时间点，如当前时间还未超过则中止
+              if (~~localStorage.getItem(reqTargetExpireTimeKey) > startTime) return false
+
+              getIPInfo(ReqTarget)
+              // console.log('getIPInfo')
+            }, (CFG.delay_time || 5) * 1000)
+          }
+      };
+  </script>
 </html>

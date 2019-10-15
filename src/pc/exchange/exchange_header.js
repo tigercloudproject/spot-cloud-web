@@ -79,16 +79,16 @@ class ExchangeHeader extends Component {
 
   }
 
-
+  
 
   async componentWillMount() {
     this.mounted = true;
-    let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+    let coinPair = getQueryString(this.props.location.search, "coinPair");
     if(this.mounted) {
       this.setState({
         currentCoinPair: coinPair
       })
-    }
+    }    
   }
 
   componentDidMount() {
@@ -113,11 +113,11 @@ class ExchangeHeader extends Component {
     clearTimeout(this.spot_detail_timmer);
     this.spot_ticker_timmer = null;
     this.spot_detail_timmer = null;
-    this.props.changeCurrentCoinPair('');
+    this.props.changeCurrentCoinPair(''); 
   }
 
   componentWillReceiveProps(nextProps) {
-    let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+    let coinPair = getQueryString(this.props.location.search, "coinPair");
     if(nextProps.clist.stocks && nextProps.spot_details && nextProps.spot_details.ticker) {
       let price_unit = ["last_price", "rise_fall_value", "high", "low"];
       let vol_unit = ["total_volume"];
@@ -132,16 +132,16 @@ class ExchangeHeader extends Component {
           });
         }
       }
-
+      
       //if(this.props.spot_details!==nextProps.spot_details) {
         clearTimeout(this.spot_detail_timmer);
         this.spot_detail_timmer = setTimeout(() => {
           this.props.getSpotDetails(coinPair);
         }, 2000)
       //}
-
+      
     }
-
+ 
     if(nextProps.clist.stocks && nextProps.spot_tickers && nextProps.spot_tickers.tickers){
       // console.log("nextProps.clist.stocks###", nextProps.clist.stocks);
       // console.log("nextProps.spot_tickers.tickers###", nextProps.spot_tickers.tickers);
@@ -380,17 +380,17 @@ class ExchangeHeader extends Component {
       search = search + `&qd=${this.state.qd}`;
     }
 
-    this.props.history.push(`${search}`);
+    this.props.history.push(`/exchange${search}`);
     if (this.mounted) {
       this.setState({
         currentCoinPair: item.stock_code
       })
     }
-
+    
     this.props.changeCurrentCoinPair(item.stock_code); //切换当前币值对
     this.props.getSpotDetails(item.stock_code);
     this.stockSelectModelHide();
-
+  
   }
 
 
@@ -423,7 +423,7 @@ class ExchangeHeader extends Component {
               </li>
     })
 
-
+    
 
     let currentPriceRate;
     if(this.props.default && this.props.default.index) {
@@ -489,7 +489,7 @@ class ExchangeHeader extends Component {
             </div>
           </div>
         </div>
-
+      
         <ul className="exchange-num-list">
           <li className="current-price">
             <h6>{intl.get("exchange_thead_current")}：{ticker.last_price}</h6>
@@ -528,7 +528,7 @@ class ExchangeHeader extends Component {
             <p>{intl.get("exchange_head_total")} ( {this.getLastCode(stock_code)} )</p>
           </li>
           <li>
-
+            
           </li>
         </ul>
       </div>;

@@ -50,7 +50,9 @@ class Exchange extends Component {
                             <div className="exchange-market-box">
                                 <Market></Market>
                             </div>
-
+                            <div className="exchange-notice-box">
+                                <Notice></Notice>
+                            </div>
                         </div>
                         <div className="exchange-top-middle">
                             <div className="exchange-ticker-box">
@@ -76,7 +78,9 @@ class Exchange extends Component {
                         <div className="record-list-box">
                             <RecordList></RecordList>
                         </div>
-
+                        <div className="introduce-box">
+                            <Introduce></Introduce>
+                        </div>
                     </div>
                 </div>
             </MediaQuery>
@@ -103,7 +107,7 @@ class Exchange extends Component {
                     <div className="exchange-transaction-m">
                         <Transaction></Transaction>
                     </div>
-                    <div className="exchange-introduce-m" style={{"display": "none"}}>
+                    <div className="exchange-introduce-m">
                         <Introduce></Introduce>
                     </div>
 

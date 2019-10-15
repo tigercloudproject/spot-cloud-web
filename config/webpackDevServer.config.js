@@ -1,4 +1,4 @@
-
+'use strict';
 
 const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
@@ -9,7 +9,7 @@ const paths = require('./paths');
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
 
-var disableHostCheck = true;   // 解决 Invalid Host header
+var disableHostCheck = false;   // 解决 Invalid Host header
 
 switch ( process.env.RUNES_ENV ) {
     case 'development':
@@ -37,7 +37,7 @@ module.exports = function(proxy, allowedHost) {
     // specified the `proxy` setting. Finally, we let you override it if you
     // really know what you're doing with a special environment variable.
     disableHostCheck:
-        disableHostCheck || !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === 'true',
+      disableHostCheck || !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === 'true',
     // Enable gzip compression of generated files.
     compress: true,
     // Silence WebpackDevServer's own logs since they're generally not useful.

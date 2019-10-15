@@ -21,7 +21,7 @@ import { getCookie } from "../../utils/cookie.js";
 import ExchangeRecord from "./exchange_transaction_record.js"; // 币币交易记录
 // import SwapRecord from "./swap_transaction_record.js"; // 合约交易记录
 // import SwapCapitalFlow from "./swap_capital_flow.js"; // 合约资金记录
-import ExchangeCapitalFlow from "./exchange_capital_flow.js"; // 币币资金记录
+// import ExchangeCapitalFlow from "./exchange_capital_flow.js"; // 币币资金记录
 // import WithdrawAddress from "./withdraw_address.js";
 
 
@@ -69,7 +69,7 @@ class AssetsIndex extends Component {
     }
   }
   componentDidMount() {
-
+    
   }
 
   componentWillReceiveProps(nextProps) {
@@ -114,7 +114,7 @@ class AssetsIndex extends Component {
         </MediaQuery> */}
         {/* <div className="assets-body-box"> */}
           {/* <MediaQuery minWidth={676}>
-              <Menu menuList={this.state.menuList} accountType={intl.get("contract_coin_account")} />
+              <Menu menuList={this.state.menuList} accountType={intl.get("contract_coin_account")} />  
           </MediaQuery> */}
           <div className="assets-body">
             {/* <div className="assets-left"> */}
@@ -129,23 +129,23 @@ class AssetsIndex extends Component {
                 <Route exact path={`${this.props.match.url}/rebate`} component={Rebate} /> */}
                 {/* {!this.state.token ? <Redirect to={{ pathname: "/login", search: `${langSearch}` }} /> : null} */}
                 {/* 改版中 */}
-                {/*<Route exact path={`${this.props.match.url}/deposit`} component={Deposit}></Route> */}
-                {/*<Route exact path={`${this.props.match.url}/withdraw`} component={Withdraw}></Route>*/}
-                {/*<Route exact path={`${this.props.match.url}/withdraw/:type`} component={Withdraw}></Route>*/}
-                {/*<Route exact path={`${this.props.match.url}/exchange_account`} component={ExchangeAccount}></Route>*/}
-                {/* <Route exact path={`${this.props.match.url}/swap_account`} component={SwapAccount}></Route>*/}
+                {/* <Route exact path={`${this.props.match.url}/deposit`} component={Deposit}></Route> */}
+                {/* <Route exact path={`${this.props.match.url}/withdraw`} component={Withdraw}></Route> */}
+                {/* <Route exact path={`${this.props.match.url}/withdraw/:type`} component={Withdraw}></Route> */}
+                {/* <Route exact path={`${this.props.match.url}/exchange_account`} component={ExchangeAccount}></Route> */}
+                {/* <Route exact path={`${this.props.match.url}/swap_account`} component={SwapAccount}></Route> */}
                 <Route exact path={`${this.props.match.url}/exchange_record/:type`} component={ExchangeRecord}></Route>
                 <Route exact path={`${this.props.match.url}/exchange_record`} component={ExchangeRecord}></Route>
-                {/*<Route exact path={`${this.props.match.url}/swap_record/:type`} component={SwapRecord}></Route>*/}
-                {/*<Route exact path={`${this.props.match.url}/swap_record`} component={SwapRecord}></Route>*/}
-                {/*<Route exact path={`${this.props.match.url}/swap_capital_flow`} component={SwapCapitalFlow}></Route>*/}
-                <Route exact path={`${this.props.match.url}/exchange_capital_flow`} component={ExchangeCapitalFlow}></Route>
-                {/*<Route exact path={`${this.props.match.url}/withdraw_address`} component={WithdrawAddress}></Route>*/}
+                {/* <Route exact path={`${this.props.match.url}/swap_record/:type`} component={SwapRecord}></Route> */}
+                {/* <Route exact path={`${this.props.match.url}/swap_record`} component={SwapRecord}></Route> */}
+                {/* <Route exact path={`${this.props.match.url}/swap_capital_flow`} component={SwapCapitalFlow}></Route> */}
+                {/* <Route exact path={`${this.props.match.url}/exchange_capital_flow`} component={ExchangeCapitalFlow}></Route> */}
+                {/* <Route exact path={`${this.props.match.url}/withdraw_address`} component={WithdrawAddress}></Route> */}
               </Switch>
             {/* </div> */}
           </div>
         {/* </div> */}
-
+        
       </div>;
   }
 }

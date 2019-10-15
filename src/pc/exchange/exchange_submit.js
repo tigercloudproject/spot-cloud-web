@@ -203,7 +203,7 @@ class PayBix extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';  //币币云适用
+    let coinPair = getQueryString(this.props.location.search, "coinPair");
     let token = getCookie("token");
 
     if(this.mounted) {
@@ -418,7 +418,7 @@ class PayBix extends Component {
 
     //设置美元换算价格
     if (nextProps.clist && nextProps.clist.coin_prices && nextProps.clist.usd_rates && nextProps.spot_tickers && nextProps.spot_tickers.tickers) {
-      let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';  //币币云适用
+      let coinPair = getQueryString(this.props.location.search, "coinPair");
       let coinArr = coinPair.split("/");
       //let firstCoin = coinArr[0];
       let lastCoin = coinArr[1];
@@ -1366,23 +1366,20 @@ class PayBix extends Component {
               <div className="form-control5" style={{ paddingTop: "15px" }}>
                 <div className="avbi">
                   {intl.get("exchange_form_avbl")}: {!!token ? cutOut(myasset.coin2, this.state.firstCoinVolUnit) : cutOut(0, this.state.firstCoinVolUnit)} {coin2_name}
-                {/*
-                  {
+                  {/* {
                     !!token ? <Link to={{ pathname: "/assets/deposit", search: `${search}`, state: `${coin2_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link> :
                       <Link to={{ pathname: "/login", search: `${loginSearch}`, state: `${coin2_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link>
-                  }
-                */}
+                  } */}
+
                 </div>
               </div>
               <div className="form-control5" style={{ paddingTop: "15px" }}>
                 <div className="avbi">
-                  {intl.get("exchange_form_avbl")}: {!!token ? cutOut(myasset.coin1, this.state.lastCoinVolUnit) : cutOut(0, this.state.lastCoinVolUnit)} {coin1_name}
-                {/*
-                  {
+                  {/* {intl.get("exchange_form_avbl")}: {!!token ? cutOut(myasset.coin1, this.state.lastCoinVolUnit) : cutOut(0, this.state.lastCoinVolUnit)} {coin1_name} */}
+                  {/* {
                     !!token ? <Link to={{ pathname: "/assets/deposit", search: `${search}`, state: `${coin1_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link> :
                       <Link to={{ pathname: "/login", search: `${loginSearch}`, state: `${coin1_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link>
-                  }
-                */}
+                  } */}
                 </div>
               </div>
             </div>

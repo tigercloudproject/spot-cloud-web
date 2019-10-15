@@ -1,26 +1,28 @@
 import { getCookie } from "./utils/cookie.js";
 
+// let host1 = getHost();
 let c_host = getCookie("host");
 let host1 = ''
   , contracts_kline = ''
   , bbx_websocket = ''
   , upload_img = '';
 
+
 // 配置
 switch ( document.domain ) {
-  case 'test.bbx.com':
-      // development
-      host1 = "https://devapi.bbx.com/";
-      contracts_kline = 'wss://devapi.bbx.com/v1/ifspot/realTime'; //我的更改  测试环境和本地
-      bbx_websocket = "wss://devapi.bbx.com/v1/ifspot/realTime";    //我的更改 测试环境和本地
-      // upload_img = "https://devfile.bbx.com/upload?type=image"
-      break;
-  default:
-      // production
-      host1 = c_host ? 'https://' + c_host + '/' : 'https://api.bbxapp.vip/';
-      contracts_kline = 'wss://' + (c_host?c_host:'api.bbxapp.vip') + '/v1/ifcontract/realTime'; //合约k线数据websocket
-      bbx_websocket = "wss://"+ (c_host ? c_host : 'api.bbxapp.vip') + "/v1/ifspot/realTime";
-      // upload_img = "https://upload.bbx.com/upload?type=image";
+    case 'test.bbx.com':
+        // development
+        host1 = "https://devapi.bbx.com/";
+        // contracts_kline = 'wss://devapi.bbx.com/v1/ifspot/realTime'; //测试环境和本地
+        bbx_websocket = "wss://devapi.bbx.com/v1/ifspot/realTime";    //测试环境和本地
+        // upload_img = "https://devfile.bbx.com/upload?type=image"
+        break;
+    default:
+        // production
+        host1 = c_host ? 'https://' + c_host + '/' : 'https://api.bbxapp.vip/';
+        // contracts_kline = 'wss://' + (c_host?c_host:'api.bbxapp.vip') + '/v1/ifcontract/realTime'; //合约k线数据websocket
+        bbx_websocket = "wss://"+ (c_host?c_host:'api.bbxapp.vip') + "/v1/ifspot/realTime";
+        // upload_img = "https://upload.bbx.com/upload?type=image";
 };
 
 export const globalAjax = {
@@ -42,9 +44,13 @@ export const userAjax = {
     // captch_check: host1 + "v1/ifaccount/captchCheck?action=", //检查是否需要图片验证码
 }
 
+
+
 export const indexAjax = {
     tickers: host1 + "v1/ifquotes/tickers",
     spot_tickers: host1 + "v1/ifmarket/v2/spotTickers",
+    contracts_kline,
+    quote: host1 + "v1/ifcontract/quote", //获取合约k线数据
     bbx_websocket
 }
 
@@ -58,14 +64,14 @@ export const exchangeAjax = {
     get_trade: host1 + "v1/ifmarket/getUserTrades",
     cancel_order: host1 + "v1/ifmarket/cancelOrder",
     cancel_orders: host1 + "v1/ifmarket/cancelOrders",
-    // coin_brief: host1 + "v1/ifglobal/coinBrief",  //币种介绍
+    coin_brief: host1 + "v1/ifglobal/coinBrief",  //币种介绍
     // spot_hour_dash: "https://api.bbx.com/v1/ifmarket/spothour",
     // spot_daily_dash: "https://api.bbx.com/v1/ifmarket/spotdaily"
     stocks: host1 + "v1/ifmarket/stocks", //获取现货对
 }
 
 export const assetsAjax = {
-    propety_info: host1 + "v1/ifaccount/users/me",  //获得用户资产信息
+    // propety_info: host1 + "v1/ifaccount/users/me",  //获得用户资产信息
     // recharge_list: host1 + "v1/ifaccount/settles", //充值记录
     // address: host1 + "v1/ifaccount/address", //绑定充值地址
     // drawing: host1 + "v1/ifaccount/withdraw",//提现
@@ -84,7 +90,7 @@ export const accountAjax = {
     // google_pwd: host1 + "v1/ifaccount/GAKey", //设置谷歌验证码相关接口
     // areas: host1 + "v1/ifglobal/areas", //获取地区列表
     // kyc: host1 + "v1/ifaccount/KYCAuth",
-    // upload_img
+    // upload_img,
     // set_nickname: host1 + "v1/ifaccount/user/accountName",
     // api_keys: host1 + "v1/ifaccount/apiKeys",
     // api_key: host1 + "v1/ifaccount/apiKey"
@@ -103,6 +109,7 @@ export const contractAjax = {
     // tickers: host1 + "v1/ifcontract/tickers", //获取合约的Ticker
     // quote: host1 + "v1/ifcontract/quote", //获取合约k线数据
 }
+
 export const c2cAjax = {
     /**
      * 无参数获取otc账户

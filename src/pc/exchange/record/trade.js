@@ -28,7 +28,7 @@ class TList extends Component {
   componentWillMount() {
     this.mounted = true;
     // this.props.getTradeRecordsList();
-    let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+    let coinPair = getQueryString(this.props.location.search, "coinPair");
     if (this.props.bbx_show_all) {
       this.props.getTradeRecordsList();
     } else {

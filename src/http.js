@@ -52,7 +52,7 @@ axios.interceptors.request.use(config => {
         config.url = config.url + "?t=" + timestamp;
     }
 
-
+    
 
     test_name =config.url;
 
@@ -99,7 +99,7 @@ axios.interceptors.request.use(config => {
     if(bbxLang) {
         config.headers.common["Bbx-Language"] = bbxLang;
     }
-
+    
 
     return config;
 }, (err) => {
@@ -110,6 +110,33 @@ let test_end;
 let test_response_name;
 axios.interceptors.response.use(response => {
 
+    // test_end = new Date().valueOf();
+    // test_response_name = response.config.url;
+
+    // if (test_response_name.indexOf("https://stats.ln900.com/report") > -1) {
+    //   return response;
+    // }
+
+    // if (testObj[test_response_name]) {
+    //     testObj[test_response_name]["end"] = test_end;
+    //     testObj[test_response_name]["status"] = response.status;
+    //     testObj[test_response_name]["errno"] = response.data.errno;
+    //     testObj[test_response_name]["time"] = testObj[response.config.url]["end"] - testObj[response.config.url]["start"];
+
+    //     if (testObj[response.config.url]["end"] - testObj[response.config.url]["start"] > 1000) {
+
+    //         report(testObj[test_response_name]["unique_id"],
+    //             testObj[test_response_name]["url"],
+    //             testObj[test_response_name]["method"],
+    //             testObj[test_response_name]["status"],
+    //             testObj[test_response_name]["errno"],
+    //             testObj[test_response_name]["time"])
+    //     }
+
+    //     delete testObj[response.config.url];
+    // }
+    
+
     //非法请求 跳转到登录
     if(response.data.errno == "FORBIDDEN") {
         localStorage.removeItem("user");
@@ -117,7 +144,7 @@ axios.interceptors.response.use(response => {
         delCookie("ssid", "bbx.com", "/");
         delCookie("uid", "bbx.com", "/");
         let path = getQueryString(window.location.search,"path");
-
+       
         // 只有在usercenter和assets相关的页面发生FORBIDDEN时跳到登录页
         if (window.location.href.indexOf("assets")>0 || window.location.href.indexOf("usercenter")>0) {
             if (path) {
@@ -125,7 +152,7 @@ axios.interceptors.response.use(response => {
             } else {
                 window.location.href = window.location.protocol + "//" + window.location.host + '/login';
             }
-        }
+        } 
     }
 
     if(response.headers["bbx-token"]) {
@@ -140,13 +167,37 @@ axios.interceptors.response.use(response => {
         //localStorage.setItem("bbxUid", response.headers["bbx-uid"]);
         setCookie("uid", response.headers["bbx-uid"], 1, "bbx.com", "/");
     }
-
+    
     return response;
 }, (err) => {
     if(!err.response) {
         return;
     }
 
+    // test_end = new Date().valueOf();
+    // test_response_name = err.response.config.url;
+    // if (test_response_name.indexOf("https://stats.ln900.com/report") > -1) {
+    //   return;
+    // }
+
+
+    // let response = err.response;
+    // testObj[test_response_name]["end"] = test_end;
+    // testObj[test_response_name]["status"] = response.status;
+    // testObj[test_response_name]["errno"] = response.data.errno;
+    // testObj[test_response_name]["time"] = testObj[response.config.url]["end"] - testObj[response.config.url]["start"];
+
+    // if (testObj[response.config.url]["end"] - testObj[response.config.url]["start"] > 1000) {
+    //     //console.log("testObj[response.config.url]####", testObj[response.config.url]);
+    //     report(testObj[test_response_name]["unique_id"],
+    //         testObj[test_response_name]["url"],
+    //         testObj[test_response_name]["method"],
+    //         testObj[test_response_name]["status"],
+    //         testObj[test_response_name]["errno"],
+    //         testObj[test_response_name]["time"]) 
+    // }
+
+    // delete testObj[response.config.url];
 }
 )
 

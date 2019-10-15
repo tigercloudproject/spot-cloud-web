@@ -149,7 +149,7 @@ export function getSettlesList(type,coin,limit,offset) {
     if(type) {
         url = url + "&type="+type;
     }
-    
+
     return (dispatch,getState) => {
         return axios.get(url).then((response) => {
             //console.log('getSettlesList成功了###',response);
@@ -166,7 +166,7 @@ export function getSettlesList(type,coin,limit,offset) {
 }
 
 //获取充值地址
-export function getRechargeAddress(coin , group = '') {
+export function getRechargeAddress(coin , group = '', cb = function() {} ) {
     // let url = assetsAjax.address + "?coin=" + coin;
     let url = assetsAjax.address + "?coin=" + coin + "&group=" + group ;
     // group:USDT   OMNI用
@@ -177,10 +177,11 @@ export function getRechargeAddress(coin , group = '') {
             //console.log('getRechargeAddress###',response);
             if(response.data.errno=="OK") {
                 dispatch(rechargeAddress(response.data.data));
+                cb && cb();
             }else {
                 dispatch(rechargeAddress([]));
             }
-            
+
         }, (err) => {
             dispatch(rechargeAddress([]));
             console.log('rechargeAddress失败了###',err);

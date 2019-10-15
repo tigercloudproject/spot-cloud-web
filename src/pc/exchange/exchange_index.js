@@ -32,14 +32,14 @@ class Exchange extends Component {
         super(props);
         this.state = {
             coinPair: '',
-
+            
         }
         this.selectCoinPair = this.selectCoinPair;
     }
 
     componentWillMount() {
         this.mounted = true;
-        let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+        let coinPair = getQueryString(this.props.location.search, "coinPair");
         if(this.mounted) {
             this.setState({
                 coinPair: coinPair
@@ -56,7 +56,7 @@ class Exchange extends Component {
             this.props.getUserConfig();
         }
 
-
+        
     }
 
     componentWillUnmount() {
@@ -73,7 +73,7 @@ class Exchange extends Component {
         this.props.getSpotDetails(coinPair);
         this.props.getspotTickersData();
     }
-
+    
     //获取交易页左侧，右侧和上部的数据(clist无值时，即是不是从首页跳转时)
     getExchangeData2(coinPair) {
         let promise = Promise.all([
@@ -84,7 +84,7 @@ class Exchange extends Component {
 
         promise
             .then(() => {
-
+               
             })
             .catch(err => {
                 console.log("promise报错了###", err);
@@ -127,3 +127,4 @@ class Exchange extends Component {
 }
 
 export default Exchange;
+

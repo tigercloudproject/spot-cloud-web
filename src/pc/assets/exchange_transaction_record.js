@@ -95,7 +95,7 @@ class TransactionRecord extends Component {
             <MediaQuery maxWidth={700}>
                 <H5Header title={intl.get("assets_menu3")}></H5Header>
             </MediaQuery>
-            {/*<Breadcrumbs list={ this.state.breadcrumbsList }></Breadcrumbs>*/}
+            {/* <Breadcrumbs list={ this.state.breadcrumbsList }></Breadcrumbs> */}
             <div className="record-body">
                 <div className="record-header-tab">
                     <HeaderTab list={this.state.tabList}></HeaderTab>
@@ -109,7 +109,7 @@ class TransactionRecord extends Component {
                 {type==="history"?<History units={this.state.units}></History>:null}
                 {type === "transaction" ? <Transaction units={this.state.units}></Transaction>:null}
             </div>
-
+            
         </div>
     }
 }

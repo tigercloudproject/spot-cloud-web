@@ -11,8 +11,6 @@ import "./utils/prototype.js";  //封装的prototype上的工具函数
 
 //import PCIndex from './pc/home/pc_index';
 import Layout from "./pc/component/layout";
-
-
 // import PCBody from './pc/home/pc_body';
 // import Register from './pc/register/register';
 // import Login from './pc/register/login';
@@ -93,18 +91,17 @@ const SUPPOER_LOCALES = [
 //   loading: Loading,
 //   delay: 0
 // });
-const PCBody = Loadable({
+const ExchangeNew = Loadable({
   loader: () => import("./pc/exchange/index"),
   loading: Loading,
   delay: 0
 });
-
 //import Register from "./pc/register/register";
-// const Register = Loadable({
-//   loader: () => import('./pc/register/register'),
-//   loading: Loading,
-//   delay: 0
-// });
+const Register = Loadable({
+  loader: () => import('./pc/register/register'),
+  loading: Loading,
+  delay: 0
+});
 
 //import Login from "./pc/register/login";
 const Login = Loadable({
@@ -148,11 +145,7 @@ const Assets = Loadable({
 //   delay: 0
 // });
 
-// const ExchangeNew = Loadable({
-//   loader: () => import("./pc/exchange/index"),
-//   loading: Loading,
-//   delay: 0
-// });
+
 
 //import Market from "./pc/market/market_index";
 // const Market = Loadable({
@@ -223,6 +216,23 @@ const Assets = Loadable({
 //   delay: 0
 // });
 
+// const AboutUS = Loadable({
+//   loader: () => import("./pc/about/about_us.js"),
+//   loading: Loading,
+//   delay: 0
+// });
+
+// const SuperPartner = Loadable({
+//   loader: () => import("./pc/about/super_partner.js"),
+//   loading: Loading,
+//   delay: 0
+// });
+
+// const JoinUS = Loadable({
+//   loader: () => import("./pc/about/join_us.js"),
+//   loading: Loading,
+//   delay: 0
+// })
 
 
 
@@ -296,21 +306,24 @@ class App extends Component {
   render() {
     let LayoutRouter = <Layout>
         <Switch>
-          <Route exact path="/" component={PCBody} />
-          {/*<Route path="/register" component={Register} />*/}
+          {/* <Route exact path="/" component={PCBody} /> */}
+          <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-          {/*<Route path="/retrieval" component={Retrieval} />*/}
+          {/* <Route path="/retrieval" component={Retrieval} /> */}
           <Route path="/assets" component={Assets} />
           {/* <Route path="/contract_asset" component={ContractAssets} /> */}
-          {/*<Route path="/usercenter" component={UserCenter} />*/}
-          {/*<Route path="/exchange" component={ExchangeNew} />*/}
-          {/*<Route path="/exchange_new" component={ExchangeNew} />*/}
-          {/*<Route path="/c2c" component={C2cTrade} />*/}
-          {/*<Route path="/market" component={Market} />*/}
-          {/*<Route path="/risk" component={Risk} />/>*/}
-          {/*<Route path="/terms" component={Terms} />/>*/}
-          {/*<Route path="/download" component={Download} />*/}
-          {/*<Route path="/c2c_trade" component={C2cTrade} />*/}
+          {/* <Route path="/usercenter" component={UserCenter} /> */}
+          <Route path="/exchange" component={ExchangeNew} />
+          {/* <Route path="/exchange_new" component={ExchangeNew} /> */}
+          {/* <Route path="/c2c" component={C2cTrade} /> */}
+          {/* <Route path="/market" component={Market} /> */}
+          {/* <Route path="/risk" component={Risk} /> */}
+          {/* <Route path="/terms" component={Terms} /> */}
+          {/* <Route path="/download" component={Download} /> */}
+          {/* <Route path="/c2c_trade" component={C2cTrade} /> */}
+          {/* <Route path="/about_us" component = {AboutUS} /> */}
+          {/* <Route path="/join_us" component = {JoinUS} /> */}
+          {/* <Route path="/super_partner" component ={SuperPartner} /> */}
           <Route path="*" component={ErrorPage}></Route>
         </Switch>
       </Layout>;
@@ -319,11 +332,11 @@ class App extends Component {
             <Router>
 
               <Switch>
-                {/*<Route path="/mobile/download" component={H5Download} />*/}
-                {/*<Route path="/ios_course" component={IosCourse} />*/}
-                {/*<Route path="/active001" component={TradeCompetition} />*/}
-                {/*<Route path="/active002" component={RankList} />*/}
-                {/*<Route path="/ltc" component={Ltc}></Route>*/}
+                {/* <Route path="/mobile/download" component={H5Download} /> */}
+                {/* <Route path="/ios_course" component={IosCourse} /> */}
+                {/* <Route path="/active001" component={TradeCompetition} /> */}
+                {/* <Route path="/active002" component={RankList} /> */}
+                {/* <Route path="/ltc" component={Ltc}></Route> */}
                 <Route path="/" render={props=> LayoutRouter} />
                 <Route path="*" component={ErrorPage}></Route>
               </Switch>

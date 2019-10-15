@@ -33,3 +33,5 @@
         height: 20px; }
       .pwd-block-input-box .block-input-list-box li span {
         background: url("../../../images/pwd_cursor.gif") center center no-repeat; }
+      .pwd-block-input-box .block-input-list-box li i {
+        background: url("../../../images/pwd_circle.png") center center no-repeat; }

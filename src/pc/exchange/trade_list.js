@@ -79,12 +79,12 @@ class TradeList extends Component {
                     message: intl.get("ok_message_title"),
                     description: response.data.message
                 });
-
+             
                 this.props.getOpenOrders(coinPair);
                 this.props.getOrderHistory(coinPair);
                 this.props.getTradeRecords(coinPair);
-
-            } else {
+                
+            } else { 
                 if (response.data.errno == "ASSERT_PERMISSION_DENIED") {
                   if (this.mounted) {
                     this.setState({
@@ -106,8 +106,8 @@ class TradeList extends Component {
 
   componentWillMount() {
     this.mounted = true;
-    let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
-
+    let coinPair = getQueryString(this.props.location.search, "coinPair");
+    
     let token = getCookie("token");
     if(token) {
       this.props.getOpenOrders(coinPair);
@@ -150,8 +150,8 @@ class TradeList extends Component {
     //判断是否切换币值对
     // console.log("nextProps.exchange_current_coinpair####", nextProps.exchange_current_coinpair);
     // console.log("this.props.exchange_current_coinpair####", this.props.exchange_current_coinpair);
-
-    if (nextProps.exchange_current_coinpair !== this.props.exchange_current_coinpair) {
+  
+    if (nextProps.exchange_current_coinpair !== this.props.exchange_current_coinpair) {   
       let token = getCookie("token");
       if (token) {
         this.props.getOpenOrders(nextProps.exchange_current_coinpair);
@@ -361,7 +361,7 @@ class TradeList extends Component {
               <td>{leastTwoDecimal(Number(item.done_vol))}</td>
               {/* <td>{(item.swap_vol!=0&&item.done_vol!=0)?cutOut(Number(Number(item.swap_vol).div(Number(item.done_vol))), 2):0}</td> */}
               <td>{(item.swap_vol!=0&&item.done_vol!=0)?stringCutOut(Number(Number(item.swap_vol).div(Number(item.done_vol))),8):"0.00"}</td>
-
+             
               <td>
                 {this.getHistoryStatus(item.errno)}
               </td>
@@ -539,12 +539,12 @@ class TradeList extends Component {
             this.props.user ? <Link to={{ pathname:"/assets/exchange_record/transaction",search:`${search}`}} className="more"><span>{intl.get("assets_order_tab_the_more")}</span> <img src={nextIcon} /></Link>:
             <Link to={{pathname:"/login",search:`${search}`}} className="more"><span>{intl.get("assets_order_tab_the_more")}</span> <img src={nextIcon} alt="nextIcon"/></Link>
           }
-
-
+          
+          
           <ul className="right">{StatusTab}</ul>
         </div>
         {/* <table className="trade-table">
-
+                    
                 </table> */}
         <div className="trade-table-scroll">
           <table className="trade-table">
@@ -555,8 +555,8 @@ class TradeList extends Component {
           {noDataDiv ? "" : <div className="no-data-box">{intl.get("assets_no_data")}</div>}
         </div>
         {/* {this.state.isLoading?<div className="list-data-loading"><img src={loadingImg} /></div>:""} */}
-
-
+        
+        
         {/* <div className="no-trade-list">{noDataDiv ? "" : intl.get("assets_no_data")}</div> */}
       </div>
     );

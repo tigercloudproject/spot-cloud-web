@@ -70,7 +70,7 @@ function verifyCode(data) {
 }
 
 function login(data,type,path,token,ssid,uid) {
-
+ 
     let result;
     if (type) {
         result = {
@@ -87,10 +87,10 @@ function login(data,type,path,token,ssid,uid) {
         setCookie("token", token, 1, "bbx.com", "/");
         setCookie("ssid", ssid, 1, "bbx.com", "/");
         setCookie("uid", uid, 1, "bbx.com", "/");
-
+        
         let redirectPath;
         if(path) {
-
+            
             redirectPath = path;
         }else {
             redirectPath = "/";
@@ -101,7 +101,7 @@ function login(data,type,path,token,ssid,uid) {
             user_error: data,
             user: ''
         }
-
+       
        // sessionStorage.setItem('user', JSON.stringify(''));
         //Cookie.set('user', '');
         return { type: LOGIN, payload: result, redirect: "" };
@@ -129,12 +129,12 @@ function register(data,type,path,token,ssid,uid) {
         setCookie("uid", uid, 1, "bbx.com", "/");
         let redirectPath;
         if (path) {
-
+            
             redirectPath = path;
         } else {
             redirectPath = "/";
         }
-
+        
         return { type: REGISTER, payload: result, redirect: redirectPath };
     }else {
         result = {
@@ -145,15 +145,15 @@ function register(data,type,path,token,ssid,uid) {
         //Cookie.set("user", "");
         return { type: REGISTER, payload: result, redirect: '' }
     }
-
+    
 }
 
 function exit() {
     let data = {
         user: '',
         redirect: '/',
-        login_success: '',
-        register_success: '',
+        login_success: '', 
+        register_success: '', 
         retrieval_success: ''
     }
     localStorage.removeItem("user");
@@ -302,7 +302,7 @@ export function getVerifyCode(userName, name_type, type, validate) {
                 //     return response;
                 // }
                 return response;
-
+                
             },
             (err) => {
                 console.log('getVerifyCode失败了###',err);
@@ -329,7 +329,7 @@ export function registerPost(data,path,qd,markcode) {
             }else {
                 dispatch(register(response.data, 0));
             }
-
+            
         },
         (err) => {
             console.log('注册失败了###',err);

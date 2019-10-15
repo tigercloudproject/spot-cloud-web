@@ -18,11 +18,11 @@
         margin-left: -300px;
         margin-top: -175px;
         z-index: 100011;
-        // background: #272c3c url("../../../images/BG-1.png") left top no-repeat;
+        background: #272c3c url("../../../images/BG-1.png") left top no-repeat;
         background-size: 100% 100%;
         text-align: center;
         border-radius: 4px;
-
+        
         >.close {
             display: inline-block;
             width: 32px;
@@ -34,7 +34,7 @@
             background-size: 100% 100%;
             cursor: pointer;
         }
-
+        
         >.tit {
             color: #e8bf9a;
             font-size: 22px;
@@ -73,7 +73,7 @@
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 700px) {  
 .goto-contract-alert-box {
     .goto-contract-alert {
         width: 300px;
@@ -84,7 +84,7 @@
         margin-left: -150px;
         margin-top: -88px;
         z-index: 100011;
-        // background: #272c3c url("../../../images/BG-1.png") left top no-repeat;
+        background: #272c3c url("../../../images/BG-1.png") left top no-repeat;
         background-size: 100% 100%;
         text-align: center;
         border-radius: 4px;
@@ -94,7 +94,7 @@
             margin-bottom: 0px;
             padding-bottom: 5px;
         }
-        >.sub-tit {
+        >.sub-tit { 
             font-size: 1rem!important;
             padding-top: 0px;
             margin-bottom: 0px;

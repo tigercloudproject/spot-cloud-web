@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-// import Icon from "../../assets/images/eth-icon-test.png";
+import Icon from "../../assets/images/eth-icon-test.png";
 import { getCoinBrief } from "../../redux/exchange.redux";
 import { getQueryString } from "../../utils/getQueryString.js";
 import { parseDate } from "../../utils/parseTime.js";
@@ -26,7 +26,7 @@ class CoinBasics extends Component {
 
     componentWillMount() {
         this.mounted = true;
-        let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+        let coinPair = getQueryString(this.props.location.search, "coinPair");
         let coinArr = coinPair.split("/");
         this.props.getCoinBrief(coinArr[0]);
     }
@@ -37,7 +37,7 @@ class CoinBasics extends Component {
 
     componentWillReceiveProps(nextProps) {
         //切换币值对了
-        if (nextProps.exchange_current_coinpair != this.props.exchange_current_coinpair) {
+        if (nextProps.exchange_current_coinpair != this.props.exchange_current_coinpair) { 
             //console.log("币值对切换了");
             this.props.getCoinBrief(nextProps.exchange_current_coinpair.split("/")[0]);
         }
@@ -53,7 +53,7 @@ class CoinBasics extends Component {
 
         //获取spot_coins
         if (nextProps.clist && nextProps.clist.spot_coins) {
-            let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+            let coinPair = getQueryString(this.props.location.search, "coinPair");
             let coinArr = coinPair.split("/");
             this.getCoinIcon(nextProps.clist.spot_coins,coinArr[0]);
         }

@@ -130,7 +130,7 @@ class PayBix extends Component {
 
 
     this.toSaveOrder = debounce(function (data) {
-
+      
       this.props.saveOrderPost(data).then((response)=>{
 
         //解锁买卖按钮
@@ -181,11 +181,11 @@ class PayBix extends Component {
   }
 
   componentDidMount() {
-
+    
   }
 
   componentWillReceiveProps(nextProps) {
-    let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+    let coinPair = getQueryString(this.props.location.search, "coinPair");
     let token = getCookie("token");
 
     if(this.mounted) {
@@ -246,7 +246,7 @@ class PayBix extends Component {
               // sell_silder:0  //置0卖选择条
             });
           }
-
+          
         }
 
         //只有在切换币值对时选择条置0
@@ -292,7 +292,7 @@ class PayBix extends Component {
         }
         this.calculateBigBuyVolume();
         this.calculateBigSellVolume();
-      }
+      }  
     }
 
     //用户资产
@@ -307,17 +307,17 @@ class PayBix extends Component {
             user_assets: []
           })
         }
-
+        
       }
     }
 
-
+    
     //判断是否选择了深度列表中的数据
     if(this.props.current_price!=nextProps.current_price) {
       //console.log("nextProps.current_price####",nextProps.current_price);
       //console.log("nextProps.current_price_type#####",nextProps.current_price_type);
       //console.log("nextProps.current_price_list####",nextProps.current_price_list);
-
+      
       let buyVolume, sellVolume, buySilder, sellSilder;
 
 
@@ -357,8 +357,8 @@ class PayBix extends Component {
       buySilder = b_one && buyVolume?Number(buyVolume).div(b_one):0;
       sellSilder = b_one && sellVolume?Number(sellVolume).div(s_one):0;
       //设置silder结束*******************
-
-
+      
+    
       if(this.mounted) {
         this.setState({
           form: {
@@ -412,12 +412,12 @@ class PayBix extends Component {
       }
 
       // let tabList = this.state.isSupportMarket ? this.state.tabList : this.state.tabList1;
-
+      
     }
 
     //设置美元换算价格
     if (nextProps.clist && nextProps.clist.coin_prices && nextProps.clist.usd_rates && nextProps.spot_tickers && nextProps.spot_tickers.tickers) {
-      let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+      let coinPair = getQueryString(this.props.location.search, "coinPair");
       let coinArr = coinPair.split("/");
       //let firstCoin = coinArr[0];
       let lastCoin = coinArr[1];
@@ -436,14 +436,14 @@ class PayBix extends Component {
     //设置cny换算价格
     if (nextProps.clist && nextProps.clist.usd_rates) {
         let cnyRate = getCNYRate(nextProps.clist.usd_rates,'CNY');
-
+        
         if(this.mounted) {
           this.setState({
             cnyRate: cnyRate
           })
         }
     }
-
+    
   }
 
   //选择深度数据时，获取合并的量
@@ -533,11 +533,11 @@ class PayBix extends Component {
     }
     let new_value = one*value;
     let buy_volume = Math.floor(new_value * Math.pow(10, this.state.vol_unit)) / (Math.pow(10, this.state.vol_unit));
-
+    
     if(this.mounted) {
       this.setState({
         buy_silder: value,
-
+        
       });
 
       if(buy_volume<this.state.big_buy_volume) {
@@ -613,12 +613,12 @@ class PayBix extends Component {
   clearNoNum(obj,dagit) {
     obj.value = obj.value.replace(/[^\d.]/g, ""); //清除“数字”和“.”以外的字符
     obj.value = obj.value.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的
-
+  
     obj.value = obj.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
 
     switch(dagit) {
         case 0:
-            obj.value = obj.value.replace(/^(\-)*(\d+)*$/, "$1$2");
+            obj.value = obj.value.replace(/^(\-)*(\d+)*$/, "$1$2"); 
             break;
         case 1:
             obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d).*$/, "$1$2.$3");
@@ -760,7 +760,7 @@ class PayBix extends Component {
   //设置计算最多可买的量
   calculateBigBuyVolume() {
     let coin = this.state.coinPair?this.state.coinPair.split("/")[1]:'';
-    let my_asset = this.getMyCurrentCoinPair();
+    let my_asset = this.getMyCurrentCoinPair(); 
     let value =my_asset.coin2;
     let fee = this.getCurrentCoinPairFee();
     let result = value;
@@ -771,7 +771,7 @@ class PayBix extends Component {
           a = Number(value).mul(Number(fee.fee_ratio));
           result = Number(value).sub(Number(a));
         }
-
+        
       }
     }
     if(this.mounted) {
@@ -782,7 +782,7 @@ class PayBix extends Component {
   }
 
   //传参获得最大可买量
-  getMaxBuyVolume(asset,coin,price) {
+  getMaxBuyVolume(asset,coin,price) { 
     let fee = this.getCurrentCoinPairFee();
     let result = asset;
     let a;
@@ -816,7 +816,7 @@ class PayBix extends Component {
         }
       }
     }
-
+    
     if(this.mounted) {
       this.setState({
         big_sell_volume: result
@@ -825,7 +825,7 @@ class PayBix extends Component {
   }
 
   //传参获得最大可卖量
-  getMaxSellVolume(asset, coin, price) {
+  getMaxSellVolume(asset, coin, price) { 
     let fee = this.getCurrentCoinPairFee();
     let result = asset;
     let a;
@@ -845,8 +845,8 @@ class PayBix extends Component {
     if(this.state.price_unit) {
       total = Number(vol).mul(Number(price));
       unit = Math.pow(10,this.state.price_unit);
-
-      result = total!=0?Number(Number(Number(total).mul(Number(unit))).div(unit)):0;
+      
+      result = total!=0?Number(Number(Number(total).mul(Number(unit))).div(unit)):0;  
     }
     return result;
   }
@@ -912,12 +912,12 @@ class PayBix extends Component {
         this.setState({
           canSubmitBuy: true
         })
-
+        
         return;
       }
+      
 
-
-
+      
     }else { //卖
       vol = this.state.form.sell_volume.value;
       price = this.state.form.sell_price.value;
@@ -953,7 +953,7 @@ class PayBix extends Component {
           description: intl.get("insufficient_balance")
         });
 
-        this.setState({
+        this.setState({ 
           canSubmitSell: true
         });
 
@@ -990,7 +990,7 @@ class PayBix extends Component {
       return;
     }
 
-    let date = Date.parse(String(new Date()).replace(/-/g, "/")) / 1000;
+    let date = Date.parse(String(new Date()).replace(/-/g, "/")) / 1000; 
 
     let data = {
       stock_code: this.state.coinPair,
@@ -1044,7 +1044,7 @@ class PayBix extends Component {
         this.props.getOpenOrders(this.state.coinPair);
         this.props.getOrderHistory(this.state.coinPair);
         this.props.getTradeRecords(this.state.coinPair);
-
+        
       } else {
         if (response.data.errno == "ASSERT_PERMISSION_DENIED" || response.data.errno=="INCORRET_ASSET_PASSWORD") {
           if (this.mounted) {
@@ -1060,7 +1060,7 @@ class PayBix extends Component {
         });
 
       }
-
+      
     })
 
   }
@@ -1206,7 +1206,7 @@ class PayBix extends Component {
   }
 
   render() {
-
+    
     const { currentTab, coinPair, coin_fee_configs, big_buy_volume, big_sell_volume } = this.state;
 
     //判断是否支持市价单，决定tab项
@@ -1262,7 +1262,7 @@ class PayBix extends Component {
           label: "100%"
         }
     };
-
+    
 
     let buy_total = this.calculateTotal(this.state.form.buy_volume.value, this.state.form.buy_price.value);
     let sell_total = this.calculateTotal(this.state.form.sell_volume.value, this.state.form.sell_price.value);
@@ -1282,7 +1282,7 @@ class PayBix extends Component {
       if (this.state.coinRate) {
         buyPriceRateString = this.getExchangePriceString(this.state.coinRate,this.state.form.buy_price.value,3);
         sellPriceRateString = this.getExchangePriceString(this.state.coinRate,this.state.form.sell_price.value,3);
-
+  
       }
     }else {
       if(this.state.cnyRate && this.state.coinRate) {
@@ -1308,7 +1308,7 @@ class PayBix extends Component {
 
     return (
       <section className="pay-bix-box">
-
+      
         <MediaQuery maxWidth={676}>
           <div className="switch-way">
             {h5TradeWaySpan}
@@ -1318,29 +1318,28 @@ class PayBix extends Component {
         <ul className="pay-bix-tab">{tabLi}</ul>
         {/* {currentTab === 0 ? <div className="h-20" /> : null} */}
 
-
+        
 
         <MediaQuery minWidth={676}>
-
+        
           <div className="pay-bix-form">
             <div className="form-row">
               <div className="form-control5" style={{ paddingTop: "15px" }}>
                 <div className="avbi">
                   {intl.get("exchange_form_avbl")}: {!!token ? cutOut(myasset.coin2, this.state.firstCoinVolUnit) : cutOut(0, this.state.firstCoinVolUnit)} {coin2_name}
-                  {
+                  {/* {
                     !!token ? <Link to={{ pathname: "/assets/deposit", search: `${search}`, state: `${coin2_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link> :
                       <Link to={{ pathname: "/login", search: `${search}`, state: `${coin2_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link>
-                  }
-
+                  } */}
                 </div>
               </div>
               <div className="form-control5" style={{ paddingTop: "15px" }}>
                 <div className="avbi">
                   {intl.get("exchange_form_avbl")}: {!!token ? cutOut(myasset.coin1, this.state.lastCoinVolUnit) : cutOut(0, this.state.lastCoinVolUnit)} {coin1_name}
-                  {
+                  {/* {
                     !!token ? <Link to={{ pathname: "/assets/deposit", search: `${search}`, state: `${coin1_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link> :
                       <Link to={{ pathname: "/login", search: `${search}`, state: `${coin1_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link>
-                  }
+                  } */}
 
                 </div>
               </div>
@@ -1488,7 +1487,7 @@ class PayBix extends Component {
             </div>
           </div>
         </MediaQuery>
-
+        
         <MediaQuery maxWidth={676}>
           <div className="pay-bix-form">
             <div className="form-row">
@@ -1507,15 +1506,15 @@ class PayBix extends Component {
                   <div className="form-control5" style={{ paddingTop: "15px" }}>
                     <div className="avbi">
                       {intl.get("exchange_form_avbl")}: {!!token ? cutOut(myasset.coin1, this.state.lastCoinVolUnit) : cutOut(0, this.state.lastCoinVolUnit)} {coin1_name}
-                      {
+                      {/* {
                         !!token ? <Link to={{ pathname: "/assets/deposit", search: `${search}`, state: `${coin1_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link> :
                           <Link to={{ pathname: "/login", search: `${search}`, state: `${coin1_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link>
-                      }
+                      } */}
 
                     </div>
                   </div>
               }
-
+            
             </div>
 
             <div className="form-row">
@@ -1581,10 +1580,10 @@ class PayBix extends Component {
                   </div>
 
               }
-
-
+              
+             
             </div>
-
+            
             <div className="form-row">
               {
                 currentTradeWay === "buy" ?
@@ -1617,10 +1616,10 @@ class PayBix extends Component {
                     {/* <p>≈2.12 USD</p> */}
                   </div>
               }
-
-
+              
+            
             </div>
-
+            
             <div className="form-row">
               {
                 currentTradeWay === "buy" ?
@@ -1647,9 +1646,9 @@ class PayBix extends Component {
                     </div>
                   </div>
               }
-
+              
             </div>
-
+            
             <div className="form-row">
               {
                 currentTradeWay === "buy" ?
@@ -1678,12 +1677,12 @@ class PayBix extends Component {
                     </div>
                   </div>
               }
-
+              
             </div>
           </div>
         </MediaQuery>
-
-
+        
+        
         {/* 输入资金密码 */}
         {this.state.showInputFundPwd ? <InputFundPwd close={this.closeInputFundPwd} setFundPwd={this.setFundPwd}></InputFundPwd>:null}
         {/* 限价提示 */}

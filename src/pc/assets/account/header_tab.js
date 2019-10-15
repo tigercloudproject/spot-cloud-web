@@ -9,7 +9,7 @@ class HeaderTab extends Component {
 
     render() {
         let ItemA = this.props.list.map((item, index) => {
-            return <NavLink key={index}
+            return <NavLink key={index} 
                     activeClassName="active"
                     to={{
                         pathname: item.url,

@@ -251,7 +251,7 @@ class ExchangeKline extends Component {
   }
 
   init() {
-    let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+    let coinPair = getQueryString(this.props.location.search, "coinPair");
 
     let lang = this.props.default.value || "zh-CN";
     let langObj = {
@@ -294,8 +294,11 @@ class ExchangeKline extends Component {
       container_id: "tv_chart_container",
       // BEWARE: no trailing slash is expected in feed URL
       datafeed: dataFeeds,
+      // (!~window.location.hostname.indexOf('bbx') ? '' : 'https://static.bbx.com') +
+      //   "http://local.bbx.com/testjs/charting_library/charting_library.min.js",
       library_path: CFG.publicPath + "/js/charting_library/charting_library.min.js",
       locale: langObj[lang] || "en", // this.changeLocale() || 'zh',
+      // custom_css_url: "/testjs/charting_library/static/base.css",
       custom_css_url: CFG.publicPath + "/js/charting_library/static/dash.css",
       debug: false,
       toolbar_bg: "red",
@@ -481,17 +484,8 @@ class ExchangeKline extends Component {
       height: "100%",
       background: "#141b2e"
     };
-    let linkStyle = {
-      position: "absolute",
-      right: "50px",
-      top: "10px",
-      color: "#2B93F6",
-      fontSize: "12px",
-      borderBottom: "1px dotted #2B93F6"
-    }
     return (
       <div className="exchange-kline" style={style}>
-        <a target="_blank" href="https://tiger.cloud/" className="tiger" style={linkStyle}>{intl.get("tiger-cloud")}</a>
         <div id="tv_chart_container" />
       </div>
     );

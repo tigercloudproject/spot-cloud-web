@@ -60,7 +60,7 @@ class inputFundPwd extends Component {
     }else {
       this.props.setFundPwd(password.hash());
     }
-
+    
 
     this.props.close();
   }
@@ -84,10 +84,10 @@ class inputFundPwd extends Component {
       langSearch = `?lang=${this.props.default.value}`;
     }
 
-    this.props.history.push({
-      pathname: "/usercenter/account_security/reset_fund_pwd",
-      search: langSearch
-    });
+    // this.props.history.push({
+    //   pathname: "/usercenter/account_security/reset_fund_pwd",
+    //   search: langSearch
+    // });
   }
 
   render() {
@@ -146,12 +146,12 @@ class inputFundPwd extends Component {
             {intl.get("account_confirm")}
           </button>
           {/* <p className="effective-time">{intl.get("account_fund_pwd_effective_time")}：<a>{effectiveText}</a></p> */}
-          {/*{!this.props.title?<p className="reset-fund-password">
+          {!this.props.title?<p className="reset-fund-password">
             {intl.get("account_forgot_password")}
             <a onClick={() => this.gotoResetPwd()}>
               {intl.get("account_goto_change")}
             </a>
-          </p>:null}*/}
+          </p>:null}
         </div>
       </section>
     );

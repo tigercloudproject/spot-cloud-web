@@ -4,7 +4,7 @@ import { getQueryString } from "../../utils/getQueryString.js";
 import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { getSpotDashTwo} from "../../redux/exchange.redux.js";
-import CFG from "../../hostConfig";
+import CFG from "../../hostConfig.js";
 import intl from "react-intl-universal";
 @withRouter
 @connect(
@@ -179,7 +179,7 @@ class Trading extends Component {
     ]
   }
   init () {
-    let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT'
+    let coinPair = getQueryString(this.props.location.search, "coinPair")
     let lang = this.props.default.value || 'zh-CN';
     let langObj = {
       'zh-CN': 'zh',
@@ -380,7 +380,7 @@ class Trading extends Component {
 
   componentWillMount() {
     this.mounted = true;
-    let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+    let coinPair = getQueryString(this.props.location.search, "coinPair");
     if (this.mounted) {
       this.setState({
         currentCoinPair: coinPair

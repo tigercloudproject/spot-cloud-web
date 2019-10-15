@@ -44,14 +44,12 @@ class HeaderAssets extends Component {
                 <span>{intl.get("ASSETS")}</span>
                 <i className={this.state.show ? 'iconDown rotate' : 'iconDown'}></i>
             </div>
-
-              <ul style={listStyle}>
-                {/*<li><Link to={{ pathname: "/assets/deposit", search: langSearch}}>{intl.get("assets_btn_deposit")}</Link></li>*/}
-                {/*<li><Link to={{ pathname: "/assets/withdraw", search: langSearch }}>{intl.get("assets_btn_withdrawal")}</Link></li>*/}
-                {/*<li><Link to={{ pathname: "/assets/exchange_account", search: langSearch}}>{intl.get("contract_coin_account")}</Link></li>*/}
-                {/*<li><Link to={{ pathname: "/assets/swap_account", search: langSearch }}>{intl.get("contract_swap_account")}</Link></li>*/}
+            <ul style={listStyle}>
+                {/* <li><Link to={{ pathname: "/assets/deposit", search: langSearch}}>{intl.get("assets_btn_deposit")}</Link></li> */}
+                {/* <li><Link to={{ pathname: "/assets/withdraw", search: langSearch }}>{intl.get("assets_btn_withdrawal")}</Link></li> */}
+                <li><Link to={{ pathname: "/assets/exchange_account", search: langSearch}}>{intl.get("contract_coin_account")}</Link></li>
+                {/* <li><Link to={{ pathname: "/assets/swap_account", search: langSearch }}>{intl.get("contract_swap_account")}</Link></li> */}
             </ul>
-
         </div>
     }
 }
