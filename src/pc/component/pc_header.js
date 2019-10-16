@@ -292,7 +292,7 @@ class PCHeader extends React.Component {
                   </div>
                   {this.state.h5MenuShow?<ul className="nav-h5" onClick={this.closeH5Menu}>
                     {/* <li><NavLink to={{ pathname: "/", search: `${search}`}} activeStyle={{ color: "#5f8ed4" }}>{intl.get("HOME")}</NavLink></li> */}
-                    <li><NavLink to={{ pathname: "/exchange", search: `${exchangeSearch}` }} activeStyle={{ color: "#5f8ed4" }}>{intl.get("EXCHANGE")}</NavLink></li>
+                    {/* <li><NavLink to={{ pathname: "/exchange", search: `${exchangeSearch}` }} activeStyle={{ color: "#5f8ed4" }}>{intl.get("EXCHANGE")}</NavLink></li> */}
                     {/* <li><a href={config.swapHost}>{intl.get("realTrading")}</a></li> */}
                     {/* <li><a href={`${config.swapHost}/game/trade`}>{intl.get("simulationTrading")}</a></li> */}
                     {/* <li><NavLink activeStyle={{ color: "#5f8ed4" }} to={{ pathname: "/c2c_trade", search: `${search}` }}>{intl.get("c2c")}</NavLink></li> */}

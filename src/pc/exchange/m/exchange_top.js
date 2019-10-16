@@ -54,8 +54,8 @@ class ExchangeMTop extends Component {
 
     render() {
         return <div className="exchange-m-top">
-            <div className="select-top">
-                <span onClick={() => this.toggleShow()}>{this.state.currentCoinPair}</span>
+            <div className="select-top" onClick={() => this.toggleShow()}>
+                <span>{this.state.currentCoinPair}</span>
                 <i className="iconfont icon-down"></i>
             </div>
             <div className="list-box" style={{ "display": this.state.isShow?"block":"none"}}>
