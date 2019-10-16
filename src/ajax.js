@@ -83,7 +83,7 @@ export const quoteAjax = {
 }
 
 export const accountAjax = {
-    // fund_pwd: host1 + "v1/ifaccount/assetPassword", //设置资金密码
+    fund_pwd: host1 + "v1/ifaccount/assetPassword", //设置资金密码
     // asset_pwd_effective: host1 + "v1/ifaccount/assetPasswordEffectiveTime?action=reset",
     // google_pwd: host1 + "v1/ifaccount/GAKey", //设置谷歌验证码相关接口
     // areas: host1 + "v1/ifglobal/areas", //获取地区列表

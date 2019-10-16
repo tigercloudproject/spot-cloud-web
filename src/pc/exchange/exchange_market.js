@@ -111,13 +111,13 @@ class ExchangeMarket extends Component {
       search = search + `&lang=${this.props.default.value}`;
     }
 
-    // this.state.qd !== "null" && this.state.qd !== "undefined" && this.state.qd != null
+    // if (this.state.qd !== "null" && this.state.qd !== "undefined" && this.state.qd != null) {
     if (this.state.qd !== "null") {
       search = search + `&qd=${ this.state.qd }`;
     }
 
     // this.props.history.push(`/exchange${search}`);
-    this.props.history.push(`${search}`);
+    this.props.history.push(`/${search}`);
     if (this.mounted) {
       this.setState({
         currentCoinPair: item.stock_code

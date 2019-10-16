@@ -14,8 +14,6 @@
       font-size: 22px;
       margin-left: 10px; }
   .exchange-m-top .list-box {
-    width: 100%;
-    z-index: 9;
     position: absolute;
     left: 0px;
     top: 50px; }
