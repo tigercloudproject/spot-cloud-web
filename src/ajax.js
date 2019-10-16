@@ -32,16 +32,16 @@ export const globalAjax = {
 }
 
 export const userAjax = {
-    // verify_code: host1 + "v1/ifaccount/verifyCode",
-    // register: host1 + "v1/ifaccount/users/register",
-    // phone_code: host1 + "v1/ifglobal/phoneCode",
-    // login: host1 + "v1/ifaccount/login",
-    // reset_account: host1 + "v1/ifaccount/users/resetPassword",
-    // bind_email: host1 + "v1/ifaccount/bindEmail",
-    // bind_phone: host1 + "v1/ifaccount/bindPhone",
-    // active: host1 + "v1/ifaccount/users/active",
-    // logout: host1 + "v1/ifaccount/logout", //登出
-    // captch_check: host1 + "v1/ifaccount/captchCheck?action=", //检查是否需要图片验证码
+    verify_code: host1 + "v1/ifaccount/verifyCode",
+    register: host1 + "v1/ifaccount/users/register",
+    phone_code: host1 + "v1/ifglobal/phoneCode",
+    login: host1 + "v1/ifaccount/login",
+    reset_account: host1 + "v1/ifaccount/users/resetPassword",
+    bind_email: host1 + "v1/ifaccount/bindEmail",
+    bind_phone: host1 + "v1/ifaccount/bindPhone",
+    active: host1 + "v1/ifaccount/users/active",
+    logout: host1 + "v1/ifaccount/logout", //登出
+    captch_check: host1 + "v1/ifaccount/captchCheck?action=", //检查是否需要图片验证码
 }
 
 

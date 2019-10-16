@@ -459,13 +459,13 @@ class Register extends Component {
         }else {
             data["inviter_id"] = data["inviter_id"];
         }
-        
+
         data["code"] = String(form.verify_code.value);
 
         //md5加密
         let password = new MD5(form.pwd.value);
         data["password"] = password.hash();
-        
+
         //锁住提交按钮
         if(this.mounted) {
             this.setState({

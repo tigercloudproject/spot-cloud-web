@@ -72,7 +72,6 @@
         display: inline-block;
         width: 35px;
         height: 12px;
-        background: url("../../../images/hot.svg") left top no-repeat;
         background-size: 100% 100%;
         right: 10px;
         top: 7px; }
@@ -125,7 +124,6 @@
         display: inline-block;
         width: 16px;
         height: 16px;
-        background: url("../../../images/icon-hot.svg") left top no-repeat;
         background-size: 100% 100%;
         right: 0px;
         top: 11px; }
@@ -136,7 +134,6 @@
         display: inline-block;
         width: 35px;
         height: 12px;
-        background: url("../../../images/hot.svg") left top no-repeat;
         background-size: 100% 100%;
         right: 15px;
         top: 7px; }
@@ -163,7 +160,6 @@
             display: inline-block;
             width: 35px;
             height: 12px;
-            background: url("../../../images/hot.svg") left top no-repeat;
             background-size: 100% 100%;
             right: -8px;
             top: -14px; }
