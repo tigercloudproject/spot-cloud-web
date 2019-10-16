@@ -34,9 +34,12 @@
 ## 登录、退出相关逻辑
 - 退出:     pc/component/user_info  此文件内 可自行添加相关内容， 例：kyc身份认证、api管理等等。。。。
 - 登录：
-  
-- 交易页：     市场--        exchange/index.js 下 className="exchange-market-box" 容器
-              交易深度--     exchange/index.js 下 className="exchange-depth-box" 容器
-              实时成交--     exchange/index.js 下 className="exchange-transaction-box" 容器
-              公告--        exchange/index.js 下  className="exchange-notice-box" 容器
-              币种介绍--    exchange/index.js 下 className="introduce-box" 容器
+
+
+- 交易页：
+    顶部导航--    pc/component/pc-header.js 下 className="pc-header" 容器
+    市场--        pc/exchange/index.js 下 className="exchange-market-box" 容器
+    交易深度--     pc/exchange/index.js 下 className="exchange-depth-box" 容器
+    实时成交--     pc/exchange/index.js 下 className="exchange-transaction-box" 容器
+    公告--        pc/exchange/index.js 下  className="exchange-notice-box" 容器
+    币种介绍--    pc/exchange/index.js 下 className="introduce-box" 容器

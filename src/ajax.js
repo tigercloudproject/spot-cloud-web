@@ -3,9 +3,9 @@ import { getCookie } from "./utils/cookie.js";
 // let host1 = getHost();
 let c_host = getCookie("host");
 let host1 = ''
-  , contracts_kline = ''
+//   , contracts_kline = ''
   , bbx_websocket = ''
-  , upload_img = '';
+//   , upload_img = '';
 
 
 // 配置
@@ -13,16 +13,14 @@ switch ( document.domain ) {
     case 'test.bbx.com':
         // development
         host1 = "https://devapi.bbx.com/";
-        // contracts_kline = 'wss://devapi.bbx.com/v1/ifspot/realTime'; //测试环境和本地
         bbx_websocket = "wss://devapi.bbx.com/v1/ifspot/realTime";    //测试环境和本地
-        // upload_img = "https://devfile.bbx.com/upload?type=image"
+        // upload_img = "https://devfile.bbx.com/upload?type=image"   //测试服kyc身份认证
         break;
     default:
         // production
         host1 = c_host ? 'https://' + c_host + '/' : 'https://api.bbxapp.vip/';
-        // contracts_kline = 'wss://' + (c_host?c_host:'api.bbxapp.vip') + '/v1/ifcontract/realTime'; //合约k线数据websocket
         bbx_websocket = "wss://"+ (c_host?c_host:'api.bbxapp.vip') + "/v1/ifspot/realTime";
-        // upload_img = "https://upload.bbx.com/upload?type=image";
+        // upload_img = "https://upload.bbx.com/upload?type=image"; //正式服kyc身份认证
 };
 
 export const globalAjax = {
@@ -49,8 +47,8 @@ export const userAjax = {
 export const indexAjax = {
     tickers: host1 + "v1/ifquotes/tickers",
     spot_tickers: host1 + "v1/ifmarket/v2/spotTickers",
-    contracts_kline,
-    quote: host1 + "v1/ifcontract/quote", //获取合约k线数据
+    // contracts_kline,
+    // quote: host1 + "v1/ifcontract/quote", //获取合约k线数据
     bbx_websocket
 }
 

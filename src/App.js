@@ -91,11 +91,16 @@ const SUPPOER_LOCALES = [
 //   loading: Loading,
 //   delay: 0
 // });
-const ExchangeNew = Loadable({
+const PCBody = Loadable({
   loader: () => import("./pc/exchange/index"),
   loading: Loading,
   delay: 0
 });
+// const ExchangeNew = Loadable({
+//   loader: () => import("./pc/exchange/index"),
+//   loading: Loading,
+//   delay: 0
+// });
 //import Register from "./pc/register/register";
 const Register = Loadable({
   loader: () => import('./pc/register/register'),
@@ -306,14 +311,14 @@ class App extends Component {
   render() {
     let LayoutRouter = <Layout>
         <Switch>
-          {/* <Route exact path="/" component={PCBody} /> */}
+          <Route exact path="/" component={PCBody} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           {/* <Route path="/retrieval" component={Retrieval} /> */}
           <Route path="/assets" component={Assets} />
           {/* <Route path="/contract_asset" component={ContractAssets} /> */}
           {/* <Route path="/usercenter" component={UserCenter} /> */}
-          <Route path="/exchange" component={ExchangeNew} />
+          {/* <Route path="/exchange" component={ExchangeNew} /> */}
           {/* <Route path="/exchange_new" component={ExchangeNew} /> */}
           {/* <Route path="/c2c" component={C2cTrade} /> */}
           {/* <Route path="/market" component={Market} /> */}

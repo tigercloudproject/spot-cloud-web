@@ -27,7 +27,8 @@ class CoinBasics extends Component {
 
     componentWillMount() {
         this.mounted = true;
-        let coinPair = getQueryString(this.props.location.search, "coinPair");
+        // let coinPair = getQueryString(this.props.location.search, "coinPair");
+        let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
         let coinArr = coinPair.split("/");
         this.props.getCoinBrief(coinArr[0]);
     }
@@ -54,7 +55,8 @@ class CoinBasics extends Component {
 
         //获取spot_coins
         if (nextProps.clist && nextProps.clist.spot_coins) {
-            let coinPair = getQueryString(this.props.location.search, "coinPair");
+            // let coinPair = getQueryString(this.props.location.search, "coinPair");
+            let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
             let coinArr = coinPair.split("/");
             this.getCoinIcon(nextProps.clist.spot_coins, coinArr[0]);
         }

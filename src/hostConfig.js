@@ -8,19 +8,19 @@ if(host.indexOf("vip")>0) {
         case 'test.bbx.com':
             // development
             bbxHost = "http://test.bbx.com";
-            swapHost = "https://devswap.bbx.com";
+            // swapHost = "https://devswap.bbx.com";
             publicPath = '';
             break;
         default:
             // production
             bbxHost = "https://www.bbx.com";
-            swapHost = "https://swap.bbx.com";
+            // swapHost = "https://swap.bbx.com";
             publicPath = 'https://bbx-static.oss-accelerate.aliyuncs.com';
     }
 }
 
 export default {
-    swapHost,
+    // swapHost,
     bbxHost,
     publicPath
 };

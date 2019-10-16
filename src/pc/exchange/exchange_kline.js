@@ -252,6 +252,7 @@ class ExchangeKline extends Component {
 
   init() {
     let coinPair = getQueryString(this.props.location.search, "coinPair");
+    // let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
 
     let lang = this.props.default.value || "zh-CN";
     let langObj = {

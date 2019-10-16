@@ -250,7 +250,7 @@ class PCHeader extends React.Component {
                 <Link to={`/${search}`} className="logo">
                   <img src={logo} alt="logo" />
                 </Link>
-                <div className="pc-nav-left">
+                {/* <div className="pc-nav-left">
                   {
                     this.state.firstCoinPair ?
                           <NavLink className="exchange" activeStyle={{ color: "#5f8ed4" }} to={{ pathname: "/exchange", search: `${exchangeSearch}` }}>
@@ -258,7 +258,7 @@ class PCHeader extends React.Component {
                           </NavLink>
                           : <a className="exchange">{intl.get("EXCHANGE")}</a>
                   }
-                </div>
+                </div> */}
 
                 <nav className="pc-nav clearfix">
                   {/* <div className="jump-list">

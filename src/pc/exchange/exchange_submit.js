@@ -203,7 +203,9 @@ class PayBix extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let coinPair = getQueryString(this.props.location.search, "coinPair");
+    // let coinPair = getQueryString(this.props.location.search, "coinPair");
+    let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+
     let token = getCookie("token");
 
     if(this.mounted) {
@@ -418,7 +420,8 @@ class PayBix extends Component {
 
     //设置美元换算价格
     if (nextProps.clist && nextProps.clist.coin_prices && nextProps.clist.usd_rates && nextProps.spot_tickers && nextProps.spot_tickers.tickers) {
-      let coinPair = getQueryString(this.props.location.search, "coinPair");
+      // let coinPair = getQueryString(this.props.location.search, "coinPair");
+      let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
       let coinArr = coinPair.split("/");
       //let firstCoin = coinArr[0];
       let lastCoin = coinArr[1];

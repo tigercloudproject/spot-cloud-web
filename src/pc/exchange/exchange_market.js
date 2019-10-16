@@ -7,7 +7,7 @@ import { cutOutDecimal, cutOut, stringCutOut} from "../../utils/dataProcess.js";
 import { getQueryString } from "../../utils/getQueryString.js";
 import { withRouter } from "react-router-dom";
 import intl from "react-intl-universal";
-import { changeCurrentCoinPair, getSpotDetails } from "../../redux/exchange.redux.js";
+// import { changeCurrentCoinPair, getSpotDetails } from "../../redux/exchange.redux.js";
 
 @withRouter
 @connect(
@@ -16,8 +16,8 @@ import { changeCurrentCoinPair, getSpotDetails } from "../../redux/exchange.redu
     getBbxTicker,
     setCurrentCoinPair,
     bbxTickerInfo,
-    changeCurrentCoinPair,
-    getSpotDetails
+    // changeCurrentCoinPair,
+    // getSpotDetails
   }
 )
 class ExchangeMarket extends Component {
@@ -33,7 +33,9 @@ class ExchangeMarket extends Component {
     this.mounted = true;
     this.props.getBbxTicker();
 
-    let coinPair = getQueryString(this.props.location.search, "coinPair");
+    // let coinPair = getQueryString(this.props.location.search, "coinPair");
+    let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+
     if (this.mounted) {
       this.setState({
         currentCoinPair: coinPair
@@ -109,19 +111,21 @@ class ExchangeMarket extends Component {
       search = search + `&lang=${this.props.default.value}`;
     }
 
-    if (this.state.qd !== "null" && this.state.qd !== "undefined" && this.state.qd != null) {
+    // this.state.qd !== "null" && this.state.qd !== "undefined" && this.state.qd != null
+    if (this.state.qd !== "null") {
       search = search + `&qd=${ this.state.qd }`;
     }
 
-    this.props.history.push(`/exchange${search}`);
+    // this.props.history.push(`/exchange${search}`);
+    this.props.history.push(`${search}`);
     if (this.mounted) {
       this.setState({
         currentCoinPair: item.stock_code
       });
     }
 
-    this.props.changeCurrentCoinPair(item.stock_code); //切换当前币值对
-    this.props.getSpotDetails(item.stock_code);
+    // this.props.changeCurrentCoinPair(item.stock_code); //切换当前币值对
+    // this.props.getSpotDetails(item.stock_code);
   }
 
   render() {

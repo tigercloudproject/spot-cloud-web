@@ -93,6 +93,7 @@ class ExchangeRecordList extends Component {
     this.mounted = true;
     let token = getCookie("token");
     let coinPair = getQueryString(this.props.location.search, "coinPair");
+    // let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
     if (this.mounted) {
       this.setState({
         token: token
@@ -183,6 +184,8 @@ class ExchangeRecordList extends Component {
 
   changeCheckbox(e) {
     let coinPair = getQueryString(this.props.location.search, "coinPair");
+    // let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
+
     if(this.mounted) {
       this.setState({
         isShowAll: e.target.checked
