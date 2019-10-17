@@ -18,8 +18,10 @@ switch ( document.domain ) {
         break;
     default:
         // production
-        host1 = c_host ? 'https://' + c_host + '/' : 'https://api.bbxapp.vip/';
-        bbx_websocket = "wss://"+ (c_host?c_host:'api.bbxapp.vip') + "/v1/ifspot/realTime";
+        // host1 = c_host ? 'https://' + c_host + '/' : 'https://api.bbxapp.vip/';
+        // bbx_websocket = "wss://"+ (c_host?c_host:'api.bbxapp.vip') + "/v1/ifspot/realTime";
+        host1 = "https://devapi.bbx.com/";
+        bbx_websocket = "wss://devapi.bbx.com/v1/ifspot/realTime";    //测试环境和本地
         // upload_img = "https://upload.bbx.com/upload?type=image"; //正式服kyc身份认证
 };
 
@@ -69,7 +71,7 @@ export const exchangeAjax = {
 }
 
 export const assetsAjax = {
-    // propety_info: host1 + "v1/ifaccount/users/me",  //获得用户资产信息
+    propety_info: host1 + "v1/ifaccount/users/me",  //获得用户资产信息
     // recharge_list: host1 + "v1/ifaccount/settles", //充值记录
     // address: host1 + "v1/ifaccount/address", //绑定充值地址
     // drawing: host1 + "v1/ifaccount/withdraw",//提现
@@ -83,7 +85,7 @@ export const quoteAjax = {
 }
 
 export const accountAjax = {
-    fund_pwd: host1 + "v1/ifaccount/assetPassword", //设置资金密码
+    // fund_pwd: host1 + "v1/ifaccount/assetPassword", //设置资金密码
     // asset_pwd_effective: host1 + "v1/ifaccount/assetPasswordEffectiveTime?action=reset",
     // google_pwd: host1 + "v1/ifaccount/GAKey", //设置谷歌验证码相关接口
     // areas: host1 + "v1/ifglobal/areas", //获取地区列表

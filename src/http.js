@@ -67,16 +67,30 @@ axios.interceptors.request.use(config => {
     config.headers.common['Bbx-Dev'] = "web";
     config.headers.common['Bbx-Ts'] = nonce;
     config.headers.common['Content-Type'] = "application/json";
+
+    // config.headers.common['Bbx-Ver'] = "1.0";
+    // config.headers.common['Bbx-Dev'] = "web";
+    // config.headers.common['Bbx-Ts'] = nonce;
+    // config.headers.common['Bbx-Accesskey'] = "db52276c-ed7b-4066-8a3f-ddb5751bb94f";
+    // config.headers.common['Content-Type'] = "application/json";
+
+
+
+    // account_id 2085546053
+    // api_key db52276c-ed7b-4066-8a3f-ddb5751bb94f
+    // api-secret c1cbd519-3d95-4864-9398-833a61612668
+    // e-ts 2020-03-21 09:40:11
+
+
     //取cookie里的token
     let cookietoken = getCookie("token");
     //bbxToken = cookietoken?cookietoken:localStorage.getItem("bbxToken");
     bbxToken = cookietoken;
-    // bbxSsid = localStorage.getItem("bbxSsid");
-    // bbxUid = localStorage.getItem("bbxUid");
-    // bbxLang = localStorage.getItem("lang");
+
 
     bbxSsid = getCookie("ssid");
     bbxUid = getCookie("uid");
+    // bbxUid = "2085546053";
     bbxLang = localStorage.getItem("lang");
     if(bbxLang.indexOf("zh")<0) {
         bbxLang = "en";

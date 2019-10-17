@@ -7,7 +7,7 @@ import { cutOutDecimal, cutOut, stringCutOut} from "../../utils/dataProcess.js";
 import { getQueryString } from "../../utils/getQueryString.js";
 import { withRouter } from "react-router-dom";
 import intl from "react-intl-universal";
-// import { changeCurrentCoinPair, getSpotDetails } from "../../redux/exchange.redux.js";
+import { changeCurrentCoinPair, getSpotDetails } from "../../redux/exchange.redux.js";
 
 @withRouter
 @connect(
@@ -16,8 +16,8 @@ import intl from "react-intl-universal";
     getBbxTicker,
     setCurrentCoinPair,
     bbxTickerInfo,
-    // changeCurrentCoinPair,
-    // getSpotDetails
+    changeCurrentCoinPair,
+    getSpotDetails
   }
 )
 class ExchangeMarket extends Component {
@@ -124,8 +124,8 @@ class ExchangeMarket extends Component {
       });
     }
 
-    // this.props.changeCurrentCoinPair(item.stock_code); //切换当前币值对
-    // this.props.getSpotDetails(item.stock_code);
+    this.props.changeCurrentCoinPair(item.stock_code); //切换当前币值对
+    this.props.getSpotDetails(item.stock_code);
   }
 
   render() {

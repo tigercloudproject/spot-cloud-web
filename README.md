@@ -1,4 +1,17 @@
 # 币币交易 - bbx-spot-web
+- 老虎币币云前端demo
+- 该项目使用了react框架，有关工作原理的详细说明请查看官方文档
+- 项目方需自己实现登陆注册功能，本demo只提供币币交易功能
+
+最快本地部署流程：
+
+1.git clone 项目或 download zip 项目包
+
+2.安装项目依赖包
+    npm install
+    npm install webpack -g
+
+3.配置
 
 ## 部署
 

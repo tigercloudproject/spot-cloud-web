@@ -69,7 +69,7 @@ class AssetsIndex extends Component {
     }
   }
   componentDidMount() {
-    
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -145,7 +145,7 @@ class AssetsIndex extends Component {
             {/* </div> */}
           </div>
         {/* </div> */}
-        
+
       </div>;
   }
 }
