@@ -52,7 +52,6 @@ axios.interceptors.request.use(config => {
         config.url = config.url + "?t=" + timestamp;
     }
 
-    
 
     test_name =config.url;
 
@@ -63,45 +62,48 @@ axios.interceptors.request.use(config => {
     testObj[test_name]["url"] = test_name;
 
     //设置头部信息
-    config.headers.common['Bbx-Ver'] = "1.0";
-    config.headers.common['Bbx-Dev'] = "web";
-    config.headers.common['Bbx-Ts'] = nonce;
-    config.headers.common['Content-Type'] = "application/json";
-
     // config.headers.common['Bbx-Ver'] = "1.0";
     // config.headers.common['Bbx-Dev'] = "web";
     // config.headers.common['Bbx-Ts'] = nonce;
-    // config.headers.common['Bbx-Accesskey'] = "db52276c-ed7b-4066-8a3f-ddb5751bb94f";
     // config.headers.common['Content-Type'] = "application/json";
 
+    config.headers.common['Bbx-Ver'] = "1.0";
+    config.headers.common['Bbx-Dev'] = "web";
+    config.headers.common['Bbx-Ts'] = nonce;
+    config.headers.common['Bbx-Accesskey'] = "bdd47ca7-ab7c-4238-95e4-6cbde0d8d5b1";
+    config.headers.common['Bbx-ExpiredTs'] = "1546147982000000";
+    config.headers.common['Content-Type'] = "application/json";
+    config.headers.common['Bbx-Sign'] = "4be79165ef3ff46a19e7ad194e6886b1";
 
-
-    // account_id 2085546053
-    // api_key db52276c-ed7b-4066-8a3f-ddb5751bb94f
-    // api-secret c1cbd519-3d95-4864-9398-833a61612668
-    // e-ts 2020-03-21 09:40:11
-
+    // Bbx-Sign
+    // Bbx-Uid
+    // Bbx-Ver
+    // Bbx-Dev
+    // Bbx-Ts
+    // Bbx-Accesskey
+    // Bbx-ExpiredTs
 
     //取cookie里的token
-    let cookietoken = getCookie("token");
-    //bbxToken = cookietoken?cookietoken:localStorage.getItem("bbxToken");
-    bbxToken = cookietoken;
+    let 
+        // bbxToken = getCookie("token");
+        bbxToken = "f5a58f3011fc34fb4e6befbd0c1229b6";
+        bbxSsid = getCookie("ssid");
+        // bbxUid = getCookie("uid");
+        bbxUid = "2090193280";
 
-
-    bbxSsid = getCookie("ssid");
-    bbxUid = getCookie("uid");
-    // bbxUid = "2085546053";
-    bbxLang = localStorage.getItem("lang");
+        bbxLang = localStorage.getItem("lang");
     if(bbxLang.indexOf("zh")<0) {
         bbxLang = "en";
     } else if(bbxLang.indexOf("zh-tw")>-1) {
         bbxLang = "zh-cn";
     }
 
-    if(bbxToken) {
-        bbxSign = aesEncrypy(bbxToken,nonce);
-        config.headers.common['Bbx-Sign'] = bbxSign;
-    }
+    // if(bbxToken) {
+    //     bbxSign = aesEncrypy(bbxToken,nonce);
+    //     config.headers.common['Bbx-Sign'] = bbxSign;
+    //     // config.headers.common['Bbx-Sign'] = "4be79165ef3ff46a19e7ad194e6886b1";
+    //     //md5+时间戳+token
+    // }
     if(bbxSsid) {
         config.headers.common['Bbx-Ssid'] = bbxSsid;
     }
@@ -113,15 +115,15 @@ axios.interceptors.request.use(config => {
     if(bbxLang) {
         config.headers.common["Bbx-Language"] = bbxLang;
     }
-    
+
 
     return config;
 }, (err) => {
     //console.log("request###err##@@@######",err);
 })
 
-let test_end;
-let test_response_name;
+// let test_end;
+// let test_response_name;
 axios.interceptors.response.use(response => {
 
     // test_end = new Date().valueOf();
@@ -149,7 +151,7 @@ axios.interceptors.response.use(response => {
 
     //     delete testObj[response.config.url];
     // }
-    
+
 
     //非法请求 跳转到登录
     if(response.data.errno == "FORBIDDEN") {
@@ -158,7 +160,7 @@ axios.interceptors.response.use(response => {
         delCookie("ssid", "bbx.com", "/");
         delCookie("uid", "bbx.com", "/");
         let path = getQueryString(window.location.search,"path");
-       
+
         // 只有在usercenter和assets相关的页面发生FORBIDDEN时跳到登录页
         if (window.location.href.indexOf("assets")>0 || window.location.href.indexOf("usercenter")>0) {
             if (path) {
@@ -166,7 +168,7 @@ axios.interceptors.response.use(response => {
             } else {
                 window.location.href = window.location.protocol + "//" + window.location.host + '/login';
             }
-        } 
+        }
     }
 
     if(response.headers["bbx-token"]) {
@@ -181,7 +183,7 @@ axios.interceptors.response.use(response => {
         //localStorage.setItem("bbxUid", response.headers["bbx-uid"]);
         setCookie("uid", response.headers["bbx-uid"], 1, "bbx.com", "/");
     }
-    
+
     return response;
 }, (err) => {
     if(!err.response) {
@@ -208,7 +210,7 @@ axios.interceptors.response.use(response => {
     //         testObj[test_response_name]["method"],
     //         testObj[test_response_name]["status"],
     //         testObj[test_response_name]["errno"],
-    //         testObj[test_response_name]["time"]) 
+    //         testObj[test_response_name]["time"])
     // }
 
     // delete testObj[response.config.url];

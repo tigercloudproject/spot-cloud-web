@@ -5,7 +5,6 @@ let c_host = getCookie("host");
 let host1 = ''
 //   , contracts_kline = ''
   , bbx_websocket = ''
-//   , upload_img = '';
 
 
 // 配置
@@ -14,7 +13,6 @@ switch ( document.domain ) {
         // development
         host1 = "https://devapi.bbx.com/";
         bbx_websocket = "wss://devapi.bbx.com/v1/ifspot/realTime";    //测试环境和本地
-        // upload_img = "https://devfile.bbx.com/upload?type=image"   //测试服kyc身份认证
         break;
     default:
         // production
@@ -22,7 +20,6 @@ switch ( document.domain ) {
         // bbx_websocket = "wss://"+ (c_host?c_host:'api.bbxapp.vip') + "/v1/ifspot/realTime";
         host1 = "https://devapi.bbx.com/";
         bbx_websocket = "wss://devapi.bbx.com/v1/ifspot/realTime";    //测试环境和本地
-        // upload_img = "https://upload.bbx.com/upload?type=image"; //正式服kyc身份认证
 };
 
 export const globalAjax = {
