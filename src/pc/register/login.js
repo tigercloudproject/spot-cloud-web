@@ -23,8 +23,8 @@ import MediaQuery from "react-responsive";
 
 @withRouter
 @connect(state=> ({ ...state.lang, ...state.user }),{
-  loginPost, 
-  getPropetyInfo, 
+  loginPost,
+  getPropetyInfo,
   getUserConfig,
   getCaptchCheck})
 class Login extends Component {
@@ -89,7 +89,7 @@ class Login extends Component {
       // let path = getQueryString(this.props.location.search, "path");
       let path = this.getPath();
       this.props.loginPost(data,path).then(async () => {
-        
+
         if (this.props.user_error) {
           notification.error({
             message: intl.get("error_message_title"),
@@ -266,7 +266,7 @@ class Login extends Component {
     const { form } = this.state;
     const newFieldObj = {value, valid: true, error: ''};
 
-    switch (field) {
+    switch ( field ) {
         case 'email': {
             let emailReg = /^([a-zA-Z0-9._-])+@([a-zA-Z0-9._-])+(.[a-zA-Z0-9_-])+/;
             if (!emailReg.test(value)) {
@@ -297,7 +297,7 @@ class Login extends Component {
             // if (!pwdReg.test(value)) {
             //     newFieldObj.error = "密码格式错误!";
             //     newFieldObj.valid = false;
-            // }else 
+            // }else
             if(value.length===0) {
                 newFieldObj.error = intl.get("login_pwd_placeholder");
                 newFieldObj.valid = false;
@@ -307,11 +307,12 @@ class Login extends Component {
             // }
             break;
         }
-        case 'agree': {
+        case 'agree':
             if(!value) {
                 newFieldObj.valid = false;
             }
-        }
+            break;
+        default:
     }
 
     if(this.mounted) {
@@ -352,7 +353,7 @@ class Login extends Component {
 
 
     //点击提交按钮后暂时锁住按钮
-    
+
     if(this.mounted) {
       this.setState({
         canSubmit: false,
@@ -383,8 +384,8 @@ class Login extends Component {
   }
 
   back() {
-    history.go(-1); //后退1页  
-  }  
+    history.go(-1); //后退1页
+  }
 
   render() {
     let TabTop = {
@@ -406,13 +407,13 @@ class Login extends Component {
     const canSubmit = this.state.canSubmit;
     //console.log("this.state.need_captcha###", this.state.need_captcha);
     const valid = !canSubmit || (currentTab === 1 && !email.valid) || (currentTab === 0 && !phone.valid) || (currentTab === 0 && !phone_code.valid) || !pwd.valid || !agree.valid || (this.state.need_captcha===1 && !this.state.captcha_validate);
-    
+
 
     let search = '';
     if (this.props.default && this.props.default.value) {
       search = `?lang=${this.props.default.value}`;
     }
-    if (this.state.qd) {
+    if (this.state.qd !== "null" && this.state.qd !== "undefined" && this.state.qd != null) {
       search = search ? search + `&qd=${this.state.qd}` : `?qd=${this.state.qd}`;
     }
 
@@ -453,26 +454,26 @@ class Login extends Component {
                   {this.state.currentTab === 0 && !phone_code.valid && <span>{phone_code.error}</span>}
                 </p>
                 <div className="form-control" style={PaddingTop30}>
-                  <input type={this.state.passwordType} name="password" autoComplete="new-password"  
-                    placeholder={intl.get("login_pwd_placeholder")} 
-                    value={this.state.form.pwd.value || ""} 
+                  <input type={this.state.passwordType} name="password" autoComplete="new-password"
+                    placeholder={intl.get("login_pwd_placeholder")}
+                    value={this.state.form.pwd.value || ""}
                     onChange={(e) => this.handleValueChange('pwd', e.target.value)}
                     onFocus={this.removeReadOnly}
                     ref="mima"
                   />
                 </div>
                 <p className="error">{!pwd.valid && <span>{pwd.error}</span>}</p>
-                
+
                 <div className="captcha-box" style={{display: this.state.need_captcha===1?"block":"none"}}>
                   <div id="captcha"></div>
                 </div>
-                
+
 
                 {
                   !this.state.inSubmission?<button className="submit" style={{marginTop:"20px"}} disabled={valid} onClick={this.loginSubmit}>{intl.get("login_btn")}</button>:
                     <button className="ms-submission submit" style={{marginTop:"20px"}} disabled="disabled">{intl.get("in_the_login_btn")}<span>...</span></button>
                 }
-                
+
                 <p className="login-goto-prompt clearfix">
                   <Link to={{pathname:"/retrieval",search:`${search}`}} className="forget">{intl.get("login_forgot_password")}?</Link>
                   <span>{intl.get("login_no_account")}? <Link to={{pathname:"/register",search:`${search}`}}>{intl.get("login_to_register")}</Link> <img src={nextIcon} /></span>
@@ -480,7 +481,7 @@ class Login extends Component {
               </div>
             </div>
           </div>
-        
+
         </MediaQuery>
 
         <MediaQuery maxWidth={700}>
@@ -534,7 +535,7 @@ class Login extends Component {
                           <Link to={{pathname:"/retrieval",search:`${search}`}}>{intl.get("login_forgot_password")}?</Link>
                         </div>
                     </div>
-              
+
                     <div className="login-h5-bottom">
                         <hr />
                         <div>

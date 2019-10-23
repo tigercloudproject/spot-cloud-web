@@ -197,7 +197,7 @@ class PCHeader extends React.Component {
           search = `?lang=${lang_code}`;
         }
 
-        if(this.state.qd!=="null") {
+        if (this.state.qd !== "null" && this.state.qd !== "undefined" && this.state.qd != null) {
           if(search) {
             search = search + `&qd=${this.state.qd}`;
           }else {
@@ -228,7 +228,7 @@ class PCHeader extends React.Component {
           exchangeSearch=`?coinPair=${this.state.firstCoinPair}`;
         }
 
-        if(this.state.qd !== "null") {
+        if (this.state.qd !== "null" && this.state.qd !== "undefined" && this.state.qd != null) {
           exchangeSearch = exchangeSearch + `&qd=${this.state.qd}`;
         }
 

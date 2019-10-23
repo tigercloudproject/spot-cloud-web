@@ -111,8 +111,7 @@ class ExchangeMarket extends Component {
       search = search + `&lang=${this.props.default.value}`;
     }
 
-    // if (this.state.qd !== "null" && this.state.qd !== "undefined" && this.state.qd != null) {
-    if (this.state.qd !== "null") {
+    if (this.state.qd !== "null" && this.state.qd !== "undefined" && this.state.qd != null) {
       search = search + `&qd=${ this.state.qd }`;
     }
 

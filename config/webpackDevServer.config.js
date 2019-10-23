@@ -9,14 +9,7 @@ const paths = require('./paths');
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
 
-var disableHostCheck = false;   // 解决 Invalid Host header
-
-switch ( process.env.RUNES_ENV ) {
-    case 'development':
-        disableHostCheck = true;
-        break;
-    default:
-}
+var disableHostCheck = true;   // 解决 Invalid Host header
 
 module.exports = function(proxy, allowedHost) {
   return {

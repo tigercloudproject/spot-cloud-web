@@ -66,10 +66,8 @@
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
-    "test": "node scripts/test.js --env=jsdom",
     "start-js": "node scripts/start.js",
     "build": "npm-run-all build-css build-js",
-    "dev-build": "export RUNES_ENV='development' && npm-run-all build-css build-js",
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "node scripts/build.js",
     "analyz": "NODE_ENV=production npm_config_report=true npm run deploy:prod"

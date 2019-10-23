@@ -9,11 +9,6 @@ const url = require("url");
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
-const Production_Public_Path = 'https://bbx-static.oss-accelerate.aliyuncs.com';
-const Development_Public_Path = '/';
-
-const Default_Public_Path = process.env.RUNES_PUBLIC_PATH = process.env.RUNES_ENV === 'development' ? Development_Public_Path : Production_Public_Path;
-
 const envPublicUrl = process.env.PUBLIC_URL;
 
 function ensureSlash(path, needsSlash) {
@@ -57,7 +52,12 @@ const getPublicUrl = appPackageJson =>
 // 正式环境
 function getServedPath(appPackageJson) {
     let publicUrl = getPublicUrl(appPackageJson);
-    let servedUrl = envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : Default_Public_Path );
+    console.log(
+        'servedUrl',
+        envPublicUrl,
+        publicUrl
+    )
+    let servedUrl = envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : process.env.PUBLIC_URL );
 
     return ensureSlash(servedUrl, true);
 }
@@ -65,7 +65,7 @@ function getServedPath(appPackageJson) {
 //为了service-worker.js配置index.html测试环境
 function getServedPath1(appPackageJson) {
     const publicUrl = getPublicUrl(appPackageJson);
-    const servedUrl =envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : "/");
+    const servedUrl = envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : "/");
     return ensureSlash(servedUrl, true);
 }
 

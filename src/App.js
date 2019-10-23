@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import {connect} from "react-redux";
 import { setDefaultLanguage } from "./redux/lang.redux.js";
 import { getGlobalConfig, getUserConfig, getUser } from "./redux/global.redux.js";
-import IntlPolyfill from "intl";
+// import IntlPolyfill from "intl";
 import { getQueryString } from "./utils/getQueryString.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -284,9 +284,6 @@ class App extends Component {
        localStorage.setItem("user",JSON.stringify(response));
      });
    }
-
-
-
   }
 
   componentWillUnmount(){

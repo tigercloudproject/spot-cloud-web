@@ -3,15 +3,19 @@
 - 该项目使用了react框架，有关工作原理的详细说明请查看官方文档
 - 项目方需自己实现登陆注册功能，本demo只提供币币交易功能
 
-最快本地部署流程：
 
-1.git clone 项目或 download zip 项目包
+./scripts/start.js
+    NODE_ENV = development
+    webpack-dev-server
+    webpack.config.dev
 
-2.安装项目依赖包
-    npm install
-    npm install webpack -g
+./scripts/dev-build.js
 
-3.配置
+./scripts/build.js
+    NODE_ENV = production
+    webpack.config.prod
+
+
 
 ## 部署
 
@@ -50,6 +54,11 @@
 
 
 - 交易页：
+
+| Header One     | Header Two     |
+| :------------- | :------------- |
+| Item One       | Item Two       |
+
     顶部导航--     文件：pc/component/pc-header.js
                   引用：pc/component/pc-header.js 下 className="pc-header" 容器
 

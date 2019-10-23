@@ -9,10 +9,10 @@ let bbxToken, bbxSsid, nonce, timestamp, bbxSign, bbxUid, bbxLang;
 axios.defaults.headers["Content-Type"] = "application/json;charset=UTF-8";
 
 //超过一秒钟的请求打点
-function report(unique_id, url, method, status, errno, time) {
-  let geturl = `https://stats.ln900.com/report?device_id=${unique_id}&url=${url}&method=${method}&status=${status}&errno=${errno}&time=${time}`;
-  axios.get(geturl);
-}
+// function report(unique_id, url, method, status, errno, time) {
+//   let geturl = `https://stats.ln900.com/report?device_id=${unique_id}&url=${url}&method=${method}&status=${status}&errno=${errno}&time=${time}`;
+//   axios.get(geturl);
+// }
 
 
 let testObj = {}; //存储超过1秒钟的请求
@@ -84,7 +84,7 @@ axios.interceptors.request.use(config => {
     // Bbx-ExpiredTs
 
     //取cookie里的token
-    let 
+    let
         // bbxToken = getCookie("token");
         bbxToken = "f5a58f3011fc34fb4e6befbd0c1229b6";
         bbxSsid = getCookie("ssid");

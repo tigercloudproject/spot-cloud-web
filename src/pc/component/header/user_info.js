@@ -71,19 +71,19 @@ class UserInfo extends Component {
         // if (this.state.qd!=="null") {
         //     search = search ? search + `&qd=${this.state.qd}` : `?qd=${this.state.qd}`;
         // }
- 
+
         // this.props.history.push(`/${search}`);
-       
+
     }
     gotoUsercenter(type) {
         let search = "";
         if(this.props.default && this.props.default.value) {
             search = `?lang=${this.props.default.value}`;
         }
-        if(this.state.qd) {
+        if (this.state.qd !== "null" && this.state.qd !== "undefined" && this.state.qd != null) {
             search = search?search+`&qd=${this.state.qd}`:`?qd=${this.state.qd}`;
         }
-        
+
         this.props.history.push(`/usercenter/account_information/${type}${search}`);
     }
 

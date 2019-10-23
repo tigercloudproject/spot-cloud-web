@@ -1,5 +1,9 @@
 # CHANGELOG
 
+移除cnzz、google监测
+移除线路测速
+
+
 ## 1.1.2.1014
 ### a
 - C 调整线路测试中的best为<https://bbx-static.oss-accelerate.aliyuncs.com/ping>

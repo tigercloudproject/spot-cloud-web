@@ -1,11 +1,9 @@
-'use strict';
-
 const fs = require('fs');
 const path = require('path');
-const paths = require('./paths');
+// const paths = require('./paths');
 
 // Make sure that including paths.js after env.js will read .env variables.
-delete require.cache[require.resolve('./paths')];
+// delete require.cache[require.resolve('./paths')];
 
 const NODE_ENV = process.env.NODE_ENV;
 if (!NODE_ENV) {
@@ -15,6 +13,11 @@ if (!NODE_ENV) {
 }
 
 // https://github.com/bkeepers/dotenv#what-other-env-files-can-i-use
+// TODO: 避免加载 paths.js，要先配置完 env.js
+const paths = {
+    dotenv: '.env'
+};
+
 var dotenvFiles = [
   `${paths.dotenv}.${NODE_ENV}.local`,
   `${paths.dotenv}.${NODE_ENV}`,

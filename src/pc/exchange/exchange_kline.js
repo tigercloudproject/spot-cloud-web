@@ -459,10 +459,16 @@ class ExchangeKline extends Component {
     let klineIfarme = document.querySelector("#" + widget.id);
     klineIfarme.style.visibility = "hidden";
     let isLoad = () => {
-      if ( klineIfarme.contentWindow && klineIfarme.contentWindow.document.readyState === "complete")
-      {
-        klineIfarme.style.visibility = "";
-        clearInterval(t);
+      try {
+          if ( klineIfarme.contentWindow && klineIfarme.contentWindow.document.readyState === "complete")
+          {
+            klineIfarme.style.visibility = "";
+            clearInterval(t);
+          }
+      } catch (e) {
+
+      } finally {
+
       }
     };
     t = setInterval(isLoad, 1000);

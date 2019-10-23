@@ -1,25 +1,23 @@
-import { getCookie } from "./utils/cookie.js";
+// import { getCookie } from "./utils/cookie.js";
 
 // let host1 = getHost();
-let c_host = getCookie("host");
+// let c_host = getCookie("host");
 let host1 = ''
 //   , contracts_kline = ''
   , bbx_websocket = ''
 
 
 // 配置
-switch ( document.domain ) {
+switch ( window.location.hostname ) {
     case 'test.bbx.com':
         // development
-        host1 = "https://devapi.bbx.com/";
+        host1 = 'https://devapi.bbx.com/';
         bbx_websocket = "wss://devapi.bbx.com/v1/ifspot/realTime";    //测试环境和本地
         break;
     default:
         // production
-        // host1 = c_host ? 'https://' + c_host + '/' : 'https://api.bbxapp.vip/';
-        // bbx_websocket = "wss://"+ (c_host?c_host:'api.bbxapp.vip') + "/v1/ifspot/realTime";
-        host1 = "https://devapi.bbx.com/";
-        bbx_websocket = "wss://devapi.bbx.com/v1/ifspot/realTime";    //测试环境和本地
+        host1 = 'https://api.bbx.com/';
+        bbx_websocket = "wss://api.bbx.com/v1/ifspot/realTime";    //测试环境和本地
 };
 
 export const globalAjax = {
