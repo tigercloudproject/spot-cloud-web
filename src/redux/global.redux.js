@@ -52,6 +52,24 @@ export function getGlobalConfig() {
     }
 }
 
+export function getGlobalHeader() {
+    return axios.get( globalAjax.global_header
+        , { headers: { 'Skip-Set-Axios-Headers': 'true' } }
+        )
+        .then( response => {
+            if(response && response.data.errno == "OK") {
+                return response.data.data;
+            } else {
+                return {}
+            }
+        }
+        , err => {
+            console.log( "getGlobalConfig error###", err );
+            return {};
+        }
+    )
+}
+
 export function getUserConfig() {
     return (dispatch, getState) => {
         return axios.get(globalAjax.user_config).then(

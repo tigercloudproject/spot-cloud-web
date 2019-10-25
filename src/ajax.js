@@ -20,7 +20,8 @@ export const globalAjax = {
     g_config: host + "v1/ifglobal/global",
     // user_config: host + "v1/ifglobal/userConfigs",
     user_config: '_simResponse/userConfigs',
-    app_list: host + "v1/ifglobal/appBuilds"
+    app_list: host + "v1/ifglobal/appBuilds",
+    global_header: '_simResponse/globalHeader'
 }
 
 export const userAjax = {

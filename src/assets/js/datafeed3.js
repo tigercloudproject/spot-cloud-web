@@ -89,7 +89,7 @@ class DataFeeds {
         this.bar(name, info.type, info.bit, startTime, time)
             .then(res => {
                 let bars = []
-                let barData = res.data.data
+                let barData = res && res.data.data
                 if (!barData || !barData.length) {
                     isOneOrHis && (info.noData = true) // 表示当前分时已经没有历史数据了
                     onDataCallback([], { noData: true, nextTime: undefined })

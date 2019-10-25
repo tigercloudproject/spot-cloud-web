@@ -4,11 +4,13 @@ import {connect} from "react-redux";
 import { setCookie, delCookie, getCookie } from "./utils/cookie.js";
 import { getQueryString } from "./utils/getQueryString.js";
 import CFG from "./config.js";
+import { getGlobalHeader } from "./redux/global.redux";
 
 // import Cookie from "js-cookie";
 
 let bbxToken, bbxSsid, nonce, timestamp, bbxSign, bbxUid, bbxLang;
 
+// 全局 Headers
 axios.defaults.headers["Content-Type"] = "application/json;charset=UTF-8";
 
 //生成唯一ID
@@ -32,10 +34,8 @@ if(!unique_id) {
 
 // request
 axios.interceptors.request.use( req => {
-
     timestamp = new Date().valueOf();
     nonce = timestamp + "000";  // 微秒时间戳
-
     // 给所有请求加时间戳
     if (req.url && req.url.indexOf("?") > -1) {
         req.url = req.url + "&t=" + timestamp;
@@ -43,31 +43,46 @@ axios.interceptors.request.use( req => {
         req.url = req.url + "?t=" + timestamp;
     }
 
-    // 设置头部信息
-    // req.headers.common['Content-Type'] = "application/json";
-    req.headers.common['Bbx-Ts'] = nonce;
-    req.headers.common['Bbx-Ver'] = GlobalHeader.bbxVer;
-    req.headers.common['Bbx-Dev'] = GlobalHeader.bbxDev;
-    req.headers.common['Bbx-Accesskey'] = GlobalHeader.bbxAccesskey;
-    req.headers.common['Bbx-ExpiredTs'] = GlobalHeader.bbxExpiredTs;
+    // 当前请求是否跳过设置 Headers
+    if ( req.headers[ 'Skip-Set-Axios-Headers' ] !== 'true' ) {
+        // 获取 Headers 的接口要跳过配置 Headers
+        // NOTE: 每次请求前都会更新
+        return getGlobalHeader()
+            .then( data => {
+                // 设置头部信息
+                req.headers.common["Content-Type"] = "application/json";
+                req.headers.common['Bbx-Ts'] = nonce;
+                req.headers.common['Bbx-Ver'] = data.bbxVer;
+                req.headers.common['Bbx-Dev'] = data.bbxDev;
+                req.headers.common['Bbx-Accesskey'] = data.bbxAccesskey;
+                req.headers.common['Bbx-ExpiredTs'] = data.bbxExpiredTs;
 
-    bbxToken = getCookie('token') || '';
-    // md5( body + token + ts )
-    req.headers.common['Bbx-Sign'] = bbxToken ? aesEncrypy( bbxToken, nonce ) : '';
+                bbxToken = getCookie('token') || '';
+                // md5( body + token + ts )
+                req.headers.common['Bbx-Sign'] = bbxToken ? aesEncrypy( bbxToken, nonce ) : '';
 
-    req.headers.common['Bbx-Ssid'] = getCookie( 'ssid' ) || '';
-    req.headers.common['Bbx-Uid'] = getCookie( "uid" ) || '';
+                req.headers.common['Bbx-Ssid'] = getCookie( 'ssid' ) || '';
+                req.headers.common['Bbx-Uid'] = getCookie( "uid" ) || '';
 
-    bbxLang = localStorage.getItem("lang");
-    if(bbxLang.indexOf("zh")<0) {
-        bbxLang = "en";
-    } else if(bbxLang.indexOf("zh-tw")>-1) {
-        bbxLang = "zh-cn";
+                bbxLang = localStorage.getItem("lang");
+                if(bbxLang.indexOf("zh")<0) {
+                    bbxLang = "en";
+                } else if(bbxLang.indexOf("zh-tw")>-1) {
+                    bbxLang = "zh-cn";
+                }
+
+                req.headers.common['Bbx-Language'] = bbxLang || '';
+
+                return req;
+            } )
+            .catch( e => {
+                console.error( e );
+
+                return req;
+            } );
+    } else {
+        return req;
     }
-
-    req.headers.common['Bbx-Language'] = bbxLang || '';
-
-    return req;
 }, (err) => {
     //console.log("request###err##@@@######",err);
 })
@@ -97,11 +112,7 @@ axios.interceptors.response.use(response => {
 
     let bbxToken = response.headers[ "bbx-token" ]
       , bbxSsid = response.headers[ "bbx-ssid" ]
-      , bbxUid = response.headers[ "bbx-uid" ]
-      , bbxVer = response.headers[ "bbx-ver" ]
-      , bbxDev = response.headers[ "bbx-dev" ]
-      , bbxAccesskey = response.headers[ "bbx-accesskey" ]
-      , bbxExpiredTs = response.headers[ "bbx-expired-ts" ];
+      , bbxUid = response.headers[ "bbx-uid" ];
 
     // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
     // NOTE: 登录、注册请求完成，且后端 success 后，后端应在 response.headers 带上 bbx-token、bbx-ssid、bbx-uid
@@ -112,34 +123,15 @@ axios.interceptors.response.use(response => {
         bbxSsid = '';
         bbxUid = '2090193280';
     };
-    // NOTE: 后端传参配置
-    bbxVer = "1.0";
-    bbxDev = "web";
-    bbxAccesskey = "bdd47ca7-ab7c-4238-95e4-6cbde0d8d5b1";
-    bbxExpiredTs = "1686147982000000";
     // ================================== DEMO =================================
 
     // 更新
     bbxToken
         && setCookie( "token", bbxToken, 1, CFG.mainDomainName, "/" );
-
     bbxSsid
         && setCookie( "ssid", bbxSsid, 1, CFG.mainDomainName, "/" );
-
     bbxUid
         && setCookie( "uid", bbxUid, 1, CFG.mainDomainName, "/" );
-
-    bbxVer
-        && setCookie( "bbx-ver", bbxVer, 1, CFG.mainDomainName, "/" );
-
-    bbxDev
-        && setCookie( "bbx-dev", bbxDev, 1, CFG.mainDomainName, "/" );
-
-    bbxAccesskey
-        && setCookie( "bbx-accesskey", bbxAccesskey, 1, CFG.mainDomainName, "/" );
-
-    bbxExpiredTs
-        && setCookie( "bbx-expired-ts", bbxExpiredTs, 1, CFG.mainDomainName, "/" );
 
     return response;
 }, (err) => {
