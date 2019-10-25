@@ -1,10 +1,17 @@
 {
-	"errno": "OK",
-	"message": "Success",
-    "data": {
-        "bbxVer": "1.0",
-		"bbxDev": "web",
-		"bbxAccesskey": "bdd47ca7-ab7c-4238-95e4-6cbde0d8d5b1",
-		"bbxExpiredTs": "1686147982000000"
-    }
+	"access_key": "bdd47ca7-ab7c-4238-95e4-6cbde0d8d5b1",
+	"accountInfo": {
+		"account_id": 2090193280,
+		"api_key": "bdd47ca7-ab7c-4238-95e4-6cbde0d8d5b1",
+		"api_key_expired_at": "2018-12-30T05:33:02.723588Z",
+		"api_secret": "d531a8ed-4e52-464d-ba74-f47a2054f337",
+		"app_id": 2017184040,
+		"assets": null,
+		"created_at": "2018-11-30T05:33:02.729615Z",
+		"origin_uid": "123456",
+		"status": 1,
+		"updated_at": "2018-11-30T05:33:02.723588Z"
+	},
+	"expired_ts": "1546147982000000",
+	"token": "f5a58f3011fc34fb4e6befbd0c1229b6"
 }

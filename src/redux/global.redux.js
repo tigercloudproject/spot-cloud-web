@@ -51,17 +51,13 @@ export function getGlobalConfig() {
         );
     }
 }
-
+// ======================= 这块代码是 Demo，仅供演示、说明用 ====================
 export function getGlobalHeader() {
     return axios.get( globalAjax.global_header
         , { headers: { 'Skip-Set-Axios-Headers': 'true' } }
         )
         .then( response => {
-            if(response && response.data.errno == "OK") {
-                return response.data.data;
-            } else {
-                return {}
-            }
+            return response.data || {}
         }
         , err => {
             console.log( "getGlobalConfig error###", err );
@@ -69,6 +65,7 @@ export function getGlobalHeader() {
         }
     )
 }
+// ================================== DEMO END =============================
 
 export function getUserConfig() {
     return (dispatch, getState) => {

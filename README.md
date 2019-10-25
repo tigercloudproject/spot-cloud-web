@@ -192,3 +192,10 @@ let bbxToken = response.headers[ "bbx-token" ] || 'f5a58f3011fc34fb4e6befbd0c122
 
 
 Headers 内 { 'Skip-Set-Axios-Headers': true }
+
+
+
+
+user.redux.js
+    loginPost  要改成 get
+    registerPost 要改成 get
