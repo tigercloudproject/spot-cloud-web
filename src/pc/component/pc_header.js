@@ -18,8 +18,9 @@ import avatarLight from "../../assets/images/icon-heads.png";
 import menuIcon from "../../assets/images/h5/H5-ICON-Setting.svg";
 import closeIcon from "../../assets/images/h5/H5-ICON-close.svg";
 import { setCookie } from "../../utils/cookie.js";
+import CFG from "../../config.js";
 import QRCode from "../component/qrcode.js";
-import config from "../../hostConfig.js";
+import config from "../../config.js";
 import { getPropetyInfo } from "../../redux/assets.redux";
 
 
@@ -59,29 +60,6 @@ class PCHeader extends React.Component {
     componentDidMount() {
       let lang = localStorage.getItem("lang") || this.props.default.value;
 
-      if (window._MEIQIA) {
-        if(lang.indexOf("zh")>-1) {
-          window._MEIQIA("init");
-        }else {
-          let root = document.getElementById("root");
-          let newScript = document.createElement("script");
-          newScript.src = "https://static.zdassets.com/ekr/snippet.js?key=0bf69005-6b8a-4c0f-9eea-414d4f52511c";
-          newScript.id = "ze-snippet";
-          root.appendChild(newScript);
-
-          newScript.onload = function() {
-            if (lang.indexOf("ko") > -1) {
-              window.zE("webWidget", "setLocale", "ko");
-            } else if (lang === "ru") {
-              window.zE("webWidget", "setLocale", "ru");
-            } else if (lang.indexOf("vi") > -1) {
-              window.zE("webWidget", "setLocale", "vi");
-            } else {
-              window.zE("webWidget", "setLocale", "en-US");
-            }
-          }
-        }
-      }
 
     }
 
@@ -119,31 +97,8 @@ class PCHeader extends React.Component {
         slang = "en";
       }
 
-      if (window._MEIQIA) {
-        if (slang.indexOf("zh") > -1) {
-          window._MEIQIA("init");
-        } else {
-          let root = document.getElementById("root");
-          let newScript = document.createElement("script");
-          newScript.src = "https://static.zdassets.com/ekr/snippet.js?key=0bf69005-6b8a-4c0f-9eea-414d4f52511c";
-          newScript.id = "ze-snippet";
-          root.appendChild(newScript);
-          newScript.onload = function () {
-            if (lang.indexOf("ko") > -1) {
-              window.zE("webWidget", "setLocale", "ko");
-            } else if (lang === "ru") {
-              window.zE("webWidget", "setLocale", "ru");
-            } else if(lang === "vi") {
-              window.zE("webWidget", "setLocale", "vi");
-            } else {
-              window.zE("webWidget", "setLocale", "en-US");
-            }
-          }
-        }
-      }
-
       localStorage.setItem("lang", slang);
-      setCookie("lang", slang, 1, "bbx.com", "/");
+      setCookie("lang", slang, 1, CFG.mainDomainName, "/");
 
       let search = location.search.split("?")[1];
       let searchArr = search ? search.split("&") : [];

@@ -1,0 +1,10 @@
+{
+	"errno": "OK",
+	"message": "Success",
+    "data": {
+        "bbxVer": "1.0",
+		"bbxDev": "web",
+		"bbxAccesskey": "bdd47ca7-ab7c-4238-95e4-6cbde0d8d5b1",
+		"bbxExpiredTs": "1686147982000000"
+    }
+}

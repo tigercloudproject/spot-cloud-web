@@ -1,31 +1,27 @@
 import axios from 'axios';
 import {aesEncrypy} from "./utils/aes.js";
+import {connect} from "react-redux";
 import { setCookie, delCookie, getCookie } from "./utils/cookie.js";
 import { getQueryString } from "./utils/getQueryString.js";
+import CFG from "./config.js";
+
 // import Cookie from "js-cookie";
 
 let bbxToken, bbxSsid, nonce, timestamp, bbxSign, bbxUid, bbxLang;
 
 axios.defaults.headers["Content-Type"] = "application/json;charset=UTF-8";
 
-//超过一秒钟的请求打点
-// function report(unique_id, url, method, status, errno, time) {
-//   let geturl = `https://stats.ln900.com/report?device_id=${unique_id}&url=${url}&method=${method}&status=${status}&errno=${errno}&time=${time}`;
-//   axios.get(geturl);
-// }
-
-
-let testObj = {}; //存储超过1秒钟的请求
-function getRandomToken() { //生成唯一ID
-  // E.g. 8 * 32 = 256 bits token
-  var randomPool = new Uint8Array(32);
-  crypto.getRandomValues(randomPool);
-  var hex = "";
-  for (var i = 0; i < randomPool.length; ++i) {
+//生成唯一ID
+function getRandomToken() {
+    // E.g. 8 * 32 = 256 bits token
+    var randomPool = new Uint8Array(32);
+    crypto.getRandomValues(randomPool);
+    var hex = "";
+    for (var i = 0; i < randomPool.length; ++i) {
     hex += randomPool[i].toString(16);
-  }
-  // E.g. db18458e2782b2b77e36769c569e263a53885a9944dd0a861e5064eac16f1a
-  return hex;
+    }
+    // E.g. db18458e2782b2b77e36769c569e263a53885a9944dd0a861e5064eac16f1a
+    return hex;
 }
 
 let unique_id = localStorage.getItem("unique_id");
@@ -34,132 +30,60 @@ if(!unique_id) {
     localStorage.setItem("unique_id",unique_id);
 }
 
-let test_name;
-
-axios.interceptors.request.use(config => {
-
-    if (config.url.indexOf("https://stats.ln900.com/report")>-1) {
-        return config;
-    }
+// request
+axios.interceptors.request.use( req => {
 
     timestamp = new Date().valueOf();
-    nonce = timestamp + "000";
+    nonce = timestamp + "000";  // 微秒时间戳
 
-    //给所以请求加时间戳
-    if (config.url && config.url.indexOf("?") > -1) {
-        config.url = config.url + "&t=" + timestamp;
+    // 给所有请求加时间戳
+    if (req.url && req.url.indexOf("?") > -1) {
+        req.url = req.url + "&t=" + timestamp;
     } else {
-        config.url = config.url + "?t=" + timestamp;
+        req.url = req.url + "?t=" + timestamp;
     }
 
+    // 设置头部信息
+    // req.headers.common['Content-Type'] = "application/json";
+    req.headers.common['Bbx-Ts'] = nonce;
+    req.headers.common['Bbx-Ver'] = GlobalHeader.bbxVer;
+    req.headers.common['Bbx-Dev'] = GlobalHeader.bbxDev;
+    req.headers.common['Bbx-Accesskey'] = GlobalHeader.bbxAccesskey;
+    req.headers.common['Bbx-ExpiredTs'] = GlobalHeader.bbxExpiredTs;
 
-    test_name =config.url;
+    bbxToken = getCookie('token') || '';
+    // md5( body + token + ts )
+    req.headers.common['Bbx-Sign'] = bbxToken ? aesEncrypy( bbxToken, nonce ) : '';
 
-    testObj[test_name] = {};
-    testObj[test_name]["unique_id"] = unique_id;
-    testObj[test_name]["method"] = config.method;
-    testObj[test_name]["start"] = timestamp;
-    testObj[test_name]["url"] = test_name;
+    req.headers.common['Bbx-Ssid'] = getCookie( 'ssid' ) || '';
+    req.headers.common['Bbx-Uid'] = getCookie( "uid" ) || '';
 
-    //设置头部信息
-    // config.headers.common['Bbx-Ver'] = "1.0";
-    // config.headers.common['Bbx-Dev'] = "web";
-    // config.headers.common['Bbx-Ts'] = nonce;
-    // config.headers.common['Content-Type'] = "application/json";
-
-    config.headers.common['Bbx-Ver'] = "1.0";
-    config.headers.common['Bbx-Dev'] = "web";
-    config.headers.common['Bbx-Ts'] = nonce;
-    config.headers.common['Bbx-Accesskey'] = "bdd47ca7-ab7c-4238-95e4-6cbde0d8d5b1";
-    config.headers.common['Bbx-ExpiredTs'] = "1546147982000000";
-    config.headers.common['Content-Type'] = "application/json";
-    config.headers.common['Bbx-Sign'] = "4be79165ef3ff46a19e7ad194e6886b1";
-
-    // Bbx-Sign
-    // Bbx-Uid
-    // Bbx-Ver
-    // Bbx-Dev
-    // Bbx-Ts
-    // Bbx-Accesskey
-    // Bbx-ExpiredTs
-
-    //取cookie里的token
-    let
-        // bbxToken = getCookie("token");
-        bbxToken = "f5a58f3011fc34fb4e6befbd0c1229b6";
-        bbxSsid = getCookie("ssid");
-        // bbxUid = getCookie("uid");
-        bbxUid = "2090193280";
-
-        bbxLang = localStorage.getItem("lang");
+    bbxLang = localStorage.getItem("lang");
     if(bbxLang.indexOf("zh")<0) {
         bbxLang = "en";
     } else if(bbxLang.indexOf("zh-tw")>-1) {
         bbxLang = "zh-cn";
     }
 
-    // if(bbxToken) {
-    //     bbxSign = aesEncrypy(bbxToken,nonce);
-    //     config.headers.common['Bbx-Sign'] = bbxSign;
-    //     // config.headers.common['Bbx-Sign'] = "4be79165ef3ff46a19e7ad194e6886b1";
-    //     //md5+时间戳+token
-    // }
-    if(bbxSsid) {
-        config.headers.common['Bbx-Ssid'] = bbxSsid;
-    }
+    req.headers.common['Bbx-Language'] = bbxLang || '';
 
-    if(bbxUid) {
-        config.headers.common['Bbx-Uid'] = bbxUid;
-    }
-
-    if(bbxLang) {
-        config.headers.common["Bbx-Language"] = bbxLang;
-    }
-
-
-    return config;
+    return req;
 }, (err) => {
     //console.log("request###err##@@@######",err);
 })
 
-// let test_end;
-// let test_response_name;
+// response
 axios.interceptors.response.use(response => {
-
-    // test_end = new Date().valueOf();
-    // test_response_name = response.config.url;
-
-    // if (test_response_name.indexOf("https://stats.ln900.com/report") > -1) {
-    //   return response;
-    // }
-
-    // if (testObj[test_response_name]) {
-    //     testObj[test_response_name]["end"] = test_end;
-    //     testObj[test_response_name]["status"] = response.status;
-    //     testObj[test_response_name]["errno"] = response.data.errno;
-    //     testObj[test_response_name]["time"] = testObj[response.config.url]["end"] - testObj[response.config.url]["start"];
-
-    //     if (testObj[response.config.url]["end"] - testObj[response.config.url]["start"] > 1000) {
-
-    //         report(testObj[test_response_name]["unique_id"],
-    //             testObj[test_response_name]["url"],
-    //             testObj[test_response_name]["method"],
-    //             testObj[test_response_name]["status"],
-    //             testObj[test_response_name]["errno"],
-    //             testObj[test_response_name]["time"])
-    //     }
-
-    //     delete testObj[response.config.url];
-    // }
-
-
     //非法请求 跳转到登录
     if(response.data.errno == "FORBIDDEN") {
-        localStorage.removeItem("user");
-        delCookie("token","bbx.com", "/");
-        delCookie("ssid", "bbx.com", "/");
-        delCookie("uid", "bbx.com", "/");
-        let path = getQueryString(window.location.search,"path");
+        // 清除用户信息
+        localStorage.removeItem( "user" );
+        // 清除凭证
+        delCookie( "token", CFG.mainDomainName, "/" );
+        delCookie( "ssid", CFG.mainDomainName, "/" );
+        delCookie( "uid", CFG.mainDomainName, "/" );
+
+        let path = getQueryString( window.location.search, "path" );
 
         // 只有在usercenter和assets相关的页面发生FORBIDDEN时跳到登录页
         if (window.location.href.indexOf("assets")>0 || window.location.href.indexOf("usercenter")>0) {
@@ -171,49 +95,57 @@ axios.interceptors.response.use(response => {
         }
     }
 
-    if(response.headers["bbx-token"]) {
-        //localStorage.setItem("bbxToken",response.headers["bbx-token"]);
-        setCookie("token", response.headers["bbx-token"], 1, "bbx.com", "/");
-    }
-    if (response.headers["bbx-ssid"]) {
-        //localStorage.setItem("bbxSsid",response.headers["bbx-ssid"]);
-        setCookie("ssid", response.headers["bbx-ssid"], 1, "bbx.com", "/");
-    }
-    if (response.headers["bbx-uid"]) {
-        //localStorage.setItem("bbxUid", response.headers["bbx-uid"]);
-        setCookie("uid", response.headers["bbx-uid"], 1, "bbx.com", "/");
-    }
+    let bbxToken = response.headers[ "bbx-token" ]
+      , bbxSsid = response.headers[ "bbx-ssid" ]
+      , bbxUid = response.headers[ "bbx-uid" ]
+      , bbxVer = response.headers[ "bbx-ver" ]
+      , bbxDev = response.headers[ "bbx-dev" ]
+      , bbxAccesskey = response.headers[ "bbx-accesskey" ]
+      , bbxExpiredTs = response.headers[ "bbx-expired-ts" ];
+
+    // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
+    // NOTE: 登录、注册请求完成，且后端 success 后，后端应在 response.headers 带上 bbx-token、bbx-ssid、bbx-uid
+    // NOTE: 前端会在上面获取并写入 cookie，以此做账号身份凭证
+    // NOTE: 这里模拟在 Demo 中，登录、注册后自动进行赋值
+    if ( !response.config.url.indexOf( '_simResponse/login' ) || !response.config.url.indexOf( '_simResponse/register' ) ) {
+        bbxToken = 'f5a58f3011fc34fb4e6befbd0c1229b6'
+        bbxSsid = '';
+        bbxUid = '2090193280';
+    };
+    // NOTE: 后端传参配置
+    bbxVer = "1.0";
+    bbxDev = "web";
+    bbxAccesskey = "bdd47ca7-ab7c-4238-95e4-6cbde0d8d5b1";
+    bbxExpiredTs = "1686147982000000";
+    // ================================== DEMO =================================
+
+    // 更新
+    bbxToken
+        && setCookie( "token", bbxToken, 1, CFG.mainDomainName, "/" );
+
+    bbxSsid
+        && setCookie( "ssid", bbxSsid, 1, CFG.mainDomainName, "/" );
+
+    bbxUid
+        && setCookie( "uid", bbxUid, 1, CFG.mainDomainName, "/" );
+
+    bbxVer
+        && setCookie( "bbx-ver", bbxVer, 1, CFG.mainDomainName, "/" );
+
+    bbxDev
+        && setCookie( "bbx-dev", bbxDev, 1, CFG.mainDomainName, "/" );
+
+    bbxAccesskey
+        && setCookie( "bbx-accesskey", bbxAccesskey, 1, CFG.mainDomainName, "/" );
+
+    bbxExpiredTs
+        && setCookie( "bbx-expired-ts", bbxExpiredTs, 1, CFG.mainDomainName, "/" );
 
     return response;
 }, (err) => {
     if(!err.response) {
         return;
     }
-
-    // test_end = new Date().valueOf();
-    // test_response_name = err.response.config.url;
-    // if (test_response_name.indexOf("https://stats.ln900.com/report") > -1) {
-    //   return;
-    // }
-
-
-    // let response = err.response;
-    // testObj[test_response_name]["end"] = test_end;
-    // testObj[test_response_name]["status"] = response.status;
-    // testObj[test_response_name]["errno"] = response.data.errno;
-    // testObj[test_response_name]["time"] = testObj[response.config.url]["end"] - testObj[response.config.url]["start"];
-
-    // if (testObj[response.config.url]["end"] - testObj[response.config.url]["start"] > 1000) {
-    //     //console.log("testObj[response.config.url]####", testObj[response.config.url]);
-    //     report(testObj[test_response_name]["unique_id"],
-    //         testObj[test_response_name]["url"],
-    //         testObj[test_response_name]["method"],
-    //         testObj[test_response_name]["status"],
-    //         testObj[test_response_name]["errno"],
-    //         testObj[test_response_name]["time"])
-    // }
-
-    // delete testObj[response.config.url];
 }
 )
 

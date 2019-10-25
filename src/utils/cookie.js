@@ -1,8 +1,8 @@
-//写cookies 
-//设定过期时间的使用示例： 
-//s20是代表20秒 
-//h是指小时，如12小时则是：h12 
-//d是天数，30天则：d30 
+//写cookies
+//设定过期时间的使用示例：
+//s20是代表20秒
+//h是指小时，如12小时则是：h12
+//d是天数，30天则：d30
 // export function setCookie(name, value, time) {
 //     var strsec = getsec(time);
 //     var exp = new Date();
@@ -10,9 +10,6 @@
 //     document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
 // }
 export function setCookie(cname, cvalue, exdays, domain, path) {
-    if(domain) {
-        domain = window.location.host.slice(-7);
-    }
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toGMTString();
@@ -33,9 +30,9 @@ function getsec(str) {
     else if (str2 == "d") {
         return str1 * 24 * 60 * 60 * 1000;
     }
-} 
+}
 
-//读取cookies 
+//读取cookies
 export function getCookie(name) {
     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
 
@@ -46,14 +43,11 @@ export function getCookie(name) {
         return null;
 }
 
-//删除cookies 
+//删除cookies
 export function delCookie(name,domain,path) {
-    if (domain) {
-        domain = window.location.host.slice(-7);
-    }
     var exp = new Date();
     exp.setTime(exp.getTime() - 1);
     var cval = getCookie(name);
     if (cval != null)
         document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ";domain=" + domain + ";path=" + path;;
-} 
+}

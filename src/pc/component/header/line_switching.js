@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import intl from "react-intl-universal";
 import "../../../assets/scss/pc/component/line_switching.css";
 import {setCookie, getCookie} from "../../../utils/cookie.js";
+import CFG from "../../../config.js";
 
 class LineSwitching extends React.Component {
     constructor(props) {
@@ -37,7 +38,7 @@ class LineSwitching extends React.Component {
                     showGuide: true
                 })
             }
-        }else {  
+        }else {
             if(this.mounted) {
                 this.setState({
                     showGuide: false
@@ -92,7 +93,7 @@ class LineSwitching extends React.Component {
     }
     switchLine(host) {
         // setHost(host);
-        setCookie("host", host, 7, "bbx.com", "/");
+        setCookie("host", host, 7, CFG.mainDomainName, "/");
         setTimeout(() => {
             window.location.reload();
         }, 200)

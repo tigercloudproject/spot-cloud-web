@@ -2,7 +2,7 @@ import intl from "react-intl-universal";
 import React, { Component } from "react";
 import {connect} from "react-redux";
 import { setDefaultLanguage } from "./redux/lang.redux.js";
-import { getGlobalConfig, getUserConfig, getUser } from "./redux/global.redux.js";
+import { getGlobalConfig, getUser } from "./redux/global.redux.js";
 // import IntlPolyfill from "intl";
 import { getQueryString } from "./utils/getQueryString.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -11,23 +11,6 @@ import "./utils/prototype.js";  //封装的prototype上的工具函数
 
 //import PCIndex from './pc/home/pc_index';
 import Layout from "./pc/component/layout";
-// import PCBody from './pc/home/pc_body';
-// import Register from './pc/register/register';
-// import Login from './pc/register/login';
-// import Retrieval from './pc/register/retrieval';
-
-// import Assets from './pc/assets/assets_index';
-// import ContractAssets from "./pc/assets/contract_asset_index";
-// import UserCenter from './pc/usercenter/usercenter_index';
-// import Exchange from './pc/exchange/exchange_index';
-// import Market from './pc/market/market_index';
-// import C2cTrade from './pc/c2c/c2c_index';
-
-// import Download from "./pc/download/download";
-// import H5Download from "./pc/download/h5_download";
-// import IosCourse from "./pc/download/ios_course";
-// import Risk from "./pc/agreement/risk";
-// import Terms from "./pc/agreement/terms";
 
 
 // import TradeCompetition from "./pc/active/trade_competition.js";
@@ -39,9 +22,6 @@ import { getCookie } from "./utils/cookie.js";
 import Loadable from 'react-loadable';
 import Loading from "./pc/component/bbx_loading.js";
 import ErrorPage from "./pc/component/error.js";
-
-// alert(global.Intl);
-// global.Intl = IntlPolyfill;
 
 require("intl/locale-data/jsonp/en.js");
 require("intl/locale-data/jsonp/zh.js");
@@ -128,118 +108,6 @@ const Assets = Loadable({
   loading: Loading,
   delay: 0
 });
-
-//import ContractAssets from "./pc/assets/contract_asset_index";
-// const ContractAssets = Loadable({
-//   loader: () => import('./pc/assets/contract_asset_index'),
-//   loading: Loading,
-//   delay: 0
-// });
-
-//import UserCenter from "./pc/usercenter/usercenter_index";
-// const UserCenter = Loadable({
-//   loader: () => import('./pc/usercenter/usercenter_index'),
-//   loading: Loading,
-//   delay: 0
-// });
-
-//import Exchange from "./pc/exchange/exchange_index";
-// const Exchange = Loadable({
-//   loader: () => import('./pc/exchange/exchange_index'),
-//   loading: Loading,
-//   delay: 0
-// });
-
-
-
-//import Market from "./pc/market/market_index";
-// const Market = Loadable({
-//   loader: () => import('./pc/market/market_index'),
-//   loading: Loading,
-//   delay: 0
-// });
-
-//import C2cTrade from "./pc/c2c/c2c_index";
-// const C2cTrade = Loadable({
-//   loader: () => import('./pc/c2c/c2c_index'),
-//   loading: Loading,
-//   delay: 0,
-// });
-
-//import Download from "./pc/download/download";
-// const Download = Loadable({
-//   loader: () => import('./pc/download/download'),
-//   loading: Loading,
-//   delay: 0,
-// });
-
-//import H5Download from "./pc/download/h5_download";
-// const H5Download = Loadable({
-//   loader: () => import('./pc/download/h5_download'),
-//   loading: Loading,
-//   delay: 0
-// });
-
-//import IosCourse from "./pc/download/ios_course";
-// const IosCourse = Loadable({
-//   loader: () => import('./pc/download/ios_course'),
-//   loading: Loading,
-//   delay: 0
-// });
-
-//import Risk from "./pc/agreement/risk";
-// const Risk = Loadable({
-//   loader: () => import('./pc/agreement/risk'),
-//   loading: Loading,
-//   delay: 0
-// });
-
-//import Terms from "./pc/agreement/terms";
-// const Terms = Loadable({
-//   loader: () => import("./pc/agreement/terms"),
-//   loading: Loading,
-//   delay: 0
-// });
-
-//import TradeCompetition from "./pc/active/trade_competition.js";
-// const TradeCompetition = Loadable({
-//   loader: () => import("./pc/active/trade_competition.js"),
-//   loading: Loading,
-//   delay: 0
-// });
-
-//import RankList from "./pc/active/rank_list.js";
-// const RankList = Loadable({
-//   loader: () => import('./pc/active/rank_list.js'),
-//   loading: Loading,
-//   delay: 0
-// });
-
-// const Ltc = Loadable({
-//   loader:() => import("./pc/active/ltc.js"),
-//   loading: Loading,
-//   delay: 0
-// });
-
-// const AboutUS = Loadable({
-//   loader: () => import("./pc/about/about_us.js"),
-//   loading: Loading,
-//   delay: 0
-// });
-
-// const SuperPartner = Loadable({
-//   loader: () => import("./pc/about/super_partner.js"),
-//   loading: Loading,
-//   delay: 0
-// });
-
-// const JoinUS = Loadable({
-//   loader: () => import("./pc/about/join_us.js"),
-//   loading: Loading,
-//   delay: 0
-// })
-
-
 
 @connect(state => ({...state.gconfig, ...state.lang}), { getGlobalConfig,setDefaultLanguage,getUser })
 class App extends Component {
@@ -332,7 +200,6 @@ class App extends Component {
 
     return this.state.initDone ?<div className="container">
             <Router>
-
               <Switch>
                 {/* <Route path="/mobile/download" component={H5Download} /> */}
                 {/* <Route path="/ios_course" component={IosCourse} /> */}
@@ -352,8 +219,6 @@ class App extends Component {
       urlLocaleKey: "lang",
       cookieLocaleKey: "lang"
     });
-
-
 
     // if (!_.find(SUPPOER_LOCALES, { value: currentLocale })) {
     //   currentLocale = "en-US";
@@ -377,14 +242,8 @@ class App extends Component {
       else {
         currentLocale = "en-US";
       }
-    // }else {
-    //   let langArr = currentLocale.split("-");
-    //   currentLocale = langArr[0].toLowerCase() + "-" +langArr[1].toUpperCase();
-    // }
 
     this.props.setDefaultLanguage(this.props.list, String(currentLocale));
-
-
 
     intl.init({
       currentLocale,
@@ -405,8 +264,6 @@ class App extends Component {
     }
     return false;
   }
-
 }
-
 
 export default App;

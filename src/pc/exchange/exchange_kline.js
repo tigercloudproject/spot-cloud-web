@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import intl from "react-intl-universal";
 import { getKlineDate, getStocks } from "../../redux/trade.redux";
 import { indexAjax } from "../../ajax";
-import CFG from "../../hostConfig";
+import CFG from "../../config";
 import webSocketFn from "../../assets/js/webSocket.js";
 import "../../assets/scss/pc/exchange/exchange_kline.css";
 import { getQueryString } from "../../utils/getQueryString.js";

@@ -1,22 +1,18 @@
 import React, { Component } from "react";
 import "../../assets/scss/pc/register/register.css";
-// import PCHeader from "../home/pc_header";
-// import PCFooter from "../home/pc_footer";
 import TELInput from "./tel_input";
 import { notification } from "antd";
 import {debounce} from "../../utils/debounce.js";
 
 import MD5 from "../../utils/md5.js";
-import { Redirect, Link, NavLink, withRouter } from "react-router-dom";
+import { Redirect, Link, withRouter } from "react-router-dom";
 import {connect} from "react-redux";
 import {loginPost,getCaptchCheck} from "../../redux/user.redux";
 import {getPropetyInfo} from "../../redux/assets.redux";
 import {getUserConfig} from "../../redux/global.redux";
 import intl from "react-intl-universal";
 import nextIcon from "../../assets/images/icon-next2.png";
-import { getQueryString } from "../../utils/getQueryString.js";
 import { getCookie } from "../../utils/cookie.js";
-import BbxPwd from "../component/bbx_pwd.js";
 import MediaQuery from "react-responsive";
 
 
@@ -86,37 +82,35 @@ class Login extends Component {
 
     let self = this;
     this.toLogin = debounce(function (data) {
-      // let path = getQueryString(this.props.location.search, "path");
-      let path = this.getPath();
-      this.props.loginPost(data,path).then(async () => {
+        let path = this.getPath();
+        this.props.loginPost(data,path)
+            .then( async () => {
+                if (this.props.user_error) {
+                  notification.error({
+                    message: intl.get("error_message_title"),
+                    description: this.props.user_error.message
+                  })
+                  this.captchaCheck();
+                } else {
+                    this.props.getPropetyInfo();
+                    await this.props.getUserConfig();
+                    if(path) {
+                      window.location.href = unescape(this.props.login_success);
+                    }else {
+                      this.props.history.push(this.props.login_success);
+                    }
+                }
 
-        if (this.props.user_error) {
-          notification.error({
-            message: intl.get("error_message_title"),
-            description: this.props.user_error.message
-          })
-          this.captchaCheck();
-        }else {
-            this.props.getPropetyInfo();
-            await this.props.getUserConfig();
-            if(path) {
-              window.location.href = unescape(this.props.login_success);
-            }else {
-              this.props.history.push(this.props.login_success);
-            }
-        }
-
-        //解锁提交按钮
-        if (this.mounted) {
-          this.setState({
-            canSubmit: true,
-            inSubmission: false
-          });
-        }
-      }).catch((err) => {
-        this.captchaCheck;
-      })
-
+                //解锁提交按钮
+                if (this.mounted) {
+                  this.setState({
+                    canSubmit: true,
+                    inSubmission: false
+                  });
+                }
+            }).catch((err) => {
+                this.captchaCheck;
+            })
     }, 500);
   }
 
@@ -324,7 +318,7 @@ class Login extends Component {
         })
     }
   }
-
+  // 提交登录请求
   loginSubmit() {
     let data = {};
     let form = this.state.form;
@@ -353,7 +347,6 @@ class Login extends Component {
 
 
     //点击提交按钮后暂时锁住按钮
-
     if(this.mounted) {
       this.setState({
         canSubmit: false,
@@ -481,7 +474,6 @@ class Login extends Component {
               </div>
             </div>
           </div>
-
         </MediaQuery>
 
         <MediaQuery maxWidth={700}>

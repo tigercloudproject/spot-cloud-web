@@ -2,6 +2,7 @@ import axios from "../http.js";
 import { userAjax } from '../ajax.js';
 // import Cookie from 'js-cookie';
 import { setCookie, delCookie } from "../utils/cookie.js";
+import CFG from "../config.js";
 
 const PHONE_CODE = 'PHONE_CODE';
 const VERIFY_CODE = 'VERIFY_CODE';
@@ -22,7 +23,6 @@ if (storageUser) {
   user = JSON.parse(storageUser);
 }
 
-
 const initStatus = {
     login_success: '', //登录成功后的跳转地址
     register_success: '', //注册成功后的跳转地址
@@ -33,7 +33,7 @@ const initStatus = {
     user_error: '',
     bind_phone: '',
     bind_email: '',
-    active_success: '',
+    active_success: ''
 }
 
 export function user(state = initStatus, action) {
@@ -70,29 +70,29 @@ function verifyCode(data) {
 }
 
 function login(data,type,path,token,ssid,uid) {
- 
     let result;
-    if (type) {
+
+    if ( type ) {
         result = {
             user: data,
             user_error: ''
         }
-        if(token) {
+        // 有token 和 用户数据则保存至 LS
+        if( token && data ) {
             localStorage.setItem("user", JSON.stringify(data));
-        }
-        //Cookie.set('user', JSON.stringify(data), {expires: new Date(new Date().getTime()+120*60*1000)});
-        // Cookie.set("token", token, { domain: "bbx.com",path: "/" });
-        // Cookie.set("ssid", ssid, { domain: "bbx.com",path: "/" });
-        // Cookie.set("uid", uid, { domain: "bbx.com",path: "/" });
-        setCookie("token", token, 1, "bbx.com", "/");
-        setCookie("ssid", ssid, 1, "bbx.com", "/");
-        setCookie("uid", uid, 1, "bbx.com", "/");
-        
+        };
+        console.log( 'login token', token )
+        token
+            && setCookie( "token", token, 1, CFG.mainDomainName, "/" );
+        ssid
+            && setCookie( "ssid", ssid, 1, CFG.mainDomainName, "/" );
+        uid
+            && setCookie( "uid", uid, 1, CFG.mainDomainName, "/" );
+
         let redirectPath;
         if(path) {
-            
             redirectPath = path;
-        }else {
+        } else {
             redirectPath = "/";
         }
         return { type: LOGIN, payload: result, redirect: redirectPath };
@@ -101,9 +101,7 @@ function login(data,type,path,token,ssid,uid) {
             user_error: data,
             user: ''
         }
-       
-       // sessionStorage.setItem('user', JSON.stringify(''));
-        //Cookie.set('user', '');
+
         return { type: LOGIN, payload: result, redirect: "" };
     }
 }
@@ -115,26 +113,22 @@ function register(data,type,path,token,ssid,uid) {
             user: data,
             user_error: ''
         }
-        if(token) {
+        // 有token 和 用户数据则保存至 LS
+        if( token && data ) {
             localStorage.setItem('user', JSON.stringify(data))
         }
-        //Cookie.set('user', JSON.stringify(data));
-        //return { type: REGISTER, payload: result, redirect: '/' }
+        setCookie("token", token, 1, CFG.mainDomainName, "/");
+        setCookie("ssid", ssid, 1, CFG.mainDomainName, "/");
+        setCookie("uid", uid, 1, CFG.mainDomainName, "/");
 
-        // Cookie.set("token", token, { domain: "bbx.com", path: "/" });
-        // Cookie.set("ssid", ssid, { domain: "bbx.com", path: "/" });
-        // Cookie.set("uid", uid, { domain: "bbx.com", path: "/" });
-        setCookie("token", token, 1, "bbx.com", "/");
-        setCookie("ssid", ssid, 1, "bbx.com", "/");
-        setCookie("uid", uid, 1, "bbx.com", "/");
         let redirectPath;
         if (path) {
-            
+
             redirectPath = path;
         } else {
             redirectPath = "/";
         }
-        
+
         return { type: REGISTER, payload: result, redirect: redirectPath };
     }else {
         result = {
@@ -145,21 +139,24 @@ function register(data,type,path,token,ssid,uid) {
         //Cookie.set("user", "");
         return { type: REGISTER, payload: result, redirect: '' }
     }
-    
+
 }
 
 function exit() {
     let data = {
         user: '',
         redirect: '/',
-        login_success: '', 
-        register_success: '', 
+        login_success: '',
+        register_success: '',
         retrieval_success: ''
     }
+
     localStorage.removeItem("user");
-    delCookie("token","bbx.com","/");
-    delCookie("uid", "bbx.com", "/");
-    delCookie("ssid", "bbx.com", "/");
+
+    delCookie("token", CFG.mainDomainName,"/");
+    delCookie("uid", CFG.mainDomainName, "/");
+    delCookie("ssid", CFG.mainDomainName, "/");
+
     return {type: EXIT, payload: data};
 }
 
@@ -174,9 +171,9 @@ function retrieval(data,type,path,token,ssid,uid){
         if (token) {
             localStorage.setItem('user', JSON.stringify(data))
         }
-        setCookie("token", token, 1, "bbx.com", "/");
-        setCookie("ssid", ssid, 1, "bbx.com", "/");
-        setCookie("uid", uid, 1, "bbx.com", "/");
+        setCookie("token", token, 1, CFG.mainDomainName, "/");
+        setCookie("ssid", ssid, 1, CFG.mainDomainName, "/");
+        setCookie("uid", uid, 1, CFG.mainDomainName, "/");
         let redirectPath;
         if (path) {
 
@@ -268,8 +265,7 @@ export function getPhoneCode() {
    }
 }
 
-
-//获取验证码
+// 获取验证码的校验方式
 export function getVerifyCode(userName, name_type, type, validate) {
     let url = "";
     let params,data;
@@ -302,7 +298,7 @@ export function getVerifyCode(userName, name_type, type, validate) {
                 //     return response;
                 // }
                 return response;
-                
+
             },
             (err) => {
                 console.log('getVerifyCode失败了###',err);
@@ -311,7 +307,7 @@ export function getVerifyCode(userName, name_type, type, validate) {
     }
 }
 
-//注册
+// 注册
 export function registerPost(data,path,qd,markcode) {
     let url = (qd && qd !== "null" && qd !== null) ? userAjax.register + `?qd=${qd}` : userAjax.register;
     if (markcode && markcode !== "null" && markcode !==null) {
@@ -322,14 +318,14 @@ export function registerPost(data,path,qd,markcode) {
         }
     }
     return (dispatch, getState) => {
-        return axios.post(url,data).then((response) => {
-            //console.log('注册成功了###',response);
+        // get -> post
+        return axios.get(url,data).then((response) => {
             if (response && response.data && response.data.errno==="OK") {
                 dispatch(register(response.data.data, 1,path,response.headers["bbx-token"],response.headers["bbx-ssid"],response.headers["bbx-uid"]));
             }else {
                 dispatch(register(response.data, 0));
             }
-            
+
         },
         (err) => {
             console.log('注册失败了###',err);
@@ -337,13 +333,12 @@ export function registerPost(data,path,qd,markcode) {
     }
 }
 
-//登录
+// 登录
 export function loginPost(data,path) {
     //console.log("loginPost####path#####",path);
     return (dispatch, getState) => {
-        return axios.post(userAjax.login,data).then((response) => {
-            //console.log('登录成功了####',response);
-            //console.log("token######", response.headers["bbx-token"]);
+        // get -> post
+        return axios.get(userAjax.login,data).then((response) => {
             if(response && response.data && response.data.errno == "OK") {
               dispatch(login(response.data.data, 1, path, response.headers["bbx-token"], response.headers["bbx-ssid"], response.headers["bbx-uid"]));
             } else {
@@ -356,17 +351,15 @@ export function loginPost(data,path) {
     }
 }
 
-//修改密码
+// 修改密码
 export function retrievalPost(data,path) {
     return (dispatch, getState) => {
         return axios.post(userAjax.reset_account, data).then((response) => {
-            //console.log('修改密码成功了###', response);
             if (response && response.data && response.data.errno == "OK") {
               dispatch(retrieval(response.data.data, 1, path, response.headers["bbx-token"], response.headers["bbx-ssid"], response.headers["bbx-uid"]));
             } else {
               dispatch(retrieval(response.data, 0, path, response.headers["bbx-token"]));
             }
-
         },
             (err) => {
                 console.log('注册失败了###', err);
@@ -377,12 +370,7 @@ export function retrievalPost(data,path) {
 //登出
 export function exitPost() {
     return (dispatch, getState) => {
-        // return setTimeout(() => {
-
-        //     dispatch(exit());
-        // },100);
         return axios.get(userAjax.logout).then((response) => {
-           // console.log('登出成功了###',response);
             dispatch(exit());
         },
         (err) => {
@@ -391,6 +379,7 @@ export function exitPost() {
     }
 }
 
+// 绑定邮箱
 export function bindEmailPost(data) {
     return (dispatch, getState) => {
         return axios.post(userAjax.bind_email, data).then((response) => {
@@ -406,6 +395,7 @@ export function bindEmailPost(data) {
     }
 }
 
+// 绑定手机
 export function bindPhonePost(data) {
     return (dispatch, getState) => {
         return axios.post(userAjax.bind_phone, data).then((response) => {
@@ -421,6 +411,7 @@ export function bindPhonePost(data) {
     }
 }
 
+// 激活邮箱
 export function activePost(data) {
     return (dispatch, getState) => {
         return axios.post(userAjax.active, data).then((response) => {

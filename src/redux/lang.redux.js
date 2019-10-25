@@ -1,4 +1,5 @@
 import { setCookie } from "../utils/cookie.js";
+import CFG from "../config.js";
 
 const SWITCH_LANG = "SWITCH_LANG";
 const SET_DEFAULT_LANG = "SET_DEFAULT_LANG";
@@ -73,9 +74,9 @@ function defaultLanguage(data) {
   if(lang=="en-us"){
     lang = "en";
   }
-  
+
   localStorage.setItem("lang",lang);
-  setCookie("lang", lang, 1, "bbx.com", "/");
+  setCookie("lang", lang, 1, CFG.mainDomainName, "/");
   return { type: SET_DEFAULT_LANG, payload: data };
 }
 
@@ -96,6 +97,6 @@ export function setDefaultLanguage(list,lang) {
       dispatch(defaultLanguage(data));
     }, 500);
   }
-  
+
   // return { type: SET_DEFAULT_LANG, payload: data};
 }

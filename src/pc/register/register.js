@@ -15,10 +15,10 @@ import GotoContract from "./goto_contract_alert.js";
 import MediaQuery from "react-responsive";
 
 @withRouter
-@connect(state => ({ ...state.lang, ...state.user }), { 
-    getVerifyCode, 
+@connect(state => ({ ...state.lang, ...state.user }), {
+    getVerifyCode,
     registerPost,
-    getCaptchCheck 
+    getCaptchCheck
 })
 class Register extends Component {
     constructor(props) {
@@ -117,8 +117,9 @@ class Register extends Component {
                         description: this.props.user_error.message
                     })
                 }else {
-                    
-                    this.toShowGotoContract();
+                    // 显示注册后弹框
+                    // this.toShowGotoContract();
+                    this.onRegisterFinish();
                 }
                 //解锁提交按钮
                 if (this.mounted) {
@@ -128,7 +129,7 @@ class Register extends Component {
                     });
                 }
             });
-            
+
         },500);
     }
     componentWillMount() {
@@ -176,7 +177,7 @@ class Register extends Component {
 
         this.initCaptcha();
 
-        
+
     }
     //获取登录成功后要跳转的地址
     getPath() {
@@ -419,11 +420,12 @@ class Register extends Component {
                 // }
                 break;
             }
-            case 'agree': {
+            case 'agree':
                 if(!value) {
                     newFieldObj.valid = false;
                 }
-            }
+                break;
+            default:
         }
 
         if(this.mounted) {
@@ -513,6 +515,7 @@ class Register extends Component {
         this.refs[ref].setAttribute("readonly", true);
     }
 
+    // 显示 GotoContract
     toShowGotoContract() {
         if(this.mounted) {
             this.setState({
@@ -526,6 +529,11 @@ class Register extends Component {
                 showGotoContract: false
             })
         }
+        this.onRegisterFinish();
+    }
+
+    // Register Finish
+    onRegisterFinish() {
         if (this.state.path) {
             window.location.href = unescape(this.props.register_success);
         } else {
@@ -534,8 +542,8 @@ class Register extends Component {
     }
 
     back() {
-        history.go(-1); //后退1页  
-    }  
+        history.go(-1); //后退1页
+    }
 
     render() {
         let state = this.state
@@ -548,7 +556,7 @@ class Register extends Component {
         const currentTab = this.state.currentTab;
         const canSubmit = this.state.canSubmit;
         const valid = !canSubmit || (currentTab===1 && !email.valid) || (currentTab===0 && !phone.valid) || (currentTab===0 && !phone_code.valid) || !verify_code.valid || !pwd.valid || !qr_pwd.valid || !agree.valid;
-        
+
         const canGetCode = this.state.canGetCode;
 
         const codeValid = (currentTab===1 && !email.valid) || (currentTab===0 && !phone.valid) || (currentTab===0 && !phone_code.valid) || !canGetCode;
@@ -566,7 +574,7 @@ class Register extends Component {
             inviteCode = "";
         }
 
-        let loginSearch = this.state.path?(search?search + "&path=" +this.state.path:"?path=" +this.state.path):search; 
+        let loginSearch = this.state.path?(search?search + "&path=" +this.state.path:"?path=" +this.state.path):search;
 
 
         return <div className="bbx-container">
@@ -617,7 +625,7 @@ class Register extends Component {
                             </span>}
                     </p>
                     {/* <div className="form-control">
-                                    
+
                                 </div> */}
                     <div className="form-control">
                         <input type="text" autoComplete="off" placeholder={intl.get("register_verify_code_placeholder")} value={this.state.form.verify_code.value || ""} onChange={e => this.handleValueChange("verify_code", e.target.value)} />
@@ -633,9 +641,9 @@ class Register extends Component {
                     <div className="form-control">
                         <input autoComplete="new-password"
                             type={this.state.pwdType}
-                            placeholder={intl.get("register_pwd_placeholder")} 
-                            value={this.state.form.pwd.value || ""} 
-                            onChange={e => this.handleValueChange("pwd", e.target.value)} 
+                            placeholder={intl.get("register_pwd_placeholder")}
+                            value={this.state.form.pwd.value || ""}
+                            onChange={e => this.handleValueChange("pwd", e.target.value)}
                             onFocus={()=>this.removeReadOnly("password")}
                             //onBlur={()=>this.setReadOnly("password")}
                             ref="password"
@@ -645,11 +653,11 @@ class Register extends Component {
                         {!pwd.valid && <span>{pwd.error}</span>}
                     </p>
                     <div className="form-control">
-                        <input autoComplete="new-password" 
+                        <input autoComplete="new-password"
                             type={this.state.qr_pwdType}
-                            placeholder={intl.get("register_pwd2_error1")} 
-                            value={this.state.form.qr_pwd.value || ""} 
-                            onChange={e => this.handleValueChange("qr_pwd", e.target.value)} 
+                            placeholder={intl.get("register_pwd2_error1")}
+                            value={this.state.form.qr_pwd.value || ""}
+                            onChange={e => this.handleValueChange("qr_pwd", e.target.value)}
                             onFocus={()=>this.removeReadOnly("qrpwd")}
                             //onBlur={()=>this.setReadOnly("qrpwd")}
                             ref="qrpwd"
@@ -659,9 +667,9 @@ class Register extends Component {
                         {!qr_pwd.valid && <span>{qr_pwd.error}</span>}
                     </p>
                     <div className="form-control">
-                        <input type="text" placeholder={`${intl.get("register_invite_code")} ( ${intl.get("register_invite_code_tips")} ) `} 
-                            value={this.state.form.invite_code.value || inviteCode} 
-                            onChange={e => this.handleValueChange("invite_code", e.target.value)} 
+                        <input type="text" placeholder={`${intl.get("register_invite_code")} ( ${intl.get("register_invite_code_tips")} ) `}
+                            value={this.state.form.invite_code.value || inviteCode}
+                            onChange={e => this.handleValueChange("invite_code", e.target.value)}
                             disabled = {qd && qd!=='null' && qd!=='undefined'?true:false}
                         />
                         {/* <span className="prompt">{intl.get("register_invite_code_tips")}</span> */}
@@ -676,7 +684,7 @@ class Register extends Component {
                             <label htmlFor="hide"></label>
                         </span>
                         {intl.get("register_agreement")}
-                        {/* <Link to={{pathname:"/terms",search:`${search}`}}>{intl.get("register_agreement_txt1")}</Link> 
+                        {/* <Link to={{pathname:"/terms",search:`${search}`}}>{intl.get("register_agreement_txt1")}</Link>
                         <Link to={{pathname:"/risk", search:`${search}`}}>{intl.get("register_agreement_txt2")}</Link> */}
                     </p>
                     {!this.state.inSubmission?<button className="submit" onClick={this.registerSubmit} disabled={valid}>{intl.get("register_btn")}</button>:
@@ -789,9 +797,9 @@ class Register extends Component {
                             <div className="form-block-h5">
                                 <label>{`${intl.get("register_invite_code")} ( ${intl.get("register_invite_code_tips")} ) `}</label>
                                 <div className="form-control-h5">
-                                    <input type="text" placeholder={intl.get("register_invite_code_placeholder")} 
-                                        value={this.state.form.invite_code.value || inviteCode} 
-                                        onChange={e => this.handleValueChange("invite_code", e.target.value)} 
+                                    <input type="text" placeholder={intl.get("register_invite_code_placeholder")}
+                                        value={this.state.form.invite_code.value || inviteCode}
+                                        onChange={e => this.handleValueChange("invite_code", e.target.value)}
                                         disabled={qd && qd !== 'null' && qd !== 'undefined' ? true : false}
                                     />
                                 </div>
@@ -807,13 +815,13 @@ class Register extends Component {
                                     <label htmlFor="hide"></label>
                                 </span>
                                 {intl.get("register_agreement")}
-                                {/* <Link to={{ pathname: "/terms", search: `${search}` }}>{intl.get("register_agreement_txt1")}</Link> 
+                                {/* <Link to={{ pathname: "/terms", search: `${search}` }}>{intl.get("register_agreement_txt1")}</Link>
                                 <Link to={{ pathname: "/risk", search: `${search}` }}>{intl.get("register_agreement_txt2")}</Link> */}
                             </p>
                             {!this.state.inSubmission ? <button className="submit" onClick={this.registerSubmit} disabled={valid}>{intl.get("register_btn")}</button> :
                                 <button className="ms-submission submit" disabled="disabled">{intl.get("in_the_register_btn")}<span>...</span></button>}
                         </div>
-                        
+
                         <div className="login-h5-bottom">
                             <hr />
                             <div>

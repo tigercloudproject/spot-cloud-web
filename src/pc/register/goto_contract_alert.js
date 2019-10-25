@@ -3,7 +3,7 @@ import intl from "react-intl-universal";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import "../../assets/scss/pc/register/goto_contract_alert.css";
-import config from "../../hostConfig.js";
+import config from "../../config.js";
 
 @withRouter
 @connect(state => ({ ...state.lang }))
@@ -34,7 +34,7 @@ class GotoContractAlert extends Component {
           {/* <p className="sub-tit" style={fontSizeStyle}>{intl.get("goto-contract-sub-title1")}<span style={subTitSize}> {intl.get("goto-contract-sub-title2")} </span>{intl.get("goto-contract-sub-title3")}</p> */}
           <p className="sub-tit">{intl.get("goto-contract-sub-title1")}<span>{intl.get("goto-contract-sub-title2")}</span></p>
           <p className="sub-tit">{intl.get("goto-contract-sub-title3")}</p>
-          <a href={`${config.swapHost}/bonus`} className="goto-contract-btn">{intl.get("goto-contract-button-text")}</a>
+          <a href="###" className="goto-contract-btn">{intl.get("goto-contract-button-text")}</a>
         </div>
       </div>
     );

@@ -56,7 +56,6 @@ export function getUserConfig() {
     return (dispatch, getState) => {
         return axios.get(globalAjax.user_config).then(
             (response) => {
-                //console.log("getUserConfig成功了###", response);
                 if (response && response.data.errno == "OK") {
                     dispatch(userConfig(response.data.data));
                 }
@@ -97,5 +96,3 @@ export function getAppList() {
         });
     }
 }
-
-

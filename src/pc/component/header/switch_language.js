@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import "../../../assets/scss/pc/home/switch_language.css";
 import { getGlobalConfig } from "../../../redux/global.redux.js";
 import { setCookie } from "../../../utils/cookie.js";
+import CFG from "../../../config.js";
 
 @connect( state=>state.lang, {
   getGlobalConfig
@@ -13,7 +14,7 @@ class SwitchLanguage extends Component {
     this.state = {
       show: false,
       currentLang: this.props.default,
-      
+
     };
     this.toggleList = this.toggleList.bind(this);
   }
@@ -21,7 +22,7 @@ class SwitchLanguage extends Component {
 
   }
   componentWillUnmount() {
-    
+
   }
   toggleList() {
     this.setState({
@@ -48,9 +49,9 @@ class SwitchLanguage extends Component {
   changeLang(item,e) {
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
-    
+
     let lang = item.value;
-    
+
     //切换语言时将语言存入localstorage, 为了在请求接口时带bbx-lang参数
     let slang = lang.toLowerCase();
     if (slang == "en-us") {
@@ -76,15 +77,15 @@ class SwitchLanguage extends Component {
           window.zE("webWidget", "setLocale", "en-US");
         }
       }
-      
+
     }
 
     localStorage.setItem("lang", slang);
-    setCookie("lang", slang, 1, "bbx.com", "/");
+    setCookie("lang", slang, 1, CFG.mainDomainName, "/");
 
     let search = location.search.split("?")[1];
     let searchArr = search?search.split("&"):[];
-  
+
     if(searchArr.length>0) {
       let result = `?lang=${lang}`;
       for(let i=0; i<searchArr.length; i++) {
@@ -96,11 +97,11 @@ class SwitchLanguage extends Component {
       location.search = result;
     }else {
       location.search = `?lang=${lang}`;
-    } 
+    }
 
     this.props.getGlobalConfig();
     this.hideList(e);
-    
+
   }
 
   render() {

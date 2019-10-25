@@ -1,8 +1,12 @@
 # CHANGELOG
 
-移除cnzz、google监测
-移除线路测速
-
+## 1.1.3.1025
+### a
+- R 移除cnzz、google监测
+- R 移除线路测速
+- C 调整 `spotDetail`
+- A 添加 `public/_simResponse` Demo 模拟接口
+- C 调整运行模式
 
 ## 1.1.2.1014
 ### a
