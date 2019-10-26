@@ -9,15 +9,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./utils/prototype.js";  //封装的prototype上的工具函数
 
-//import PCIndex from './pc/home/pc_index';
 import Layout from "./pc/component/layout";
 
 
-// import TradeCompetition from "./pc/active/trade_competition.js";
-// import RankList from "./pc/active/rank_list.js";
-
 import { getCookie } from "./utils/cookie.js";
-//import AssetsTransaction from "./pc/assets/assets_transaction";
 
 import Loadable from 'react-loadable';
 import Loading from "./pc/component/bbx_loading.js";
@@ -29,80 +24,24 @@ require("intl/locale-data/jsonp/fr.js");
 require("intl/locale-data/jsonp/ja.js");
 require("intl/locale-data/jsonp/ko.js");
 
-
-const SUPPOER_LOCALES = [
-  {
-    name: "English",
-    value: "en-US"
-  },
-  {
-    name: "简体中文",
-    value: "zh-CN"
-  },
-  {
-    name: "繁體中文",
-    value: "zh-TW"
-  },
-  {
-    name: "français",
-    value: "fr-FR"
-  },
-  {
-    name: "日本の",
-    value: "ja-JP"
-  },
-  {
-    name: "한국어",
-    value: "ko-KR"
-  },
-  {
-    name: "русский",
-    value: "ru"
-  },
-  {
-    name: "Tiếng việt",
-    value: "vi"
-  }
-];
-
-// import PCBody from "./pc/home/pc_body";
-// const PCBody = Loadable({
-//   loader: () => import("./pc/home/pc_body.js"),
-//   loading: Loading,
-//   delay: 0
-// });
 const PCBody = Loadable({
   loader: () => import("./pc/exchange/index"),
   loading: Loading,
   delay: 0
 });
-// const ExchangeNew = Loadable({
-//   loader: () => import("./pc/exchange/index"),
-//   loading: Loading,
-//   delay: 0
-// });
-//import Register from "./pc/register/register";
+
 const Register = Loadable({
   loader: () => import('./pc/register/register'),
   loading: Loading,
   delay: 0
 });
 
-//import Login from "./pc/register/login";
 const Login = Loadable({
   loader: () => import('./pc/register/login'),
   loading: Loading,
   delay: 0
 });
 
-//import Retrieval from "./pc/register/retrieval";
-// const Retrieval = Loadable({
-//   loader: () => import('./pc/register/retrieval'),
-//   loading: Loading,
-//   delay: 0
-// });
-
-//import Assets from "./pc/assets/assets_index";
 const Assets = Loadable({
   loader: () => import('./pc/assets/assets_index'),
   loading: Loading,
@@ -220,14 +159,6 @@ class App extends Component {
       cookieLocaleKey: "lang"
     });
 
-    // if (!_.find(SUPPOER_LOCALES, { value: currentLocale })) {
-    //   currentLocale = "en-US";
-    // }
-    //console.log("#####currentLocale##处理前###",currentLocale);
-    //console.log("SUPPOER_LOCALES@@@", SUPPOER_LOCALES);
-    //判断当前浏览器语言是否在本地语言库（中，繁，英）
-    //if(!this.isInSupporeLocales(SUPPOER_LOCALES,currentLocale)) {
-      // console.log("currentLocale###", currentLocale);
       if(currentLocale.indexOf("zh-TW")>-1 || currentLocale.indexOf("tw")>-1) {
         currentLocale = "zh-TW";
       }else if(currentLocale.indexOf("zh")>-1 || currentLocale.indexOf("CN")>-1){

@@ -154,31 +154,6 @@ function cancelSpotDetail() {
     }
 }
 
-// export function getSpotDash(code,type,start,end) {
-//     end = end ? end : Date.parse(String(new Date()).replace(/-/g, "/"));
-//     start = start ? start : end - 86400000;
-//     start = parseInt(start / 1000);
-//     end = parseInt(end / 1000);
-
-//     code=code?code:"EOS/ETH";
-//     type=type?type: ""
-//     code = String(code);
-//     let getUrl;
-    
-//     getUrl = exchangeAjax.spot_dash + type + "?stockCode=" + code + "&startTime=" + start + "&endTime=" + end;
-   
-    
-    
-//     return (dispatch, getState) => {
-//         return axios.get(getUrl).then((response) => {
-//             dispatch(spotDash(response.data.data));
-//         },
-//         (err) => {
-//             console.log('getSpotDash失败了###',err);
-//         })
-//     }
-// }
-
 const CancelToken = axios.CancelToken;
 let cancel;
 
@@ -222,13 +197,13 @@ export function getSpotDash(code, type, start, end, isIncremental) {
                 //dispatch(spotDash([], cancel));
                 dispatch(spotDash([]));
             }
-            
+
         },
         (err) => {
            // console.log('getSpotDash失败了###', err);
             //dispatch(spotDash([], cancel));
             dispatch(spotDash([]));
-            
+
         }).catch((thrown) => {
             //dispatch(spotDash([], cancel));
             dispatch(spotDash([]));
@@ -247,7 +222,7 @@ export function getSpotDashTwo(code, type, unit, start, end, isIncremental) {
     // }else { //查询全部
     //     start = start ? start : end - 86400000;
     // }
-    
+
     start = parseInt(start / 1000);
     end = parseInt(end / 1000);
 
@@ -274,7 +249,7 @@ export function cancelDash() {
 }
 
 export function getSpotHourDash() {
-    
+
 }
 
 export function getSpotDailyDash() {
@@ -298,7 +273,7 @@ export function saveOrderPost(data,fundPwd) {
             return response;
         },
         (err) => {
-            console.log('saveOrderPost失败了###',err); 
+            console.log('saveOrderPost失败了###',err);
             //dispatch(saveOrder(err.data));
         });
     }
@@ -311,7 +286,7 @@ export function getOpenOrders(coinPair) {
     } else {
         url = exchangeAjax.get_order + "?status=2";
     }
-    
+
     return (dispatch, getState) => {
         return axios.get(url).then((response) => {
             //console.log('getOpenOrders成功了###',response);
@@ -355,7 +330,7 @@ export function getTradeRecords(coinPair) {
     }else {
         url = exchangeAjax.get_trade;
     }
-    
+
     return (dispatch, getState) => {
         return axios.get(url).then((response) => {
             // console.log("getTradeRecords成功了###",response);
@@ -411,4 +386,3 @@ export function getCoinBrief(coin) {
         });
     }
 }
-

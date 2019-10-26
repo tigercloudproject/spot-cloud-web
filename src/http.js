@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {aesEncrypy} from "./utils/aes.js";
-import {connect} from "react-redux";
 import { setCookie, delCookie, getCookie } from "./utils/cookie.js";
 import { getQueryString } from "./utils/getQueryString.js";
 import CFG from "./config.js";
@@ -43,7 +42,6 @@ axios.interceptors.request.use( req => {
         req.url = req.url + "?t=" + timestamp;
     }
 
-let data = {};
     // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
     // 当前请求是否跳过设置 Headers
     if ( req.headers[ 'Skip-Set-Axios-Headers' ] !== 'true' ) {

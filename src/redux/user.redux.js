@@ -309,7 +309,7 @@ export function getVerifyCode(userName, name_type, type, validate) {
 
 // 注册
 export function registerPost(data,path,qd,markcode) {
-    let url = (qd && qd !== "null" && qd !== null) ? userAjax.register + `?qd=${qd}` : userAjax.register;
+    let url = (qd && qd !== "null" && qd !== null) ? userAjax.register.url + `?qd=${qd}` : userAjax.register.url;
     if (markcode && markcode !== "null" && markcode !==null) {
         if (qd && qd !== "null" && qd !== null) {
             url = url + "&markcode=" + markcode;
@@ -319,7 +319,7 @@ export function registerPost(data,path,qd,markcode) {
     }
     return (dispatch, getState) => {
         // get -> post
-        return axios.get(url,data).then((response) => {
+        return axios[ userAjax.register.type ](url,data).then((response) => {
             if (response && response.data && response.data.errno==="OK") {
                 dispatch(register(response.data.data, 1,path,response.headers["bbx-token"],response.headers["bbx-ssid"],response.headers["bbx-uid"]));
             }else {
@@ -337,8 +337,7 @@ export function registerPost(data,path,qd,markcode) {
 export function loginPost(data,path) {
     //console.log("loginPost####path#####",path);
     return (dispatch, getState) => {
-        // get -> post
-        return axios.get(userAjax.login,data).then((response) => {
+        return axios[ userAjax.login.type ]( userAjax.login.url, data ).then((response) => {
             if(response && response.data && response.data.errno == "OK") {
               dispatch(login(response.data.data, 1, path, response.headers["bbx-token"], response.headers["bbx-ssid"], response.headers["bbx-uid"]));
             } else {

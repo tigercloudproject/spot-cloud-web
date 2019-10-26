@@ -21,5 +21,8 @@ export default {
     , mainDomainName: getMainDomainName()
     , reqHost: `https://${ host }/`   // 请求接口主域
     , reqWebsocket: `wss://${ host }/v1/ifspot/realTime`  // 请求WS
-    // , cloud
+    // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
+    // 是否使用 SimRespon
+    , isSimRespon: true
+    // ================================== DEMO END =============================
 };
