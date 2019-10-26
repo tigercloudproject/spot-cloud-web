@@ -1369,20 +1369,20 @@ class PayBix extends Component {
               <div className="form-control5" style={{ paddingTop: "15px" }}>
                 <div className="avbi">
                   {intl.get("exchange_form_avbl")}: {!!token ? cutOut(myasset.coin2, this.state.firstCoinVolUnit) : cutOut(0, this.state.firstCoinVolUnit)} {coin2_name}
-                  {/* {
+                  {
                     !!token ? <Link to={{ pathname: "/assets/deposit", search: `${search}`, state: `${coin2_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link> :
                       <Link to={{ pathname: "/login", search: `${loginSearch}`, state: `${coin2_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link>
-                  } */}
+                  }
 
                 </div>
               </div>
               <div className="form-control5" style={{ paddingTop: "15px" }}>
                 <div className="avbi">
-                  {/* {intl.get("exchange_form_avbl")}: {!!token ? cutOut(myasset.coin1, this.state.lastCoinVolUnit) : cutOut(0, this.state.lastCoinVolUnit)} {coin1_name} */}
-                  {/* {
+                  {intl.get("exchange_form_avbl")}: {!!token ? cutOut(myasset.coin1, this.state.lastCoinVolUnit) : cutOut(0, this.state.lastCoinVolUnit)} {coin1_name}
+                  {
                     !!token ? <Link to={{ pathname: "/assets/deposit", search: `${search}`, state: `${coin1_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link> :
                       <Link to={{ pathname: "/login", search: `${loginSearch}`, state: `${coin1_name}` }} className="deposit">{intl.get("exchange_form_deposit_bnt")}</Link>
-                  } */}
+                  }
                 </div>
               </div>
             </div>
