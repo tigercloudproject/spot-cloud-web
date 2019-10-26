@@ -12,13 +12,11 @@
     .header-avatar {
         width: 32px;
         height: 32px;
-        // margin-left: 4px;
         cursor: pointer;
     }
     .header-user-info {
         min-width: 200px;
         position: absolute;
-        // padding: 0px 10px;
         text-align: center;
         background: $menuDropDownBack;
         font-size: 12px;
@@ -26,17 +24,6 @@
         top: 42px;
         border: 1px solid #313a56;
         border-radius: 6px;
-        // &::before {
-        //     content: "";
-        //     width: 0;
-        //     height: 0;
-        //     border-width: 0 10px 10px;
-        //     border-style: solid;
-        //     border-color: transparent transparent #313a56;
-        //     position: absolute;
-        //     margin-left: -12px;
-        //     top: -10px;
-        // }
 
         &::after {
             content: "";
@@ -53,7 +40,6 @@
             font-size: 14px;
             width: 86%;
             margin: 0 auto;
-            // width: 
             .account {
                 color: $menuDropDownColorWhite;
                 padding-bottom: 4px;
@@ -95,6 +81,5 @@
                 }
             }
         }
-        
     }
 }

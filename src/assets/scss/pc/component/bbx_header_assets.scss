@@ -32,7 +32,6 @@
       transition: all .3s linear;
     }
     >ul {
-        // display: none;
         background: $menuDropDownBack;
         width: 120px;
         padding: 10px 0px;
@@ -51,7 +50,6 @@
             cursor: pointer;
             &:hover {
                 background: $menuDropDownHoverBack;
-                // color: $menuDropDownColorBlue;
                 color:#BDD1EF;
             }
             >a {

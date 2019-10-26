@@ -55,13 +55,11 @@ $spacing: 6px;
                 width: 100%;
                 height: 480px;
                 margin-top: $spacing;
-                // background: orange;
             }
             .exchange-notice-box {
                 width: 100%;
                 height: 400px;
                 margin-top: $spacing;
-                // background: blueviolet;
             }
         }
         .exchange-top-middle {
@@ -77,13 +75,11 @@ $spacing: 6px;
                 width: 100%;
                 height: 480px;
                 margin-top: $spacing;
-                // background: green;
             }
             .exchange-submit-box {
                 width: 100%;
                 height: 400px;
                 margin-top: $spacing;
-                // background: thistle;
             }
         }
         .exchange-top-right {
@@ -93,12 +89,10 @@ $spacing: 6px;
             .exchange-depth-box {
                 width: 256px;
                 height: 970px;
-                // background: goldenrod;
             }
             .exchange-transaction-box {
                 width: 256px;
                 height: 970px;
-                // background: palevioletred;
                 margin-left: $spacing;
             }
         }
@@ -112,13 +106,11 @@ $spacing: 6px;
             background: $exchangeBodyBack;
             margin-top: $spacing;
             min-height: 210px;
-            // background: yellowgreen;
         }
         .introduce-box {
             width: 100%;
             margin-top: $spacing;
             min-height: 500px;
-            // background: yellow;
         }
     }
 }
@@ -145,17 +137,14 @@ $spacing: 6px;
             min-width: 256px;
             flex-basis: 256px;
             flex-direction: column-reverse;
-            // margin-top: 10px;
             .exchange-depth-box {
                 width: 100%;
                 height: 400px;
-                // background: goldenrod;
                 margin-top: $spacing;
             }
             .exchange-transaction-box {
                 width: 100%;
                 height: 480px;
-                // background: palevioletred;
                 margin-left: 0px;
             }
         }
@@ -190,7 +179,6 @@ $spacing: 6px;
             }
             .exchange-kline-m {
                 width: 100%;
-                // height: 360px;
                 margin-top: 6px;
             }
             .exchange-depth-m {

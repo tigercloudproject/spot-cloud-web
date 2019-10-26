@@ -4,7 +4,6 @@ $white: #E0EFFE;
         width: 100%;
         height: 100%;
         background: $exchangeBodyBack;
-        // margin-top: 10px;
         .pay-bix-tab {
             width: 100%;
             margin-bottom: 0px;
@@ -21,7 +20,6 @@ $white: #E0EFFE;
                 &.active {
                     color: #2b91f3;
                     position: relative;
-                    // border-bottom: 1px solid #2b91f3;
                     &::after {
                         content: "";
                         height: 2px;
@@ -97,7 +95,6 @@ $white: #E0EFFE;
                             flex: 1;
                             color: $white;
                             height: 40px;
-                            //line-height: 40px;
                             padding: 0px 10px;
                             background: none;
                             border: none;

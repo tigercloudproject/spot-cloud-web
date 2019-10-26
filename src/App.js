@@ -118,21 +118,7 @@ class App extends Component {
           <Route exact path="/" component={PCBody} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-          {/* <Route path="/retrieval" component={Retrieval} /> */}
           <Route path="/assets" component={Assets} />
-          {/* <Route path="/contract_asset" component={ContractAssets} /> */}
-          {/* <Route path="/usercenter" component={UserCenter} /> */}
-          {/* <Route path="/exchange" component={ExchangeNew} /> */}
-          {/* <Route path="/exchange_new" component={ExchangeNew} /> */}
-          {/* <Route path="/c2c" component={C2cTrade} /> */}
-          {/* <Route path="/market" component={Market} /> */}
-          {/* <Route path="/risk" component={Risk} /> */}
-          {/* <Route path="/terms" component={Terms} /> */}
-          {/* <Route path="/download" component={Download} /> */}
-          {/* <Route path="/c2c_trade" component={C2cTrade} /> */}
-          {/* <Route path="/about_us" component = {AboutUS} /> */}
-          {/* <Route path="/join_us" component = {JoinUS} /> */}
-          {/* <Route path="/super_partner" component ={SuperPartner} /> */}
           <Route path="*" component={ErrorPage}></Route>
         </Switch>
       </Layout>;
@@ -140,11 +126,6 @@ class App extends Component {
     return this.state.initDone ?<div className="container">
             <Router>
               <Switch>
-                {/* <Route path="/mobile/download" component={H5Download} /> */}
-                {/* <Route path="/ios_course" component={IosCourse} /> */}
-                {/* <Route path="/active001" component={TradeCompetition} /> */}
-                {/* <Route path="/active002" component={RankList} /> */}
-                {/* <Route path="/ltc" component={Ltc}></Route> */}
                 <Route path="/" render={props=> LayoutRouter} />
                 <Route path="*" component={ErrorPage}></Route>
               </Switch>

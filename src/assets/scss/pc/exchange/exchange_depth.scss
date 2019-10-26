@@ -17,12 +17,8 @@
             li {
                 width: 20px;
                 height: 20px;
-                // border: 1px solid #464f6c;
                 margin-right: 14px;
                 cursor: pointer;
-                // &:hover, &.active {
-                //     border: 1px solid #215e9d;
-                // }
                 span {
                     display: inline-block;
                     width: 100%;
@@ -114,7 +110,6 @@
                 position: absolute;
                 left: 0px;
                 bottom: 0px;
-                // background: orange;
                 width: 100%;
             }
         }

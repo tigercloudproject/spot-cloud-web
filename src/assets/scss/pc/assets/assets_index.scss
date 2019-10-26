@@ -7,21 +7,18 @@
     }
 
     ::-webkit-scrollbar-track-piece{
-        // background-color: rgba(0, 0, 0, 0.2);
         background-color: #ECEEF3;
         -webkit-border-radius: 6px;
     }
 
     ::-webkit-scrollbar-thumb:vertical{
         height: 5px;
-        // background-color: #313a56;
         background-color: #CED1D6;
         -webkit-border-radius: 6px;
     }
 
     ::-webkit-scrollbar-thumb:horizontal{
         width: 2px;
-        // background-color: #313a56;
         background: #CED1D6;
         -webkit-border-radius: 6px;
     }
@@ -29,92 +26,18 @@
     min-height: 100%;
     margin: 0 auto;
     min-height: 100%;
-    // padding-bottom: 430px;
     padding-bottom: 20px;
     box-sizing: border-box;
     background: $assetsBack;
-    // background: #171A25;
-    // margin-top: 20px;
-
-    // .assets-top-box {
-    //     background: $bbxBackground1;
-    //     background: #1F2636;
-    //     height: 120px;
-    //     margin-bottom: 20px;
-    //     display: flex;
-    //     align-items: center;
-    //     padding: 0px 20px;
-    //     .avatar {
-    //         width: 80px;
-    //         height: 80px;
-    //         flex-basis: 80px;
-    //     }
-    //     .account-info {
-    //         padding-left: 20px;
-    //         flex:1;
-    //         h3 {
-    //             color: #f8f8f8;
-    //         }
-    //         p {
-    //             color: #c9d1db;
-    //         }
-    //     }
-    //     .account-tab {
-    //         //flex: 1;
-    //         a {
-    //             display: inline-block;
-    //             width: 140px;
-    //             height: 35px;
-    //             line-height: 35px;
-    //             text-align: center;
-    //             color: #fff;
-    //             background: #313a56;
-    //             margin-left: 20px;
-    //             cursor: pointer;
-    //             border-radius: 2px;
-    //             &:hover {
-    //                 background: rgba(49,58,86,0.8);
-    //             }
-    //             &.active {
-    //                 background: #1d72c9;
-    //                 &:hover {
-    //                     background: rgba(29,114,201,0.8);
-    //                 }
-    //             }
-    //         }
-            
-            
-    //     }
-    // }
-    // .assets-body-box {
-    //     width: 100%;
-    //     position: relative;
-        
-    // }
 
     .assets-body {
         width: 1200px;
         margin: 0 auto;
         min-height: 485px;
-        // padding-left: 280px;
         box-sizing: border-box;
-        // background: $bodyBack;
-        // background: #171A25;
         padding-bottom: 40px;
-        // padding-top: 10px;
-        // .assets-left {
-        //     width: 100%;
-        //     min-height: 527px;
-        //     background: $bbxBackground1;
-        //     background: #1f2636;
-        //     border-radius: 2px;
-        //     padding: 20px;
-        //     padding-bottom: 0px;
-        //     box-sizing: border-box;
-        // }
         .title {
             height: 50px;
-            // line-height: 50px;
             background: $assetsConBack;
             color: $assetsTitleColor;
             display: flex;
@@ -123,7 +46,6 @@
             box-shadow: 0px 2px 5px $assetsBack;
             font-size: 16px;
             font-weight: bold;
-            // margin-bottom: 3px;
         }
     }
     

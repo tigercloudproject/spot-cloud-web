@@ -1,7 +1,4 @@
 .bbx-configurable-alert {
-    // width: 100%;
-    // height: 100%;
-    // position: relative;
     .mask {
         width: 100%;
         height: 100%;
@@ -43,10 +40,7 @@
             font-size: 18px;
             font-weight: 400;
             padding-top: 30px;
-            // height: 60px;
-            // line-height: 60px;
             margin-bottom: 0px;
-            // border-bottom: 1px solid #d1d5de;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -68,7 +62,6 @@
         }
         .one-btn-box {
             padding: 0px 20px;
-            //padding-top: 35px;
             padding-top: 20px;
             button {
                display: block;
@@ -90,7 +83,6 @@
         .two-btn-box {
             display: flex;
             padding: 0px 20px;
-            //padding-top: 35px;
             padding-top: 20px;
             button {
                display: block;

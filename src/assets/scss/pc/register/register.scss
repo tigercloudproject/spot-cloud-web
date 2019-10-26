@@ -56,9 +56,7 @@
             padding: 2px 0px;
         }
         .login-tab {
-            //padding-top: 18px;
             position: relative;
-            //z-index: 10010;
             padding-bottom: 15px;
             a {
                 display: inline-block;
@@ -102,17 +100,14 @@
         }
         .login-form {
             width: 450px;
-           
             .form-control,.bbx-pwd {
                 width: 100%;
-                //padding-top: 12px;
                 position: relative;
                 >input {
                     font-size: 14px;
                     width: 100%;
                     border: 1px solid #bacae4;
                     height: 50px;
-                    //line-height: 50px;
                     padding-left: 20px;
                     outline: none;
                     box-sizing: border-box;
@@ -155,51 +150,9 @@
                 color: #f36363;
                 font-size: 12px;
                 height: 18px;
-                //padding: 5px 0px;
                 padding-left: 20px;
                 margin: 0;
             }
-            // .agree {
-            //     padding-left: 20px;
-            //     padding-top: 15px;
-            //     padding-bottom: 5px;
-            //     color: $bbxBlue1;
-            //     margin: 0px;
-            //     position: relative;
-            //     //z-index: 10010;
-            //     span {
-            //         color: #399af7;
-            //     }
-            //     input {
-            //         outline: none;
-            //     }
-            //     .agree-input{
-            //         padding: 0px 5px;
-            //         position: relative;
-            //         input {
-            //             visibility: hidden;
-            //             cursor: pointer;
-            //         }
-            //         input+label {
-            //             display: inline-block;
-            //             width: 15px;
-            //             height: 15px;
-            //             background: url(../../../images/icon-choose_nor.png) left center no-repeat;
-            //             background-size: 15px 15px;
-            //             position: absolute;
-            //             top: 0px;
-            //             left: 5px;
-            //             cursor: pointer;
-            //         }
-            //         input:checked+label{
-            //             background: url(../../../images/icon-choose_sel.png) left center no-repeat;
-            //             background-size: 15px 15px;
-            //             position: absolute;
-            //             top: 0px;
-            //             left: 5px;
-            //         }
-            //     }
-            // }
             .submit {
                 width: 100%;
                 height: 50px;
@@ -211,7 +164,6 @@
                 outline: none;
                 font-size: 18px;
                 position: relative;
-                //z-index: 10010;
                 cursor: pointer;
                 &:disabled {
                     background: $bbxBlue1;
@@ -227,7 +179,6 @@
                 color: #bacae4;
                 text-align: center;
                 padding-top: 10px;
-                //vertical-align: middle;
                 a {
                     color: #399af7;
                 }
@@ -267,7 +218,6 @@
                 color: #f36363;
                 font-size: 12px;
                 height: 24px;
-                //padding: 5px 0px;
                 padding-left: 20px;
                 margin: 0;
             }
@@ -282,7 +232,6 @@
     color: $bbxBlue1;
     margin: 0px;
     position: relative;
-    //z-index: 10010;
     span {
         color: #399af7;
     }
@@ -323,8 +272,6 @@
         padding:0px;
     }
     .login-h5-box {
-        // padding-bottom: 684px;
-        // width: 100%;
         ::-webkit-input-placeholder {
             font-size: 16px;
             color: $bbxBlue1;
@@ -352,16 +299,12 @@
         .login-h5 {
             width: 100%;
             min-height: 100%;
-            
             position: relative;
-            // display: flex;
-            // flex-direction: column;
             padding-bottom: 60px;
             .login-h5-header {
                 width: 100%;
                 height: 50px;
                 background: #1f2636;
-                //position: relative;
                 color: #97b0d6;
                 display: flex;
                 justify-content: space-between;
@@ -415,16 +358,13 @@
                             width: 100%;
                             height: 44px;
                             background: #1f2636;
-                            //border: 1px solid #3e5782;
                             border: none;
                             border-radius: 2px;
                             padding:0px 10px;
                             outline: none;
                             color: #fff;
                         }
-                    
                         .tel-intpu-box {
-                            
                             .tel-select {
                                 height: auto;
                                 width: 100px;
@@ -435,8 +375,6 @@
                                 >input {
                                     border: none;
                                     height: 42px;
-                                    // border-bottom: 1px solid #3e5782;
-                                    // border-top: 1px solid #3e5782;
                                     border-right: 1px solid #3e5782;
                                     border-top-right-radius: 0px;
                                     border-bottom-right-radius: 0px;
@@ -469,12 +407,10 @@
                                 }
                                 li {
                                     color: $bbxBlue1;
-                                   // border-bottom: 1px solid $bbxBlue1;
                                    box-shadow:0 1px 1px -1px $bbxBlue1;
                                     span {
                                       color: #fff;
                                     } 
-                                    //position: relative;
                                     border: none;
                                     &::after {
                                         content: '';

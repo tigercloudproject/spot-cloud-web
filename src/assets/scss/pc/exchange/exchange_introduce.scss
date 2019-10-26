@@ -3,9 +3,6 @@
     width: 100%;
     min-height: 500px;
     background: $exchangeBodyBack;
-    // margin-top: 10px;
-    // padding: 0px 15px;
-    //padding-bottom: 40px;
     box-sizing: border-box;
     margin-bottom: 40px;
     .coin-basics-title {
@@ -43,7 +40,6 @@
             transition: all .15s;
             position: absolute;
             left: 15px;
-            // left: 15px;
             top: 14px;
             background: url("../../../images/right.svg") left top no-repeat;
             background-size: 100% 100%;
@@ -52,7 +48,6 @@
     .coin-basics-con {
         display: flex;
         font-size: 12px;
-        //padding-top: 20px;
         height: auto;
         transition: height 0.5s;
         overflow: hidden;
@@ -104,7 +99,6 @@
                     height: 50px;
                     line-height: 50px;
                     &:first-child {
-                        //color: #8ea6ca;
                         color: $bbxBlue1;
                     }
                     a {

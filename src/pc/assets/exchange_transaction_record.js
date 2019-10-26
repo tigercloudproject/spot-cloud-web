@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-// import Breadcrumbs from "./record/breadcrumbs.js";
 import HeaderTab from "./account/header_tab.js";
-// import Operating from "./record/operating.js";
 import "../../assets/scss/pc/assets/exchange_transaction_record.css";
 import { connect } from "react-redux";
 import { getStocks } from "../../redux/trade.redux.js";
@@ -95,14 +93,10 @@ class TransactionRecord extends Component {
             <MediaQuery maxWidth={700}>
                 <H5Header title={intl.get("assets_menu3")}></H5Header>
             </MediaQuery>
-            {/* <Breadcrumbs list={ this.state.breadcrumbsList }></Breadcrumbs> */}
             <div className="record-body">
                 <div className="record-header-tab">
                     <HeaderTab list={this.state.tabList}></HeaderTab>
                 </div>
-                {/* <div className="table-operate">
-                    <Operating></Operating>
-                </div> */}
             </div>
             <div className="record-list">
                 {type==="current"?<Current units={this.state.units}></Current>:null}

@@ -6,7 +6,6 @@
         width: 100%;
         min-width: 1230px;
         height: 60px;
-        //padding: 0px 32px;
         box-sizing: border-box;
         background: $bbxNavBackground;
         color: $bbxGray;
@@ -48,7 +47,6 @@
                 display: inline-block;
                 width: 35px;
                 height: 12px;
-                // background: url("../../../images/hot.svg") left top no-repeat;
                 background-size: 100% 100%;
                 right: 10px;
                 top: 7px;
@@ -112,7 +110,6 @@
                 display: inline-block;
                 width: 16px;
                 height: 16px;
-                // background: url("../../../images/icon-hot.svg") left top no-repeat;
                 background-size: 100% 100%;
                 right: 0px;
                 top: 11px;
@@ -126,7 +123,6 @@
                 display: inline-block;
                 width: 35px;
                 height: 12px;
-                // background: url("../../../images/hot.svg") left top no-repeat;
                 background-size: 100% 100%;
                 right: 15px;
                 top: 7px;
@@ -158,7 +154,6 @@
                         display: inline-block;
                         width: 35px;
                         height: 12px;
-                        // background: url("../../../images/hot.svg") left top no-repeat;
                         background-size: 100% 100%;
                         right: -8px;
                         top: -14px;
@@ -179,7 +174,6 @@
                         display: none;
                         position: absolute;
                         background: #fff;
-                        // border: 1px solid #293251;
                         width: 120px;
                         padding: 15px;
                         box-sizing:border-box;
@@ -192,7 +186,6 @@
                         .qr-code {
                             width: 90px;
                             height: 90px;
-                            // background: pink;
                             margin: 0 auto;
                         }
                         >p {
@@ -236,7 +229,6 @@
                     display: none;
                     position: absolute;
                     background: #fff;
-                    // border: 1px solid #293251;
                     width: 120px;
                     padding: 15px;
                     box-sizing:border-box;
@@ -248,7 +240,6 @@
                     .qr-code {
                         width: 90px;
                         height: 90px;
-                        // background: pink;
                         margin: 0 auto;
                     }
                     >p {
@@ -297,7 +288,6 @@
                 display: inline-block;
                 width: 32px;
                 height: 32px;
-                // padding: 0px 10px;
             }
             .header-assets {
                 display: inline-block;
@@ -324,7 +314,6 @@
         color: $bbxGray;
         position: relative;
         z-index: 10010;
-        //border-bottom: 1px solid #313A56;
         border: none;
 
         &::after {
@@ -364,8 +353,6 @@
             left: 0px;
             top: 50px;
             li {
-                //border-bottom: 1px solid $bbxNavBackground;
-                
                 height: 50px;
                 line-height: 50px;
                 a {
