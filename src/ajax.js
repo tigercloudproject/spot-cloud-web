@@ -3,12 +3,11 @@ import CFG from "./config.js";
 export const globalAjax = {
     g_config: CFG.reqHost + "v1/ifglobal/global",
     // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
-    // 用户信息
     user_config: CFG.reqHost + 'v1/ifglobal/userConfigs',
     // user_config: '_simResponse/userConfigs',
     // 获得 token 等
-    global_header: 'http://192.168.1.121:8080/common/genAccountMD5',  // 需修改为自己后端的该功能接口
-    // global_header: '_simResponse/globalHeader',
+    // global_header: 'http://192.168.1.121:8080/common/genAccountMD5',  // 需修改为自己后端的该功能接口
+    global_header: '_simResponse/globalHeader',
     // ================================== DEMO END =============================
     app_list: CFG.reqHost + "v1/ifglobal/appBuilds"
 }
