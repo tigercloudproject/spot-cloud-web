@@ -20,7 +20,7 @@ class GotoContractAlert extends Component {
 
     let langIndex = this.props.default?this.props.default.index:"";
     let fontSizeStyle = {
-        fontSize: langIndex===3?"28px":"34px"
+        fontSize: langIndex===3 ? "28px" : "34px"
     }
     let subTitSize = {
         fontSize: langIndex === 3 ? "30px" : "38px"

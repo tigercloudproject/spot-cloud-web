@@ -43,13 +43,14 @@ axios.interceptors.request.use( req => {
         req.url = req.url + "?t=" + timestamp;
     }
 
+let data = {};
     // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
     // 当前请求是否跳过设置 Headers
-    if ( req.headers[ 'Skip-Set-Axios-Headers' ] !== 'true' ) {
-        // 获取 Headers 的接口要跳过配置 Headers
-        // NOTE: 每次请求前都会更新
-        return getGlobalHeader()
-            .then( data => {
+    // if ( req.headers[ 'Skip-Set-Axios-Headers' ] !== 'true' ) {
+    //     // 获取 Headers 的接口要跳过配置 Headers
+    //     // NOTE: 每次请求前都会更新
+    //     return getGlobalHeader()
+    //         .then( data => {
                 let bbxToken = data.token || ''
                   , bbxSsid = getCookie( 'ssid' ) || ''
                   , bbxSign = ''
@@ -57,16 +58,16 @@ axios.interceptors.request.use( req => {
                   , bbxExpiredTs = ''
                   , bbxUid = getCookie( "uid" ) || ''
                   , bbxLang = localStorage.getItem( 'lang' ) || '';
-
+bbxToken = getCookie("token");
                 if ( bbxToken ) {
 // TODO: ??? SSid是哪个
-                    bbxSsid = data.accountInfo.origin_uid;
+// bbxSsid = data.accountInfo.origin_uid;
   // md5 的body是哪
                     // md5( body + token + ts )
                     bbxSign = aesEncrypy( bbxToken, nonce );
                     bbxAccesskey = data.access_key;
                     bbxExpiredTs = data.expired_ts;
-                    bbxUid = data.accountInfo.account_id;
+// bbxUid = data.accountInfo.account_id;
 
                     // 更新 cookie
                     setCookie( "token", bbxToken, 1, CFG.mainDomainName, "/" );
@@ -95,15 +96,15 @@ axios.interceptors.request.use( req => {
                 req.headers.common['Bbx-Language'] = bbxLang;
 
                 return req;
-            } )
-            .catch( e => {
-                console.error( e );
-
-                return req;
-            } );
-    } else {
-        return req;
-    }
+            // } )
+            // .catch( e => {
+            //     console.error( e );
+            //
+            //     return req;
+            // } );
+    // } else {
+    //     return req;
+    // }
     // ================================== DEMO END =============================
 }, (err) => {
     //console.log("request###err##@@@######",err);
@@ -132,20 +133,10 @@ axios.interceptors.response.use(response => {
         }
     }
 
+    // NOTE: 如果服务器通过 Response Headers 进行更新
     let bbxToken = response.headers[ "bbx-token" ]
       , bbxSsid = response.headers[ "bbx-ssid" ]
       , bbxUid = response.headers[ "bbx-uid" ];
-
-    // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
-    // NOTE: 登录、注册请求完成，且后端 success 后，后端应在 response.headers 带上 bbx-token、bbx-ssid、bbx-uid
-    // NOTE: 前端会在上面获取并写入 cookie，以此做账号身份凭证
-    // NOTE: 这里模拟在 Demo 中，登录、注册后自动进行赋值
-    if ( !response.config.url.indexOf( '_simResponse/login' ) || !response.config.url.indexOf( '_simResponse/register' ) ) {
-        bbxToken = 'f5a58f3011fc34fb4e6befbd0c1229b6'
-        bbxSsid = '';
-        bbxUid = '2090193280';
-    };
-    // ================================== DEMO =================================
 
     // 更新
     bbxToken
