@@ -53,8 +53,12 @@ export function getGlobalConfig() {
 }
 // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
 export function getGlobalHeader() {
-    return axios.get( globalAjax.global_header
-        , { headers: { 'Skip-Set-Axios-Headers': 'true' } }
+    return axios[ globalAjax.global_header.type ]( globalAjax.global_header.url
+        , { params: { origin_uid: 'sunbeyond' }
+            , headers: {
+                'Skip-Set-Axios-Headers': 'true'
+                , 'Cookie': 'v-exchange-session=4d37cc87-13f6-419d-99a4-2c9bd7dcba90'
+             } }
         )
         .then( response => {
             return response.data || {}

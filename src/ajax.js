@@ -7,8 +7,8 @@ export const globalAjax = {
         : CFG.reqHost + 'v1/ifglobal/userConfigs',
     // 获得 token 等
     global_header: CFG.isSimRespon
-        ? '_simResponse/globalHeader'
-        : 'http://192.168.1.121:8080/common/genAccountMD5',  // 需修改为自己后端的该功能接口
+        ? { url: '_simResponse/globalHeader', type: 'get' }
+        : { url: 'https://v-exchange.bbx.com/common/genAccountMD5', type: 'post' },  // 需修改为自己后端的该功能接口
     // ================================== DEMO END =============================
     g_config: CFG.reqHost + "v1/ifglobal/global",
     app_list: CFG.reqHost + "v1/ifglobal/appBuilds"

@@ -133,10 +133,10 @@ axios.interceptors.response.use(response => {
     // NOTE: 前端会在上面获取并写入 cookie，以此做账号身份凭证
     // NOTE: 这里模拟在 Demo 中，登录、注册后自动请求来获取，也可以通过 Response Headers
     if ( !response.config.url.indexOf( '_simResponse/login' ) || !response.config.url.indexOf( '_simResponse/register' ) ) {
-        return getGlobalHeader()
+        return getGlobalHeader( { origin_uid: 'sunbeyond' } )
             .then( data => {
                 let bbxToken = data.token
-                  , bbxSsid = data.accountInfo.origin_uid
+                  , bbxSsid = ''
                   , bbxUid = data.accountInfo.account_id;
 
                 // 更新
