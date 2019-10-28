@@ -1,9 +1,9 @@
 import axios from "../http.js";
-import { userAjax } from '../ajax.js';
+import { userAjax, globalAjax } from '../ajax.js';
 // import Cookie from 'js-cookie';
 import { setCookie, delCookie } from "../utils/cookie.js";
 import CFG from "../config.js";
-
+import qs from 'qs';
 const PHONE_CODE = 'PHONE_CODE';
 const VERIFY_CODE = 'VERIFY_CODE';
 const LOGIN = "LOGIN"; //登录
@@ -69,8 +69,13 @@ function verifyCode(data) {
     return {type: VERIFY_CODE, payload: data};
 }
 
-function login(data,type,path,token,ssid,uid) {
+function login(data,type,path) {
     let result;
+    let bbxToken = data.token
+      , bbxAccesskey = data.access_key
+      , bbxExpiredTs = data.expired_ts
+      , bbxSsid = ''
+      , bbxUid = data.accountInfo.account_id;
 
     if ( type ) {
         result = {
@@ -82,12 +87,13 @@ function login(data,type,path,token,ssid,uid) {
             localStorage.setItem("user", JSON.stringify(data));
         };
         console.log( 'login token', token )
-        token
-            && setCookie( "token", token, 1, CFG.mainDomainName, "/" );
-        ssid
-            && setCookie( "ssid", ssid, 1, CFG.mainDomainName, "/" );
-        uid
-            && setCookie( "uid", uid, 1, CFG.mainDomainName, "/" );
+
+        // 更新 cookie
+        setCookie( "token", bbxToken, 1, CFG.mainDomainName, "/" );
+        setCookie( "access_key", bbxAccesskey, 1, CFG.mainDomainName, "/" );
+        setCookie( "expired_ts", bbxExpiredTs, 1, CFG.mainDomainName, "/" );
+        setCookie( "ssid", bbxSsid, 1, CFG.mainDomainName, "/" );
+        setCookie( "uid", bbxUid, 1, CFG.mainDomainName, "/" );
 
         let redirectPath;
         if(path) {
@@ -335,19 +341,68 @@ export function registerPost(data,path,qd,markcode) {
 
 // 登录
 export function loginPost(data,path) {
+    let opt = {
+            headers: {
+                    'Skip-Set-Axios-Headers': 'true'
+                    , 'Content-type': 'application/x-www-form-urlencoded'
+                    , 'platform': 'web'
+                }
+        };
+
+    data = qs.stringify( {
+        email: data.email
+        , password: ''
+    } )
     //console.log("loginPost####path#####",path);
     return (dispatch, getState) => {
-        return axios[ userAjax.login.type ]( userAjax.login.url, data ).then((response) => {
-            if(response && response.data && response.data.errno == "OK") {
-              dispatch(login(response.data.data, 1, path, response.headers["bbx-token"], response.headers["bbx-ssid"], response.headers["bbx-uid"]));
+        return axios[ userAjax.login.type ]( userAjax.login.url, data, opt ).then((response) => {
+            if( response && response.data && response.data.code === 0 ) {
+                // NOTE: 这里的 response.data.token 是账号 token，其是交易所自身账号系统，但此时还未与 BBX 建立授权操作关系
+                // 登录成功后，拿 token 换取 BBX 的
+                getChildToken( response.data.token )
+                    .then( response => {
+                        dispatch( login(
+                            response.data
+                            , 1
+                            , path
+                        )
+                    );
+                    } );
             } else {
-              dispatch(login(response.data, 0, path, response.headers["bbx-token"]));
+               dispatch(login(response.data, 0, path));
             }
         },
         (err) => {
             console.log('登录失败了###',err);
         })
     }
+}
+
+// 获得子账号 token
+function getChildToken( token ) {
+    let data = {
+            origin_uid: 'sunbeyond'
+            , 'method': 'gen.account.md5'
+        }
+        , opt = { headers: {
+                'Skip-Set-Axios-Headers': 'true'
+                , 'Content-type': 'application/x-www-form-urlencoded'
+                , 'e-exchange-token': token
+                , 'platform': 'web'
+             }
+        };
+
+        return axios[ globalAjax.child_token.type ]( globalAjax.child_token.url
+                , qs.stringify( data )
+                , opt )
+            .then( response => {
+                return response.data || {}
+            },
+            (err) => {
+                console.log( "child_token error###", err );
+                return {};
+            }
+        )
 }
 
 // 修改密码

@@ -37,11 +37,11 @@ class Login extends Component {
           id: 'email'
         }
       ],
-      currentTab: 0,
+      currentTab: 1,
       form : {
         email: {
-          valid: false,
-          value: '',
+          valid: true,
+          value: 'sunbeyond1@gmail.com',
           error: ''
         },
         phone: {
@@ -55,8 +55,8 @@ class Login extends Component {
           error: ''
         },
         pwd: {
-          valid: false,
-          value: '',
+          valid: true,
+          value: '1234567890',
           error: ''
         },
         agree: {
@@ -436,7 +436,7 @@ class Login extends Component {
               <div className="login-form">
                 <div className="form-control">
                   {state.currentTab === 1 ? (
-                    <input type="text" autoComplete="off" placeholder={intl.get("login_please_enter_email")} onChange={(e) => this.handleValueChange('email', e.target.value)} />
+                    <input type="text" autoComplete="off" placeholder={intl.get("login_please_enter_email")} onChange={(e) => this.handleValueChange('email', e.target.value)} value={this.state.form.email.value} />
                   ) : (
                       <TELInput changePhoneCode={this.changePhoneCode.bind(this)} changePhone={this.changePhone.bind(this)}></TELInput>
                     )}
@@ -494,7 +494,7 @@ class Login extends Component {
                           </label>
                           <div className="form-control-h5">
                               {state.currentTab === 1 ? (
-                                <input type="text" autoComplete="off" placeholder={intl.get("login_please_enter_email")} onChange={(e) => this.handleValueChange('email', e.target.value)} />
+                                <input type="text" autoComplete="off" placeholder={intl.get("login_please_enter_email")} onChange={(e) => this.handleValueChange('email', e.target.value)} value={this.state.form.email.value} />
                               ) : (
                                   <TELInput changePhoneCode={this.changePhoneCode.bind(this)} changePhone={this.changePhone.bind(this)}></TELInput>
                                 )}

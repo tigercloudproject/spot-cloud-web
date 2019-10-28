@@ -5,13 +5,9 @@ export const globalAjax = {
     user_config: CFG.isSimRespon
         ? '_simResponse/userConfigs'
         : CFG.reqHost + '/v1/ifglobal/userConfigs',
-    // 获取 demo_header 前的登录
-    demo_header_login: CFG.isSimRespon
-        ? { url: '_simResponse/globalHeaderLogin', type: 'get' }
-        : { url: 'http://v-exchange.bbx.com/login', type: 'post' },
-    // 获得 token 等
-    demo_header: CFG.isSimRespon
-        ? { url: '_simResponse/globalHeader', type: 'get' }
+    // 获得 child token 等
+    child_token: CFG.isSimRespon
+        ? { url: '_simResponse/childToken', type: 'get' }
         : { url: 'https://v-exchange.bbx.com/common', type: 'post' },  // 需修改为自己后端的该功能接口
     // ================================== DEMO END =============================
     g_config: CFG.reqHost + "/v1/ifglobal/global",
@@ -27,7 +23,7 @@ export const userAjax = {
     // 账号登录
     login: CFG.isSimRespon
         ? { url: '_simResponse/login', type: 'get' }
-        : { url: CFG.reqHost + '/v1/ifaccount/login', type: 'post' },
+        : { url: 'http://v-exchange.bbx.com/login', type: 'post' },
     // 账号登出
     logout: CFG.isSimRespon
         ? '_simResponse/logout'

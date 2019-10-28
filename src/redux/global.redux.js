@@ -51,58 +51,6 @@ export function getGlobalConfig() {
         );
     }
 }
-// ======================= 这块代码是 Demo，仅供演示、说明用 ====================
-export function getDemoHeaderLogin() {
-    let data = { email: 'sunbeyond1@gmail.com'
-            , password: '1234567890'
-        };
-
-    return axios[ globalAjax.demo_header_login.type ](
-            globalAjax.demo_header_login.url
-            , qs.stringify( data )
-            , { headers: {
-                    'Skip-Set-Axios-Headers': 'true'
-                    , 'Content-type': 'application/x-www-form-urlencoded'
-                    , 'platform': 'web'
-                }
-            }
-        )
-        .then( response => {
-            return response.data || {}
-        }
-        , err => {
-            console.log( "getGlobalConfig error###", err );
-            return {};
-        }
-    )
-}
-
-export function getDemoHeader( token ) {
-    let data = {
-            origin_uid: 'sunbeyond'
-            , 'method': 'gen.account.md5'
-        };
-
-    return axios[ globalAjax.demo_header.type ]( globalAjax.demo_header.url
-            , qs.stringify( data )
-            , { headers: {
-                    'Skip-Set-Axios-Headers': 'true'
-                    , 'Content-type': 'application/x-www-form-urlencoded'
-                    , 'e-exchange-token': token
-                    , 'platform': 'web'
-                 }
-            }
-        )
-        .then( response => {
-            return response.data || {}
-        }
-        , err => {
-            console.log( "getGlobalConfig error###", err );
-            return {};
-        }
-    )
-}
-// ================================== DEMO END =============================
 
 export function getUserConfig() {
     return (dispatch, getState) => {
