@@ -1,6 +1,6 @@
 import axios from '../http.js';
 import { globalAjax, assetsAjax } from '../ajax.js';
-
+import qs from 'qs';
 const GLOBAL_CONFIG = 'GLOBAL_CONFIG';
 const USER_CONFIG = 'USER_CONFIG';
 const APP_LIST = 'APP_LIST'; //安卓IOS应用信息列表
@@ -52,13 +52,46 @@ export function getGlobalConfig() {
     }
 }
 // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
-export function getGlobalHeader() {
-    return axios[ globalAjax.global_header.type ]( globalAjax.global_header.url
-        , { params: { origin_uid: 'sunbeyond' }
-            , headers: {
-                'Skip-Set-Axios-Headers': 'true'
-                , 'Cookie': 'v-exchange-session=4d37cc87-13f6-419d-99a4-2c9bd7dcba90'
-             } }
+export function getDemoHeaderLogin() {
+    let data = { email: 'sunbeyond1@gmail.com'
+            , password: '1234567890'
+        };
+
+    return axios[ globalAjax.demo_header_login.type ](
+            globalAjax.demo_header_login.url
+            , qs.stringify( data )
+            , { headers: {
+                    'Skip-Set-Axios-Headers': 'true'
+                    , 'Content-type': 'application/x-www-form-urlencoded'
+                    , 'platform': 'web'
+                }
+            }
+        )
+        .then( response => {
+            return response.data || {}
+        }
+        , err => {
+            console.log( "getGlobalConfig error###", err );
+            return {};
+        }
+    )
+}
+
+export function getDemoHeader( token ) {
+    let data = {
+            origin_uid: 'sunbeyond'
+            , 'method': 'gen.account.md5'
+        };
+
+    return axios[ globalAjax.demo_header.type ]( globalAjax.demo_header.url
+            , qs.stringify( data )
+            , { headers: {
+                    'Skip-Set-Axios-Headers': 'true'
+                    , 'Content-type': 'application/x-www-form-urlencoded'
+                    , 'e-exchange-token': token
+                    , 'platform': 'web'
+                 }
+            }
         )
         .then( response => {
             return response.data || {}

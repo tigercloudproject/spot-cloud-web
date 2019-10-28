@@ -27,12 +27,6 @@ const publicUrl = publicPath.slice(0, -1);
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
 
-// Assert this just to be safe.
-// Development builds of React are slow and not intended for production.
-if (env.stringified['process.env'].NODE_ENV !== '"production"') {
-  throw new Error('Production builds must have NODE_ENV=production.');
-}
-
 const nonce = "asset/"+(Date.parse(String(new Date()).replace(/-/g, "/")) / 1000);
 
 // Note: defined here because it will be used more than once.

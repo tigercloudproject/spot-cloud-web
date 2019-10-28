@@ -122,7 +122,7 @@ class ExchangeMarket extends Component {
         currentCoinPair: item.stock_code
       });
     }
-
+    console.log( 'selectCoinPair' );
     this.props.changeCurrentCoinPair(item.stock_code); //切换当前币值对
     this.props.getSpotDetails(item.stock_code);
   }

@@ -2,15 +2,13 @@ import axios from 'axios';
 import {aesEncrypy} from "./utils/aes.js";
 import { setCookie, delCookie, getCookie } from "./utils/cookie.js";
 import { getQueryString } from "./utils/getQueryString.js";
+import qs from 'qs';
 import CFG from "./config.js";
-import { getGlobalHeader } from "./redux/global.redux";
-
-// import Cookie from "js-cookie";
-
-let nonce, timestamp;
+import { getDemoHeader, getDemoHeaderLogin } from "./redux/global.redux";
 
 // 全局 Headers
 axios.defaults.headers["Content-Type"] = "application/json;charset=UTF-8";
+axios.defaults.timeout = CFG.reqTimeout;
 
 //生成唯一ID
 function getRandomToken() {
@@ -31,74 +29,140 @@ if(!unique_id) {
     localStorage.setItem("unique_id",unique_id);
 }
 
-// request
-axios.interceptors.request.use( req => {
-    timestamp = new Date().valueOf();
-    nonce = timestamp + "000";  // 微秒时间戳
-    // 给所有请求加时间戳
-    if (req.url && req.url.indexOf("?") > -1) {
-        req.url = req.url + "&t=" + timestamp;
-    } else {
-        req.url = req.url + "?t=" + timestamp;
+// 更新 Headers
+// opt.cloudToken 必填
+function updateHeaders( config, opt ) {
+    let { cloudToken = ''
+        , cloudAccesskey = getCookie( 'cloud_access_key' ) || ''
+        , cloudExpiredTs = getCookie( 'cloud_expired_ts' ) || ''
+        , cloudSsid = getCookie( 'cloud_ssid' ) || ''
+        , cloudUid = getCookie( "cloud_uid" ) || ''
+        , bbxLang = localStorage.getItem( 'lang' ) || ''
+        , nonce = new Date().valueOf() + "000"  // 微秒时间戳
+        } = opt
+        , cloudSign = '';
+
+    // 设置头部信息
+    config.headers.common['Bbx-Ver'] = '1.0';
+    config.headers.common['Bbx-Dev'] = 'web';
+    config.headers.common["Content-Type"] = "application/json";
+    config.headers.common['Bbx-Ts'] = nonce;
+
+    // 有 token 才 Sign
+    if ( cloudToken ) {
+// md5 的body是哪
+        // md5( body + token + ts )
+        cloudSign = aesEncrypy( config.data, cloudToken, nonce );
     }
+
+    config.headers.common['Bbx-Accesskey'] = cloudAccesskey;
+    config.headers.common['Bbx-ExpiredTs'] = cloudExpiredTs;
+    config.headers.common['Bbx-Sign'] = cloudSign;
+    config.headers.common['Bbx-Ssid'] = cloudSsid;
+    config.headers.common['Bbx-Uid'] = cloudUid;
+
+    if( bbxLang.indexOf("zh")<0) {
+        bbxLang = "en";
+    } else if(bbxLang.indexOf("zh-tw")>-1) {
+        bbxLang = "zh-cn";
+    }
+
+    config.headers.common['Bbx-Language'] = bbxLang;
+
+    return config;
+};
+
+// request
+axios.interceptors.request.use( config => {
+    console.log( config )
+
+    // NOTE: 取消预检请求 OPTIONS
+    if(config.method === 'post' || config.method === 'get') {
+        config.data = qs.stringify(config.data);
+    }
+
+    let timestamp = new Date().valueOf();
+
+    // 给所有请求加时间戳
+    if ( config.url && config.url.indexOf("?") > -1 ) {
+        config.url = config.url + "&t=" + timestamp;
+    } else {
+        config.url = config.url + "?t=" + timestamp;
+    };
 
     // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
     // 当前请求是否跳过设置 Headers
-    if ( req.headers[ 'Skip-Set-Axios-Headers' ] !== 'true' ) {
-        // 获取 Headers 的接口要跳过配置 Headers
-        // NOTE: 每次请求前都会更新
-        return getGlobalHeader()
-            .then( data => {
-                let bbxToken = getCookie("token") || ''
-                  , bbxSsid = getCookie( 'ssid' ) || ''
-                  , bbxSign = ''
-                  , bbxAccesskey = ''
-                  , bbxExpiredTs = ''
-                  , bbxUid = getCookie( "uid" ) || ''
-                  , bbxLang = localStorage.getItem( 'lang' ) || '';
-
-                if ( bbxToken ) {
-  // md5 的body是哪
-                    // md5( body + token + ts )
-                    bbxSign = aesEncrypy( bbxToken, nonce );
-                    bbxAccesskey = data.access_key;
-                    bbxExpiredTs = data.expired_ts;
-
-                    // 更新 cookie
-                    setCookie( "token", bbxToken, 1, CFG.mainDomainName, "/" );
-                    setCookie( "ssid", bbxSsid, 1, CFG.mainDomainName, "/" );
-                    setCookie( "uid", bbxUid, 1, CFG.mainDomainName, "/" );
-                };
-
-                // 设置头部信息
-                req.headers.common['Bbx-Ver'] = '1.0';
-                req.headers.common['Bbx-Dev'] = 'web';
-                req.headers.common["Content-Type"] = "application/json";
-                req.headers.common['Bbx-Ts'] = nonce;
-
-                req.headers.common['Bbx-Accesskey'] = bbxAccesskey;
-                req.headers.common['Bbx-ExpiredTs'] = bbxExpiredTs;
-                req.headers.common['Bbx-Sign'] = bbxSign;
-                req.headers.common['Bbx-Ssid'] = bbxSsid;
-                req.headers.common['Bbx-Uid'] = bbxUid;
-
-                if(bbxLang.indexOf("zh")<0) {
-                    bbxLang = "en";
-                } else if(bbxLang.indexOf("zh-tw")>-1) {
-                    bbxLang = "zh-cn";
-                }
-
-                req.headers.common['Bbx-Language'] = bbxLang;
-
-                return req;
-            } )
-            .catch( e => {
-                console.error( e );
-
-                return req;
-            } );
+    if ( config.headers[ 'Skip-Set-Axios-Headers' ] === 'true' ) {
+        return config;
     } else {
-        return req;
+        let cloudToken = getCookie( 'cloud_token' ) || '';
+        // 是否存在云 token
+        if ( cloudToken ) {
+            // 更新 sign
+            return updateHeaders( config, { cloudToken } );
+        } else {
+            // 获取 Cloud Token
+            // NOTE: Demo 中，该流程需要先登录 Token 平台，然后再获得 Token。实际情况可跳过该步骤
+            return ( function( config ) {
+                return getDemoHeaderLogin()
+                    .then( e => {
+                        if ( e.code !== 0 ) {
+                            console.error( 'getDemoHeaderLogin', e );
+                            return config;
+                        };
+                        return getDemoHeader( e.data.token )
+                            .then( e => {
+                                /*
+                                	"access_key": "122f02dc-2e38-430e-b611-7d36921489a9",
+                                    	"accountInfo": {
+                                    		"account_id": 2555509712,
+                                    		"api_key": "122f02dc-2e38-430e-b611-7d36921489a9",
+                                    		"api_key_expired_at": "2019-11-24T03:10:22.225893Z",
+                                    		"api_secret": "a305ff06-caf5-4960-90e0-719482b1bbdf",
+                                    		"app_id": 2017184040,
+                                    		"assets": null,
+                                    		"created_at": "2019-10-25T03:10:22.23287Z",
+                                    		"origin_uid": "sunbeyond",
+                                    		"status": 1,
+                                    		"updated_at": "2019-10-25T03:10:22.225893Z"
+                                    	},
+                                    	"expired_ts": "1574565022000000",
+                                    	"token": "858a4adbe2b5ea7d7985ab9d37b7be9f"
+                                 */
+                                let cloudToken = e.token
+                                  , cloudAccesskey = e.access_key
+                                  , cloudExpiredTs = e.expired_ts
+                                  , cloudSsid = ''
+                                  , cloudUid = e.accountInfo.account_id;
+
+                                // 更新 cookie
+                                setCookie( "cloud_token", cloudToken, 1, CFG.mainDomainName, "/" );
+                                setCookie( "cloud_access_key", cloudAccesskey, 1, CFG.mainDomainName, "/" );
+                                setCookie( "cloud_expired_ts", cloudExpiredTs, 1, CFG.mainDomainName, "/" );
+                                setCookie( "cloud_ssid", cloudSsid, 1, CFG.mainDomainName, "/" );
+                                setCookie( "cloud_uid", cloudUid, 1, CFG.mainDomainName, "/" );
+
+                                return updateHeaders( config, {
+                                    cloudToken
+                                    , cloudAccesskey
+                                    , cloudExpiredTs
+                                    , cloudSsid
+                                    , cloudUid
+                                } );
+                            } )
+                            .catch( e => {
+                                console.error( e );
+
+                                return config;
+                            } );
+                    } )
+                    .catch( e => {
+                        console.error( e );
+
+                        return config;
+                    } );
+            } )( config );
+        }
     }
     // ================================== DEMO END =============================
 }, (err) => {
@@ -111,10 +175,16 @@ axios.interceptors.response.use(response => {
     if(response.data.errno == "FORBIDDEN") {
         // 清除用户信息
         localStorage.removeItem( "user" );
-        // 清除凭证
+        // 用户凭证
         delCookie( "token", CFG.mainDomainName, "/" );
         delCookie( "ssid", CFG.mainDomainName, "/" );
         delCookie( "uid", CFG.mainDomainName, "/" );
+        // cloud 凭证
+        delCookie( "cloud_token", CFG.mainDomainName, "/" );
+        // delCookie( "cloud_access_key", CFG.mainDomainName, "/" );
+        // delCookie( "cloud_expired_ts", CFG.mainDomainName, "/" );
+        delCookie( "cloud_ssid", CFG.mainDomainName, "/" );
+        delCookie( "cloud_uid", CFG.mainDomainName, "/" );
 
         let path = getQueryString( window.location.search, "path" );
 
@@ -128,30 +198,7 @@ axios.interceptors.response.use(response => {
         }
     }
 
-    // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
-    // NOTE: 登录、注册请求完成，且后端 success 后，后端应在 response.headers 带上 bbx-token、bbx-ssid、bbx-uid
-    // NOTE: 前端会在上面获取并写入 cookie，以此做账号身份凭证
-    // NOTE: 这里模拟在 Demo 中，登录、注册后自动请求来获取，也可以通过 Response Headers
-    if ( !response.config.url.indexOf( '_simResponse/login' ) || !response.config.url.indexOf( '_simResponse/register' ) ) {
-        return getGlobalHeader( { origin_uid: 'sunbeyond' } )
-            .then( data => {
-                let bbxToken = data.token
-                  , bbxSsid = ''
-                  , bbxUid = data.accountInfo.account_id;
-
-                // 更新
-                bbxToken
-                    && setCookie( "token", bbxToken, 1, CFG.mainDomainName, "/" );
-                bbxSsid
-                    && setCookie( "ssid", bbxSsid, 1, CFG.mainDomainName, "/" );
-                bbxUid
-                    && setCookie( "uid", bbxUid, 1, CFG.mainDomainName, "/" );
-
-                return response;
-            } );
-    } else {
-        return response;
-    }
+    return response;
     // ================================== DEMO =================================
 }, (err) => {
     if(!err.response) {

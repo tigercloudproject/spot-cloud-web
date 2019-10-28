@@ -11,7 +11,6 @@ import "./utils/prototype.js";  //封装的prototype上的工具函数
 
 import Layout from "./pc/component/layout";
 
-
 import { getCookie } from "./utils/cookie.js";
 
 import Loadable from 'react-loadable';
@@ -48,7 +47,7 @@ const Assets = Loadable({
   delay: 0
 });
 
-@connect(state => ({...state.gconfig, ...state.lang}), { getGlobalConfig,setDefaultLanguage,getUser })
+@connect(state => ({...state.gconfig, ...state.lang}), { getGlobalConfig, setDefaultLanguage,getUser })
 class App extends Component {
   constructor(props) {
     super(props);
@@ -77,6 +76,7 @@ class App extends Component {
       this.loadLocales();
     }
     this.props.getGlobalConfig();
+
     // localStorage.setItem("config",JSON.stringify(this.props.clist));
   }
   componentDidMount() {

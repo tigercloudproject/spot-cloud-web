@@ -1,28 +1,16 @@
 import { getMainDomainName } from "./utils/url.js";
 
-let host = '';
-
-switch ( window.location.hostname ) {
-    case '192.168.1.1':
-    case '127.0.0.1':
-    case 'test.bbx.com':
-        // development
-        host = 'devapi.bbx.com';
-        break;
-    default:
-        // production
-        host = 'api.bbx.com';
-};
+console.log( 'process.env.HOST', process.env );
 
 export default {
-    bbxHost: window.location.host
-    , publicPath: ''
+    publicPath: process.env.PUBLIC_URL
     // 主域名名称
-    , mainDomainName: getMainDomainName()
-    , reqHost: `https://${ host }/`   // 请求接口主域
-    , reqWebsocket: `wss://${ host }/v1/ifspot/realTime`  // 请求WS
-    // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
-    // 是否使用 SimRespon
-    , isSimRespon: true
-    // ================================== DEMO END =============================
+    , mainDomainName: process.env.DOMAIN || getMainDomainName()
+    // 请求接口主域
+    , reqHost: process.env.REQ_HOST
+    // 请求WS
+    , reqWebsocket: process.env.REQ_WEBSOCKET
+    // 是否使用 SimResponse
+    , isSimResponse: process.env.SIM_RESPONSE
+    , reqTimeout: process.env.REQ_TIMEOUT
 };

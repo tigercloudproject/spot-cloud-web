@@ -52,20 +52,8 @@ const getPublicUrl = appPackageJson =>
 // 正式环境
 function getServedPath(appPackageJson) {
     let publicUrl = getPublicUrl(appPackageJson);
-    console.log(
-        'servedUrl',
-        envPublicUrl,
-        publicUrl
-    )
     let servedUrl = envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : process.env.PUBLIC_URL );
 
-    return ensureSlash(servedUrl, true);
-}
-
-//为了service-worker.js配置index.html测试环境
-function getServedPath1(appPackageJson) {
-    const publicUrl = getPublicUrl(appPackageJson);
-    const servedUrl = envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : "/");
     return ensureSlash(servedUrl, true);
 }
 
@@ -82,6 +70,5 @@ module.exports = {
   testsSetup: resolveApp("src/setupTests.js"),
   appNodeModules: resolveApp("node_modules"),
   publicUrl: getPublicUrl(resolveApp("package.json")),
-  servedPath: getServedPath(resolveApp("package.json")),
-  servedPath1: getServedPath1(resolveApp("package.json"))
+  servedPath: getServedPath(resolveApp("package.json"))
 };

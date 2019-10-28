@@ -75,8 +75,8 @@ function cancelSpotTicker() {
 }
 //获取k线数据
 export function getBar(code, type, unit, start, end) {
-    start = parseInt(start / 1000);
-    end = parseInt(end / 1000);
+    start = parseInt(start / 1000, 10);
+    end = parseInt(end / 1000, 10);
     code = code || 1;
     type = type || '';
     code = String(code);

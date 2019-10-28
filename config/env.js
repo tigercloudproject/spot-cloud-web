@@ -80,6 +80,13 @@ function getClientEnvironment(publicUrl) {
         // This should only be used as an escape hatch. Normally you would put
         // images into the `src` and `import` them in code to get their paths.
         PUBLIC_URL: publicUrl,
+        HOST: process.env.HOST || '127.0.0.1',
+        DOMAIN: process.env.DOMAIN || '127.0.0.1',
+        REQ_HOST: process.env.REQ_HOST || 'https://api.bbx.com',
+        REQ_WEBSOCKET: process.env.REQ_WEBSOCKET || 'wss://api.bbx.com/v1/ifspot/realTime',
+        SIM_RESPONSE: process.env.SIM_RESPONSE || 'true',
+        // number
+        REQ_TIMEOUT: +process.env.REQ_TIMEOUT || 5000
       }
     );
   // Stringify all values so we can feed into Webpack DefinePlugin

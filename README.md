@@ -6,10 +6,9 @@
 
 ## 部署
 
-#### 1.安装依赖环境
+#### 1. 安装依赖环境
 
 *仅限本地开发环境*
-
 -   [Install Node.js 8.x/10.x](http://nodejs.org)
 
 #### 2. git clone 项目或 download zip 项目包
@@ -17,7 +16,6 @@
 #### 3. 安装项目依赖包
 
 *仅限本地开发环境*
-
 ``` bash
 # install dependencies
 npm install
@@ -27,6 +25,19 @@ npm install webpack -g
 ```
 
 #### 4. 配置
+
+##### 各模式的 .env 配置
+
+根目录下存在两个 `.env` 的文件，各项参数的说明请直接参看文件内的注释部分。如果要更改配置项，优先在这里面
+- `.env.development` 本地开发配置项  
+- `.env.production` build配置项  
+
+？？？？？？？
+修改成自己的接口
+
+本地模拟接口数据
+
+1.env 配置
 
 
 ？？？？？？？？？？？
@@ -199,3 +210,42 @@ Headers 内 { 'Skip-Set-Axios-Headers': true }
 user.redux.js
     loginPost  要改成 get
     registerPost 要改成 get
+
+
+    v1/ifglobal/global                               全局配置
+v1/ifglobal/userConfigs                       用户配置
+v1/ifglobal/appBuilds
+
+v1/ifaccount/verifyCode                         验证码
+v1/ifaccount/users/register                    注册
+v1/ifglobal/phoneCode                         手机号前缀
+v1/ifaccount/login                                登录
+v1/ifaccount/users/resetPassword        重置密码
+v1/ifaccount/bindEmail                        绑定邮箱
+v1/ifaccount/bindPhone                       绑定手机
+v1/ifaccount/users/active
+v1/ifaccount/logout                             登出
+v1/ifaccount/captchCheck?action=      检查是否需要图片验证码
+
+v1/ifmarket/v2/spotTickers
+bbx_websocket
+
+v1/ifmarket/spotDetail         现货交易信息
+v1/ifmarket/v2/spot?            
+v1/ifmarket/submitOrder      提交订单           post
+v1/ifmarket/getOrders          委托记录           get
+v1/ifmarket/getUserTrades    用户交易记录    get
+v1/ifmarket/cancelOrder       撤销订单           post
+v1/ifmarket/cancelOrders     批量撤单            post
+v1/ifmarket/stocks              获取现货对          get
+v1/ifglobal/coinBrief           币种介绍              get
+
+
+v1/ifaccount/users/me         获取用户资产
+
+
+token  用户token
+
+cloud_token 云token
+cloud_ssid  云ssid，非web的设备上使用
+cloud_uid 云uid
