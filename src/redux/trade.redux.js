@@ -79,11 +79,13 @@ function stocks(data) {
 
 //获取币币交易图表数据
 export function getKlineDate(code, type, unit, start, end, isIncremental) {
-    start = parseInt(start / 1000);
-    end = parseInt(end / 1000);
-    code = code ? code : "BTC/USDT";
+    start = parseInt( start / 1000, 10 );
+    end = parseInt( end / 1000, 10 );
+
+    code = ( code == null || code === 'null' ) ? "BTC/USDT" : code;
     type = type ? type : ""
-    code = String(code);
+
+    code = String( code );
 
     let getUrl;
     getUrl = exchangeAjax.spot_dash_two + "stockCode=" + code + "&startTime=" + start + "&endTime=" + end + '&resolution=' + type + '&unit=' + unit;

@@ -179,7 +179,7 @@ function log_in( data, path, dispatch = function () {} ) {
                 setCookie( "user_token", user_token, 1, CFG.mainDomainName, "/" );
                 setCookie( "origin_uid", account_id, 1, CFG.mainDomainName, "/" );
 
-                getChildToken()
+                getChildToken( account_id, user_token)
                     .then( response => {
                         dispatch( login(
                             response
@@ -468,15 +468,15 @@ export function loginPost( data, path ) {
 }
 
 // 获得子账号 token
-function getChildToken() {
+function getChildToken( origin_uid, user_token ) {
     let data = {
-            origin_uid: getCookie( 'origin_uid' )
+            origin_uid: origin_uid || getCookie( 'origin_uid' )
             , 'method': 'gen.account.md5'
         }
         , opt = { headers: {
                 'Skip-Set-Axios-Headers': 'true'
                 , 'Content-type': 'application/x-www-form-urlencoded'
-                , 'e-exchange-token': getCookie( 'user_token' )
+                , 'e-exchange-token': user_token || getCookie( 'user_token' )
                 , 'platform': 'web'
              }
         };
@@ -485,21 +485,17 @@ function getChildToken() {
                 , qs.stringify( data )
                 , opt )
             .then( response => {
-                if ( response.data.token ) {
-                    return response.data || {}
+                let data = response.data;
+
+                if ( data && data.token ) {
+
+                    return data || {}
                 } else {
-                    notification.error( {
-                       message: 'getChildToken Err',
-                       description: response.data
-                   });
+                    alert( JSON.stringify( data ) )
                     return {};
                 }
             },
             (err) => {
-                notification.error( {
-                   message: 'getChildToken Err',
-                   description: err
-                })
                 return {};
             }
         )
@@ -579,6 +575,38 @@ export function activePost(data) {
         (err) => {
             console.log('激活邮箱失败了###',err);
         })
+    }
+}
+
+// 查询账号 币币资产
+export function assetQueryAccount(data) {
+    let opt = {
+            headers: {
+                'Skip-Set-Axios-Headers': 'true'
+                , 'Content-type': 'application/x-www-form-urlencoded'
+                , 'e-exchange-token': getCookie( 'user_token' )
+                , 'platform': 'web'
+            }
+        };
+
+
+    // 追加模式身份
+    data.method = 'spot.query.account.asset';
+
+    return (dispatch, getState) => {
+        return axios[ userAjax.asset_query_account.type ]( userAjax.asset_query_account.url, qs.stringify( data ), opt )
+            .then( response => {
+                let data = response.data;
+
+                if( data && data.errno === "OK") {
+                    alert( JSON.stringify( data.data ) )
+                }else {
+                    alert( JSON.stringify( data ) )
+                }
+            },
+            err => {
+
+            } )
     }
 }
 

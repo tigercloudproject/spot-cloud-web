@@ -32,6 +32,9 @@ export const userAjax = {
     asset_app2account: CFG.isSimRespon
         ? { url: '_/asset_app2account', type: 'get' }
         : { url: 'https://v-exchange.bbx.com/spot', type: 'post' },
+    asset_query_account: CFG.isSimRespon
+        ? { url: '_/asset_query_account', type: 'get' }
+        : { url: 'https://v-exchange.bbx.com/spot', type: 'post' },
     // ================================== DEMO END =============================
     verify_code: CFG.reqHost + "/v1/ifaccount/verifyCode",
     phone_code: CFG.reqHost + "/v1/ifglobal/phoneCode",

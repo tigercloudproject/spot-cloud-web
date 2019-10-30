@@ -223,10 +223,10 @@ export function getSpotDashTwo(code, type, unit, start, end, isIncremental) {
     //     start = start ? start : end - 86400000;
     // }
 
-    start = parseInt(start / 1000);
-    end = parseInt(end / 1000);
+    start = parseInt(start / 1000, 10 );
+    end = parseInt(end / 1000, 10 );
 
-    code = code ? code : "EOS/ETH";
+    code = ( code == null || code === 'null' )? "EOS/ETH" : code;
     type = type ? type : ""
     code = String(code);
 

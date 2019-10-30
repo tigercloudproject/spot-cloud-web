@@ -7,7 +7,7 @@ import { getPropetyInfo } from "../../redux/assets.redux";
 import { getActiveInfo } from "../../redux/active.redux";
 import Activity from "./activity";
 import intl from "react-intl-universal";
-import { assetApp2Account } from "../../redux/user.redux";
+import { assetApp2Account, assetQueryAccount } from "../../redux/user.redux";
 import H5Header from "../component/h5_header.js";
 import MediaQuery from "react-responsive";
 
@@ -16,7 +16,8 @@ import MediaQuery from "react-responsive";
 @connect(state => ({ ...state.user, ...state.lang, ...state.assets, ...state.active }),{
     getPropetyInfo,
     getActiveInfo,
-    assetApp2Account
+    assetApp2Account,
+    assetQueryAccount
 })
 class AccountSecurity extends Component {
     constructor(props) {
@@ -29,10 +30,15 @@ class AccountSecurity extends Component {
                 , vol: 1
                 , coin_code: 'BTC'
             }
+            , assetQueryAccount: {
+                origin_uid: getCookie( 'origin_uid' )
+                , coin_code: 'BTC'
+            }
             , currentLevel: null
         }
 
-        this.assetApp2AccountSubmit = this.assetApp2AccountSubmit.bind(this);
+        this.assetApp2AccountSubmit = this.assetApp2AccountSubmit.bind( this );
+        this.assetQueryAccountSubmit = this.assetQueryAccountSubmit.bind( this );
     }
 
     componentWillMount() {
@@ -89,7 +95,6 @@ class AccountSecurity extends Component {
     //获取绑定验证码
     getBindingVrifyCode() { }
 
-    //
     assetApp2AccountSubmit() {
         let { origin_uid, vol, coin_code } = this.state.assetApp2Account
 
@@ -100,6 +105,17 @@ class AccountSecurity extends Component {
             } )
             .then( e => {
                 console.log( e )
+            } );
+    }
+
+    assetQueryAccountSubmit() {
+        let { origin_uid, coin_code } = this.state.assetQueryAccount
+
+        this.props.assetQueryAccount( {
+                origin_uid
+                , coin_code
+            } )
+            .then( e => {
             } );
     }
 
@@ -184,10 +200,15 @@ class AccountSecurity extends Component {
                                     </dd>
                                 </dl>
                                 <dl>
-                                    <dt></dt>
+                                    <dt>
+                                        <h3>Demo - 查询账号币币资产</h3>
+                                        <p>通过上面的转钱后，可以在这里查询</p>
+                                    </dt>
                                     <dd>
                                         <ul>
-                                            <li><label></label><input type="text" value='' /></li>
+                                            <li><label>origin_uid 源账号Id</label><input type="text" value={ this.state.assetQueryAccount.origin_uid || '' } /></li>
+                                            <li><label>coin_code 币种</label><input type="text" value={ this.state.assetQueryAccount.coin_code || '' } /></li>
+                                            <li><label></label><button className="submit" onClick={this.assetQueryAccountSubmit}>提交</button></li>
                                         </ul>
                                     </dd>
                                 </dl>
