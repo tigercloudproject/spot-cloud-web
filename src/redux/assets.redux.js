@@ -124,14 +124,14 @@ export function postRechargeAmount(data) {
 
 export function getPropetyInfo() {
     return (dispatch, getState) => {
-        return axios.get(assetsAjax.propety_info).then((response)=>{
-           // console.log('getPropetyInfo成功了####',response);
-            if (response.data.errno == "OK") {
-                dispatch(propetyInfo(response.data.data));
-            }
-        },(err) => {
-            console.log('getPropetyInfo失败了###',err);
-        })
+        // return axios.get(assetsAjax.propety_info).then((response)=>{
+        //    // console.log('getPropetyInfo成功了####',response);
+        //     if (response.data.errno == "OK") {
+        //         dispatch(propetyInfo(response.data.data));
+        //     }
+        // },(err) => {
+        //     console.log('getPropetyInfo失败了###',err);
+        // })
     }
 }
 

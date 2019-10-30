@@ -91,7 +91,7 @@ class ExchangeRecordList extends Component {
 
   componentWillMount() {
     this.mounted = true;
-    let token = getCookie("token");
+    let token = getCookie( 'bbx_token' );
     let coinPair = getQueryString(this.props.location.search, "coinPair");
     // let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
     if (this.mounted) {
@@ -124,7 +124,7 @@ class ExchangeRecordList extends Component {
 
     // 切换币值对
     if (this.props.current_coin_pair !== nextProps.current_coin_pair) {
-      let token = getCookie("token");
+      let token = getCookie( 'bbx_token' );
       if(token) {
         if (this.state.isShowAll) {
           this.props.getAssets();

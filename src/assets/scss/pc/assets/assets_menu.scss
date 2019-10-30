@@ -1,0 +1,186 @@
+@import '../../base.scss';
+.assets-menu {
+    width: 260px;
+    border-radius: 2px;
+    //height: 500px;
+    background: $bbxBackground1;
+    background: #1f2636;
+    position: absolute;
+    padding-bottom: 40px;
+    //left: 0;
+    //top: 0;
+    .assets-top {
+        text-align: center;
+        padding: 30px 0px;
+        img {
+            width: 100px;
+        }
+        .status {
+            display: block;
+            width: 54px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            color: #fff;
+            background: #b83a3a; //后期改成红色
+            font-size: 12px;
+            margin: 0 auto;
+            margin-top: -5px;
+            &.active {
+                background: #2b93f6;
+            }
+        }
+        .uid {
+            color: #c1c9d4;
+            font-size: 14px;
+            padding-top: 10px;
+            padding-bottom: 8px;
+        }
+        .email {
+            width: 200px;
+            padding: 0px 10px;
+            box-sizing: border-box;
+            height: 35px;
+            line-height: 35px;
+            background: #313a56;
+            color: #fff;
+            margin: 0 auto;
+            font-size: 18px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+    .assets-account-type {
+        display: block;
+        height: 60px;
+        line-height: 60px;
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        //border-bottom: 1px solid #262e43;
+        border-left: 10px solid rgba(0,0,0,0);
+        color: #cdd5df;
+        box-sizing: border-box;
+        text-decoration: none;
+        background: rgba(23,26,37,0.2);
+    }
+    .menu-list {
+        //margin-top: 10px;
+        width: 100%;
+        a{
+            //display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            //line-height: 60px;
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            border-bottom: 1px solid #262e43;
+            border-left: 4px solid rgba(0,0,0,0);
+            color: #cdd5df;
+            box-sizing: border-box;
+            text-decoration: none;
+
+
+            &:first-child {
+                //border-top: 1px solid #262e43;
+            }
+            cursor: pointer;
+            // a {
+            //     color: #fff;
+            // }
+            &.active {
+                background: #242c40;
+                //border: none;
+                border-left: 4px solid #5f8ed4;
+                color: #5f8ed4;
+                // a {
+                //    color: #5f8ed4;
+                // }
+            }
+            .menu-span {
+                position: relative;
+                padding: 0px 10px;
+                .hot {
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    right: -16px;
+                    top: -9px;
+                    background: url("../../../images/icon-hot.svg") left top no-repeat;
+                }
+            }
+
+        }
+    }
+    .user-center-menu-list {
+            a {
+                text-align: left;
+                padding-left: 55px;
+                align-items: center;
+                justify-content: left;
+                &:nth-child(1) {
+                    background: url("../../../images/usercenter/icon-information_nor.svg")25px center no-repeat;
+                    background-size: 25px 25px;
+                    &.active {
+                        background: #242c40 url("../../../images/usercenter/icon-information_sel.svg")25px center no-repeat;
+                        background-size: 25px 25px;
+                    }
+                }
+                &:nth-child(2) {
+                    background: url("../../../images/usercenter/icon-safe_nor.svg")25px center no-repeat;
+                    background-size: 25px 25px;
+                    &.active {
+                        background: #242c40 url("../../../images/usercenter/icon-safe_sel.svg")25px center no-repeat;
+                        background-size: 25px 25px;
+                    }
+                }
+                &:nth-child(3) {
+                    background: url("../../../images/usercenter/icon-identity_nor.svg")25px center no-repeat;
+                    background-size: 25px 25px;
+                    &.active {
+                        background: #242c40 url("../../../images/usercenter/icon-identity_sel.svg")25px center no-repeat;
+                        background-size: 25px 25px;
+                    }
+                }
+                &:nth-child(4) {
+                    background: url("../../../images/usercenter/icon-Return_nor.svg")25px center no-repeat;
+                    background-size: 25px 25px;
+                    &.active {
+                        background: #242c40 url("../../../images/usercenter/icon-Return_sel.svg")25px center no-repeat;
+                        background-size: 25px 25px;
+                    }
+                }
+                &:nth-child(5) {
+                    background: url("../../../images/fee_level/icon-money_nor.svg")25px center no-repeat;
+                    background-size: 25px 25px;
+                    &.active {
+                        background: #242c40 url("../../../images/fee_level/icon-money_sel.svg")25px center no-repeat;
+                        background-size: 25px 25px;
+                    }
+                }
+                &:nth-child(6) {
+                    background: url("../../../images/usercenter/icon-relation_nor.svg")25px center no-repeat;
+                    background-size: 25px 25px;
+                    &.active {
+                        background: #242c40 url("../../../images/usercenter/icon-relation_sel.svg")25px center no-repeat;
+                        background-size: 25px 25px;
+                    }
+                }
+                &:nth-child(7) {
+                    background: url("../../../images/usercenter/icon-API_nor.svg")25px center no-repeat;
+                    background-size: 25px 25px;
+                    &.active {
+                        background: #242c40 url("../../../images/usercenter/icon-API_sel.svg")25px center no-repeat;
+                        background-size: 25px 25px;
+                    }
+                }
+
+            }
+    }
+
+}

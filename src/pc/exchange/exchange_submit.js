@@ -180,7 +180,7 @@ class PayBix extends Component {
 
   componentWillMount() {
     this.mounted = true;
-    // let token = getCookie("token");
+    // let token = getCookie( 'bbx_token' );
     // if(token) {
     //   this.props.getPropetyInfo();
     // }
@@ -206,7 +206,7 @@ class PayBix extends Component {
     // let coinPair = getQueryString(this.props.location.search, "coinPair");
     let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
 
-    let token = getCookie("token");
+    let token = getCookie( 'bbx_token' );
 
     if(this.mounted) {
       this.setState({
@@ -1336,7 +1336,7 @@ class PayBix extends Component {
 
     //console.log("buy_silder####", this.state.buy_silder);
 
-    let token = getCookie("token");
+    let token = getCookie( 'bbx_token' );
 
     let h5TradeWaySpan = this.state.wayList.map((item,index) => {
       return <span key={index} onClick={() => this.switchWay(item.id)}

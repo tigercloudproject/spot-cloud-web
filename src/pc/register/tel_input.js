@@ -13,7 +13,7 @@ class TELInput extends Component {
             show: false,
             currentTel: "+86",
             country: '中国',
-            currentPhone: "",
+            currentPhone: this.props.value || '',
             codeList: [],
             codeSearchList: []
         }
@@ -36,7 +36,7 @@ class TELInput extends Component {
 
     componentWillUnmount() {
         this.mounted = false;
-        
+
     }
 
     componentWillReceiveProps(nextProps) {
@@ -64,7 +64,7 @@ class TELInput extends Component {
             this.setState({
                 show: !this.state.show
             });
-        } 
+        }
     }
     hideList() {
         if (this.mounted) {
@@ -103,7 +103,7 @@ class TELInput extends Component {
         let showStyle = {
             display: this.state.show?"block":'none'
         }
-        
+
         let telLi = this.state.codeSearchList.map((item,index) => {
             return <li key={index} onClick={() => {this.selectTel(item)}}>
                 {(this.props.default.index === 1 || this.props.default.index === 2) ? item.cn_name:item.us_name}<span>{item.code}</span>
@@ -119,13 +119,13 @@ class TELInput extends Component {
                     <input autoComplete="off" type="text" value={this.state.currentTel} onChange={this.telOnChange}/>
                     <i className="iconfont icon-down"></i>
                </div>
-               <input autoComplete="off" type="text" className="tel-input" placeholder={intl.get("login_please_enter_mobile_phone")} onChange={(e) => this.props.changePhone(e.target.value)}/>
+               <input value={this.state.currentPhone} autoComplete="off" type="text" className="tel-input" placeholder={intl.get("login_please_enter_mobile_phone")} onChange={(e) => this.props.changePhone(e.target.value)}/>
                 <div className="tel-list-box" style={showStyle}>
                     <ul className="tel-list" >
                         {telLi}
                     </ul>
                </div>
-               
+
             </div>
         )
     }

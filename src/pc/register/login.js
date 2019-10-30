@@ -40,8 +40,8 @@ class Login extends Component {
       currentTab: 1,
       form : {
         email: {
-          valid: true,
-          value: 'sunbeyond1@gmail.com',
+          valid: false,
+          value: '',
           error: ''
         },
         phone: {
@@ -56,7 +56,7 @@ class Login extends Component {
         },
         pwd: {
           valid: true,
-          value: '1234567890',
+          value: '',
           error: ''
         },
         agree: {
@@ -66,7 +66,7 @@ class Login extends Component {
         }
       },
       canSubmit: true,
-      passwordType: 'text',
+      passwordType: 'password',
       inSubmission: false,
       //outsidePath: "",  //地址中带的path
       qd: localStorage.getItem("qd"), //渠道
@@ -116,7 +116,7 @@ class Login extends Component {
 
   componentWillMount() {
     this.mounted = true;
-    let token = getCookie("token");
+    let token = getCookie( 'bbx_token' );
     if(!token) {
       localStorage.removeItem("user");
     }
@@ -242,7 +242,7 @@ class Login extends Component {
             error: ""
           }
         },
-        passwordType: "text"
+        passwordType: "password"
       });
     }
   }
@@ -335,10 +335,11 @@ class Login extends Component {
     let timestamp = new Date().valueOf();
     let random = timestamp + "000";
 
-    let password_md5 = new MD5(form.pwd.value);
-    let password = new MD5(password_md5.hash()+random);
-    data["password"] = password.hash();
-    data["nonce"] = parseInt(random);
+    // let password_md5 = new MD5(form.pwd.value);
+    // let password = new MD5(password_md5.hash()+random);
+    // data["password"] = password.hash();
+    data[ 'password' ] = form.pwd.value;
+    // data["nonce"] = parseInt(random);
 
     //图片验证码
     if(this.state.need_captcha===1) {
@@ -358,7 +359,7 @@ class Login extends Component {
             value: ''
           }
         },
-        passwordType: "text",
+        passwordType: "password",
         inSubmission: true
       })
     }

@@ -40,7 +40,7 @@ class AssetsIndex extends Component {
   }
   componentWillMount() {
     this.mounted = true;
-    let token = getCookie("token");
+    let token = getCookie("bbx_token");
     if (!token) {
       let langSearch = "";
       if (this.props.default && this.props.default.value) {
@@ -58,7 +58,7 @@ class AssetsIndex extends Component {
   componentWillReceiveProps(nextProps) {
     //监听路由变化
     if(nextProps.location.pathname != this.props.location.pathname) {
-      let token = getCookie("token");
+      let token = getCookie( 'bbx_token' );
       let langSearch = "";
       if (this.props.default && this.props.default.value) {
         langSearch = `?lang=${this.props.default.value}`;

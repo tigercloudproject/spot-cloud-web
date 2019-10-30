@@ -1,0 +1,354 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.security-top {
+  color: #ccd4de;
+  border-bottom: 1px solid #262e43;
+  padding-bottom: 20px;
+  position: relative;
+  font-size: 16px; }
+  .security-top .reset-pwd {
+    position: absolute;
+    right: 0px;
+    top: 0px; }
+
+::-webkit-input-placeholder {
+  font-size: 12px;
+  color: rgba(151, 176, 214, 0.7); }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 12px;
+  color: rgba(151, 176, 214, 0.7); }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 12px;
+  color: rgba(151, 176, 214, 0.7); }
+
+:-ms-input-placeholder {
+  font-size: 12px;
+  color: rgba(151, 176, 214, 0.7); }
+
+.modify-password {
+  width: 600px;
+  font-size: 12px; }
+  .modify-password .form-have-btn {
+    width: 100%; }
+    .modify-password .form-have-btn .input-have-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      border-radius: 6px;
+      position: relative; }
+      .modify-password .form-have-btn .input-have-btn input[type="text"] {
+        width: 100%;
+        height: 50px;
+        padding: 0px 10px;
+        box-sizing: border-box;
+        border-radius: 6px;
+        color: #fff;
+        outline: none;
+        border: 1px solid #446292;
+        background: #253045; }
+        .modify-password .form-have-btn .input-have-btn input[type="text"]:disabled {
+          cursor: not-allowed; }
+        .modify-password .form-have-btn .input-have-btn input[type="text"]:focus {
+          border: 1px solid #b5d5fe; }
+      .modify-password .form-have-btn .input-have-btn a, .modify-password .form-have-btn .input-have-btn button {
+        position: absolute;
+        right: 0px;
+        top: 5px;
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        padding: 0px 50px;
+        background: none;
+        border: none;
+        border-left: 1px solid #89a1c5;
+        color: #2b93f5;
+        cursor: pointer; }
+      .modify-password .form-have-btn .input-have-btn button {
+        outline: none; }
+        .modify-password .form-have-btn .input-have-btn button:disabled {
+          color: rgba(151, 176, 214, 0.7);
+          cursor: not-allowed; }
+  .modify-password .form-control {
+    width: 100%; }
+    .modify-password .form-control input[type="text"], .modify-password .form-control input[type="password"] {
+      width: 100%;
+      height: 50px;
+      border: 1px solid #446292;
+      border-radius: 6px;
+      background: #253045;
+      padding-left: 10px;
+      box-sizing: border-box;
+      padding: 0px 10px;
+      box-sizing: border-box;
+      color: #fff;
+      outline: none; }
+      .modify-password .form-control input[type="text"]:disabled, .modify-password .form-control input[type="password"]:disabled {
+        cursor: not-allowed;
+        color: rgba(151, 176, 214, 0.7); }
+  .modify-password .password-care {
+    color: #c8d0da;
+    padding-bottom: 15px; }
+  .modify-password .error {
+    color: #b83a3a;
+    height: 20px;
+    line-height: 20px; }
+  .modify-password .binding-tip {
+    color: #c8d0da;
+    padding: 5px 0px; }
+  .modify-password .modify-pwd-btn {
+    background: #2b93f6;
+    color: #fff;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 14px; }
+    .modify-password .modify-pwd-btn:disabled {
+      background: rgba(151, 176, 214, 0.7);
+      cursor: not-allowed; }
+  .modify-password .form-tel-box {
+    width: 100%; }
+    .modify-password .form-tel-box input[type="text"] {
+      width: 100%;
+      height: 50px;
+      border: 1px solid #446292;
+      border-radius: none;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+      background: #253045;
+      padding-left: 10px;
+      box-sizing: border-box;
+      padding: 0px 10px;
+      box-sizing: border-box;
+      color: #fff;
+      outline: none; }
+    .modify-password .form-tel-box .tel-select {
+      border: none; }
+      .modify-password .form-tel-box .tel-select input[type="text"] {
+        border-radius: 0px;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px; }
+  .modify-password .account-tab {
+    padding-bottom: 20px; }
+    .modify-password .account-tab span {
+      display: inline-block;
+      width: 82px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      color: #c8d0da;
+      background: #1f2636;
+      border: 1px solid #43608f;
+      cursor: pointer;
+      position: relative; }
+      .modify-password .account-tab span:after {
+        display: none;
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 7px solid #43608f;
+        position: absolute;
+        left: 50%;
+        margin-left: -8px;
+        bottom: -7px; }
+      .modify-password .account-tab span.active {
+        color: #5e8cd1;
+        background: #242c40; }
+        .modify-password .account-tab span.active:after {
+          display: block; }
+
+.account-list table {
+  width: 100%;
+  color: #c8d0da;
+  font-size: 14px; }
+  .account-list table td {
+    padding: 20px 0px;
+    border-bottom: 1px solid #262e43; }
+    .account-list table td.tip {
+      color: rgba(151, 176, 214, 0.7); }
+    .account-list table td:last-child {
+      text-align: right; }
+
+.binding-phone .form-tel-box {
+  width: 100%; }
+  .binding-phone .form-tel-box input[type="text"] {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #446292;
+    border-radius: none;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background: #253045;
+    padding-left: 10px;
+    box-sizing: border-box;
+    padding: 0px 10px;
+    box-sizing: border-box;
+    color: #fff;
+    outline: none; }
+  .binding-phone .form-tel-box .tel-select {
+    border: none;
+    display: flex;
+    align-items: center; }
+    .binding-phone .form-tel-box .tel-select input[type="text"] {
+      border-radius: 0px;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px; }
+
+.nickname-box .nickname-form-contror {
+  display: flex;
+  align-items: center;
+  color: rgba(151, 176, 214, 0.7); }
+  .nickname-box .nickname-form-contror label {
+    width: 70px; }
+  .nickname-box .nickname-form-contror input[type="text"] {
+    width: 300px;
+    height: 50px;
+    border: 1px solid #446292;
+    border-radius: 6px;
+    background: #253045;
+    padding-left: 10px;
+    box-sizing: border-box;
+    padding: 0px 10px;
+    box-sizing: border-box;
+    color: #fff;
+    outline: none; }
+  .nickname-box .nickname-form-contror > span {
+    padding-left: 15px;
+    font-size: 12px; }
+
+.nickname-box .error {
+  padding-left: 70px;
+  color: #b83a3a;
+  height: 30px;
+  font-size: 12px; }
+
+.nickname-box .set-nickname {
+  margin-left: 70px;
+  margin-top: 20px;
+  background: #2b93f6;
+  color: #fff;
+  width: 300px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-size: 14px; }
+  .nickname-box .set-nickname:disabled {
+    background: rgba(151, 176, 214, 0.7);
+    cursor: not-allowed; }
+
+@media screen and (max-width: 700px) {
+  .account-list-h5 {
+    width: 100%; }
+    .account-list-h5 li {
+      height: 50px;
+      line-height: 50px;
+      background: #1f2636;
+      margin-bottom: 2px;
+      font-size: 0.9rem;
+      padding: 0px 10px;
+      color: #c8d0da;
+      display: flex;
+      background: #1f2636; }
+      .account-list-h5 li p {
+        flex: 1; }
+      .account-list-h5 li a {
+        color: #2580d8; }
+      .account-list-h5 li span {
+        color: #c8d0da; }
+  .reset-password {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background: #171a25;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 110000; }
+  .security-top {
+    display: none; }
+  .modify-password {
+    width: 94%;
+    margin: 0 auto; }
+    .modify-password .form-control input[type="text"], .modify-password .form-control input[type="password"] {
+      height: 40px; }
+    .modify-password .form-have-btn .input-have-btn input[type="text"] {
+      height: 40px; }
+    .modify-password .form-have-btn .input-have-btn a, .modify-password .form-have-btn .input-have-btn button {
+      height: 30px;
+      line-height: 30px;
+      padding: 0px 10px; }
+    .modify-password .modify-pwd-btn {
+      height: 40px;
+      line-height: 40px; }
+  .binding-phone, .binding-email {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background: #171a25;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 110000; } }
+
+dl.assetApp2Account {
+
+}
+dl.assetApp2Account dt {
+    color: #eee;
+    font-size: 24px;
+}
+dl.assetApp2Account dd li {
+    padding: 8px;
+}
+dl.assetApp2Account dd label {
+    color: #eee;
+    padding: 6px;
+}
+dl.assetApp2Account dd button {
+    padding: 6px 20px;
+}

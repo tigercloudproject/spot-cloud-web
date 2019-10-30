@@ -47,7 +47,7 @@ class PCHeader extends React.Component {
       this.mounted = true;
       this.props.getspotTickersData();
 
-      let token = getCookie("token");
+      let token = getCookie( 'bbx_token' );
       if (token) {
         this.props.getPropetyInfo()
       }
@@ -161,7 +161,7 @@ class PCHeader extends React.Component {
 
         }
 
-        let token = getCookie("token");
+        let token = getCookie( 'bbx_token' );
 
         if(token) {
           HeaderButton = (

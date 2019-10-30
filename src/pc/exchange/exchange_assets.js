@@ -35,7 +35,7 @@ class ExchangeAssets extends Component {
 
   componentWillMount() {
     this.mounted = true;
-    let token = getCookie("token");
+    let token = getCookie( 'bbx_token' );
     if (this.mounted) {
       this.setState({
         token: token
@@ -205,7 +205,7 @@ class ExchangeAssets extends Component {
       usdt_price = cutOutDecimal(usdt_price, 2);
     }
 
-    let token = getCookie("token");
+    let token = getCookie( 'bbx_token' );
 
     return (
       <div className="exchange-assets">

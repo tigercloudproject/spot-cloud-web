@@ -55,7 +55,7 @@ export function trade(state=initState, action) {
             return {...state, ...action.payload};
         case BBX_SET_SHOW_ALL:
             return { ...state, bbx_show_all: action.payload}
-        default: 
+        default:
             return state
     }
 }
@@ -87,7 +87,7 @@ export function getKlineDate(code, type, unit, start, end, isIncremental) {
 
     let getUrl;
     getUrl = exchangeAjax.spot_dash_two + "stockCode=" + code + "&startTime=" + start + "&endTime=" + end + '&resolution=' + type + '&unit=' + unit;
- 
+
     return axios.get(getUrl);
 }
 
@@ -141,7 +141,7 @@ export function getBbxTickerInfo(coin_pair) {
             let state = getState();
             coin_pair = state.trade.current_coin_pair;
             if(res && res.data && res.data.errno === "OK" && res.data.data) {
-                dispatch(bbxTransactions(res.data.data.trades)); //最新成交   
+                dispatch(bbxTransactions(res.data.data.trades)); //最新成交
 
                 if (res.data.data.depth && res.data.data.depth.buys) {
                     dispatch(bbxDepthBuy(res.data.data.depth.buys));
@@ -225,8 +225,8 @@ export function getBbxTickerInfo(coin_pair) {
 
             themeOut = `{"action":"unsubscribe","args":${args}}`;
             window.webSocket_bbx.webSocketSend(`{"action": "subscribe", "args": ${args}}`);
-            
-            
+
+
         })
     }
 }
@@ -294,7 +294,7 @@ function getUserAssetsInfo() {
 let assets_websocket_time_out = null;
 //获取BBX资产相关
 export function getAssets(coinPair) {
-    return (dispatch, getState) => { 
+    return (dispatch, getState) => {
         let arr = [getUserAssetsInfo(),getCurrentOrder(coinPair), getHistoryOrder(coinPair), getTradeRecords(coinPair)];
         return Promise.all(arr).then((res) => {
             //用户资产
@@ -316,8 +316,8 @@ export function getAssets(coinPair) {
 
 
             //websocket
-            let token = getCookie("token");
-            let bbxUid = getCookie("uid");
+            let token = getCookie( 'bbx_token' );
+            let bbxUid = getCookie( 'bbx_uid' );
             let timestamp = new Date().valueOf();
             let nonce = timestamp + "000";
             let bbxSign = aesEncrypy(token, nonce);
@@ -382,7 +382,7 @@ export function getAssets(coinPair) {
                                         return item.coin_code !== assets.coin_code
                                     })
                                 })
-                                bbx_assets_list = [...bbx_assets_list, ...res.data[i].s_assets];   
+                                bbx_assets_list = [...bbx_assets_list, ...res.data[i].s_assets];
                             }
                         }
 
@@ -443,6 +443,3 @@ export function batchRevocation(data, fundPwd) {
         });
     }
 }
-
-
-

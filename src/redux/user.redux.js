@@ -1,8 +1,11 @@
 import axios from "../http.js";
 import { userAjax, globalAjax } from '../ajax.js';
 // import Cookie from 'js-cookie';
-import { setCookie, delCookie } from "../utils/cookie.js";
+import { setCookie, delCookie, getCookie } from "../utils/cookie.js";
 import CFG from "../config.js";
+import { notification } from "antd";
+import intl from "react-intl-universal";
+import { clearSignCaches } from "../utils/common.js";
 import qs from 'qs';
 const PHONE_CODE = 'PHONE_CODE';
 const VERIFY_CODE = 'VERIFY_CODE';
@@ -69,13 +72,47 @@ function verifyCode(data) {
     return {type: VERIFY_CODE, payload: data};
 }
 
-function login(data,type,path) {
+function setAccount( data, type, path, mod ) {
+    /* data
+        {
+            "account_id": 103918422829,
+            "phone": "+86 13621359980",
+            "account_type": 2,
+            "owner_type": 1,
+            "status": 2,
+            "register_ip": "123.113.105.177",
+            "latest_login_ip": "123.113.105.177",
+            "asset_password_effective_time": -2,
+            "ga_key": "unbound",
+            "kyc_type": 0,
+            "kyc_status": 1,
+            "created_at": "2019-09-11T06:14:17.620542Z",
+            "updated_at": "2019-09-28T04:40:26.71804Z"
+        }
+     */
     let result;
     let bbxToken = data.token
       , bbxAccesskey = data.access_key
       , bbxExpiredTs = data.expired_ts
       , bbxSsid = ''
-      , bbxUid = data.accountInfo.account_id;
+      , originUid = data.origin_uid // 子账户ID
+      , bbxUid = data.account_id;
+
+    // 转换格式
+    data = {
+        "account_id": bbxUid,
+        "phone": '',
+        "account_type": 2,
+        "owner_type": 1,
+        "status": 2,
+        "register_ip": "",
+        "asset_password_effective_time": -2,
+        "ga_key": "unbound",
+        "kyc_type": 0,
+        "kyc_status": 1,
+        "created_at": '',
+        "updated_at": ''
+    };
 
     if ( type ) {
         result = {
@@ -83,69 +120,93 @@ function login(data,type,path) {
             user_error: ''
         }
         // 有token 和 用户数据则保存至 LS
-        if( token && data ) {
-            localStorage.setItem("user", JSON.stringify(data));
+        if( bbxToken && data ) {
+            localStorage.setItem( "user", JSON.stringify( data ) );
         };
-        console.log( 'login token', token )
 
         // 更新 cookie
-        setCookie( "token", bbxToken, 1, CFG.mainDomainName, "/" );
-        setCookie( "access_key", bbxAccesskey, 1, CFG.mainDomainName, "/" );
-        setCookie( "expired_ts", bbxExpiredTs, 1, CFG.mainDomainName, "/" );
-        setCookie( "ssid", bbxSsid, 1, CFG.mainDomainName, "/" );
-        setCookie( "uid", bbxUid, 1, CFG.mainDomainName, "/" );
+        setCookie( "origin_uid", originUid, 1, CFG.mainDomainName, "/" );
+        setCookie( "bbx_token", bbxToken, 1, CFG.mainDomainName, "/" );
+        setCookie( "bbx_access_key", bbxAccesskey, 1, CFG.mainDomainName, "/" );
+        setCookie( "bbx_expired_ts", bbxExpiredTs, 1, CFG.mainDomainName, "/" );
+        setCookie( "bbx_ssid", bbxSsid, 1, CFG.mainDomainName, "/" );
+        setCookie( "bbx_uid", bbxUid, 1, CFG.mainDomainName, "/" );
 
-        let redirectPath;
-        if(path) {
-            redirectPath = path;
-        } else {
-            redirectPath = "/";
-        }
-        return { type: LOGIN, payload: result, redirect: redirectPath };
+        return { type: mod, payload: result, redirect: path || '/' };
     } else {
         result = {
             user_error: data,
             user: ''
         }
-
-        return { type: LOGIN, payload: result, redirect: "" };
+        return { type: mod, payload: result, redirect: '' }
     }
 }
 
-function register(data,type,path,token,ssid,uid) {
-    let result;
-    if(type) {
-        result = {
-            user: data,
-            user_error: ''
-        }
-        // 有token 和 用户数据则保存至 LS
-        if( token && data ) {
-            localStorage.setItem('user', JSON.stringify(data))
-        }
-        setCookie("token", token, 1, CFG.mainDomainName, "/");
-        setCookie("ssid", ssid, 1, CFG.mainDomainName, "/");
-        setCookie("uid", uid, 1, CFG.mainDomainName, "/");
 
-        let redirectPath;
-        if (path) {
+// 通用登录逻辑
+function log_in( data, path, dispatch = function () {} ) {
+    let opt = {
+            headers: {
+                'Skip-Set-Axios-Headers': 'true'
+                , 'Content-type': 'application/x-www-form-urlencoded'
+                , 'platform': 'web'
+            }
+        };
 
-            redirectPath = path;
-        } else {
-            redirectPath = "/";
-        }
+    data = qs.stringify( {
+        email: data.email
+        , password: data.password
+    } );
 
-        return { type: REGISTER, payload: result, redirect: redirectPath };
-    }else {
-        result = {
-            user_error: data,
-            user: ''
-        }
-        //sessionStorage.setItem('user', JSON.stringify(''))
-        //Cookie.set("user", "");
-        return { type: REGISTER, payload: result, redirect: '' }
+    return axios[ userAjax.login.type ]( userAjax.login.url, data, opt ).then((response) => {
+            /* response.data
+                {
+                    "code": 0,
+                    "msg": "操作成功",
+                    "data": {
+                        "account_id": 5,
+                        "token": "9a333ed5513c4ea6b2eab50bde8b5706"
+                    }
+                }
+             */
+            if ( response.data && response.data.code === 0 ) {
+                let user_token = response.data.data.token || ''
+                  , account_id = response.data.data.account_id || '';
+
+                setCookie( "user_token", user_token, 1, CFG.mainDomainName, "/" );
+                setCookie( "origin_uid", account_id, 1, CFG.mainDomainName, "/" );
+
+                getChildToken()
+                    .then( response => {
+                        dispatch( login(
+                            response
+                            , 1
+                            , path
+                        )
+                    );
+                    } );
+            } else {
+                notification.error( {
+                   message: 'LoginPost Err',
+                   description: response.data
+                })
+                dispatch(login(response.data, 0, path));
+            }
     }
+    , err => {
+        notification.error( {
+           message: 'loginPost Err',
+           description: err
+        })
+    });
+}
 
+function login( data, type, path) {
+    return setAccount( data, type, path, LOGIN );
+}
+
+function register( data, type, path ) {
+    return setAccount( data, type, path, REGISTER );
 }
 
 function exit() {
@@ -157,11 +218,7 @@ function exit() {
         retrieval_success: ''
     }
 
-    localStorage.removeItem("user");
-
-    delCookie("token", CFG.mainDomainName,"/");
-    delCookie("uid", CFG.mainDomainName, "/");
-    delCookie("ssid", CFG.mainDomainName, "/");
+    clearSignCaches();  // 清除与凭证相关的缓存数据
 
     return {type: EXIT, payload: data};
 }
@@ -177,9 +234,9 @@ function retrieval(data,type,path,token,ssid,uid){
         if (token) {
             localStorage.setItem('user', JSON.stringify(data))
         }
-        setCookie("token", token, 1, CFG.mainDomainName, "/");
-        setCookie("ssid", ssid, 1, CFG.mainDomainName, "/");
-        setCookie("uid", uid, 1, CFG.mainDomainName, "/");
+        setCookie( 'bbx_token', token, 1, CFG.mainDomainName, "/");
+        setCookie( 'bbx_ssid', ssid, 1, CFG.mainDomainName, "/");
+        setCookie( 'bbx_uid', uid, 1, CFG.mainDomainName, "/");
         let redirectPath;
         if (path) {
 
@@ -314,80 +371,136 @@ export function getVerifyCode(userName, name_type, type, validate) {
 }
 
 // 注册
-export function registerPost(data,path,qd,markcode) {
-    let url = (qd && qd !== "null" && qd !== null) ? userAjax.register.url + `?qd=${qd}` : userAjax.register.url;
-    if (markcode && markcode !== "null" && markcode !==null) {
-        if (qd && qd !== "null" && qd !== null) {
-            url = url + "&markcode=" + markcode;
-        }else {
-            url = url + "?markcode=" + markcode;
-        }
-    }
+export function registerPost(data,path) {
+    let opt = {
+            headers: {
+                'Skip-Set-Axios-Headers': 'true'
+                , 'Content-type': 'application/x-www-form-urlencoded'
+                , 'platform': 'web'
+            }
+        };
+
+    let email = data.email
+      , password = data.password;
+
+    data = qs.stringify( {
+        phone: data.phone
+        , email
+        , password
+        , repass: data.qr_pwd
+        , nickname: data.email
+        , agreement: 'on'
+    } )
+
     return (dispatch, getState) => {
-        // get -> post
-        return axios[ userAjax.register.type ](url,data).then((response) => {
-            if (response && response.data && response.data.errno==="OK") {
-                dispatch(register(response.data.data, 1,path,response.headers["bbx-token"],response.headers["bbx-ssid"],response.headers["bbx-uid"]));
+        return axios[ userAjax.register.type ]( userAjax.register.url, data, opt ).then((response) => {
+            if ( response.data.code === 0 ) {
+                let origin_uid = response.data.data || '';
+
+                setCookie( "origin_uid", origin_uid, 1, CFG.mainDomainName, "/" );
+
+                // XXX: 注册完后自动登录
+                return log_in( { email, password }, path, dispatch );
             }else {
+                notification.error( {
+                   message: 'RegPost Err',
+                   description: response.data
+                })
                 dispatch(register(response.data, 0));
             }
 
         },
         (err) => {
-            console.log('注册失败了###',err);
+            notification.error( {
+               message: 'registerPost Err',
+               description: err
+            })
         })
     }
 }
 
-// 登录
-export function loginPost(data,path) {
+// 从母账号向子账号转钱
+// Demo
+export function assetApp2Account( data ) {
     let opt = {
             headers: {
-                    'Skip-Set-Axios-Headers': 'true'
-                    , 'Content-type': 'application/x-www-form-urlencoded'
-                    , 'platform': 'web'
-                }
+                'Skip-Set-Axios-Headers': 'true'
+                , 'Content-type': 'application/x-www-form-urlencoded'
+                , 'e-exchange-token': getCookie( 'user_token' )
+                , 'platform': 'web'
+            }
         };
 
-    data = qs.stringify( {
-        email: data.email
-        , password: ''
-    } )
-    //console.log("loginPost####path#####",path);
     return (dispatch, getState) => {
-        return axios[ userAjax.login.type ]( userAjax.login.url, data, opt ).then((response) => {
-            if( response && response.data && response.data.code === 0 ) {
-                // NOTE: 这里的 response.data.token 是账号 token，其是交易所自身账号系统，但此时还未与 BBX 建立授权操作关系
-                // 登录成功后，拿 token 换取 BBX 的
-                getChildToken( response.data.token )
-                    .then( response => {
-                        dispatch( login(
-                            response.data
-                            , 1
-                            , path
-                        )
-                    );
-                    } );
-            } else {
-               dispatch(login(response.data, 0, path));
-            }
+        return axios[ userAjax.asset_app2account.type ]( userAjax.asset_app2account.url, qs.stringify( data ), opt )
+            .then( response => {
+                let data = response.data;
+
+                if ( data && data.code ) {
+
+                }
+                console.log( data );
+            // if( response && response.data && response.data.code === 0 ) {
+            //     /* response.data
+            //         {
+            //             "code": 0,
+            //             "msg": "操作成功",
+            //             "data": {
+            //                 "account_id": 5,
+            //                 "token": "9a333ed5513c4ea6b2eab50bde8b5706"
+            //             }
+            //         }
+            //      */
+            //     if ( response.data.code === 0 ) {
+            //         // NOTE: 这里的 response.data.data.token 是账号 token，其是交易所自身账号系统，但此时还未与 BBX 建立授权操作关系
+            //         // 登录成功后，拿 user token 换取 BBX 的
+            //         let user_token = response.data.data.token || '';
+            //         setCookie( "user_token", user_token, 1, CFG.mainDomainName, "/" );
+            //         getChildToken( user_token )
+            //             .then( response => {
+            //                 console.log( response )
+            //                 dispatch( login(
+            //                     response
+            //                     , 1
+            //                     , path
+            //                 )
+            //             );
+            //             } );
+            //     } else {
+            //         dispatch(login(response.data, 0, path));
+            //     }
+            // } else {
+            //    dispatch(login(response.data, 0, path));
+            // }
         },
         (err) => {
-            console.log('登录失败了###',err);
+            notification.error( {
+               message: 'assetApp2Account Err',
+               description: err
+            })
         })
+    }
+}
+
+
+// 登录
+export function loginPost( data, path ) {
+    //console.log("loginPost####path#####",path);
+    return (dispatch, getState) => {
+        return log_in( data, path, dispatch )
     }
 }
 
 // 获得子账号 token
-function getChildToken( token ) {
+function getChildToken() {
     let data = {
-            origin_uid: 'sunbeyond'
+            origin_uid: getCookie( 'origin_uid' )
             , 'method': 'gen.account.md5'
         }
         , opt = { headers: {
                 'Skip-Set-Axios-Headers': 'true'
                 , 'Content-type': 'application/x-www-form-urlencoded'
-                , 'e-exchange-token': token
+                , 'e-exchange-token': getCookie( 'user_token' )
                 , 'platform': 'web'
              }
         };
@@ -396,10 +509,21 @@ function getChildToken( token ) {
                 , qs.stringify( data )
                 , opt )
             .then( response => {
-                return response.data || {}
+                if ( response.data.token ) {
+                    return response.data || {}
+                } else {
+                    notification.error( {
+                       message: 'getChildToken Err',
+                       description: response.data
+                   });
+                    return {};
+                }
             },
             (err) => {
-                console.log( "child_token error###", err );
+                notification.error( {
+                   message: 'getChildToken Err',
+                   description: err
+                })
                 return {};
             }
         )

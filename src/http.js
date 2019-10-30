@@ -2,6 +2,7 @@ import axios from 'axios';
 import {aesEncrypy} from "./utils/aes.js";
 import { setCookie, delCookie, getCookie } from "./utils/cookie.js";
 import { getQueryString } from "./utils/getQueryString.js";
+import { clearSignCaches } from "./utils/common.js";
 import qs from 'qs';
 import { notification } from "antd";
 import intl from "react-intl-universal";
@@ -33,30 +34,33 @@ if(!unique_id) {
 // 更新 Headers
 // opt.bbxToken 必填
 function updateHeaders( config, opt = {} ) {
-    let { bbxToken = getCookie( 'token' ) || ''
-        , bbxAccesskey = getCookie( 'access_key' ) || ''
-        , bbxExpiredTs = getCookie( 'expired_ts' ) || ''
-        , bbxSsid = getCookie( 'ssid' ) || ''
-        , bbxUid = getCookie( "uid" ) || ''
+    let { bbxToken = getCookie( 'bbx_token' ) || ''
+        , bbxAccesskey = getCookie( 'bbx_access_key' ) || ''
+        , bbxExpiredTs = getCookie( 'bbx_expired_ts' ) || ''
+        , bbxSsid = getCookie( 'bbx_ssid' ) || ''
+        , bbxUid = getCookie( "bbx_uid" ) || ''
         , bbxLang = localStorage.getItem( 'lang' ) || ''
         , nonce = new Date().valueOf() + "000"  // 微秒时间戳
         } = opt
         , bbxSign = '';
 
-    // 设置头部信息
-    config.headers.common['Bbx-Ver'] = '1.0';
-    config.headers.common['Bbx-Dev'] = 'web';
-    config.headers.common["Content-Type"] = "application/json";
-    config.headers.common['Bbx-Ts'] = nonce;
-
     // 有 token 才 Sign
     if ( bbxToken ) {
 // md5 的body是哪
         // md5( body + token + ts )
-        bbxSign = aesEncrypy( JSON.stringify( config.data ), bbxToken, nonce );
-        console.log( 'aesEncrypy: ', config.url, bbxToken, nonce );
+        bbxSign = aesEncrypy( JSON.stringify( {
+            origin_uid: 21,
+            vol: 1,
+            coin_code: 'BTC'
+        } ), bbxToken, nonce );
+        console.log( 'aesEncrypy: ', config.data, bbxToken, nonce );
         console.log( 'bbxSign:', bbxSign );
 
+        // 设置头部信息
+        config.headers.common['Bbx-Ver'] = '1.0';
+        config.headers.common['Bbx-Dev'] = 'web';
+        config.headers.common["Content-Type"] = "application/json";
+        config.headers.common['Bbx-Ts'] = nonce;
         config.headers.common['Bbx-Accesskey'] = bbxAccesskey;
         config.headers.common['Bbx-ExpiredTs'] = bbxExpiredTs;
         config.headers.common['Bbx-Sign'] = bbxSign;
@@ -180,23 +184,16 @@ axios.interceptors.request.use( config => {
     //     // }
     // }
     // ================================== DEMO END =============================
-}, (err) => {
+}, err => {
     //console.log("request###err##@@@######",err);
-})
+} )
 
 // response
 axios.interceptors.response.use(response => {
-    console.log( response )
     //非法请求 跳转到登录
     if(response.data.errno == "FORBIDDEN") {
-        // 清除用户信息
-        localStorage.removeItem( "user" );
-        // 用户凭证
-        delCookie( "token", CFG.mainDomainName, "/" );
-        delCookie( "access_key", CFG.mainDomainName, "/" );
-        delCookie( "expired_ts", CFG.mainDomainName, "/" );
-        delCookie( "ssid", CFG.mainDomainName, "/" );
-        delCookie( "uid", CFG.mainDomainName, "/" );
+
+        clearSignCaches();  // 清除与凭证相关的缓存数据
 
         let path = getQueryString( window.location.search, "path" );
 

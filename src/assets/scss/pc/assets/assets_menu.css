@@ -1,0 +1,166 @@
+.center-container {
+  width: 1200px;
+  margin: 0 auto; }
+
+@media screen and (max-width: 700px) {
+  .center-container {
+    width: 100%; } }
+
+.h5-box-fixed {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: #171a25;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 110000; }
+
+.scale1px {
+  position: relative;
+  border: none; }
+  .scale1px:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: left top; }
+
+.assets-menu {
+  width: 260px;
+  border-radius: 2px;
+  background: #12162D;
+  background: #1f2636;
+  position: absolute;
+  padding-bottom: 40px; }
+  .assets-menu .assets-top {
+    text-align: center;
+    padding: 30px 0px; }
+    .assets-menu .assets-top img {
+      width: 100px; }
+    .assets-menu .assets-top .status {
+      display: block;
+      width: 54px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      color: #fff;
+      background: #b83a3a;
+      font-size: 12px;
+      margin: 0 auto;
+      margin-top: -5px; }
+      .assets-menu .assets-top .status.active {
+        background: #2b93f6; }
+    .assets-menu .assets-top .uid {
+      color: #c1c9d4;
+      font-size: 14px;
+      padding-top: 10px;
+      padding-bottom: 8px; }
+    .assets-menu .assets-top .email {
+      width: 200px;
+      padding: 0px 10px;
+      box-sizing: border-box;
+      height: 35px;
+      line-height: 35px;
+      background: #313a56;
+      color: #fff;
+      margin: 0 auto;
+      font-size: 18px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+  .assets-menu .assets-account-type {
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    border-left: 10px solid rgba(0, 0, 0, 0);
+    color: #cdd5df;
+    box-sizing: border-box;
+    text-decoration: none;
+    background: rgba(23, 26, 37, 0.2); }
+  .assets-menu .menu-list {
+    width: 100%; }
+    .assets-menu .menu-list a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      border-bottom: 1px solid #262e43;
+      border-left: 4px solid rgba(0, 0, 0, 0);
+      color: #cdd5df;
+      box-sizing: border-box;
+      text-decoration: none;
+      cursor: pointer; }
+      .assets-menu .menu-list a.active {
+        background: #242c40;
+        border-left: 4px solid #5f8ed4;
+        color: #5f8ed4; }
+      .assets-menu .menu-list a .menu-span {
+        position: relative;
+        padding: 0px 10px; }
+        .assets-menu .menu-list a .menu-span .hot {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          right: -16px;
+          top: -9px;
+          background: url("../../../images/icon-hot.svg") left top no-repeat; }
+  .assets-menu .user-center-menu-list a {
+    text-align: left;
+    padding-left: 55px;
+    align-items: center;
+    justify-content: left; }
+    .assets-menu .user-center-menu-list a:nth-child(1) {
+      background: url("../../../images/usercenter/icon-information_nor.svg") 25px center no-repeat;
+      background-size: 25px 25px; }
+      .assets-menu .user-center-menu-list a:nth-child(1).active {
+        background: #242c40 url("../../../images/usercenter/icon-information_sel.svg") 25px center no-repeat;
+        background-size: 25px 25px; }
+    .assets-menu .user-center-menu-list a:nth-child(2) {
+      background: url("../../../images/usercenter/icon-safe_nor.svg") 25px center no-repeat;
+      background-size: 25px 25px; }
+      .assets-menu .user-center-menu-list a:nth-child(2).active {
+        background: #242c40 url("../../../images/usercenter/icon-safe_sel.svg") 25px center no-repeat;
+        background-size: 25px 25px; }
+    .assets-menu .user-center-menu-list a:nth-child(3) {
+      background: url("../../../images/usercenter/icon-identity_nor.svg") 25px center no-repeat;
+      background-size: 25px 25px; }
+      .assets-menu .user-center-menu-list a:nth-child(3).active {
+        background: #242c40 url("../../../images/usercenter/icon-identity_sel.svg") 25px center no-repeat;
+        background-size: 25px 25px; }
+    .assets-menu .user-center-menu-list a:nth-child(4) {
+      background: url("../../../images/usercenter/icon-Return_nor.svg") 25px center no-repeat;
+      background-size: 25px 25px; }
+      .assets-menu .user-center-menu-list a:nth-child(4).active {
+        background: #242c40 url("../../../images/usercenter/icon-Return_sel.svg") 25px center no-repeat;
+        background-size: 25px 25px; }
+    .assets-menu .user-center-menu-list a:nth-child(5) {
+      background: url("../../../images/fee_level/icon-money_nor.svg") 25px center no-repeat;
+      background-size: 25px 25px; }
+      .assets-menu .user-center-menu-list a:nth-child(5).active {
+        background: #242c40 url("../../../images/fee_level/icon-money_sel.svg") 25px center no-repeat;
+        background-size: 25px 25px; }
+    .assets-menu .user-center-menu-list a:nth-child(6) {
+      background: url("../../../images/usercenter/icon-relation_nor.svg") 25px center no-repeat;
+      background-size: 25px 25px; }
+      .assets-menu .user-center-menu-list a:nth-child(6).active {
+        background: #242c40 url("../../../images/usercenter/icon-relation_sel.svg") 25px center no-repeat;
+        background-size: 25px 25px; }
+    .assets-menu .user-center-menu-list a:nth-child(7) {
+      background: url("../../../images/usercenter/icon-API_nor.svg") 25px center no-repeat;
+      background-size: 25px 25px; }
+      .assets-menu .user-center-menu-list a:nth-child(7).active {
+        background: #242c40 url("../../../images/usercenter/icon-API_sel.svg") 25px center no-repeat;
+        background-size: 25px 25px; }

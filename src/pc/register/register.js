@@ -39,17 +39,17 @@ class Register extends Component {
             currentTab: 0,
             form: {
                 email: {
-                    valid: false,
-                    value: '',
+                    valid: true,
+                    value: `s@${ ~~(new Date().getTime() / 1000) }.com`,
                     error: ''
                 },
                 phone: {
-                    valid: false,
-                    value: '',
+                    valid: true,
+                    value: `136${ ~~(new Date().getTime() / 1000) % 100000000 }`,
                     error: ''
                 },
                 verify_code: {
-                    valid: false,
+                    valid: true,
                     value: '',
                     error: ''
                 },
@@ -59,13 +59,13 @@ class Register extends Component {
                     error: ''
                 },
                 pwd: {
-                    valid: false,
-                    value: '',
+                    valid: true,
+                    value: '111111',
                     error: ''
                 },
                 qr_pwd: {
-                    valid: false,
-                    value: '',
+                    valid: true,
+                    value: '111111',
                     error: ''
                 },
                 invite_code: {
@@ -107,9 +107,9 @@ class Register extends Component {
                 })
             }
 
-            let markcode = getQueryString(this.props.location.search, "markcode");
+            // let markcode = getQueryString(this.props.location.search, "markcode");
 
-            this.props.registerPost(data,path,this.state.qd,markcode).then(() => {
+            this.props.registerPost(data,path).then(() => {
 
                 if(this.props.user_error) {
                     notification.error({
@@ -134,7 +134,7 @@ class Register extends Component {
     }
     componentWillMount() {
         this.mounted = true;
-        let token = getCookie("token");
+        let token = getCookie( 'bbx_token' );
         if (!token) {
             localStorage.removeItem("user");
         }
@@ -438,35 +438,37 @@ class Register extends Component {
         }
     }
 
+    // 注册
     registerSubmit() {
-
         let data = {};
         let form = this.state.form;
         if(this.state.currentTab===0) {
             data["phone"] = form.phone_code.value + " " + form.phone.value;
             data["account_type"] = 2;
+            data["email"] = form.email.value;
         }
         if(this.state.currentTab===1) {
             data["email"] = form.email.value;
             data["account_type"] = 1;
         }
         //data["password"] = form.pwd.value;
-        if(form.invite_code.value) {
-            data["inviter_id"] = Number(form.invite_code.value);
-        }
+        // if(form.invite_code.value) {
+        //     data["inviter_id"] = Number(form.invite_code.value);
+        // }
 
-        let qd = this.state.qd ? this.state.qd : localStorage.getItem("qd");
-        if (qd && qd !== 'null' && qd !== 'undefined') {
-            data["inviter_id"] = 0;
-        }else {
-            data["inviter_id"] = data["inviter_id"];
-        }
+        // let qd = this.state.qd ? this.state.qd : localStorage.getItem("qd");
+        // if (qd && qd !== 'null' && qd !== 'undefined') {
+        //     data["inviter_id"] = 0;
+        // }else {
+        //     data["inviter_id"] = data["inviter_id"];
+        // }
 
-        data["code"] = String(form.verify_code.value);
+        // data["code"] = String(form.verify_code.value);
 
         //md5加密
-        let password = new MD5(form.pwd.value);
-        data["password"] = password.hash();
+        // let password = new MD5(form.pwd.value);
+        // data["password"] = password.hash();
+        data["password"] = form.pwd.value;
 
         //锁住提交按钮
         if(this.mounted) {
@@ -603,6 +605,7 @@ class Register extends Component {
                         />
                         ) : (
                         <TELInput
+                            value={this.state.form.phone.value}
                             changePhoneCode={this.changePhoneCode.bind(
                             this
                             )}
@@ -624,14 +627,13 @@ class Register extends Component {
                             {phone_code.error}
                             </span>}
                     </p>
-                    {/* <div className="form-control">
-
-                                </div> */}
+                    {/* <div className="form-control"></div> */}
                     <div className="form-control">
-                        <input type="text" autoComplete="off" placeholder={intl.get("register_verify_code_placeholder")} value={this.state.form.verify_code.value || ""} onChange={e => this.handleValueChange("verify_code", e.target.value)} />
-                        <button className="get-code" onClick={this.captchaCheck} disabled={codeValid}>
-                        {this.state.code}
-                        </button>
+                        <input type="text" placeholder={`${intl.get("login_please_enter_email")}`}
+                            value={this.state.form.email.value}
+                            onChange={e => this.handleValueChange("email", e.target.value)}
+                        />
+                        {/* <span className="prompt">{intl.get("register_invite_code_tips")}</span> */}
                     </div>
                     <p className="error">
                         {!verify_code.valid && (

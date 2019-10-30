@@ -244,8 +244,12 @@ v1/ifglobal/coinBrief           币种介绍              get
 v1/ifaccount/users/me         获取用户资产
 
 
-token  用户token
 
-cloud_token 云token
-cloud_ssid  云ssid，非web的设备上使用
-cloud_uid 云uid
+token 云token
+ssid  云ssid，非web的设备上使用
+uid 云uid
+
+
+
+
+用户token  user_token

@@ -5,6 +5,7 @@ import { setDefaultLanguage } from "./redux/lang.redux.js";
 import { getGlobalConfig, getUser } from "./redux/global.redux.js";
 // import IntlPolyfill from "intl";
 import { getQueryString } from "./utils/getQueryString.js";
+import { clearSignCaches } from "./utils/common.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./utils/prototype.js";  //封装的prototype上的工具函数
@@ -47,6 +48,12 @@ const Assets = Loadable({
   delay: 0
 });
 
+const UserCenter = Loadable({
+  loader: () => import('./pc/usercenter/usercenter_index'),
+  loading: Loading,
+  delay: 0
+});
+
 @connect(state => ({...state.gconfig, ...state.lang}), { getGlobalConfig, setDefaultLanguage,getUser })
 class App extends Component {
   constructor(props) {
@@ -80,9 +87,9 @@ class App extends Component {
     // localStorage.setItem("config",JSON.stringify(this.props.clist));
   }
   componentDidMount() {
-   let token = getCookie("token");
+   let token = getCookie( 'bbx_token' );
    if(!token) {
-     localStorage.removeItem("user");
+     clearSignCaches();
    }
 
    let user = localStorage.getItem("user");
@@ -119,6 +126,7 @@ class App extends Component {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/assets" component={Assets} />
+          <Route path="/usercenter" component={UserCenter} />
           <Route path="*" component={ErrorPage}></Route>
         </Switch>
       </Layout>;

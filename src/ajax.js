@@ -19,15 +19,19 @@ export const userAjax = {
     // 账号注册
     register: CFG.isSimRespon
         ? { url: '_simResponse/register', type: 'get' }
-        : { url: CFG.reqHost + "/v1/ifaccount/users/register", type: 'post' },
+        : { url: "https://v-exchange.bbx.com/reg", type: 'post' },
     // 账号登录
     login: CFG.isSimRespon
         ? { url: '_simResponse/login', type: 'get' }
-        : { url: 'http://v-exchange.bbx.com/login', type: 'post' },
+        : { url: 'https://v-exchange.bbx.com/login', type: 'post' },
     // 账号登出
     logout: CFG.isSimRespon
         ? '_simResponse/logout'
         : CFG.reqHost + '/v1/ifaccount/logout',
+    // 从母账号向子账号转钱
+    asset_app2account: CFG.isSimRespon
+        ? { url: '_/asset_app2account', type: 'get' }
+        : { url: 'https://v-exchange.bbx.com/spot', type: 'post' },
     // ================================== DEMO END =============================
     verify_code: CFG.reqHost + "/v1/ifaccount/verifyCode",
     phone_code: CFG.reqHost + "/v1/ifglobal/phoneCode",
@@ -69,7 +73,7 @@ export const assetsAjax = {
     // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
     // 获得用户资产信息
     propety_info: CFG.isSimRespon
-        ?  CFG.reqHost + '/v1/ifaccount/users/me'
+        ?  '_simResponse/me'
         : '_simResponse/me'
     // ================================== DEMO END =============================
 }
