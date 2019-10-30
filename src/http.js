@@ -97,13 +97,13 @@ axios.interceptors.request.use( config => {
         config.url = config.url + "?t=" + timestamp;
     };
 
-    return updateHeaders( config );
-
     // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
     // 当前请求是否跳过设置 Headers
-    // if ( config.headers[ 'Skip-Set-Axios-Headers' ] === 'true' ) {
-    //     return config;
-    // } else {
+    if ( config.headers[ 'Skip-Set-Axios-Headers' ] === 'true' ) {
+        return config;
+    } else {
+        return updateHeaders( config );
+    }
     //     return config;
     //     // let bbxToken = getCookie( 'token' ) || '';
     //     // // 是否存在云 token

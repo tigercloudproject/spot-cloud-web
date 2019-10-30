@@ -16,7 +16,7 @@ const EXIT = "EXIT"; //退出
 const BIND_PHONE = "BIND_PHONE"; //绑定手机
 const BIND_EMAIL = "BIND_EMAIL"; //绑定邮箱
 const ACTIVE = "ACTIVE"; //激活
-
+const DEMO = "DEMO"; //激活
 
 //let user = JSON.parse(sessionStorage.getItem('user'));
 let user;
@@ -30,6 +30,7 @@ const initStatus = {
     login_success: '', //登录成功后的跳转地址
     register_success: '', //注册成功后的跳转地址
     retrieval_success: '', //找回密码成功后的跳转地址
+    demo_success: '',
     phone_code:[],
     verify_code: false,
     user: user?user:'',
@@ -59,6 +60,8 @@ export function user(state = initStatus, action) {
             return {...state, ...action.payload, bind_email: action.redirect};
         case ACTIVE:
             return {...state, ...action.payload, active_success: action.redirect};
+        case DEMO:
+            return {...state, ...action.payload, demo_success: action.redirect};
         default:
             return state;
     }
@@ -431,57 +434,30 @@ export function assetApp2Account( data ) {
             }
         };
 
+    // 追加模式身份
+    data.method = 'spot.transfer.asset.app2account';
+
     return (dispatch, getState) => {
         return axios[ userAjax.asset_app2account.type ]( userAjax.asset_app2account.url, qs.stringify( data ), opt )
             .then( response => {
                 let data = response.data;
 
-                if ( data && data.code ) {
-
+                if ( data && data.errno === 'OK' ) {
+                    alert( data.message + "\r\n" + data.id )
+                    // dispatch( { type: 'DEMO', payload: data, redirect: '/' } )
+                } else {
+                    alert( data.message + "\r\n" + data.message )
                 }
-                console.log( data );
-            // if( response && response.data && response.data.code === 0 ) {
-            //     /* response.data
-            //         {
-            //             "code": 0,
-            //             "msg": "操作成功",
-            //             "data": {
-            //                 "account_id": 5,
-            //                 "token": "9a333ed5513c4ea6b2eab50bde8b5706"
-            //             }
-            //         }
-            //      */
-            //     if ( response.data.code === 0 ) {
-            //         // NOTE: 这里的 response.data.data.token 是账号 token，其是交易所自身账号系统，但此时还未与 BBX 建立授权操作关系
-            //         // 登录成功后，拿 user token 换取 BBX 的
-            //         let user_token = response.data.data.token || '';
-            //         setCookie( "user_token", user_token, 1, CFG.mainDomainName, "/" );
-            //         getChildToken( user_token )
-            //             .then( response => {
-            //                 console.log( response )
-            //                 dispatch( login(
-            //                     response
-            //                     , 1
-            //                     , path
-            //                 )
-            //             );
-            //             } );
-            //     } else {
-            //         dispatch(login(response.data, 0, path));
-            //     }
-            // } else {
-            //    dispatch(login(response.data, 0, path));
-            // }
         },
         (err) => {
             notification.error( {
                message: 'assetApp2Account Err',
                description: err
             })
+            // dispatch( demoFunc( err, 0, '/' ) );
         })
     }
 }
-
 
 // 登录
 export function loginPost( data, path ) {

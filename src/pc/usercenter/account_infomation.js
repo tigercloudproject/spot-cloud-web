@@ -98,8 +98,8 @@ class AccountSecurity extends Component {
                 , vol
                 , coin_code
             } )
-            .then( async ( e ) => {
-
+            .then( e => {
+                console.log( e )
             } );
     }
 
@@ -170,13 +170,24 @@ class AccountSecurity extends Component {
                                     </tbody>
                                 </table>
                                 <dl class="assetApp2Account">
-                                    <dt>从母账号向子账号转钱</dt>
+                                    <dt>
+                                        <h3>Demo - 从母账号向子账号转钱</h3>
+                                        <p>用户账号登录后，用一开始获得的 origin_uid 和 user_token 进行请求</p>
+                                    </dt>
                                     <dd>
                                         <ul>
-                                            <li><label>origin_uid</label><input type="text" value={ this.state.assetApp2Account.origin_uid || '' } /></li>
+                                            <li><label>origin_uid 源账号Id</label><input type="text" value={ this.state.assetApp2Account.origin_uid || '' } /></li>
                                             <li><label>vol 不要太大数额</label><input type="text" value={ this.state.assetApp2Account.vol || '' } /></li>
-                                            <li><label>coin_code</label><input type="text" value={ this.state.assetApp2Account.coin_code || '' } /></li>
-                                            <li><button className="submit" onClick={this.assetApp2AccountSubmit}>转换</button></li>
+                                            <li><label>coin_code 币种</label><input type="text" value={ this.state.assetApp2Account.coin_code || '' } /></li>
+                                            <li><label></label><button className="submit" onClick={this.assetApp2AccountSubmit}>提交</button></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt></dt>
+                                    <dd>
+                                        <ul>
+                                            <li><label></label><input type="text" value='' /></li>
                                         </ul>
                                     </dd>
                                 </dl>
@@ -190,7 +201,7 @@ class AccountSecurity extends Component {
                                         <p>UID：{ user && user.account_id ? user.account_id : null}</p>
                                     </li>
                                     <li className="clearfix">
-                                        <p>{intl.get("nickname")}：{nickname ? nickname : "BBX_" + user.account_id}</p>
+                                        <p>{intl.get("nickname")}：{ user && nickname ? nickname : "BBX_" + user.account_id}</p>
                                         {nickname ? null
                                             : <Link to={{ pathname: "/usercenter/account_information/set_nickname", search: `${location.search}` }}>
                                                 {intl.get("nickname-set")}

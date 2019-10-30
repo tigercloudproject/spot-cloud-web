@@ -335,20 +335,30 @@
     top: 0px;
     z-index: 110000; } }
 
-dl.assetApp2Account {
+dl {
 
 }
-dl.assetApp2Account dt {
+dl dt h3 {
     color: #eee;
     font-size: 24px;
 }
-dl.assetApp2Account dd li {
+dl dt p {
+    color: #aaa;
+}
+dl dd li {
     padding: 8px;
 }
-dl.assetApp2Account dd label {
+dl dd label {
     color: #eee;
     padding: 6px;
+    width: 140px;
+    display: inline-block;
 }
-dl.assetApp2Account dd button {
+dl dd input {
+    height: 30px;
+padding: 0 6px;
+    border: 0px;
+}
+dl dd button {
     padding: 6px 20px;
 }
