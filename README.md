@@ -8,14 +8,12 @@
 
 #### 1. 安装依赖环境
 
-*仅限本地开发环境*
--   [Install Node.js 8.x/10.x](http://nodejs.org)
+-   [Install Node.js 8.x/10.x](http://nodejs.org): 开发环境依赖
 
 #### 2. git clone 项目或 download zip 项目包
 
-#### 3. 安装项目依赖包
+#### 3. 开发环境安装项目依赖包
 
-*仅限本地开发环境*
 ``` bash
 # install dependencies
 npm install
@@ -24,64 +22,47 @@ npm install
 npm install webpack -g
 ```
 
-#### 4. 配置
+#### 4. 配置各模式的.env
 
-##### 各模式的 .env 配置
-
-根目录下存在两个 `.env` 的文件，各项参数的说明请直接参看文件内的注释部分。如果要更改配置项，优先在这里面
-- `.env.development` 本地开发配置项  
-- `.env.production` build配置项  
-
-？？？？？？？
-修改成自己的接口
-
-本地模拟接口数据
-
-1.env 配置
-
-
-？？？？？？？？？？？
+项目共三种运行模式，根目录下存在三个 `.env.**` 的文件，分别对应各个模式。`.env.**` 内有各项参数的注释说明。
+- `.env.development` 开发模式配置
+- `.env.test` 测试模式配置
+- `.env.production` 生产模式配置
 
 #### 5. 运行模式
 
-项目共两种运行模式，具体请参考 **Mode** 中所提供的步骤进行操作。
+##### 开发模式
 
-## Mode
-
-### 本地开发模式
-
-对应根目录的 `.env.development`，会自动启动 webpack-dev-server。
-
-#### 步骤
+本模式会启动 `webpackDevServer`。  
+BBX接口默认为测试API。
 
 1.  配置 `.env.development` 内的 `HOST` 为自己所需的域名（修改后需修改后续步骤中的domain）
-2.  本地host配置相关domain
+2.  本地host配置相关domain。因为 Webpack 会检查该 `HOST`，如果找不到则会中断报错。
     ```
-    127.0.0.1 test.bbx.com
+    127.0.0.1 spot.bbx.com
     ```
 3.  运行
     ```bash
     npm start
     ```
-4.  等待显示出 `test.bbx.com:3000` 后再进行访问
+4.  等待显示出 `spot.bbx.com:3000` 后再进行访问
 
-### 生产、测试build模式
+##### 测试模式
 
-对应根目录的 `.env.production`。
-
-#### 步骤
-
-1.  配置 `.env.development` 内的 `HOST` 为自己所需的域名（修改后需修改后续步骤中的domain）
+1.  配置 `.env.test`
 2.  本地host配置相关domain
     ```
-    127.0.0.1 test.bbx.com
+    127.0.0.1 bbx.com
     ```
 3.  运行
     ```bash
-    npm start
+    npm run test
     ```
-4.  等待显示出 `test.bbx.com:3000` 后再进行访问
+4.  会在根目录生成 `./build` 文件夹，把其打包上传至测试服
+5.  配置 nginx
 
+
+##### 生产模式
 
 
 - 生产环境部署
@@ -100,6 +81,12 @@ npm install webpack -g
     # bash
     npm start
     ```
+
+
+
+所有请求分为 `交易所接口` 和 `老虎云接口`，`老虎云接口` 的 Request Headers
+
+
 
 ## 更改Public的步骤及逻辑
 
@@ -137,8 +124,9 @@ npm install webpack -g
 
 1. 修改 `币种介绍` 的文本内容  
     目前通过接口 `coinBrief` 动态获取，可针对该接口做处理
+2.
 2. Response 返回 `invalid request`  
-    请检查Request Header中是否带有 `Bbx-Accesskey`、`Bbx-ExpiredTs`、`Bbx-Uid`、`Bbx-Sign`、`Bbx-Ver`、`Bbx-Dev`、`Bbx-Ts` 这些key。如果有缺少，则需要在 `./assets/js/axiosClassYun` 下进行配置。一般不会出现这问题。
+    请检查 Request Headers 中是否带有 `Bbx-Accesskey`、`Bbx-ExpiredTs`、`Bbx-Uid`、`Bbx-Sign`、`Bbx-Ver`、`Bbx-Dev`、`Bbx-Ts`、`Bbx-Ssid` 这些key。如有缺少，则需要在 `./src/http.js` 下进行配置。一般不会出现这问题。
 
 
 账号的登录、登出、注册机制
