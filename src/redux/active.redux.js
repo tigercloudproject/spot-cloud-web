@@ -20,16 +20,6 @@ export function active(state = initStatus, action) {
     }
 }
 
-export function getRankList(data) {
-    return (dispatch, getState) => {
-        return axios.post(activeAjax.rank, data).then((response) => {
-            return response;
-        }, (err) => {
-            console.log("getRankList###", err);
-        })
-    }
-}
-
 function activeInfo(data) {
     return { type: GET_ACTIVE_INFO , payload: data };
 }

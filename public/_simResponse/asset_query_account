@@ -1,1 +1,19 @@
-{"errno":"OK","message":"Success","id":"e83dd3db-79dc-4295-9989-a85d554ccf62","data":{"account_id":5557683,"app_id":2017184040,"origin_uid":"29","status":1,"user_assets":[null]}}
+{
+	"errno": "OK",
+	"message": "Success",
+	"id": "1d2f5226-fbc6-4a6b-98b1-c09402c42919",
+	"data": {
+		"account_id": 5557703,
+		"app_id": 2017184040,
+		"origin_uid": "42",
+		"status": 1,
+		"user_assets": [{
+			"account_id": 5557703,
+			"coin_code": "BTC",
+			"freeze_vol": "0",
+			"available_vol": "101",
+			"created_at": "2019-10-31T07:05:20.04392Z",
+			"updated_at": "2019-10-31T07:05:28.810934Z"
+		}]
+	}
+}

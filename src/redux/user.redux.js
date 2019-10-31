@@ -446,7 +446,7 @@ export function assetApp2Account( data ) {
                     alert( data.message + "\r\n" + data.id )
                     // dispatch( { type: 'DEMO', payload: data, redirect: '/' } )
                 } else {
-                    alert( data.message + "\r\n" + data.message )
+                    alert( JSON.stringify( data ) )
                 }
         },
         (err) => {

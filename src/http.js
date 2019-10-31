@@ -48,11 +48,7 @@ function updateHeaders( config, opt = {} ) {
     if ( bbxToken ) {
 // md5 的body是哪
         // md5( body + token + ts )
-        bbxSign = aesEncrypy( JSON.stringify( {
-            origin_uid: 21,
-            vol: 1,
-            coin_code: 'BTC'
-        } ), bbxToken, nonce );
+        bbxSign = aesEncrypy( JSON.stringify( config.data ), bbxToken, nonce );
         console.log( 'aesEncrypy: ', config.data, bbxToken, nonce );
         console.log( 'bbxSign:', bbxSign );
 
@@ -81,7 +77,7 @@ function updateHeaders( config, opt = {} ) {
 
 // request
 axios.interceptors.request.use( config => {
-    console.log( config )
+    // console.log( config )
 
     // NOTE: 取消预检请求 OPTIONS
     // if(config.method === 'post' || config.method === 'get') {

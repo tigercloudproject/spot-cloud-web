@@ -75,7 +75,7 @@ class UserInfo extends Component {
         // this.props.history.push(`/${search}`);
 
     }
-    gotoUsercenter(type) {
+    gotoUsercenter(type = '') {
         let search = "";
         if(this.props.default && this.props.default.value) {
             search = `?lang=${this.props.default.value}`;

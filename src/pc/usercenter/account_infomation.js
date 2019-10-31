@@ -92,6 +92,24 @@ class AccountSecurity extends Component {
         }
     }
 
+    //监听表单项变化
+  // handleValueChange( key, name, value ) {
+  //       const { form } = this.state;
+  //
+  //       switch ( field ) {
+  //           case 'agree':
+  //               assetApp2Account
+  //                   newFieldObj.valid = false;
+  //               }
+  //               break;
+  //           default:
+  //       }
+  //
+  //       if(this.mounted) {
+  //
+  //       }
+  //     }
+
     //获取绑定验证码
     getBindingVrifyCode() { }
 
@@ -192,9 +210,30 @@ class AccountSecurity extends Component {
                                     </dt>
                                     <dd>
                                         <ul>
-                                            <li><label>origin_uid 源账号Id</label><input type="text" value={ this.state.assetApp2Account.origin_uid || '' } /></li>
-                                            <li><label>vol 不要太大数额</label><input type="text" value={ this.state.assetApp2Account.vol || '' } /></li>
-                                            <li><label>coin_code 币种</label><input type="text" value={ this.state.assetApp2Account.coin_code || '' } /></li>
+                                            <li><label>origin_uid 源账号Id</label><input type="text" onChange={(e) =>
+                                                this.setState({
+                                                    assetApp2Account: {
+                                                        ...this.state.assetApp2Account
+                                                        , 'origin_uid': e.target.value
+                                                    }
+                                                })
+                                            } value={ this.state.assetApp2Account.origin_uid || '' } /></li>
+                                            <li><label>vol 不要太大数额</label><input type="text" onChange={(e) =>
+                                                this.setState({
+                                                    assetApp2Account: {
+                                                        ...this.state.assetApp2Account
+                                                        , 'vol': e.target.value
+                                                    }
+                                                })
+                                            } value={ this.state.assetApp2Account.vol || '' } /></li>
+                                            <li><label>coin_code 币种</label><input type="text" onChange={(e) =>
+                                                this.setState({
+                                                    assetApp2Account: {
+                                                        ...this.state.assetApp2Account
+                                                        , 'coin_code': e.target.value
+                                                    }
+                                                })
+                                            } value={ this.state.assetApp2Account.coin_code || '' } /></li>
                                             <li><label></label><button className="submit" onClick={this.assetApp2AccountSubmit}>提交</button></li>
                                         </ul>
                                     </dd>
@@ -206,8 +245,22 @@ class AccountSecurity extends Component {
                                     </dt>
                                     <dd>
                                         <ul>
-                                            <li><label>origin_uid 源账号Id</label><input type="text" value={ this.state.assetQueryAccount.origin_uid || '' } /></li>
-                                            <li><label>coin_code 币种</label><input type="text" value={ this.state.assetQueryAccount.coin_code || '' } /></li>
+                                            <li><label>origin_uid 源账号Id</label><input type="text" onChange={(e) =>
+                                                this.setState({
+                                                    assetQueryAccount: {
+                                                        ...this.state.assetQueryAccount
+                                                        , 'origin_uid': e.target.value
+                                                    }
+                                                })
+                                            } value={ this.state.assetQueryAccount.origin_uid || '' } /></li>
+                                            <li><label>coin_code 币种</label><input type="text" onChange={(e) =>
+                                                this.setState({
+                                                    assetQueryAccount: {
+                                                        ...this.state.assetQueryAccount
+                                                        , 'coin_code': e.target.value
+                                                    }
+                                                })
+                                            } value={ this.state.assetQueryAccount.coin_code || '' } /></li>
                                             <li><label></label><button className="submit" onClick={this.assetQueryAccountSubmit}>提交</button></li>
                                         </ul>
                                     </dd>

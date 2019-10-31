@@ -32,6 +32,7 @@ export const userAjax = {
     asset_app2account: CFG.isSimRespon
         ? { url: '_/asset_app2account', type: 'get' }
         : { url: 'https://v-exchange.bbx.com/spot', type: 'post' },
+    // 查询账号 币币资产
     asset_query_account: CFG.isSimRespon
         ? { url: '_/asset_query_account', type: 'get' }
         : { url: 'https://v-exchange.bbx.com/spot', type: 'post' },
@@ -77,7 +78,7 @@ export const assetsAjax = {
     // 获得用户资产信息
     propety_info: CFG.isSimRespon
         ?  '_simResponse/me'
-        : '_simResponse/me'
+        : CFG.reqHost + '/v1/ifaccount/users/me'
     // ================================== DEMO END =============================
 }
 
@@ -96,6 +97,5 @@ export const accountAjax = {
 }
 
 export const activeAjax = {
-    // rank: CFG.reqHost + "/v1/ifcontract/statisprofit",
     // active_info: CFG.reqHost + "/v1/ifactivity/userActivityInfo"
 }

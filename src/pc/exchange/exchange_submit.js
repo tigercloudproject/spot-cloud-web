@@ -659,6 +659,7 @@ class PayBix extends Component {
         case 9:
             obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d\d\d\d\d\d\d\d).*$/, "$1$2.$3");
             break;
+        default:
     }
     //obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d\d\d\d\d\d\d).*$/, "$1$2.$3"); //只能输入两个小数
     // if (obj.value.indexOf(".") < 0 && obj.value != "") {
@@ -696,8 +697,8 @@ class PayBix extends Component {
         this.clearNoNum(newFieldObj,this.state.vol_unit);
         if (this.state.big_buy_volume && this.isNumber(value)) {
           b_one = Number(this.state.big_buy_volume).div(100);
-          //console.log("this.state.big_buy_volume###", this.state.big_buy_volume);
-          //console.log("Number(value).div(b_one)###", Number(value).div(b_one));
+          console.log("this.state.big_buy_volume###", this.state.big_buy_volume);
+          console.log("Number(value).div(b_one)###", Number(value).div(b_one));
           if(this.mounted) {
             this.setState({
               buy_silder: Number(value).div(b_one)
@@ -726,6 +727,7 @@ class PayBix extends Component {
           }
         }
         break;
+        default:
     }
 
     if (this.mounted) {
@@ -787,6 +789,7 @@ class PayBix extends Component {
       }
     }
     if(this.mounted) {
+        console.log( 'calculateBigBuyVolume', Number(result), Number(result).div(this.state.form.buy_price.value), this.state.form.buy_price.value );
       this.setState({
         big_buy_volume: Number(result).div(this.state.form.buy_price.value)
       })
@@ -900,12 +903,11 @@ class PayBix extends Component {
         return;
       }
 
-      //如果交易量大于最大可交易量
-
+      // 如果交易量大于最大可交易量
       if (Number(vol) > Number(this.state.big_buy_volume)) {
         notification.error({
           message: intl.get("error_message_title"),
-          description: intl.get("insufficient_balance")
+          description: vol + '\n\r' + this.state.big_buy_volume + '\n\r' + JSON.stringify( this.state )
         });
 
         this.setState({ canSubmitBuy: true });
@@ -957,7 +959,7 @@ class PayBix extends Component {
       }
 
 
-      //console.log("big_sell_volume####", this.state.big_sell_volume);
+      console.log( vol, this.state.big_sell_volume, this.state )
       //如果交易量大于最大可交易量
       if (Number(vol) > Number(this.state.big_sell_volume)) {
         notification.error({
@@ -1115,7 +1117,7 @@ class PayBix extends Component {
       })
 
       //如果交易量大于最大可交易量
-
+      console.log( vol, this.state.big_buy_volume, this.state )
       if (Number(vol) > Number(this.state.big_buy_volume)) {
         notification.error({
           message: intl.get("error_message_title"),
@@ -1139,18 +1141,15 @@ class PayBix extends Component {
           canSubmitBuy: true
         })
 
-        return;
+        return false;
       }
-
-
-
     } else { //卖
       vol = this.state.form.sell_volume.value;
       price = this.state.form.sell_price.value;
       this.setState({
         canSubmitSell: false
       })
-      //console.log("big_sell_volume####", this.state.big_sell_volume);
+      console.log( vol, this.state.big_sell_volume, this.state )
       //如果交易量大于最大可交易量
       if (Number(vol) > Number(this.state.big_sell_volume)) {
         notification.error({

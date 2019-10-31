@@ -299,6 +299,7 @@ export function getAssets(coinPair) {
     return (dispatch, getState) => {
         let arr = [getUserAssetsInfo(),getCurrentOrder(coinPair), getHistoryOrder(coinPair), getTradeRecords(coinPair)];
         return Promise.all(arr).then((res) => {
+            console.log( '获取BBX资产相关', res )
             //用户资产
             if (res[0] && res[0].data && res[0].data.errno === "OK" && res[0].data.data && res[0].data.data.user_assets) {
                 dispatch(setBbxAssets({ bbx_assets_list: res[0].data.data.user_assets}));
