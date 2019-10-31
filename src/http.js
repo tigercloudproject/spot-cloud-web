@@ -47,12 +47,19 @@ function updateHeaders( config, opt = {} ) {
 
     // 有 token 才 Sign
     if ( bbxToken ) {
-
         // md5( body + token + ts )
+        console.log( 'config.data', config.data )
+        let body = config.data;
+
         // 如果无参数，则 body 应为空字符串
-        let body = JSON.stringify( config.data );
-        
-        let s = ( body == null ? '' : body ) +  bbxToken +  nonce
+        if ( body == null ) {
+            body = '';
+        }
+        if ( typeof body === 'object' ) {
+            body = JSON.stringify( body );
+        }
+
+        let s = body + bbxToken + nonce;
         bbxSign = new MD5( s ).hash()
         console.log( s )
         console.log( 'aesEncrypy: ', body, bbxToken, nonce );
@@ -83,7 +90,7 @@ function updateHeaders( config, opt = {} ) {
 
 // request
 axios.interceptors.request.use( config => {
-    // console.log( config )
+    console.log( config )
 
     // NOTE: 取消预检请求 OPTIONS
     // if(config.method === 'post' || config.method === 'get') {

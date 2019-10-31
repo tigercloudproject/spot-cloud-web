@@ -142,7 +142,7 @@ class PayBix extends Component {
           canSubmitSell: true
         })
 
-
+console.log( response )
         if (response.data.errno=="OK") {
           this.props.getPropetyInfo();
           notification.success({

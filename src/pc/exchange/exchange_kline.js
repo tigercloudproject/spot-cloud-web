@@ -197,6 +197,7 @@ class ExchangeKline extends Component {
 
     if (!window.webSocket_bbx) {
       window.webSocket_bbx = webSocketFn(indexAjax.bbx_websocket);
+      window.webSocket_bbx.reqCD = CFG.reqWebsocketCD;
     }
 
     if(this.props.stocks) {

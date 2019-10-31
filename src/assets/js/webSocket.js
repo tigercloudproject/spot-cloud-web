@@ -1,3 +1,5 @@
+
+
 // import Utils from './utils'
 class WebSocketClass {
   constructor(wsUrl) {
@@ -7,6 +9,7 @@ class WebSocketClass {
     this.isConnection = false;
     this.isErrorCallBack = false;
     this.lockReconnect = false; // 避免重复连接
+    this.reqCD = 2000;  // 再次请求的时间（毫秒）
     this.ping = null;
     this.cmdTime = {}; // 没有发送的消息队列
     this.heartCheck();
@@ -62,7 +65,7 @@ class WebSocketClass {
     setTimeout(() => {
       this.createWebSocket(true);
       this.lockReconnect = false;
-    }, 2000);
+    }, this.reqCD );
   }
   errorCallBackData() {
     if (!this.isErrorCallBack) {

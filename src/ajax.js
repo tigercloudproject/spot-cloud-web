@@ -1,10 +1,8 @@
 import CFG from "./config.js";
 
 export const globalAjax = {
+    user_config: CFG.reqHost + '/v1/ifglobal/userConfigs',
     // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
-    user_config: CFG.isSimRespon
-        ? '_simResponse/userConfigs'
-        : CFG.reqHost + '/v1/ifglobal/userConfigs',
     // 获得 child token 等
     child_token: CFG.isSimRespon
         ? { url: '_simResponse/childToken', type: 'get' }

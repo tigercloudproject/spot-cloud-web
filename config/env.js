@@ -85,6 +85,7 @@ function getClientEnvironment(publicUrl) {
         REQ_HOST: process.env.REQ_HOST || 'https://api.bbx.com',
         REQ_WEBSOCKET: process.env.REQ_WEBSOCKET || 'wss://api.bbx.com/v1/ifspot/realTime',
         SIM_RESPONSE: process.env.SIM_RESPONSE || 'true',
+        REQ_WEBSOCKET_CD: process.env.REQ_WEBSOCKET_CD || 2000,
         // number
         REQ_TIMEOUT: +process.env.REQ_TIMEOUT || 5000
       }

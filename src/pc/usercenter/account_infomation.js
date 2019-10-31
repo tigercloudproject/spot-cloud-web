@@ -153,7 +153,7 @@ class AccountSecurity extends Component {
         };
 
         //let user = this.state.user;
-        let user = JSON.parse(localStorage.getItem("user"));
+        let user = JSON.parse(localStorage.getItem("user")) || {};
         //console.log("user###",user);
 
        // console.log("user###",user);
@@ -275,7 +275,7 @@ class AccountSecurity extends Component {
                                         <p>UID：{ user && user.account_id ? user.account_id : null}</p>
                                     </li>
                                     <li className="clearfix">
-                                        <p>{intl.get("nickname")}：{ user && nickname ? nickname : "BBX_" + user.account_id}</p>
+                                        <p>{intl.get("nickname")}：{ nickname ? nickname : "BBX_" + user.account_id}</p>
                                         {nickname ? null
                                             : <Link to={{ pathname: "/usercenter/account_information/set_nickname", search: `${location.search}` }}>
                                                 {intl.get("nickname-set")}
