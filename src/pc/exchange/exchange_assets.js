@@ -157,7 +157,10 @@ class ExchangeAssets extends Component {
     let available = webExchange(list, "USDT", coin_prices, usd_rates, spot_tickers, "available_vol");
     let freezeVol = webExchange(list, "USDT", coin_prices, usd_rates, spot_tickers, "freeze_vol");
     let usdt_result = Number(available).add(Number(freezeVol));
-    usd_result = usdt_result.mul(Number(priceUSD["USDT"]));
+    if ( priceUSD ) {
+        usd_result = usdt_result.mul(Number(priceUSD["USDT"]));
+    }
+
     cny_result = Number(usd_result).mul(Number(cny));
 
 

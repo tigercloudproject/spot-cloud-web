@@ -32,7 +32,7 @@
 .modify-password {
     width: 600px;
     font-size: 12px;
-    
+
     .form-have-btn {
         width: 100%;
         .input-have-btn {
@@ -283,7 +283,7 @@
             padding-left: 15px;
             font-size: 12px;
         }
-        
+
     }
     .error {
         padding-left: 70px;
@@ -373,14 +373,14 @@
                     padding:0px 10px;
                 }
             }
-            
+
         }
 
         .modify-pwd-btn {
             height: 40px;
             line-height: 40px;
         }
-        
+
     }
     .binding-phone,.binding-email {
         width: 100%;
@@ -392,4 +392,32 @@
         top: 0px;
         z-index: 110000;
     }
+}
+
+dl {
+
+}
+dl dt h3 {
+    color: #eee;
+    font-size: 24px;
+}
+dl dt p {
+    color: #aaa;
+}
+dl dd li {
+    padding: 8px;
+}
+dl dd label {
+    color: #eee;
+    padding: 6px;
+    width: 140px;
+    display: inline-block;
+}
+dl dd input {
+    height: 30px;
+padding: 0 6px;
+    border: 0px;
+}
+dl dd button {
+    padding: 6px 20px;
 }

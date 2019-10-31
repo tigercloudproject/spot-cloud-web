@@ -4,6 +4,7 @@ import { setCookie, delCookie, getCookie } from "./utils/cookie.js";
 import { getQueryString } from "./utils/getQueryString.js";
 import { clearSignCaches } from "./utils/common.js";
 import qs from 'qs';
+import MD5 from "./utils/md5.js";
 import { notification } from "antd";
 import intl from "react-intl-universal";
 import CFG from "./config.js";
@@ -46,10 +47,15 @@ function updateHeaders( config, opt = {} ) {
 
     // 有 token 才 Sign
     if ( bbxToken ) {
-// md5 的body是哪
+
         // md5( body + token + ts )
-        bbxSign = aesEncrypy( JSON.stringify( config.data ), bbxToken, nonce );
-        console.log( 'aesEncrypy: ', config.data, bbxToken, nonce );
+        // 如果无参数，则 body 应为空字符串
+        let body = JSON.stringify( config.data );
+        
+        let s = ( body == null ? '' : body ) +  bbxToken +  nonce
+        bbxSign = new MD5( s ).hash()
+        console.log( s )
+        console.log( 'aesEncrypy: ', body, bbxToken, nonce );
         console.log( 'bbxSign:', bbxSign );
 
         // 设置头部信息

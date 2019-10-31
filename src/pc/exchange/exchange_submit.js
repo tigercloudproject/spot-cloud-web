@@ -789,7 +789,6 @@ class PayBix extends Component {
       }
     }
     if(this.mounted) {
-        console.log( 'calculateBigBuyVolume', Number(result), Number(result).div(this.state.form.buy_price.value), this.state.form.buy_price.value );
       this.setState({
         big_buy_volume: Number(result).div(this.state.form.buy_price.value)
       })
