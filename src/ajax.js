@@ -2,7 +2,7 @@ import CFG from "./config.js";
 
 export const globalAjax = {
     user_config: CFG.reqHost + '/v1/ifglobal/userConfigs',
-    g_config: CFG.reqHost + "/v1/ifglobal/global",
+    g_config: CFG.reqHost + "/v1/ifglobal/global",  // 全局配置
     app_list: CFG.reqHost + "/v1/ifglobal/appBuilds"
 }
 
@@ -39,7 +39,8 @@ export const userAjax = {
     bind_email: CFG.reqHost + "/v1/ifaccount/bindEmail",
     bind_phone: CFG.reqHost + "/v1/ifaccount/bindPhone",
     active: CFG.reqHost + "/v1/ifaccount/users/active",
-    captch_check: CFG.reqHost + "/v1/ifaccount/captchCheck?action=", //检查是否需要图片验证码
+    // 检查是否需要图片验证码
+    captch_check: CFG.reqHost + "/v1/ifaccount/captchCheck?action=",
 }
 
 export const indexAjax = {
@@ -55,18 +56,26 @@ export const exchangeAjax = {
         ? '_simResponse/spot?'
         : CFG.reqHost + "/v1/ifmarket/v2/spot?",
     // ================================== DEMO END =============================
+    // 现货交易信息
     spot_detail: CFG.reqHost + "/v1/ifmarket/spotDetail",
     //spot_dash: "https://api.bbx.com/v1/ifmarket/spot",
     spot_dash: CFG.reqHost + "/v1/ifmarket/",
+    // 提交订单
     save_order: CFG.reqHost + "/v1/ifmarket/submitOrder",
+    // 委托记录
     get_order: CFG.reqHost + "/v1/ifmarket/getOrders",
+    // 用户交易记录
     get_trade: CFG.reqHost + "/v1/ifmarket/getUserTrades",
+    // 撤销订单
     cancel_order: CFG.reqHost + "/v1/ifmarket/cancelOrder",
+    // 批量撤单
     cancel_orders: CFG.reqHost + "/v1/ifmarket/cancelOrders",
-    coin_brief: CFG.reqHost + "/v1/ifglobal/coinBrief",  //币种介绍
+    // 币种介绍
+    coin_brief: CFG.reqHost + "/v1/ifglobal/coinBrief",
     // spot_hour_dash: "https://api.bbx.com/v1/ifmarket/spothour",
     // spot_daily_dash: "https://api.bbx.com/v1/ifmarket/spotdaily"
-    stocks: CFG.reqHost + "/v1/ifmarket/stocks", //获取现货对
+    // 获取现货对
+    stocks: CFG.reqHost + "/v1/ifmarket/stocks"
 }
 
 export const assetsAjax = {

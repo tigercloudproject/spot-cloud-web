@@ -64,7 +64,7 @@ location / {
 }
 ```
 
-#### 生产模式
+##### 生产模式
 
 1.  配置 `.env.production`。老虎云接口默认为正式API。
 2.  运行
@@ -88,7 +88,7 @@ location / {
 
 1. 打开页面后，点击右上角的按钮
 【图1】
-2. 当前会自动填写完注册信息，这里需要记录下邮箱地址，注册密码是**111111**
+2. 当前会自动填写注册信息，这里需要记录下邮箱地址，注册密码是**111111**
 【图2】
 3. 注册完成后，点开头像点击UID，进入账号信息
 【图3】
@@ -138,7 +138,7 @@ Request Headers 必须带上以下 Key:
 
 *容器名+'-h5'则为移动端界面*
 
-| 组件名称 | 文件 | 容器 |
+| 组件名称 | 文件 | 容器名 |
 |----------|-----------------------------------------|--------------------------------------|
 | 顶部导航 | src/pc/component/pc-header.js | className="pc-header" |
 | 市场 | src/pc/exchange/exchange_market.js | className="exchange-market-box" |
@@ -149,9 +149,29 @@ Request Headers 必须带上以下 Key:
 | 登录 | src/pc/register/login.js | className="login-box" |
 | 注册 | src/pc/register/register.js | className="login-box" |
 
+### 功能点
+
+- 账号注册、登录、登出
+- 合并深度保留  1、2位小数
+- 委托展示:卖和买、只买、只卖
+- 限价委托购买、卖出
+- 市价委托购买、卖出
+- 当前委托展示
+- 历史委托展示
+- 交易记录展示
+- 是否显示其他交易对
+- 批量撤单
+- 查看所有操作记录
+- 点击深度价格进行相应买卖
+- 点击眼睛 展示和隐藏资产
+- 语言切换：支持简体中文、繁体中文、英文、韩文等语种
+- 切换交易对可改变币种介绍
+
 ## FAQ
 
 1. 修改 `币种介绍` 的文本内容  
     目前通过接口 `coinBrief` 动态获取，可针对该接口做处理
 2. Response 返回 `invalid request`  
-    请检查 Request Headers 中是否带有 `Bbx-Accesskey`、`Bbx-ExpiredTs`、`Bbx-Uid`、`Bbx-Sign`、`Bbx-Ver`、`Bbx-Dev`、`Bbx-Ts`、`Bbx-Ssid` 这些key。如有缺少，则需要在 `./src/http.js` 下进行配置。一般不会出现这问题。
+    请检查 Request Headers 中是否带有 `Bbx-Accesskey`、`Bbx-ExpiredTs`、`Bbx-Uid`、`Bbx-Sign`、`Bbx-Ver`、`Bbx-Dev`、`Bbx-Ts`、`Bbx-Ssid` 这些key。如有缺少，则需要在 `./src/http.js` 下进行配置。
+3. 修改css样式后会被删除  
+    编辑样式时，需修改 `.scss` 文件，同文件名的 `.css` 为自动生成
