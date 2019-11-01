@@ -2,12 +2,6 @@ import CFG from "./config.js";
 
 export const globalAjax = {
     user_config: CFG.reqHost + '/v1/ifglobal/userConfigs',
-    // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
-    // 获得 child token 等
-    child_token: CFG.isSimRespon
-        ? { url: '_simResponse/childToken', type: 'get' }
-        : { url: 'https://v-exchange.bbx.com/common', type: 'post' },  // 需修改为自己后端的该功能接口
-    // ================================== DEMO END =============================
     g_config: CFG.reqHost + "/v1/ifglobal/global",
     app_list: CFG.reqHost + "/v1/ifglobal/appBuilds"
 }
@@ -26,6 +20,10 @@ export const userAjax = {
     logout: CFG.isSimRespon
         ? '_simResponse/logout'
         : CFG.reqHost + '/v1/ifaccount/logout',
+    // 获得子账号对应的 token 等向老虎云请求时必须的参数
+    child_token: CFG.isSimRespon
+        ? { url: '_simResponse/childToken', type: 'get' }
+        : { url: 'https://v-exchange.bbx.com/common', type: 'post' },
     // 从母账号向子账号转钱
     asset_app2account: CFG.isSimRespon
         ? { url: '_/asset_app2account', type: 'get' }

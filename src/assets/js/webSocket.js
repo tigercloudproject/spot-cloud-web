@@ -8,7 +8,7 @@ class WebSocketClass {
     this.errorCallBackFunObj = {};
     this.isConnection = false;
     this.isErrorCallBack = false;
-    this.lockReconnect = false; // 避免重复连接
+    // this.lockReconnect = false; // 避免重复连接
     this.reqCD = 2000;  // 再次请求的时间（毫秒）
     this.ping = null;
     this.cmdTime = {}; // 没有发送的消息队列
@@ -56,15 +56,14 @@ class WebSocketClass {
     };
   }
   reconnect() {
-    this.isConnection = false;
-    if (this.lockReconnect) {
-      return;
+    if ( this.isConnection ) {
+        return false;
     }
-    this.lockReconnect = true;
+    // this.lockReconnect = true;
     // 没连接上会一直重连，设置延迟避免请求过多
     setTimeout(() => {
       this.createWebSocket(true);
-      this.lockReconnect = false;
+      // this.lockReconnect = false;
     }, this.reqCD );
   }
   errorCallBackData() {

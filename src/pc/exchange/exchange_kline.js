@@ -253,7 +253,6 @@ class ExchangeKline extends Component {
 
   init() {
     let coinPair = getQueryString(this.props.location.search, "coinPair");
-    // let coinPair = getQueryString(this.props.location.search, "coinPair") || 'BTC/USDT';
 
     let lang = this.props.default.value || "zh-CN";
     let langObj = {
@@ -460,16 +459,10 @@ class ExchangeKline extends Component {
     let klineIfarme = document.querySelector("#" + widget.id);
     klineIfarme.style.visibility = "hidden";
     let isLoad = () => {
-      try {
-          if ( klineIfarme.contentWindow && klineIfarme.contentWindow.document.readyState === "complete")
-          {
-            klineIfarme.style.visibility = "";
-            clearInterval(t);
-          }
-      } catch (e) {
-
-      } finally {
-
+      if ( klineIfarme.contentWindow && klineIfarme.contentWindow.document.readyState === "complete")
+      {
+        klineIfarme.style.visibility = "";
+        clearInterval(t);
       }
     };
     t = setInterval(isLoad, 1000);

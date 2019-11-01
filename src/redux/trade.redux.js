@@ -227,8 +227,6 @@ export function getBbxTickerInfo(coin_pair) {
 
             themeOut = `{"action":"unsubscribe","args":${args}}`;
             window.webSocket_bbx.webSocketSend(`{"action": "subscribe", "args": ${args}}`);
-
-
         })
     }
 }

@@ -33,10 +33,6 @@ function userConfig(data) {
     return {type: USER_CONFIG, payload: data};
 }
 
-function appList(data) {
-    return {type: APP_LIST, payload: data}
-}
-
 export function getGlobalConfig() {
     return (dispatch, getState) => {
         return axios.get(globalAjax.g_config).then(
@@ -78,8 +74,8 @@ export function getUser() {
                 return {};
             }
         }, (err) => {
-            return {};
             console.log('getPropetyInfo失败了###', err);
+            return {};
         })
     }
 }

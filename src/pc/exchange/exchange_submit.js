@@ -904,10 +904,10 @@ console.log( response )
 
       // 如果交易量大于最大可交易量
       if (Number(vol) > Number(this.state.big_buy_volume)) {
-        notification.error({
-          message: intl.get("error_message_title"),
-          description: vol + '\n\r' + this.state.big_buy_volume + '\n\r' + JSON.stringify( this.state )
-        });
+          notification.error({
+            message: intl.get("error_message_title"),
+            description: intl.get("insufficient_balance")
+          });
 
         this.setState({ canSubmitBuy: true });
 
@@ -1357,9 +1357,6 @@ console.log( response )
 
         <ul className="pay-bix-tab">{tabLi}</ul>
         {/* {currentTab === 0 ? <div className="h-20" /> : null} */}
-
-
-
         <MediaQuery minWidth={676}>
 
           <div className="pay-bix-form">

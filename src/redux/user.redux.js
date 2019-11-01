@@ -481,7 +481,7 @@ function getChildToken( origin_uid, user_token ) {
              }
         };
 
-        return axios[ globalAjax.child_token.type ]( globalAjax.child_token.url
+        return axios[ userAjax.child_token.type ]( userAjax.child_token.url
                 , qs.stringify( data )
                 , opt )
             .then( response => {

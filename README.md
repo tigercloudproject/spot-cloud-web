@@ -1,8 +1,8 @@
-# 币币交易 - bbx-spot-web
+# 老虎云币币交易 - 前端 Demo
 
-> 老虎币币云前端demo
 > 该项目使用了react框架，有关工作原理的详细说明请查看官方文档
 > 项目方需自己实现登陆注册功能，本demo只提供币币交易功能
+> 只有开发环境需要 Node.js 支持
 
 ## 部署
 
@@ -33,10 +33,9 @@ npm install webpack -g
 
 ##### 开发模式
 
-本模式会启动 `webpackDevServer`。  
-BBX接口默认为测试API。
+本模式会启动 `webpackDevServer`。
 
-1.  配置 `.env.development` 内的 `HOST` 为自己所需的域名（修改后需修改后续步骤中的domain）
+1.  配置 `.env.development` 。其 `HOST` 为自己所需的域名（后续步骤中的 domain 也请一并修改），默认为127.0.0.1。老虎云接口默认为测试API。
 2.  本地host配置相关domain。因为 Webpack 会检查该 `HOST`，如果找不到则会中断报错。
     ```
     127.0.0.1 spot.bbx.com
@@ -49,63 +48,95 @@ BBX接口默认为测试API。
 
 ##### 测试模式
 
-1.  配置 `.env.test`
-2.  本地host配置相关domain
-    ```
-    127.0.0.1 bbx.com
-    ```
-3.  运行
+1.  配置 `.env.test`。老虎云接口默认为测试API。
+2.  运行
     ```bash
     npm run test
     ```
-4.  会在根目录生成 `./build` 文件夹，把其打包上传至测试服
-5.  配置 nginx
+    会在根目录生成 `./build` 文件夹
+3.  请把 `./build` 文件夹打包上传至测试服
+4.  配置 nginx 的 try_files
+```
+location / {
+    add_header X-Frame-Options SAMEORIGIN;
+    root /data/www/build;
+    try_files $uri /index.html;
+}
+```
 
+#### 生产模式
 
-##### 生产模式
-
-
-- 生产环境部署
+1.  配置 `.env.production`。老虎云接口默认为正式API。
+2.  运行
     ```bash
-    # bash
     npm run build
     ```
-- 测试、开发环境部署
-    ```bash
-    # bash
-    npm run dev-build
-    ```
-    访问<http://test.bbx.com:3000>
-- 本地启服
-    ```bash
-    # bash
-    npm start
-    ```
+    会在根目录生成 `./build` 文件夹
+3.  请把 `./build` 文件夹打包上传至正式服
+4.  配置 nginx 的 try_files
+```
+location / {
+    add_header X-Frame-Options SAMEORIGIN;
+    root /data/www/build;
+    try_files $uri /index.html;
+}
+```
 
+## 说明
 
+### 账号流程演示
 
-所有请求分为 `交易所接口` 和 `老虎云接口`，`老虎云接口` 的 Request Headers
+1. 打开页面后，点击右上角的按钮
+【图1】
+2. 当前会自动填写完注册信息，这里需要记录下邮箱地址，注册密码是**111111**
+【图2】
+3. 注册完成后，点开头像点击UID，进入账号信息
+【图3】
+4. 这里的 Demo，演示交易所转钱、查询账户的功能，
+【图4】
 
+### 接口
 
+项目内所有请求分为 `交易所接口` 和 `老虎云接口`。  
 
-## 更改Public的步骤及逻辑
+#### 老虎云接口
 
-- 前端 src
-    - `./src/config.js`
-        - 依靠 `document.domain` 进行判断，为 `test.bbx.com` 域名访问时，则为测试、开发模式，否则生产模式
-        - `publicPath` 的值
-- node build
-    - `./config/paths.js`
-        - 依靠 `process.env.RUNES_ENV` 的值为 development 就是测试、开发环境，其他则为生产
-        - `Production_Public_Path` 的值
+Request Headers 必须带上以下 Key:
 
+- `Bbx-Accesskey`: 服务器返还的 access key
+- `Bbx-ExpiredTs`: 服务器返还的时间戳有效期
+- `Bbx-Uid`: 云用户id，非交易所用户id
+- `Bbx-Sign`: 签名，公式请在 `./src/http.js` 内查看
+- `Bbx-Ver`: 固定版本值
+- `Bbx-Dev`: 固定模式值
+- `Bbx-Ts`: 前端生成的当前请求时间戳
+- `Bbx-Ssid`: 针对移动设备专用，web端为空
 
-## 登录、退出相关逻辑
-- 退出:     pc/component/user_info  此文件内 可自行添加相关内容， 例：kyc身份认证、api管理等等。。。。
-- 登录：
+针对这部分的配置，可查看 `./src/http.js`。
 
+#### 交易所接口
 
-## 组件
+由于 `交易所接口` 需要第三方来部署，因此本项目包含 Demo 性质的模拟接口数据，可在对应模式的 `./env.**` 文件中的 `SIM_RESPONSE` 配置为 `true`， 即可打开体验。  
+模拟接口数据存放在 `./public/_simResponse` 内。  
+由于采用 `axios.interceptors` ，为了区分两大规则的接口，这里采用在
+ Request 时给 Headers 新增 `Skip-Set-Axios-Headers: 'true'`，即可跳过 `老虎云接口` 的 Headers 配置，防止 Headers 污染。
+
+以下为 Demo 中已完成的接口例子，可在 `./ajax.js` 中修改成交易所的接口地址
+
+- userAjax.child_token: 从交易所获得子账号token等必要参数
+- userAjax.register: 交易所的用户账号注册
+- userAjax.login: 交易所的用户账号登录
+- userAjax.logout: 交易所的用户账号登出
+- userAjax.asset_app2account: 交易所内的母账号给子账号（本账号）转钱
+- userAjax.asset_query_account: 交易所内查询本账号的资产
+
+### 缓存机制
+
+- 当前的账号登录判定以 Cookies `bbx_token` 是否存在为条件。
+
+### 组件
+
+*容器名+'-h5'则为移动端界面*
 
 | 组件名称 | 文件 | 容器 |
 |----------|-----------------------------------------|--------------------------------------|
@@ -118,131 +149,9 @@ BBX接口默认为测试API。
 | 登录 | src/pc/register/login.js | className="login-box" |
 | 注册 | src/pc/register/register.js | className="login-box" |
 
-*容器名+'-h5'则为移动端界面*
-
 ## FAQ
 
 1. 修改 `币种介绍` 的文本内容  
     目前通过接口 `coinBrief` 动态获取，可针对该接口做处理
-2.
 2. Response 返回 `invalid request`  
     请检查 Request Headers 中是否带有 `Bbx-Accesskey`、`Bbx-ExpiredTs`、`Bbx-Uid`、`Bbx-Sign`、`Bbx-Ver`、`Bbx-Dev`、`Bbx-Ts`、`Bbx-Ssid` 这些key。如有缺少，则需要在 `./src/http.js` 下进行配置。一般不会出现这问题。
-
-
-账号的登录、登出、注册机制
-账号登录后，更新 `Cookie` 内的 `token`、`ssid`、`uid` 并写入 ，用户数据写入 `localStorage` 的 `user`；
-账号登出后，删除 `Cookie` 内的 `token`、`ssid`、`uid`，清除 `localStorage` 的 `user`。
-
-
-localStorage.setItem("user", JSON.stringify(data));
-}
-setCookie("token", token, 1, CFG.mainDomainName, "/");
-setCookie("ssid", ssid, 1, CFG.mainDomainName, "/");
-setCookie("uid", uid, 1, CFG.mainDomainName, "/");
-
-
-# 功能介绍
-- 登录
-- 退出
-
-- 合并深度保留  1、2位小数
-- 委托展示:卖和买、只买、只卖
-- 限价委托购买、卖出
-- 市价委托购买、卖出
-- 当前委托展示
-- 历史委托展示
-- 交易记录展示
-- 是否显示其他交易对
-- 批量撤单
-- 查看所有操作记录
-- 点击深度价格进行相应买卖
-- 点击眼睛 展示和隐藏资产
-- 语言切换：支持简体中文、繁体中文、英文、韩文等语种
-
-- 切换交易对->币种介绍
-
-
-
-
-token 来自 response.headers["bbx-token"]
-ssid  response.headers["bbx-ssid"]
-uid response.headers["bbx-uid"]
-
-ls user 来自用户数据
-
-
-从 Response Headers 获得 `bbx-token`、`bbx-ssid`、`bbx-uid`，在有值的情况下存入 Cookie 的 `token`、`ssid`、`uid`。
-当 Request 时，从在其 Headers 中加入 `Bbx-Ts`、`Bbx-Ver`、`Bbx-Dev`、`Bbx-Accesskey`、`Bbx-ExpiredTs`、`Bbx-Sign`、`Bbx-Ssid`、`Bbx-Uid`。
-
-本 Demo 模拟了账号 Request，
-
-
-http.js 要删掉
-let bbxToken = response.headers[ "bbx-token" ] || 'f5a58f3011fc34fb4e6befbd0c1229b6'
-  , bbxSsid = response.headers[ "bbx-ssid" ] || ''
-  , bbxUid = response.headers[ "bbx-uid" ] || '2090193280';
-
-
-  if ( response.config.url.indexOf( '_simResponse/login' ) === 0 ) {
-      bbxToken = 'f5a58f3011fc34fb4e6befbd0c1229b6'
-      bbxSsid = '';
-      bbxUid = '2090193280';
-  };
-
-
-Headers 内 { 'Skip-Set-Axios-Headers': true }
-
-
-
-
-user.redux.js
-    loginPost  要改成 get
-    registerPost 要改成 get
-
-
-    v1/ifglobal/global                               全局配置
-v1/ifglobal/userConfigs                       用户配置
-v1/ifglobal/appBuilds
-
-v1/ifaccount/verifyCode                         验证码
-v1/ifaccount/users/register                    注册
-v1/ifglobal/phoneCode                         手机号前缀
-v1/ifaccount/login                                登录
-v1/ifaccount/users/resetPassword        重置密码
-v1/ifaccount/bindEmail                        绑定邮箱
-v1/ifaccount/bindPhone                       绑定手机
-v1/ifaccount/users/active
-v1/ifaccount/logout                             登出
-v1/ifaccount/captchCheck?action=      检查是否需要图片验证码
-
-v1/ifmarket/v2/spotTickers
-bbx_websocket
-
-v1/ifmarket/spotDetail         现货交易信息
-v1/ifmarket/v2/spot?            
-v1/ifmarket/submitOrder      提交订单           post
-v1/ifmarket/getOrders          委托记录           get
-v1/ifmarket/getUserTrades    用户交易记录    get
-v1/ifmarket/cancelOrder       撤销订单           post
-v1/ifmarket/cancelOrders     批量撤单            post
-v1/ifmarket/stocks              获取现货对          get
-v1/ifglobal/coinBrief           币种介绍              get
-
-
-v1/ifaccount/users/me         获取用户资产
-
-
-
-token 云token
-ssid  云ssid，非web的设备上使用
-uid 云uid
-
-
-
-
-用户token  user_token
-
-
-3个模式
-
-写css要写scss，会生成同名的.css

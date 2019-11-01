@@ -29,10 +29,6 @@
                 document.domain = domain[ domain.length - 2 ] + '.' + domain[ domain.length - 1 ];
             } )( domain.split( '.' ) );
         };
-        window.onload = function () {
-            // 关掉加载条
-            document.getElementById('preCover').style.display = 'none';
-        };
     </script>
 	 <!-- <link rel="stylesheet" href="/js/swiper.min.css"> -->
     <!--
@@ -95,5 +91,12 @@
     -->
     <!-- <script src="%PUBLIC_URL%/intercom.js"></script> -->
     <script charset="UTF-8" type="text/javascript" src="https://cstaticdun.126.net/load.min.js"></script>
+    <script type="text/javascript">
+        setTimeout( function () {
+            // 关掉加载条
+            document.getElementById('preCover').style.display = 'none';
+        }, 1000 );
+        // window.onload =
+    </script>
   </body>
 </html>
