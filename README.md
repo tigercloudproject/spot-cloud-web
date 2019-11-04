@@ -86,14 +86,14 @@ location / {
 
 ### 账号流程演示
 
-1. 打开页面后，点击右上角的按钮
-<img src="https://gitlab.com/bbx-tech-team/rd-team/web-team/bbx-spot-web/raw/master/README/assets/images/img1.jpg" width="600" hegiht="auto" align="center" />  
-2. 当前会自动填写注册信息，这里需要记录下邮箱地址，注册密码是**111111**
-<img src="https://gitlab.com/bbx-tech-team/rd-team/web-team/bbx-spot-web/raw/master/README/assets/images/img2.jpg" width="600" hegiht="auto" align="center" />  
-3. 注册完成后，点开头像点击UID，进入账号信息
-<img src="https://gitlab.com/bbx-tech-team/rd-team/web-team/bbx-spot-web/raw/master/README/assets/images/img3.jpg" width="600" hegiht="auto" align="center" />  
-4. 这里的 Demo，演示交易所转钱、查询账户的功能，
-<img src="https://gitlab.com/bbx-tech-team/rd-team/web-team/bbx-spot-web/raw/master/README/assets/images/img4.jpg" width="600" hegiht="auto" align="center" />  
+1. 打开页面后，点击右上角的按钮  
+<img src="https://gitlab.com/bbx-tech-team/rd-team/web-team/bbx-spot-web/raw/master/README/assets/images/img1.jpg" width="768" hegiht="auto" align="center" />  
+2. 当前会自动填写注册信息，这里需要记录下邮箱地址，注册密码是**111111**  
+<img src="https://gitlab.com/bbx-tech-team/rd-team/web-team/bbx-spot-web/raw/master/README/assets/images/img2.jpg" width="768" hegiht="auto" align="center" />  
+3. 注册完成后，点开头像点击UID，进入账号信息  
+<img src="https://gitlab.com/bbx-tech-team/rd-team/web-team/bbx-spot-web/raw/master/README/assets/images/img3.jpg" width="768" hegiht="auto" align="center" />  
+4. 这里的 Demo，演示交易所转钱、查询账户的功能，  
+<img src="https://gitlab.com/bbx-tech-team/rd-team/web-team/bbx-spot-web/raw/master/README/assets/images/img4.jpg" width="768" hegiht="auto" align="center" />  
 
 ### 接口
 

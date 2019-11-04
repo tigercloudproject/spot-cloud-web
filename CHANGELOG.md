@@ -7,6 +7,9 @@
 ### b
 - C 调整 `e-exchange-token` 为 `v-exchange-token`
 - C 更新 README.md
+### c
+- R update.sh、languageRes.plist
+- C 更新 README.md
 
 ## 1.2.0.1101
 ### a
