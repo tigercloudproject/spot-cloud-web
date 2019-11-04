@@ -57,13 +57,13 @@ npm install webpack -g
     会在根目录生成 `./build` 文件夹
 3.  请把 `./build` 文件夹打包上传至测试服
 4.  配置 nginx 的 try_files
-```
-location / {
-    add_header X-Frame-Options SAMEORIGIN;
-    root /data/www/build;
-    try_files $uri /index.html;
-}
-```
+    ```
+    location / {
+        add_header X-Frame-Options SAMEORIGIN;
+        root /data/www/build;
+        try_files $uri /index.html;
+    }
+    ```
 
 ##### 生产模式
 
@@ -75,26 +75,26 @@ location / {
     会在根目录生成 `./build` 文件夹
 3.  请把 `./build` 文件夹打包上传至正式服
 4.  配置 nginx 的 try_files
-```
-location / {
-    add_header X-Frame-Options SAMEORIGIN;
-    root /data/www/build;
-    try_files $uri /index.html;
-}
-```
+    ```
+    location / {
+        add_header X-Frame-Options SAMEORIGIN;
+        root /data/www/build;
+        try_files $uri /index.html;
+    }
+    ```
 
 ## 说明
 
 ### 账号流程演示
 
 1. 打开页面后，点击右上角的按钮  
-<img src="https://github.com/tigercloudproject/spot-cloud-web/raw/develop/README/assets/images/img1.jpg" width="768" hegiht="auto" align="center" />  
+    <img src="https://github.com/tigercloudproject/spot-cloud-web/raw/develop/README/assets/images/img1.jpg" width="768" hegiht="auto" align="center" />  
 2. 当前会自动填写注册信息，这里需要记录下邮箱地址，注册密码是**111111**  
-<img src="https://github.com/tigercloudproject/spot-cloud-web/raw/develop/README/assets/images/img2.jpg" width="768" hegiht="auto" align="center" />  
+    <img src="https://github.com/tigercloudproject/spot-cloud-web/raw/develop/README/assets/images/img2.jpg" width="768" hegiht="auto" align="center" />  
 3. 注册完成后，点开头像点击UID，进入账号信息  
-<img src="https://github.com/tigercloudproject/spot-cloud-web/raw/develop/README/assets/images/img3.jpg" width="768" hegiht="auto" align="center" />  
+    <img src="https://github.com/tigercloudproject/spot-cloud-web/raw/develop/README/assets/images/img3.jpg" width="768" hegiht="auto" align="center" />  
 4. 这里的 Demo，演示交易所转钱、查询账户的功能，  
-<img src="https://github.com/tigercloudproject/spot-cloud-web/raw/develop/README/assets/images/img4.jpg" width="768" hegiht="auto" align="center" />  
+    <img src="https://github.com/tigercloudproject/spot-cloud-web/raw/develop/README/assets/images/img4.jpg" width="768" hegiht="auto" align="center" />  
 
 ### 接口
 
@@ -176,7 +176,3 @@ Request Headers 必须带上以下 Key:
     请检查 Request Headers 中是否带有 `Bbx-Accesskey`、`Bbx-ExpiredTs`、`Bbx-Uid`、`Bbx-Sign`、`Bbx-Ver`、`Bbx-Dev`、`Bbx-Ts`、`Bbx-Ssid` 这些key。如有缺少，则需要在 `./src/http.js` 下进行配置。
 3. 修改css样式后会被删除  
     编辑样式时，需修改 `.scss` 文件，同文件名的 `.css` 为自动生成
-4. 开发模式失败，显示 Cannot read property ‘entryOption’ of undefined
-    ```bash
-    npm uninstall  webpack-cli
-    ```

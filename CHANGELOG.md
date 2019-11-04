@@ -17,6 +17,8 @@
 - C 更新 README.md
 - F 修复漏洞警告。eslint 提升依赖版本至 4.18.2
 - R 移除 `/public/index.html` 冗余注释
+### f
+- C 更新 README.md
 
 ## 1.2.0.1101
 ### a
