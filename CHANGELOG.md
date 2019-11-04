@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.2.0.1104
+### a
+- C 更新 README.md
+- U 移除冗余代码
+
 ## 1.2.0.1101
 ### a
 - F 修复 websocket 死循环请求机制
@@ -8,6 +13,8 @@
 - C 调整 .env.development HOST 为 127.0.0.1
 - C 调整 src/ajax.js child_token
 - C 补全 README.md
+### b
+- C 更新 README.md
 
 ## 1.1.3.1025
 ### a

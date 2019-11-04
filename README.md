@@ -87,13 +87,13 @@ location / {
 ### 账号流程演示
 
 1. 打开页面后，点击右上角的按钮
-【图1】
+<img src="https://gitlab.com/bbx-tech-team/rd-team/web-team/bbx-spot-web/raw/master/README/assets/images/img1.jpg" width="768" hegiht="auto" align="center" />
 2. 当前会自动填写注册信息，这里需要记录下邮箱地址，注册密码是**111111**
-【图2】
+<img src="https://gitlab.com/bbx-tech-team/rd-team/web-team/bbx-spot-web/raw/master/README/assets/images/img2.jpg" width="768" hegiht="auto" align="center" />
 3. 注册完成后，点开头像点击UID，进入账号信息
-【图3】
+<img src="https://gitlab.com/bbx-tech-team/rd-team/web-team/bbx-spot-web/raw/master/README/assets/images/img3.jpg" width="768" hegiht="auto" align="center" />
 4. 这里的 Demo，演示交易所转钱、查询账户的功能，
-【图4】
+<img src="https://gitlab.com/bbx-tech-team/rd-team/web-team/bbx-spot-web/raw/master/README/assets/images/img4.jpg" width="768" hegiht="auto" align="center" />
 
 ### 接口
 
@@ -152,8 +152,8 @@ Request Headers 必须带上以下 Key:
 ### 功能点
 
 - 账号注册、登录、登出
-- 合并深度保留  1、2位小数
-- 委托展示:卖和买、只买、只卖
+- 合并深度保留1、2位小数
+- 委托展示: 卖和买、只买、只卖
 - 限价委托购买、卖出
 - 市价委托购买、卖出
 - 当前委托展示
@@ -163,8 +163,8 @@ Request Headers 必须带上以下 Key:
 - 批量撤单
 - 查看所有操作记录
 - 点击深度价格进行相应买卖
-- 点击眼睛 展示和隐藏资产
-- 语言切换：支持简体中文、繁体中文、英文、韩文等语种
+- 点击眼睛: 展示和隐藏资产
+- 语言切换: 支持简体中文、繁体中文、英文、韩文等语种
 - 切换交易对可改变币种介绍
 
 ## FAQ

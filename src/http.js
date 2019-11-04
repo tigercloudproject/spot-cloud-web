@@ -1,12 +1,8 @@
 import axios from 'axios';
-import {aesEncrypy} from "./utils/aes.js";
-import { setCookie, delCookie, getCookie } from "./utils/cookie.js";
+import { getCookie } from "./utils/cookie.js";
 import { getQueryString } from "./utils/getQueryString.js";
 import { clearSignCaches } from "./utils/common.js";
-import qs from 'qs';
 import MD5 from "./utils/md5.js";
-import { notification } from "antd";
-import intl from "react-intl-universal";
 import CFG from "./config.js";
 
 // 全局 Headers
