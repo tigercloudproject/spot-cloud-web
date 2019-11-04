@@ -429,7 +429,7 @@ export function assetApp2Account( data ) {
             headers: {
                 'Skip-Set-Axios-Headers': 'true'
                 , 'Content-type': 'application/x-www-form-urlencoded'
-                , 'e-exchange-token': getCookie( 'user_token' )
+                , 'v-exchange-token': getCookie( 'user_token' )
                 , 'platform': 'web'
             }
         };
@@ -476,7 +476,7 @@ function getChildToken( origin_uid, user_token ) {
         , opt = { headers: {
                 'Skip-Set-Axios-Headers': 'true'
                 , 'Content-type': 'application/x-www-form-urlencoded'
-                , 'e-exchange-token': user_token || getCookie( 'user_token' )
+                , 'v-exchange-token': user_token || getCookie( 'user_token' )
                 , 'platform': 'web'
              }
         };
@@ -584,7 +584,7 @@ export function assetQueryAccount(data) {
             headers: {
                 'Skip-Set-Axios-Headers': 'true'
                 , 'Content-type': 'application/x-www-form-urlencoded'
-                , 'e-exchange-token': getCookie( 'user_token' )
+                , 'v-exchange-token': getCookie( 'user_token' )
                 , 'platform': 'web'
             }
         };

@@ -4,6 +4,9 @@
 ### a
 - C 更新 README.md
 - U 移除冗余代码
+### b
+- C 调整 `e-exchange-token` 为 `v-exchange-token`
+- C 更新 README.md
 
 ## 1.2.0.1101
 ### a
