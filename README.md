@@ -26,6 +26,7 @@ npm install webpack -g
 
 项目共三种运行模式，根目录下存在三个 `.env.**` 的文件，分别对应各个模式。`.env.**` 内有各项参数的注释说明。
 - `.env.development` 开发模式配置
+    - 独有 `webpackDevServer` 配置项
 - `.env.test` 测试模式配置
 - `.env.production` 生产模式配置
 

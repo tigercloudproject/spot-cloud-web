@@ -10,6 +10,9 @@
 ### c
 - R update.sh、languageRes.plist
 - C 更新 README.md
+### d
+- A LICENSE
+- C 更新 README.md
 
 ## 1.2.0.1101
 ### a
