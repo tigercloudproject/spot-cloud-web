@@ -4,6 +4,7 @@
 ### a
 - F 修复 ws send 的长度过长导致的 1009 close
 - F 修复 ws action access
+- F 修复 ws bug
 
 ## 1.2.0.1104
 ### a
