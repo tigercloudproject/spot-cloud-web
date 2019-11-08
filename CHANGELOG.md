@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.2.0.1108
+### a
+- F 修复 ws send 的长度过长导致的 1009 close
+- F 修复 ws action access
+
 ## 1.2.0.1104
 ### a
 - C 更新 README.md

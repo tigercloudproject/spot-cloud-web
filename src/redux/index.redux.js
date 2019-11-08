@@ -118,8 +118,6 @@ export function getBbxTicker() {
                     stocks_arr.push("Ticker:" + item.stock.name);
                     // stocks_arr.push(item.stock.name);
                 })
-                stocks_json = JSON.stringify(stocks_json);
-                // console.log("stocks_json####", stocks_json);
 
                 stocks = stocks.sort(stockSortBy("rank"));
 
@@ -203,9 +201,12 @@ export function getBbxTicker() {
                 //     dispatch(bbxTicker(tickerList));
                 // }
 
-                window.webSocket_bbx.webSocketSend(`{"action": "subscribe", "args": ${stocks_json}}`);
-
-
+                // NOTE: 交易对内容过多，会造成 1009 自动关闭 ws close，目前后端最大 512 字符长度
+                const maxLength = 10;
+                for(var i=0;i<stocks_json.length;i=i+maxLength){
+                    console.log( stocks_json.slice(i,i+maxLength) )
+                    window.webSocket_bbx.webSocketSend(`{"action": "subscribe", "args": ${ JSON.stringify( stocks_json.slice(i,i+maxLength ))}}`);
+                }
             }
         }).catch((err) =>{
             clearTimeout(bbx_ticker_timeout);

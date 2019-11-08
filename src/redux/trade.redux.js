@@ -1,6 +1,7 @@
 import axios from "../http.js";
 import {exchangeAjax, assetsAjax} from "../ajax.js";
 import { setCookie, delCookie, getCookie } from "../utils/cookie.js";
+import MD5 from "../utils/md5.js";
 import { aesEncrypy } from "../utils/aes.js";
 import { quickSortTime } from "../utils/quickSort.js";
 
@@ -295,9 +296,11 @@ let assets_websocket_time_out = null;
 //获取BBX资产相关
 export function getAssets(coinPair) {
     return (dispatch, getState) => {
+        console.log( '获取BBX资产相关1')
         let arr = [getUserAssetsInfo(),getCurrentOrder(coinPair), getHistoryOrder(coinPair), getTradeRecords(coinPair)];
         return Promise.all(arr).then((res) => {
-            // console.log( '获取BBX资产相关', res )
+
+            console.log( '获取BBX资产相关', res )
             //用户资产
             if (res[0] && res[0].data && res[0].data.errno === "OK" && res[0].data.data && res[0].data.data.user_assets) {
                 dispatch(setBbxAssets({ bbx_assets_list: res[0].data.data.user_assets}));
@@ -321,24 +324,24 @@ export function getAssets(coinPair) {
             let bbxUid = getCookie( 'bbx_uid' );
             let timestamp = new Date().valueOf();
             let nonce = timestamp + "000";
-            let bbxSign = aesEncrypy(token, nonce);
+            let sign = aesEncrypy(token, nonce);
 
             let errorFn = () => {
-                clearTimeout(assets_websocket_time_out);
-                if (window.webSocket_bbx.isConnection()) {
-                    window.webSocket_bbx.webSocketSend(`{"action": "access","args":["${bbxUid}","web","1.0","${bbxSign}","${nonce}"]}`);
-                } else {
-                    assets_websocket_time_out = setTimeout(() => {
-                        getAssets();
-                    }, 5000);
-                    // setTimeout(() => {
-                    //     getAssets();
-                    // }, 3000);
-                }
+                console.log( 'errorCallBackFunObj' )
+                // clearTimeout(assets_websocket_time_out);
+                // if (window.webSocket_bbx.isConnection()) {
+                //     window.webSocket_bbx.webSocketSend(`{"action": "access","args":["${bbxUid}","web","1.0","${sign}","${nonce}"]}`);
+                // } else {
+                //     assets_websocket_time_out = setTimeout(() => {
+                //         getAssets();
+                //     }, 5000);
+                // }
             }
+            // bbx authenticate
+            // bbx cloud access
+            window.webSocket_bbx.errorCallBackFunObj["access"] = errorFn;
 
-            window.webSocket_bbx.errorCallBackFunObj["authenticate"] = errorFn;
-            window.webSocket_bbx.successFn["authenticate"] = (res) => {
+            window.webSocket_bbx.successFn["access"] = (res) => {
                 window.webSocket_bbx.webSocketSend(`{"action":"subscribe", "args":["unicast"]}`)
                 window.webSocket_bbx.successFn['SUD'] = (res) => {
                     // console.log("SUD#####", res);
@@ -395,7 +398,31 @@ export function getAssets(coinPair) {
                     }
                 }
             }
-            window.webSocket_bbx.webSocketSend(`{"action": "authenticate","args":["${bbxUid}","web","1.0","${bbxSign}","${nonce}"]}`);
+            // bbx authenticate
+            // window.webSocket_bbx.webSocketSend(`{"action": "access","args":["${bbxUid}","web","1.0","${bbxSign}","${nonce}"]}`);
+            // bbx cloud access
+            // args: [ accessKey, dev, version, sign, ts, expireTs ]
+            let bbxToken = getCookie( 'bbx_token' );
+            let bbxAccesskey = getCookie( 'bbx_access_key' );
+            let bbxDev = getCookie( 'bbx_dev' );
+            let bbxVer = getCookie( 'bbx_ver' );
+            let bbxSign = '';
+            let bbxTs = new Date().valueOf() + "000";  // 微秒时间戳
+            let bbxExpiredTs = getCookie( 'bbx_expired_ts' );
+            if ( bbxToken ) {
+                // md5( body + token + ts )
+                bbxSign = new MD5( '' + bbxToken + bbxTs ).hash();
+            };
+            let args_access = [
+                bbxAccesskey,
+                bbxDev,
+                bbxVer,
+                bbxSign,
+                bbxTs,
+                bbxExpiredTs
+            ];
+
+            window.webSocket_bbx.webSocketSend(`{"action": "access", "args": ${JSON.stringify(args_access)}}`);
         }).catch(err => {
             console.log("getAssets###err###", err);
         })

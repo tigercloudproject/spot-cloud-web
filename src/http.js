@@ -35,7 +35,9 @@ function updateHeaders( config, opt = {} ) {
         , bbxAccesskey = getCookie( 'bbx_access_key' ) || ''
         , bbxExpiredTs = getCookie( 'bbx_expired_ts' ) || ''
         , bbxSsid = getCookie( 'bbx_ssid' ) || ''
-        , bbxUid = getCookie( "bbx_uid" ) || ''
+        , bbxUid = getCookie( 'bbx_uid' ) || ''
+        , bbxVer = getCookie( 'bbx_ver' ) || ''
+        , bbxDev = getCookie( 'bbx_dev' ) || ''
         , bbxLang = localStorage.getItem( 'lang' ) || ''
         , nonce = new Date().valueOf() + "000"  // 微秒时间戳
         } = opt
@@ -62,8 +64,8 @@ function updateHeaders( config, opt = {} ) {
         console.log( 'bbxSign:', bbxSign );
 
         // 设置头部信息
-        config.headers.common['Bbx-Ver'] = '1.0';
-        config.headers.common['Bbx-Dev'] = 'web';
+        config.headers.common['Bbx-Ver'] = bbxVer;
+        config.headers.common['Bbx-Dev'] = bbxDev;
         config.headers.common["Content-Type"] = "application/json";
         config.headers.common['Bbx-Ts'] = nonce;
         config.headers.common['Bbx-Accesskey'] = bbxAccesskey;
@@ -109,85 +111,6 @@ axios.interceptors.request.use( config => {
     } else {
         return updateHeaders( config );
     }
-    //     return config;
-    //     // let bbxToken = getCookie( 'token' ) || '';
-    //     // // 是否存在云 token
-    //     // if ( bbxToken ) {
-    //     //     // 更新 sign
-    //     //     return updateHeaders( config, { bbxToken } );
-    //     // } else {
-    //     //     // 获取 bbx Token
-    //     //     // NOTE: Demo 中，该流程需要先登录 Token 平台，然后再获得 Token。实际情况可跳过该步骤
-    //     //     return ( function( config ) {
-    //     //         return getDemoHeaderLogin()
-    //     //             .then( e => {
-    //     //                 if ( e.code !== 0 ) {
-    //     //                     notification.error({
-    //     //                       message: intl.get("error_message_title") + ': getDemoHeaderLogin',
-    //     //                       description: e.message || e.msg
-    //     //                     });
-    //     //                     return config;
-    //     //                 };
-    //     //                 return getDemoHeader( e.data.token )
-    //     //                     .then( e => {
-    //     //                         /*
-    //     //                         	"access_key": "122f02dc-2e38-430e-b611-7d36921489a9",
-    //     //                             	"accountInfo": {
-    //     //                             		"account_id": 2555509712,
-    //     //                             		"api_key": "122f02dc-2e38-430e-b611-7d36921489a9",
-    //     //                             		"api_key_expired_at": "2019-11-24T03:10:22.225893Z",
-    //     //                             		"api_secret": "a305ff06-caf5-4960-90e0-719482b1bbdf",
-    //     //                             		"app_id": 2017184040,
-    //     //                             		"assets": null,
-    //     //                             		"created_at": "2019-10-25T03:10:22.23287Z",
-    //     //                             		"origin_uid": "sunbeyond",
-    //     //                             		"status": 1,
-    //     //                             		"updated_at": "2019-10-25T03:10:22.225893Z"
-    //     //                             	},
-    //     //                             	"expired_ts": "1574565022000000",
-    //     //                             	"token": "858a4adbe2b5ea7d7985ab9d37b7be9f"
-    //     //                          */
-    //     //                         let bbxToken = e.token
-    //     //                           , bbxAccesskey = e.access_key
-    //     //                           , bbxExpiredTs = e.expired_ts
-    //     //                           , bbxSsid = ''
-    //     //                           , bbxUid = e.accountInfo.account_id;
-    //     //
-    //     //                         // 更新 cookie
-    //     //                         setCookie( "token", bbxToken, 1, CFG.mainDomainName, "/" );
-    //     //                         setCookie( "access_key", bbxAccesskey, 1, CFG.mainDomainName, "/" );
-    //     //                         setCookie( "expired_ts", bbxExpiredTs, 1, CFG.mainDomainName, "/" );
-    //     //                         setCookie( "ssid", bbxSsid, 1, CFG.mainDomainName, "/" );
-    //     //                         setCookie( "uid", bbxUid, 1, CFG.mainDomainName, "/" );
-    //     //
-    //     //                         return updateHeaders( config, {
-    //     //                             bbxToken
-    //     //                             , bbxAccesskey
-    //     //                             , bbxExpiredTs
-    //     //                             , bbxSsid
-    //     //                             , bbxUid
-    //     //                         } );
-    //     //                     } )
-    //     //                     .catch( e => {
-    //     //                         notification.error({
-    //     //                           message: intl.get("error_message_title") + ': getDemoHeader',
-    //     //                           description: e.message || e.msg
-    //     //                         });
-    //     //
-    //     //                         return config;
-    //     //                     } );
-    //     //             } )
-    //     //             .catch( e => {
-    //     //                 notification.error({
-    //     //                   message: intl.get("error_message_title") + ': getDemoHeaderLogin',
-    //     //                   description: e.message || e.msg
-    //     //                 });
-    //     //
-    //     //                 return config;
-    //     //             } );
-    //     //     } )( config );
-    //     // }
-    // }
     // ================================== DEMO END =============================
 }, err => {
     //console.log("request###err##@@@######",err);

@@ -6,13 +6,13 @@
 
 ## 部署
 
-#### 1. 安装依赖环境
+### 1. 安装依赖环境
 
 -   [Install Node.js 8.x/10.x](http://nodejs.org): 开发环境依赖
 
-#### 2. git clone 项目或 download zip 项目包
+### 2. git clone 项目或 download zip 项目包
 
-#### 3. 开发环境安装项目依赖包
+### 3. 开发环境安装项目依赖包
 
 ``` bash
 # install dependencies
@@ -22,7 +22,7 @@ npm install
 npm install webpack -g
 ```
 
-#### 4. 配置各模式的.env
+### 4. 配置各模式的.env
 
 项目共三种运行模式，根目录下存在三个 `.env.**` 的文件，分别对应各个模式。`.env.**` 内有各项参数的注释说明。
 - `.env.development` 开发模式配置
@@ -30,9 +30,9 @@ npm install webpack -g
 - `.env.test` 测试模式配置
 - `.env.production` 生产模式配置
 
-#### 5. 运行模式
+### 5. 运行模式
 
-##### 开发模式
+#### 开发模式
 
 本模式会启动 `webpackDevServer`。
 
@@ -47,7 +47,7 @@ npm install webpack -g
     ```
 4.  等待显示出 `spot.bbx.com:3000` 后再进行访问
 
-##### 测试模式
+#### 测试模式
 
 1.  配置 `.env.test`。老虎云接口默认为测试API。
 2.  运行
@@ -60,12 +60,12 @@ npm install webpack -g
     ```
     location / {
         add_header X-Frame-Options SAMEORIGIN;
-        root /data/www/build;
+        root /data/weww/build;
         try_files $uri /index.html;
     }
     ```
 
-##### 生产模式
+#### 生产模式
 
 1.  配置 `.env.production`。老虎云接口默认为正式API。
 2.  运行
@@ -176,3 +176,5 @@ Request Headers 必须带上以下 Key:
     请检查 Request Headers 中是否带有 `Bbx-Accesskey`、`Bbx-ExpiredTs`、`Bbx-Uid`、`Bbx-Sign`、`Bbx-Ver`、`Bbx-Dev`、`Bbx-Ts`、`Bbx-Ssid` 这些key。如有缺少，则需要在 `./src/http.js` 下进行配置。
 3. 修改css样式后会被删除  
     编辑样式时，需修改 `.scss` 文件，同文件名的 `.css` 为自动生成
+4. 出现 `Module not found` 错误  
+    删除 `node_modules` 后重新 install

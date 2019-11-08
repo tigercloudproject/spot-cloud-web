@@ -18,15 +18,16 @@ class WebSocketClass {
   createWebSocket(bl) {
     try {
       this.webSocket = new WebSocket(this.wsUrl);
+
       this.initEventHandle();
-      if (bl) {
-        this.isErrorCallBack = false;
-        this.errorCallBackData();
-      }
-    } catch (e) {
-      this.errorCallBackData();
-      this.reconnect();
-    }
+        if (bl) {
+            this.isErrorCallBack = false;
+            this.errorCallBackData();
+        }
+        } catch (e) {
+            this.errorCallBackData();
+            this.reconnect();
+        }
   }
   initEventHandle() {
     this.webSocket.onclose = () => {
@@ -41,10 +42,10 @@ class WebSocketClass {
     this.webSocket.onopen = () => {
       this.isConnection = true;
       this.isErrorCallBack = false;
-      clearInterval(this.ping);
-      this.ping = setInterval(() => {
-        this.webSocketSend('{"action":"ping"}');
-      }, 10000);
+      // clearInterval(this.ping);
+      // this.ping = setInterval(() => {
+      //   this.webSocketSend('{"action":"ping"}');
+      // }, 10000);
       // 心跳检测重置
       this.heartCheck.start();
     };
