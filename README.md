@@ -6,13 +6,13 @@
 
 ## 部署
 
-### 1. 安装依赖环境
+#### 1. 安装依赖环境
 
 -   [Install Node.js 8.x/10.x](http://nodejs.org): 开发环境依赖
 
-### 2. git clone 项目或 download zip 项目包
+#### 2. git clone 项目或 download zip 项目包
 
-### 3. 开发环境安装项目依赖包
+#### 3. 开发环境安装项目依赖包
 
 ``` bash
 # install dependencies
@@ -22,17 +22,63 @@ npm install
 npm install webpack -g
 ```
 
-### 4. 配置各模式的.env
+#### 4. 配置各模式的.env
 
-项目共三种运行模式，根目录下存在三个 `.env.**` 的文件，分别对应各个模式。`.env.**` 内有各项参数的注释说明。
+项目共三种运行模式，根目录下存在三个 `.env.**` 的文件，分别对应各个模式。
 - `.env.development` 开发模式配置
     - 独有 `webpackDevServer` 配置项
 - `.env.test` 测试模式配置
 - `.env.production` 生产模式配置
 
-### 5. 运行模式
+##### 4.1. 各项参数说明
+```
+# webpack dev server
 
-#### 开发模式
+## 端口
+PORT=3000
+
+## 是否开启 443（无证书支持）
+HTTPS=false
+
+## WDS 域名
+HOST=127.0.0.1
+
+## 是否解禁 WDS 针对 HOST 的限制
+DANGEROUSLY_DISABLE_HOST_CHECK=true
+
+# Build
+
+## 开启 sourcemap
+GENERATE_SOURCEMAP=true
+
+## public资源路径，最后不带'/'
+PUBLIC_URL=
+
+## 站点所在域名（不写则对访问域名做Domain）
+DOMAIN=
+
+## API 接口线路（最后不带'/'）
+REQ_HOST=https://devapi.bbx.com
+
+## Websocket 接口线路
+REQ_WEBSOCKET=wss://devapi.bbx.com/v1/ifspot/realTime
+
+## Websocket 重连时间（毫秒）
+REQ_WEBSOCKET_CD=6000
+
+## Websocket Ping/Pong 请求间隔
+REQ_WEBSOCKET_HEARTCHECK_CD=60000
+
+## 请求超时（毫秒）
+REQ_TIMEOUT=5000
+
+## Demo功能，部分接口改为获取本地模拟数据
+SIM_RESPONSE=false
+```
+
+#### 5. 运行模式
+
+##### 5.1. 开发模式
 
 本模式会启动 `webpackDevServer`。
 
@@ -47,7 +93,7 @@ npm install webpack -g
     ```
 4.  等待显示出 `spot.bbx.com:3000` 后再进行访问
 
-#### 测试模式
+##### 5.2. 测试模式
 
 1.  配置 `.env.test`。老虎云接口默认为测试API。
 2.  运行
@@ -65,7 +111,7 @@ npm install webpack -g
     }
     ```
 
-#### 生产模式
+##### 5.3. 生产模式
 
 1.  配置 `.env.production`。老虎云接口默认为正式API。
 2.  运行
@@ -85,7 +131,7 @@ npm install webpack -g
 
 ## 说明
 
-### 账号流程演示
+#### 账号流程演示
 
 1. 打开页面后，点击右上角的按钮  
     <img src="https://github.com/tigercloudproject/spot-cloud-web/raw/develop/README/assets/images/img1.jpg" width="768" hegiht="auto" align="center" />  
@@ -96,11 +142,11 @@ npm install webpack -g
 4. 这里的 Demo，演示交易所转钱、查询账户的功能，  
     <img src="https://github.com/tigercloudproject/spot-cloud-web/raw/develop/README/assets/images/img4.jpg" width="768" hegiht="auto" align="center" />  
 
-### 接口
+#### 接口
 
 项目内所有请求分为 `交易所接口` 和 `老虎云接口`。  
 
-#### 老虎云接口
+##### A. 老虎云接口
 
 Request Headers 必须带上以下 Key:
 
@@ -115,7 +161,7 @@ Request Headers 必须带上以下 Key:
 
 针对这部分的配置，可查看 `./src/http.js`。
 
-#### 交易所接口
+##### B. 交易所接口
 
 由于 `交易所接口` 需要第三方来部署，因此本项目包含 Demo 性质的模拟接口数据，可在对应模式的 `./env.**` 文件中的 `SIM_RESPONSE` 配置为 `true`， 即可打开体验。  
 模拟接口数据存放在 `./public/_simResponse` 内。  
@@ -131,11 +177,11 @@ Request Headers 必须带上以下 Key:
 - userAjax.asset_app2account: 交易所内的母账号给子账号（本账号）转钱
 - userAjax.asset_query_account: 交易所内查询本账号的资产
 
-### 缓存机制
+#### 缓存机制
 
 - 当前的账号登录判定以 Cookies `bbx_token` 是否存在为条件。
 
-### 组件
+#### 组件
 
 *容器名+'-h5'则为移动端界面*
 
@@ -150,7 +196,7 @@ Request Headers 必须带上以下 Key:
 | 登录 | src/pc/register/login.js | className="login-box" |
 | 注册 | src/pc/register/register.js | className="login-box" |
 
-### 功能点
+#### 功能点
 
 - 账号注册、登录、登出
 - 合并深度保留1、2位小数
@@ -168,7 +214,7 @@ Request Headers 必须带上以下 Key:
 - 语言切换: 支持简体中文、繁体中文、英文、韩文等语种
 - 切换交易对可改变币种介绍
 
-## FAQ
+### FAQ
 
 1. 修改 `币种介绍` 的文本内容  
     目前通过接口 `coinBrief` 动态获取，可针对该接口做处理

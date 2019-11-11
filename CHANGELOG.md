@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.2.0.1111
+### a
+- C 调整 ws 的 ping/pong 间隔为 60秒，并在模式中可配
+- C 补充 README.md
+
 ## 1.2.0.1108
 ### a
 - F 修复 ws send 的长度过长导致的 1009 close

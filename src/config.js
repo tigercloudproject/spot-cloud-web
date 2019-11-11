@@ -16,6 +16,7 @@ export default {
     // 请求WS
     , reqWebsocket: process.env.REQ_WEBSOCKET
     , reqWebsocketCD: process.env.REQ_WEBSOCKET_CD
+    , reqWebsocketHeartCheckCD: process.env.REQ_WEBSOCKET_HEARTCHECK_CD
     , reqTimeout: process.env.REQ_TIMEOUT
     // ======================= 这块代码是 Demo，仅供演示、说明用 ====================
     // 是否使用 SimResponse
